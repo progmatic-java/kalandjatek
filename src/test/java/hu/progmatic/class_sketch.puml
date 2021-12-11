@@ -1,0 +1,48 @@
+@startuml
+'https://plantuml.com/class-diagram
+
+class GameMain {
+    + runGame()
+}
+class GameController {
+
+}
+class GameIO {
+
+}
+class DatabaseHandler {
+
+}
+package Database <<Database>> {
+class Rooms {
++ int id //primary key
++ text name
+}
+class Doors {
++ int room1_id //index
++ int room2_id //index
+}
+class Items {
++ int id //primary key
++ text name
++ text description
++ int value
++ int room_id
+}
+class Npcs {
++ int id //primary key
++ text name
++ int room_id
+}
+}
+
+GameMain *-- GameController
+GameIO -right--* GameController
+GameController *-- DatabaseHandler
+Database -right--* DatabaseHandler
+Items -left--* Rooms : room_id
+Rooms *-- Npcs : room_id
+Doors -right--* Rooms : room1_id
+Doors -right--* Rooms : room2_id
+
+@enduml
