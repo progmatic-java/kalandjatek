@@ -15,33 +15,48 @@ class DatabaseHandler {
 }
 package Database <<Database>> {
 class Rooms {
-+ int room_id //primary key
++ int id //primary key
 + text name
++ int inventory_id
 }
 class Doors {
-+ int door_id //primary key
++ int id //primary key
 + int room1_id //index
 + int room2_id //index
 }
 class Items {
-+ int item_id //primary key
++ int id //primary key
++ int inventory_id
 + text name
 + text description
 + int value
 }
 class Npcs {
-+ int npc_id //primary key
++ int id //primary key
 + text name
++ text description
++ int type
 + int room_id
++ int inventory_id
++ int action_id
++ bool action_active
+}
+class NpcType {
++ int id
+...
 }
 class Inventory {
-+ int inventory_id
-+ int item_id //index
-+ int npc_id //index
-+ int room_id //index
++ int id
+}
+class Action {
++ int id
++ text speach
++ int parent_action_id
 }
 }
-
+Action -- Action
+Npcs -- Action
+Npcs -- NpcType
 GameMain *-- GameController
 GameIO -right--* GameController
 GameController *-- DatabaseHandler
