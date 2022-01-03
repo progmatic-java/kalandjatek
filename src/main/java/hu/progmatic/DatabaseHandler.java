@@ -17,14 +17,29 @@ public class DatabaseHandler {
         try (Connection connection = adatbazis.open()) {
             connection.createQuery(
                     """
-                            drop table if exists kalandjatek_room, kalandjatek_door, kalandjatek_item
+                            drop table if exists kalandjatek_room, kalandjatek_door, kalandjatek_item, kalandjatek_inventory
                             """
+            ).executeUpdate();
+            connection.createQuery(
+                """
+                        create table kalandjatek_inventory (
+                          id int auto_increment primary key
+                        )
+                        """
+            ).executeUpdate();
+            connection.createQuery(
+                """
+                        insert into kalandjatek_inventory () 
+                        values (),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),(),()
+                        """
             ).executeUpdate();
             connection.createQuery(
                     """
                             create table kalandjatek_room (
                               id int auto_increment primary key,
-                              name text
+                              name text,
+                              inventory_id int not null,
+                              foreign key (inventory_id) references kalandjatek_inventory(id)
                             )
                             """
             ).executeUpdate();
@@ -51,13 +66,13 @@ public class DatabaseHandler {
             ).executeUpdate();
             connection.createQuery(
                     """
-                            insert into kalandjatek_room (name) 
+                            insert into kalandjatek_room (name, inventory_id) 
                             values
-                             ('Bolt'),
-                             ('Főtér'),
-                             ('Kocsma'),
-                             ('Templom'),
-                             ('Pince')
+                             ('Bolt',1),
+                             ('Főtér',2),
+                             ('Kocsma',3),
+                             ('Templom',4),
+                             ('Pince',5)
                             """
             ).executeUpdate();
         }
