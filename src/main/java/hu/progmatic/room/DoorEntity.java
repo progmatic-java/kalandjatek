@@ -14,6 +14,6 @@ public class DoorEntity {
     @Id
     @GeneratedValue (strategy = GenerationType.AUTO)
     private Integer id;
-    @OneToMany
+    @OneToMany(cascade = CascadeType.ALL)
     RoomEntity room;
 }
