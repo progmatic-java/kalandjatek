@@ -1,6 +1,7 @@
 package hu.progmatic.kalandjatek.character;
 
 import hu.progmatic.kalandjatek.InventoryEntity;
+import hu.progmatic.room.RoomEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -31,4 +32,6 @@ public class CharacterEntity{
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn
     InventoryEntity inventory;
+    @OneToOne
+    RoomEntity room;
 }

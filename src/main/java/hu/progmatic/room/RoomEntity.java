@@ -1,8 +1,11 @@
 package hu.progmatic.room;
 
+import hu.progmatic.kalandjatek.InventoryEntity;
+import hu.progmatic.kalandjatek.character.CharacterEntity;
 import lombok.*;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
+import javax.validation.constraints.NotEmpty;
 
 @Entity
 @Builder
@@ -11,5 +14,15 @@ import javax.persistence.Entity;
 @Setter
 @Getter
 public class RoomEntity {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
+    @NotEmpty
+    String name;
+    @OneToOne
+    InventoryEntity inventory;
+    @OneToOne
+    CharacterEntity character;
+    @ManyToOne
+    DoorEntity door;
 }
