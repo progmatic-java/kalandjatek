@@ -3,6 +3,8 @@ package hu.progmatic.room;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Entity
 @Getter
@@ -12,8 +14,9 @@ import javax.persistence.*;
 @Builder
 public class DoorEntity {
     @Id
-    @GeneratedValue (strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @OneToMany(cascade = CascadeType.ALL)
-    RoomEntity room;
+    @Builder.Default
+    List<RoomEntity> room = new ArrayList<>();
 }
