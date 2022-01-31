@@ -72,12 +72,14 @@
     </div>
 </div>
 
-</div>
 <br><br><br>
 
 <div class="buttons">
-    <form th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="get">
+    <form th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="post">
         <input type="submit" class="btn btn-dark" value="Aren't pleased with your character? Retake the test!"/>
+    </form>
+    <form th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="post">
+        <input type="submit" class="btn btn-dark" value="I love my character, i want to continue"/>
     </form>
 </div>
 
