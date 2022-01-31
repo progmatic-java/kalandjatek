@@ -1,6 +1,6 @@
 package hu.progmatic.kalandjatek.character;
 
-import hu.progmatic.kozos.kalandjatek.InventoryEntity;
+import hu.progmatic.kalandjatek.InventoryEntity;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

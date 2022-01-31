@@ -1,7 +1,7 @@
 package hu.progmatic.appconfig;
 
 import hu.progmatic.felhasznalo.MyUserDetailsService;
-import hu.progmatic.kozos.felhasznalo.MyUserDetailsService;
+import hu.progmatic.felhasznalo.MyUserDetailsService;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;

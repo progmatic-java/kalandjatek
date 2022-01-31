@@ -1,6 +1,6 @@
 package hu.progmatic.kalandjatek.character;
 
-import hu.progmatic.kozos.felhasznalo.UserType;
+import hu.progmatic.felhasznalo.UserType;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

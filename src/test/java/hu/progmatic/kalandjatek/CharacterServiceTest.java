@@ -1,12 +1,13 @@
 package hu.progmatic.kalandjatek;
 
 import hu.progmatic.felhasznalo.UserType;
+import hu.progmatic.kalandjatek.character.Character;
 import hu.progmatic.kalandjatek.character.CharacterDto;
 import hu.progmatic.kalandjatek.character.CharacterEntity;
 import hu.progmatic.kalandjatek.character.CharacterService;
 import hu.progmatic.kalandjatek.character.Race;
-import hu.progmatic.kozos.felhasznalo.UserType;
-import hu.progmatic.kozos.kalandjatek.character.*;
+import hu.progmatic.felhasznalo.UserType;
+import hu.progmatic.kalandjatek.character.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
