@@ -29,6 +29,10 @@ public class RoomService implements InitializingBean {
         return roomRepository.findAll();
     }
 
+    public RoomEntity getById(Integer id) {
+        return roomRepository.getById(id);
+    }
+
     @Override
     public void afterPropertiesSet() throws Exception {
         if (roomRepository.count() == 0) {
