@@ -2,7 +2,6 @@ package hu.progmatic.kalandjatek;
 
 import hu.progmatic.kalandjatek.character.CharacterEntity;
 import hu.progmatic.kalandjatek.character.CharacterService;
-import hu.progmatic.kalandjatek.character.KalandjatekService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -12,8 +11,6 @@ import java.util.List;
 
 @Controller
 public class FooldalController {
-    @Autowired
-    private KalandjatekService kalandjatekService;
 
     @Autowired
     private CharacterService characterService;

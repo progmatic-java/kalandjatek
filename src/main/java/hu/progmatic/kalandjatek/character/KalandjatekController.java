@@ -24,8 +24,6 @@ public class KalandjatekController {
             new Character("Sugar Alien", Race.REPTILIAN, 200, 200, 200)
     );
 
-    @Autowired
-    private KalandjatekService kalandjatekService;
 
     @Autowired
     private CharacterService characterService;
