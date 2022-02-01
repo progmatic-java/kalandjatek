@@ -17,6 +17,6 @@ class RoomServiceTest {
   @Test
   void doorRoomTest() {
     List<RoomEntity> roomEntityList = roomService.findAllRooms();
-
+    RoomEntity
   }
 }
