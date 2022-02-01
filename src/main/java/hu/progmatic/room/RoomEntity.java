@@ -29,5 +29,5 @@ public class RoomEntity {
   CharacterEntity character;
   @ManyToMany(cascade = CascadeType.ALL)
   @Builder.Default
-  List<DoorEntity> door = new ArrayList<>();
+  List<DoorEntity> doors = new ArrayList<>();
 }

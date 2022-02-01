@@ -12,9 +12,10 @@ import java.util.stream.Collectors;
 @Transactional
 public class RoomService implements InitializingBean {
     private List<RoomEntity> rooms = List.of(
-            RoomEntity.builder().name("Kocsma").build(),
-            RoomEntity.builder().name("Főtér").build(),
-            RoomEntity.builder().name("Erdő").build()
+            RoomEntity.builder().name("Inn").build(),
+            RoomEntity.builder().name("Main square").build(),
+            RoomEntity.builder().name("Forest").build(),
+            RoomEntity.builder().name("Inn cellar").build()
     );
 
     @Autowired
@@ -35,7 +36,7 @@ public class RoomService implements InitializingBean {
         }
     }
 
-    public List<RoomEntity> valami(RoomEntity room) {
+    public List<RoomEntity> getDoorsToOtherRooms(RoomEntity room) {
         List<DoorEntity> doors = doorRepository.findByRoomsContaining(room);
         List<RoomEntity> nextRooms = doors.stream().map(DoorEntity::getRooms)
             .flatMap(roomEntities -> roomEntities.stream().filter(room1 -> !room1.equals(room)))

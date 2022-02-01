@@ -18,7 +18,7 @@ public class DoorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @ManyToMany(cascade = CascadeType.ALL)
+    @ManyToMany(cascade = CascadeType.ALL, mappedBy = "doors")
     @Builder.Default
     List<RoomEntity> rooms = new ArrayList<>();
 }
