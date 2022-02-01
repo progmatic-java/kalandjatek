@@ -29,7 +29,7 @@ public class RoomService implements InitializingBean {
         return roomRepository.findAll();
     }
 
-    public RoomEntity getById(Integer id) {
+    public RoomEntity getRoomById(Integer id) {
         return roomRepository.getById(id);
     }
 
