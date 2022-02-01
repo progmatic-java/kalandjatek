@@ -73,12 +73,13 @@
 </div>
 
 <br><br><br>
+result
 
 <div class="buttons">
     <form th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="post">
         <input type="submit" class="btn btn-dark" value="Aren't pleased with your character? Retake the test!"/>
     </form>
-    <form th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="post">
+    <form th:action="@{'/kalandjatek/characterpage/{characterId}/room/{roomId}'(characterId=${chosenCharacter.id}, roomId=${startingRoom.id})}" method="post">
         <input type="submit" class="btn btn-dark" value="I love my character, i want to continue"/>
     </form>
     <form th:action="@{/kalandjatek/fooldal}" method="get">

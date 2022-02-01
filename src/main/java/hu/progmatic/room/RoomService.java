@@ -6,7 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
-import java.util.stream.Collectors;
+import java.util.Optional;
 
 @Service
 @Transactional
@@ -31,6 +31,10 @@ public class RoomService implements InitializingBean {
 
     public RoomEntity getById(Integer id) {
         return roomRepository.getById(id);
+    }
+
+    public RoomEntity getByName(String name) {
+        return roomRepository.findRoomEntityByName(name).orElseThrow();
     }
 
     @Override
