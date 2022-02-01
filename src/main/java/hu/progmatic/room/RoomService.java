@@ -6,6 +6,7 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.stream.Collectors;
 
 @Service
 @Transactional
@@ -19,6 +20,10 @@ public class RoomService implements InitializingBean {
     @Autowired
     private RoomRepository roomRepository;
 
+    @Autowired
+    private DoorRepository doorRepository;
+
+
     public List<RoomEntity> findAllRooms() {
         return roomRepository.findAll().stream().toList();
     }
@@ -30,4 +35,11 @@ public class RoomService implements InitializingBean {
         }
     }
 
+    public List<RoomEntity> valami(RoomEntity room) {
+        List<DoorEntity> doors = doorRepository.findByRoomsContaining(room);
+        List<RoomEntity> nextRooms = doors.stream().map(DoorEntity::getRooms)
+            .flatMap(roomEntities -> roomEntities.stream().filter(room1 -> !room1.equals(room)))
+            .toList();
+        return nextRooms;
+    }
 }

@@ -6,6 +6,10 @@ import lombok.*;
 
 import javax.persistence.*;
 import javax.validation.constraints.NotEmpty;
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+import java.util.Set;
 
 @Entity
 @Builder
@@ -14,15 +18,16 @@ import javax.validation.constraints.NotEmpty;
 @Setter
 @Getter
 public class RoomEntity {
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    @NotEmpty
-    String name;
-    @OneToOne
-    InventoryEntity inventory;
-    @OneToOne
-    CharacterEntity character;
-    @ManyToOne
-    DoorEntity door;
+  @Id
+  @GeneratedValue(strategy = GenerationType.AUTO)
+  private Integer id;
+  @NotEmpty
+  String name;
+  @OneToOne
+  InventoryEntity inventory;
+  @OneToOne
+  CharacterEntity character;
+  @ManyToMany(cascade = CascadeType.ALL)
+  @Builder.Default
+  List<DoorEntity> door = new ArrayList<>();
 }
