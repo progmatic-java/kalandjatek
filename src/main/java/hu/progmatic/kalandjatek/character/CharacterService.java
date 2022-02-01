@@ -7,7 +7,9 @@ import org.springframework.stereotype.Service;
 
 import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Transactional
 @Service
@@ -15,6 +17,7 @@ public class CharacterService implements InitializingBean {
 
     @Autowired
     private CharacterRepository repository;
+
 
     public CharacterEntity save(CharacterEntity character) {
         return repository.save(character);
@@ -27,10 +30,10 @@ public class CharacterService implements InitializingBean {
     public CharacterDto getCharacterDtoById(Integer id) {
         CharacterEntity entity = getById(id);
         return CharacterDto.builder()
-            .characterName(entity.getName())
-            .id(entity.getId())
-            .race(entity.getRace())
-            .build();
+                .characterName(entity.getName())
+                .id(entity.getId())
+                .race(entity.getRace())
+                .build();
     }
 
 
@@ -105,7 +108,50 @@ public class CharacterService implements InitializingBean {
         }
     }
 
+    public Race getResults(Answer answer) {
+        Map<Race, Integer> answerEvaluation = new HashMap<>();
+        fillEvaluationMap(answerEvaluation, answer.race1);
+        fillEvaluationMap(answerEvaluation, answer.race2);
+        fillEvaluationMap(answerEvaluation, answer.race3);
+        fillEvaluationMap(answerEvaluation, answer.race4);
+        fillEvaluationMap(answerEvaluation, answer.race5);
+        fillEvaluationMap(answerEvaluation, answer.race6);
+        fillEvaluationMap(answerEvaluation, answer.race7);
+        fillEvaluationMap(answerEvaluation, answer.race8);
+        return getMaxKey(answerEvaluation);
+    }
+
+    private Race getMaxKey(Map<Race, Integer> answerEvaluation) {
+        int maxValue = 0;
+        Race maxKey = null;
+        for (Map.Entry<Race, Integer> entry : answerEvaluation.entrySet()) {
+            if (maxValue < entry.getValue()) {
+                maxValue = entry.getValue();
+                maxKey = entry.getKey();
+            }
+        }
+        return maxKey;
+    }
+
+    private void fillEvaluationMap(Map<Race, Integer> answerEvaluation, Race race) {
+        Integer value = answerEvaluation.getOrDefault(race, 0);
+        answerEvaluation.put(race, value + 1);
+    }
+
     public List<CharacterEntity> findAll() {
         return repository.findAll();
+    }
+
+    public CharacterEntity getResultCharacter(Answer answer) {
+        Race characterRace = getResults(answer);
+        return CharacterEntity.builder()
+                .name(answer.getName())
+                .hp(characterRace.hp)
+                .mp(characterRace.mp)
+                .gold(characterRace.gold)
+                .imgRef(characterRace.img)
+                .description(characterRace.description)
+                .race(characterRace)
+                .build();
     }
 }

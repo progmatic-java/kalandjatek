@@ -63,30 +63,12 @@ public class KalandjatekController {
         if (bindingResult.hasErrors()) {
             return "/kalandjatek/szemelyisegtesztmixelt";
         }
-        Race resultRace = kalandjatekService.getResults(answer);
-
-        model.addAttribute("selectedCharacter", getSelectedCharacter(resultRace));
+        CharacterEntity resultCharacter = characterService.getResultCharacter(answer);
+        characterService.save(resultCharacter);
+        model.addAttribute("chosenCharacter", resultCharacter);
         return "/kalandjatek/karaktertemplate";
     }
 
-    private Character getSelectedCharacter(Race resultRace) {
-        List<Character> defaultChars = getDefaultCharacters();
-        return defaultChars.stream()
-                .filter(character -> character.race.equals(resultRace))
-                .findAny()
-                .get();
-    }
-
-    @ModelAttribute("selectedCharacter")
-    public Character selectedCharacter() {
-        return new Character(
-                "asdasd",
-                Race.ELF,
-                10,
-                10,
-                10
-        );
-    }
 
     @ModelAttribute("chosenCharacter")
     public CharacterEntity chosenCharacter() {

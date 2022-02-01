@@ -46,8 +46,8 @@
 
 <h1 style="text-align: center"> Character result </h1>
 
-<p style="text-align: center" th:text="${selectedCharacter.description}">Character description</p>
-<img th:src="@{${selectedCharacter.imgRef}}" style="float: right">
+<p style="text-align: center" th:text="${chosenCharacter.description}">Character description</p>
+<img th:src="@{${chosenCharacter.imgRef}}" style="float: right">
 
 <div>
 
@@ -57,13 +57,13 @@
             <div class="card mb-4 block">
                 <h4>Stats: </h4>
                 <ul>
-                    <li th:text="${'Hp = ' + selectedCharacter.hp}">
+                    <li th:text="${'Hp = ' + chosenCharacter.hp}">
                         Hp = 80
                     </li>
-                    <li th:text="${'Mp = ' + selectedCharacter.mp}">
+                    <li th:text="${'Mp = ' + chosenCharacter.mp}">
                         Mp = 100
                     </li>
-                    <li th:text="${'Gold = ' + selectedCharacter.gold}">
+                    <li th:text="${'Gold = ' + chosenCharacter.gold}">
                         Gold = 50
                     </li>
                 </ul>
@@ -80,6 +80,9 @@
     </form>
     <form th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="post">
         <input type="submit" class="btn btn-dark" value="I love my character, i want to continue"/>
+    </form>
+    <form th:action="@{/kalandjatek/fooldal}" method="get">
+        <input type="submit" class="btn btn-dark" value="Get back to the main menu"/>
     </form>
 </div>
 
