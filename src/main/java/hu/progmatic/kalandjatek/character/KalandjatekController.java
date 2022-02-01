@@ -64,6 +64,7 @@ public class KalandjatekController {
             return "/kalandjatek/szemelyisegtesztmixelt";
         }
         Race resultRace = kalandjatekService.getResults(answer);
+
         model.addAttribute("selectedCharacter", getSelectedCharacter(resultRace));
         return "/kalandjatek/karaktertemplate";
     }

@@ -11,9 +11,9 @@ import java.util.List;
 @Transactional
 public class RoomService implements InitializingBean {
     private List<RoomEntity> rooms = List.of(
-            RoomEntity.builder().name("Kocsma").door(new DoorEntity()).build(),
-            RoomEntity.builder().name("Főtér").door(new DoorEntity()).build(),
-            RoomEntity.builder().name("Erdő").door(new DoorEntity()).build()
+            RoomEntity.builder().name("Kocsma").build(),
+            RoomEntity.builder().name("Főtér").build(),
+            RoomEntity.builder().name("Erdő").build()
     );
 
     @Autowired
@@ -26,14 +26,7 @@ public class RoomService implements InitializingBean {
     @Override
     public void afterPropertiesSet() throws Exception {
         if (roomRepository.count() == 0) {
-            roomRepository.saveAll(
-                    rooms.stream()
-                            .map(dto -> RoomEntity.builder()
-                                    .name(dto.getName())
-                                    .door(dto.getDoor())
-                                    .build())
-                            .toList()
-            );
+            roomRepository.saveAll(rooms);
         }
     }
 
