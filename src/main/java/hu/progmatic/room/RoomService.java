@@ -25,7 +25,7 @@ public class RoomService implements InitializingBean {
 
 
     public List<RoomEntity> findAllRooms() {
-        return roomRepository.findAll().stream().toList();
+        return roomRepository.findAll();
     }
 
     @Override
