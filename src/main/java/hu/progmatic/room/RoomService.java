@@ -47,4 +47,8 @@ public class RoomService implements InitializingBean {
             .toList();
         return nextRooms;
     }
+
+    public DoorEntity addNewDoor(RoomEntity room1, RoomEntity room2) {
+        return null;
+    }
 }
