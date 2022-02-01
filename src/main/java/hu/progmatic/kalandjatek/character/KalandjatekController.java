@@ -2,6 +2,8 @@ package hu.progmatic.kalandjatek.character;
 
 import hu.progmatic.felhasznalo.FelhasznaloService;
 import hu.progmatic.felhasznalo.UserType;
+import hu.progmatic.room.RoomEntity;
+import hu.progmatic.room.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -30,6 +32,10 @@ public class KalandjatekController {
 
     @Autowired
     private FelhasznaloService felhasznaloService;
+
+    @Autowired
+    private RoomService roomService;
+
 
     @GetMapping("/kalandjatek/szemelyisegtesztmixelt")
     public String teszMix() {
@@ -73,6 +79,10 @@ public class KalandjatekController {
         return new CharacterEntity();
     }
 
+    @ModelAttribute("startingRoom")
+    public RoomEntity startRoom() {
+        return roomService.getByName("Inn");
+    }
 
     @ModelAttribute("testAnswer")
     public Answer testAnswer() {

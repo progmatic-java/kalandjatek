@@ -34,7 +34,7 @@ public class RoomService implements InitializingBean {
     }
 
     public RoomEntity getByName(String name) {
-        return roomRepository.findRoomEntityByName(name).orElseThrow();
+        return roomRepository.getRoomEntityByName(name).orElseThrow();
     }
 
     @Override
