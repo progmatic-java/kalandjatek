@@ -18,10 +18,10 @@
 
         body {
             color: whitesmoke;
-            font-family: 'Anton', sans-serif;
+            font-family: MedievalSharp,serif;
             font-size: 15px;
             font-weight: 500;
-            background: url(https://i.imgur.com/CaeKTDy.jpg) no-repeat;
+            background: url(https://wallpaperaccess.com/full/6079735.png) no-repeat;
             background-size: 100% 100%;
         }
 
@@ -38,4 +38,10 @@
 <h1 th:text="${'Room Name: ' + currRoom.getName()}">Room Name</h1>
 <h1 th:text="${'Character Name: ' + currPlayer.getName()}">Character Name</h1>
 </body>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+</style>
+
 </html>
