@@ -43,16 +43,4 @@ public class RoomService implements InitializingBean {
             roomRepository.saveAll(rooms);
         }
     }
-
-    public List<RoomEntity> getDoorsToOtherRooms(RoomEntity room) {
-        List<DoorEntity> doors = doorRepository.findByRoomsContaining(room);
-        List<RoomEntity> nextRooms = doors.stream().map(DoorEntity::getRooms)
-            .flatMap(roomEntities -> roomEntities.stream().filter(room1 -> !room1.equals(room)))
-            .toList();
-        return nextRooms;
-    }
-
-    public DoorEntity addNewDoor(RoomEntity room1, RoomEntity room2) {
-        return null;
-    }
 }
