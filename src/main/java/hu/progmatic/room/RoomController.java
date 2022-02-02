@@ -43,8 +43,8 @@ public class RoomController {
     }
 
     @ModelAttribute("currRoom")
-    public RoomEntity currRoom() {
-        return new RoomEntity();
+    public RoomDto currRoom() {
+        return new RoomDto();
     }
 
     @ModelAttribute("currPlayer")

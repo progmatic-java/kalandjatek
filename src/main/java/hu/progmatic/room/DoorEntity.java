@@ -3,10 +3,6 @@ package hu.progmatic.room;
 import lombok.*;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
-import java.util.Set;
 
 @Entity
 @Getter
@@ -18,4 +14,8 @@ public class DoorEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
+    @ManyToOne
+    private RoomEntity room1;
+    @ManyToOne
+    private RoomEntity room2;
 }
