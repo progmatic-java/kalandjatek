@@ -79,10 +79,17 @@ public class RoomService implements InitializingBean {
   }
 
   public DoorEntity saveDoor(RoomEntity room1, RoomEntity room2) {
-    return doorRepository.save(DoorEntity.builder()
+    DoorEntity newDoor = doorRepository.save(DoorEntity.builder()
         .room1(room1)
         .room2(room2)
         .build()
     );
+    room1.getDoors1().add(newDoor);
+    room1.getDoors2().add(newDoor);
+    return newDoor;
+  }
+
+  public void dropAllRoom() {
+    roomRepository.deleteAll();
   }
 }

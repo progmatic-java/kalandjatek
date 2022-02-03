@@ -1,5 +1,10 @@
 package hu.progmatic.room;
 
+import hu.progmatic.kalandjatek.InventoryEntity;
+import hu.progmatic.kalandjatek.ItemsEntity;
+import hu.progmatic.kalandjatek.ItemsEnum;
+import hu.progmatic.kalandjatek.character.CharacterEntity;
+import hu.progmatic.kalandjatek.character.Race;
 import hu.progmatic.kalandjatek.room.DoorEntity;
 import hu.progmatic.kalandjatek.room.RoomEntity;
 import hu.progmatic.kalandjatek.room.RoomService;
@@ -29,56 +34,55 @@ class RoomServiceTest {
     assertEquals("Dungeon", savedRoom.getName());
   }
 
-  @Test
-  @DisplayName("Save multiple room test")
-  void roomSaveAllTest() {
-    List<RoomEntity> savedRooms = roomService.saveAllRoom(
-        List.of(
-            RoomEntity.builder().name("Wasteland").build(),
-            RoomEntity.builder().name("Church").build()
-        )
-    );
-    assertThat(savedRooms)
-        .isNotNull()
-        .hasSize(2)
-        .extracting(RoomEntity::getName)
-        .containsExactlyInAnyOrder("Wasteland", "Church");
-  }
+  @Nested
+  @DisplayName("Tests with multiple rooms")
+  class MultipleRoomsTest {
+    List<RoomEntity> savedRooms;
 
-  @Test
-  @DisplayName("Get room by name test")
-  void getRoomByNameTest() {
-    RoomEntity inn = roomService.getByName("Inn");
-    assertEquals("Inn", inn.getName());
-    RoomEntity forest = roomService.getByName("Forest");
-    assertEquals("Forest", forest.getName());
-  }
+    @BeforeEach
+    void setUp() {
+      roomService.dropAllRoom();
+      savedRooms = roomService.saveAllRoom(
+          List.of(
+              RoomEntity.builder().name("Wasteland").build(),
+              RoomEntity.builder().name("Church").build(),
+              RoomEntity.builder().name("Inn").build(),
+              RoomEntity.builder().name("Main square").build(),
+              RoomEntity.builder().name("Forest").build(),
+              RoomEntity.builder().name("Inn cellar").build()
+          )
+      );
+    }
 
-  @Test
-  @DisplayName("Add door test")
-  void addDoorTest() {
-    RoomEntity inn = roomService.getByName("Inn");
-    RoomEntity innCellar = roomService.getByName("Inn cellar");
-    DoorEntity cellarDoor = roomService.saveDoor(inn, innCellar);
+    @Test
+    @DisplayName("Save multiple room test")
+    void roomSaveAllTest() {
+      assertThat(savedRooms)
+          .isNotNull()
+          .hasSize(6)
+          .extracting(RoomEntity::getName)
+          .containsExactlyInAnyOrder("Wasteland", "Church", "Inn", "Main square", "Forest", "Inn cellar");
+    }
 
-    assertThat(cellarDoor.getId()).isNotNull();
-    assertEquals("Inn", cellarDoor.getRoom1().getName());
-    assertEquals("Inn cellar", cellarDoor.getRoom2().getName());
-  }
+    @Test
+    @DisplayName("Get room by name test")
+    void getRoomByNameTest() {
+      RoomEntity inn = roomService.getByName("Inn");
+      assertEquals("Inn", inn.getName());
+      RoomEntity forest = roomService.getByName("Forest");
+      assertEquals("Forest", forest.getName());
+    }
 
-  @Test
-  @Disabled
-  @DisplayName("Check door from room test")
-  void checkDoorTest() {
-    RoomEntity inn = roomService.getByName("Inn");
-    RoomEntity mainSqr = roomService.getByName("Main square");
-    DoorEntity innMainSqr = roomService.saveDoor(inn, mainSqr);
-//    inn.getDoors1().add(innMainSqr);
-//    mainSqr.getDoors2().add(innMainSqr);
+    @Test
+    @DisplayName("Add door test")
+    void addDoorTest() {
+      RoomEntity inn = roomService.getByName("Inn");
+      RoomEntity innCellar = roomService.getByName("Inn cellar");
+      DoorEntity cellarDoor = roomService.saveDoor(inn, innCellar);
 
-    assertThat(inn.getDoors1()).hasSize(1);
-    assertThat(inn.getDoors2()).hasSize(0);
-    assertThat(mainSqr.getDoors2()).hasSize(1);
-    assertThat(mainSqr.getDoors1()).hasSize(0);
+      assertThat(cellarDoor.getId()).isNotNull();
+      assertEquals("Inn", cellarDoor.getRoom1().getName());
+      assertEquals("Inn cellar", cellarDoor.getRoom2().getName());
+    }
   }
 }

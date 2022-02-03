@@ -2,15 +2,13 @@ package hu.progmatic.kalandjatek.character;
 
 import hu.progmatic.kalandjatek.InventoryEntity;
 import hu.progmatic.kalandjatek.room.RoomEntity;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Data;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
-@Data
+@Getter
+@Setter
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder

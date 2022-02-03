@@ -27,10 +27,10 @@ public class RoomEntity {
   @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
   @Builder.Default
   private List<CharacterEntity> characters = new ArrayList<>();
-  @OneToMany(mappedBy = "room1", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "room1", cascade = CascadeType.ALL, orphanRemoval = true)
   @Builder.Default
   private List<DoorEntity> doors1 = new ArrayList<>();
-  @OneToMany(mappedBy = "room2", cascade = CascadeType.ALL)
+  @OneToMany(mappedBy = "room2", cascade = CascadeType.ALL, orphanRemoval = true)
   @Builder.Default
   private List<DoorEntity> doors2 = new ArrayList<>();
 }
