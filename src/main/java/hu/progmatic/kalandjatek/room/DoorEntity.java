@@ -1,4 +1,4 @@
-package hu.progmatic.room;
+package hu.progmatic.kalandjatek.room;
 
 import lombok.*;
 

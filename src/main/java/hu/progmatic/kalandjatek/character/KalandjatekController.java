@@ -2,8 +2,8 @@ package hu.progmatic.kalandjatek.character;
 
 import hu.progmatic.felhasznalo.FelhasznaloService;
 import hu.progmatic.felhasznalo.UserType;
-import hu.progmatic.room.RoomEntity;
-import hu.progmatic.room.RoomService;
+import hu.progmatic.kalandjatek.room.RoomEntity;
+import hu.progmatic.kalandjatek.room.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;

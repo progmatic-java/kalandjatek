@@ -1,7 +1,6 @@
-package hu.progmatic.room;
+package hu.progmatic.kalandjatek.room;
 
 import hu.progmatic.kalandjatek.InventoryEntity;
-import hu.progmatic.kalandjatek.ItemsEntity;
 import hu.progmatic.kalandjatek.character.CharacterEntity;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
