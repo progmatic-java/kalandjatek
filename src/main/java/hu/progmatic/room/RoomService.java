@@ -46,15 +46,17 @@ public class RoomService implements InitializingBean {
   }
 
   private List<String> getItemList(InventoryEntity inventory) {
-    return inventory.getItems().stream()
-        .map(ItemsEntity::getItemName)
-        .toList();
+//    return inventory.getItems().stream()
+//        .map(ItemsEntity::getItemName)
+//        .toList();
+    return null;
   }
 
   private List<String> getCharactersName(List<CharacterEntity> characters) {
-    return characters.stream()
-        .map(CharacterEntity::getName)
-        .toList();
+//    return characters.stream()
+//        .map(CharacterEntity::getName)
+//        .toList();
+    return null;
   }
 
 
