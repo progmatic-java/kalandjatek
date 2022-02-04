@@ -14,5 +14,5 @@ import java.util.Map;
 @Builder
 public class InvetoryDto {
   private Integer id;
-  private Map<Integer, String> itemIdAndNameMap;
+  private List<ItemDto> items;
 }

@@ -36,6 +36,12 @@
         crossorigin="anonymous"></script>
 
 <h1 th:text="${'Room Name: ' + currRoom.getRoomName()}">Room Name</h1>
+<!--<h3>Room Inventory:</h3>-->
+<!--<ul>-->
+<!--    <div th:each="item : ${currRoom.getItems()}">-->
+<!--        <li th:text="${item}">Item Name</li>-->
+<!--    </div>-->
+<!--</ul>-->
 <br>
 <h2 th:text="${'Character Name: ' + currPlayer.getName() + ' (' + currPlayer.getRace() + ')'}">Character Name</h2>
 <ul>
@@ -44,7 +50,9 @@
     <li th:text="${'Gold: ' + currPlayer.getGold()}">Gold: </li>
 </ul>
 <br>
-
+<form th:action="@{/kalandjatek/fooldal}" method="get">
+    <input type="submit" class="btn btn-dark" style="background-color: green" value="Go Back"/>
+</form>
 </body>
 
 <style>

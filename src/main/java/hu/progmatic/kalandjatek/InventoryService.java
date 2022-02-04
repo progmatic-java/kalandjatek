@@ -1,86 +1,156 @@
 package hu.progmatic.kalandjatek;
 
-import hu.progmatic.kalandjatek.character.CharacterDto;
+import hu.progmatic.kalandjatek.room.RoomEntity;
+import hu.progmatic.kalandjatek.room.RoomService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @Service
 @Transactional
 public class InventoryService implements InitializingBean {
 
-    @Autowired
-    private InventoryRepository inventoryRepository; //parent
-    @Autowired
-    private ItemRepository itemRepository; // child
+  @Autowired
+  private InventoryRepository inventoryRepository; //parent
+  @Autowired
+  private ItemRepository itemRepository; // child
+  @Autowired
+  private RoomService roomService;
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
 
+  @Override
+  public void afterPropertiesSet() throws Exception {
+//    InventoryEntity innInv = createInventory(InventoryEntity.builder().build());
+//    InventoryEntity charInv = createInventory(InventoryEntity.builder().build());
+//
+//    List<ItemEntity> innItems = createItems(
+//        List.of(
+//            ItemEntity.builder()
+//                .itemName("Beer")
+//                .description("A cold drink from Go'odor")
+//                .typeOfItem(ItemEnum.CONSUMABLE)
+//                .build(),
+//            ItemEntity.builder()
+//                .itemName("Knife")
+//                .description("Good for slicing bread")
+//                .typeOfItem(ItemEnum.ATTACK)
+//                .build(),
+//            ItemEntity.builder()
+//                .itemName("Coins")
+//                .description("You should take it")
+//                .typeOfItem(ItemEnum.CONSUMABLE)
+//                .build()
+//        )
+//    );
+//
+//    List<ItemEntity> charItems = createItems(
+//        List.of(
+//            ItemEntity.builder()
+//                .itemName("Long sword")
+//                .description("Finest weapon in town")
+//                .typeOfItem(ItemEnum.ATTACK)
+//                .build(),
+//            ItemEntity.builder()
+//                .itemName("Wooden shield")
+//                .description("Good for blocking")
+//                .typeOfItem(ItemEnum.SHIELD)
+//                .build(),
+//            ItemEntity.builder()
+//                .itemName("Potion")
+//                .description("Heals your wounds")
+//                .typeOfItem(ItemEnum.CONSUMABLE)
+//                .build()
+//        )
+//    );
+//
+//    saveItemsToInventory(innInv.getId(), innItems);
+//    saveItemsToInventory(charInv.getId(), charItems);
+//
+//    RoomEntity inn = roomService.getByName("Inn");
+//    inn.setInventory(innInv);
+  }
+
+  private void saveItemsToInventory(Integer invId, List<ItemEntity> items) {
+    for (ItemEntity item : items){
+      addItemToInventory(invId, item.getId());
     }
+  }
 
-    public InvetoryDto createInventory(InventoryEntity newInventory) {
-        InventoryEntity savedEntity = inventoryRepository.save(newInventory);
-        return buildInventoryDto(savedEntity);
-    }
+  public InventoryEntity createInventory(InventoryEntity newInventory) {
+    return inventoryRepository.save(newInventory);
+  }
 
-    private InvetoryDto buildInventoryDto(InventoryEntity savedEntity) {
-        Map<Integer, String> itemsIdNameMap = getItemsIdNameMap(savedEntity.getItems());
-        return InvetoryDto.builder()
-            .id(savedEntity.getId())
-            .itemIdAndNameMap(itemsIdNameMap)
-            .build();
-    }
+  private InvetoryDto buildInventoryDto(InventoryEntity savedEntity) {
+    List<ItemDto> itemDtoList = savedEntity.getItems().stream()
+        .map(this::buildItemDto)
+        .toList();
+    return InvetoryDto.builder()
+        .id(savedEntity.getId())
+        .items(itemDtoList)
+        .build();
+  }
 
-    private Map<Integer, String> getItemsIdNameMap(List<ItemEntity> items) {
-        Map<Integer, String> itemsIdNameMap = new HashMap<>();
-        for (ItemEntity item : items) {
-            itemsIdNameMap.put(item.getId(), item.getItemName());
-        }
-        return itemsIdNameMap;
-    }
+  public ItemEntity createItem(ItemEntity newItem) {
+    return itemRepository.save(newItem);
+  }
 
-    public ItemDto createItem(ItemEntity newItem) {
-        return buildItemDto(itemRepository.save(newItem));
-    }
+  public List<ItemEntity> getItemsByInventoryId(Integer inventoryId) {
+    return inventoryRepository.getById(inventoryId).getItems().stream().toList();
+  }
 
-    public String getItemNameById(Integer id) {
-        return itemRepository.getById(id).getItemName();
-    }
+  public void deleteById(Integer itemId) {
+    itemRepository.deleteById(itemId);
+  }
 
-    public List<ItemEntity> getItemsByInventoryId(Integer inventoryId) {
-        return inventoryRepository.getById(inventoryId).getItems().stream().toList();
-    }
+  public void deleteInventory(Integer inventoryId) {
+    inventoryRepository.deleteById(inventoryId);
+  }
 
-    public void deleteById(Integer itemId) {
-        itemRepository.deleteById(itemId);
-    }
+  public boolean itemExistsById(Integer id) {
+    return itemRepository.existsById(id);
+  }
 
-    public void deleteInventory(Integer inventoryId) {
-        inventoryRepository.deleteById(inventoryId);
-    }
+  public List<ItemEntity> createItems(List<ItemEntity> items) {
+    return itemRepository.saveAll(items);
+  }
 
-    public boolean itemExistsById(Integer id) {
-        return itemRepository.existsById(id);
-    }
-
-    public List<ItemDto> createItems(List<ItemEntity> items) {
-        List<ItemEntity> itemEntities = itemRepository.saveAll(items);
-        return itemEntities.stream().map(this::buildItemDto).toList();
-    }
-
-    private ItemDto buildItemDto(ItemEntity itemEntity) {
-        return ItemDto.builder()
-            .id(itemEntity.getId())
-            .itemName(itemEntity.getItemName())
-            .description(itemEntity.getDescription())
-            .typeOfItem(itemEntity.getTypeOfItem())
+  private ItemDto buildItemDto(ItemEntity itemEntity) {
+    return ItemDto.builder()
+        .id(itemEntity.getId())
+        .itemName(itemEntity.getItemName())
+        .description(itemEntity.getDescription())
+        .typeOfItem(itemEntity.getTypeOfItem())
 //            .inventoryId(itemEntity.getInventory().getId())
-            .build();
-    }
+        .build();
+  }
+
+  public void deleteAllItems() {
+    itemRepository.deleteAll();
+  }
+
+  public void addItemToInventory(Integer inventoryId, Integer itemId) {
+    ItemEntity item = itemRepository.getById(itemId);
+    InventoryEntity inventory = inventoryRepository.getById(inventoryId);
+    item.setInventory(inventory);
+    inventory.getItems().add(item);
+  }
+
+  public InvetoryDto getInventoryById(Integer id) {
+    return buildInventoryDto(inventoryRepository.getById(id));
+  }
+
+  public ItemDto getItemById(Integer id) {
+    return buildItemDto(itemRepository.getById(id));
+  }
+
+  public void deleteItemFromInvetory(Integer inventoryId, Integer itemId) {
+    InventoryEntity inventory = inventoryRepository.getById(inventoryId);
+    ItemEntity item = itemRepository.getById(itemId);
+    inventory.getItems().remove(item);
+    item.setInventory(null);
+  }
 }

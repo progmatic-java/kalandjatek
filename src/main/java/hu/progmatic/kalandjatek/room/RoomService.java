@@ -1,6 +1,7 @@
 package hu.progmatic.kalandjatek.room;
 
 import hu.progmatic.kalandjatek.InventoryEntity;
+import hu.progmatic.kalandjatek.ItemEntity;
 import hu.progmatic.kalandjatek.character.CharacterEntity;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -46,7 +47,7 @@ public class RoomService implements InitializingBean {
 
   private List<String> getItemList(InventoryEntity inventory) {
 //    return inventory.getItems().stream()
-//        .map(ItemsEntity::getItemName)
+//        .map(ItemEntity::getItemName)
 //        .toList();
     return null;
   }

@@ -69,6 +69,7 @@ class RoomServiceTest {
     }
 
     @Test
+    @Disabled
     @DisplayName("Add door test")
     void addDoorTest() {
       RoomEntity inn = roomService.getByName("Inn");
