@@ -68,7 +68,7 @@ public class KalandjatekController {
         CharacterEntity resultCharacter = characterService.getResultCharacter(answer);
         characterService.save(resultCharacter);
         model.addAttribute("chosenCharacter", resultCharacter);
-        return "/kalandjatek/karaktertemplate";
+        return "/kalandjatek/characterpage";
     }
 
     @GetMapping("/kalandjatek/introduction/{id}")
