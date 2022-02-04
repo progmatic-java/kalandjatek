@@ -113,23 +113,6 @@
             </div>
         </div>
 
-        <div class="col-lg-6">
-            <div class="card mb-4 block">
-                <div class="card-header">
-                    <label class="kiemeltSzoveg" for="age"> Your Birthday:<br>
-                        <input type="date" id="age" name="age" max="curdate"
-                               th:field="*{dateOfBirth}"
-                               th:classappend="${#fields.hasErrors('dateOfBirth')} ? 'is-invalid' : 'is-valid'">
-                        <div class="invalid-feedback"
-                             th:if="${#fields.hasErrors('dateOfBirth')}"
-                             th:errors="*{dateOfBirth}">
-                            Hibaüzenet
-                        </div>
-                    </label>
-                </div>
-            </div>
-        </div>
-
     </div>
 
 
@@ -296,10 +279,6 @@
     </div>
     <input type="submit" value="Submit">
 
-</form>
-
-<form th:action="@{/kalandjatek/fooldal}" method="get">
-    <input type="submit" class="btn btn-dark" style="background-color: green" value="Go Back"/>
 </form>
 
 
