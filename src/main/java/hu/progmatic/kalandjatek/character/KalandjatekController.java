@@ -99,6 +99,11 @@ public class KalandjatekController {
         return defaultCharacters;
     }
 
+    @ModelAttribute("retakeTest")
+    public boolean retakeTest() {
+        return false;
+    }
+
     @ModelAttribute("hasUserWriteRole")
     public boolean userWriteRole() {
         return felhasznaloService.hasRole(UserType.Roles.USER_WRITE_ROLE);
