@@ -22,9 +22,9 @@ public class Answer {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   Integer id;
-  @NotEmpty(message = "Please give a name")
+  @NotEmpty(message = "Please choose a name")
   String name;
-  @NotEmpty(message = "Please give a date")
+  @NotEmpty(message = "Please choose a date")
   String dateOfBirth;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
   Race race1;
