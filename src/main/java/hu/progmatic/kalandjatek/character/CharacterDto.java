@@ -12,13 +12,5 @@ public class CharacterDto implements Serializable {
     private final Integer id;
     private final String characterName;
     private final Race race;
-    private final List<InventoryDto> inventory;
-
-    @Data
-    @Builder
-    public static class InventoryDto implements Serializable {
-        private final Integer id;
-        private final String inventoryName;
-    }
-
+//    private final List<InventoryDto> inventory;
 }
