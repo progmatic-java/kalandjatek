@@ -68,7 +68,7 @@ public class KalandjatekController {
     CharacterEntity resultCharacter = characterService.getResultCharacter(answer);
     characterService.save(resultCharacter);
     model.addAttribute("chosenCharacter", resultCharacter);
-    return "/kalandjatek/karaktertemplate";
+    return "/kalandjatek/characterpage";
   }
 
 
@@ -90,6 +90,11 @@ public class KalandjatekController {
   @ModelAttribute("defaultCharacters")
   public List<Character> getDefaultCharacters() {
     return defaultCharacters;
+  }
+
+  @ModelAttribute("retakeTest")
+  public boolean retakeTest() {
+    return false;
   }
 
   @ModelAttribute("hasUserWriteRole")
