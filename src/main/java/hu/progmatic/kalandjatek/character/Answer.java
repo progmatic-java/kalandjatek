@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.format.annotation.DateTimeFormat;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -12,6 +13,8 @@ import javax.persistence.Id;
 import javax.validation.constraints.Future;
 import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Past;
+import javax.validation.constraints.PastOrPresent;
 
 @Entity
 @Data
@@ -25,8 +28,6 @@ public class Answer {
   Integer id;
   @NotEmpty(message = "Please choose a name")
   String name;
-  @NotEmpty(message = "Please choose a date")
-  String dateOfBirth;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
   Race race1;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
