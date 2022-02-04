@@ -18,5 +18,5 @@ public class InventoryEntity {
     private Integer id;
     @Builder.Default
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL)
-    private List<ItemsEntity> items = new ArrayList<>();
+    private List<ItemEntity> items = new ArrayList<>();
 }

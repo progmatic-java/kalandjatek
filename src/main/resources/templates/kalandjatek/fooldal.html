@@ -77,7 +77,7 @@
             font-size: 40px;
             padding: 25px 40px;
             float: bottom;
-            text-align: right;
+            text-align: center;
             left: 0;
             position: relative ;
             bottom: 55%;
@@ -90,20 +90,22 @@
             padding: 16px;
             font-size: 16px;
             border: none;
+            position: center;
+            text-align: center;
+
         }
 
         .dropdown {
             font-style: italic;
-            font-family: MedievalSharp;
+            font-family: MedievalSharp,serif;
             font-weight: 700;
             font-size: 40px;
-            padding: 25px 40px;
+            padding: 25px 25px;
             float: bottom;
-            text-align: left;
+            text-align: center;
             left: 0;
             position: absolute;
             bottom: 55%;
-            width: 100%;
             display: inline-block;
         }
 
@@ -114,6 +116,7 @@
             min-width: 160px;
             box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
             z-index: 1;
+            text-align: center;
         }
 
         .dropdown-content a {
@@ -121,19 +124,23 @@
             padding: 12px 16px;
             text-decoration: none;
             display: block;
+            text-align: center;
         }
 
 
         .dropdown-content a:hover {
             background-color: black;
+            text-align: center;
         }
 
         .dropdown:hover .dropdown-content {
             display: block;
+            text-align: center;
         }
 
         .dropdown:hover .dropbtn {
             background-color: black;
+            text-align: center;
         }
 
 
@@ -154,7 +161,7 @@
 <div class="row">
     <div class="buttons">
         <form th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="get">
-            <input type="submit" class="btn btn-dark" value="New Game"/>
+            <input type="submit" class="btn btn-dark" value="New Character"/>
         </form>
     </div>
     <div>
@@ -180,6 +187,7 @@
 
     </div>
 </div>
+
 
 <style>
     @import url('https://fonts.googleapis.com/css?family=MedievalSharp');

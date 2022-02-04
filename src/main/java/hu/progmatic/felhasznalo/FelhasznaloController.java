@@ -20,7 +20,7 @@ public class FelhasznaloController {
 
   @GetMapping("/felhasznalo")
   public String lista() {
-    return "felhasznalo";
+    return "/kalandjatek/jatekfooldalelotti";
   }
 
   @PostMapping("/felhasznalo")

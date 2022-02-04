@@ -1,10 +1,5 @@
 package hu.progmatic.room;
 
-import hu.progmatic.kalandjatek.InventoryEntity;
-import hu.progmatic.kalandjatek.ItemsEntity;
-import hu.progmatic.kalandjatek.ItemsEnum;
-import hu.progmatic.kalandjatek.character.CharacterEntity;
-import hu.progmatic.kalandjatek.character.Race;
 import hu.progmatic.kalandjatek.room.DoorEntity;
 import hu.progmatic.kalandjatek.room.RoomEntity;
 import hu.progmatic.kalandjatek.room.RoomService;

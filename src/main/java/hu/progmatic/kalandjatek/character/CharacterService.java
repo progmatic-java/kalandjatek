@@ -78,7 +78,7 @@ public class CharacterService implements InitializingBean {
                             .hp(200)
                             .mp(50)
                             .gold(100)
-                            .imgRef("https://i.imgur.com/nAKPlhw.png")
+                            .imgRef("https://i.imgur.com/lXcw2hg.png")
                             .build(),
                     CharacterEntity.builder().name("Lyah")
                             .race(Race.ELF)

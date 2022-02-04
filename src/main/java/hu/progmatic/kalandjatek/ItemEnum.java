@@ -1,6 +1,6 @@
 package hu.progmatic.kalandjatek;
 
-public enum ItemsEnum {
+public enum ItemEnum {
     SHIELD,
     ATTACK,
     CONSUMABLE
