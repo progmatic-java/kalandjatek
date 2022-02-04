@@ -24,60 +24,55 @@ public class InventoryService implements InitializingBean {
 
   @Override
   public void afterPropertiesSet() throws Exception {
-//    InventoryEntity innInv = createInventory(InventoryEntity.builder().build());
-//    InventoryEntity charInv = createInventory(InventoryEntity.builder().build());
-//
-//    List<ItemEntity> innItems = createItems(
-//        List.of(
-//            ItemEntity.builder()
-//                .itemName("Beer")
-//                .description("A cold drink from Go'odor")
-//                .typeOfItem(ItemEnum.CONSUMABLE)
-//                .build(),
-//            ItemEntity.builder()
-//                .itemName("Knife")
-//                .description("Good for slicing bread")
-//                .typeOfItem(ItemEnum.ATTACK)
-//                .build(),
-//            ItemEntity.builder()
-//                .itemName("Coins")
-//                .description("You should take it")
-//                .typeOfItem(ItemEnum.CONSUMABLE)
-//                .build()
-//        )
-//    );
-//
-//    List<ItemEntity> charItems = createItems(
-//        List.of(
-//            ItemEntity.builder()
-//                .itemName("Long sword")
-//                .description("Finest weapon in town")
-//                .typeOfItem(ItemEnum.ATTACK)
-//                .build(),
-//            ItemEntity.builder()
-//                .itemName("Wooden shield")
-//                .description("Good for blocking")
-//                .typeOfItem(ItemEnum.SHIELD)
-//                .build(),
-//            ItemEntity.builder()
-//                .itemName("Potion")
-//                .description("Heals your wounds")
-//                .typeOfItem(ItemEnum.CONSUMABLE)
-//                .build()
-//        )
-//    );
-//
-//    saveItemsToInventory(innInv.getId(), innItems);
-//    saveItemsToInventory(charInv.getId(), charItems);
-//
-//    RoomEntity inn = roomService.getByName("Inn");
-//    inn.setInventory(innInv);
-  }
+    InventoryEntity innInv = createInventory(InventoryEntity.builder().build());
+    InventoryEntity charInv = createInventory(InventoryEntity.builder().build());
 
-  private void saveItemsToInventory(Integer invId, List<ItemEntity> items) {
-    for (ItemEntity item : items){
-      addItemToInventory(invId, item.getId());
+    List<ItemEntity> innItems = createItems(
+        List.of(
+            ItemEntity.builder()
+                .itemName("Beer")
+                .description("A cold drink from Go'odor")
+                .typeOfItem(ItemEnum.CONSUMABLE)
+                .build(),
+            ItemEntity.builder()
+                .itemName("Knife")
+                .description("Good for slicing bread")
+                .typeOfItem(ItemEnum.ATTACK)
+                .build(),
+            ItemEntity.builder()
+                .itemName("Coins")
+                .description("You should take it")
+                .typeOfItem(ItemEnum.CONSUMABLE)
+                .build()
+        )
+    );
+
+    List<ItemEntity> charItems = createItems(
+        List.of(
+            ItemEntity.builder()
+                .itemName("Long sword")
+                .description("Finest weapon in town")
+                .typeOfItem(ItemEnum.ATTACK)
+                .build(),
+            ItemEntity.builder()
+                .itemName("Wooden shield")
+                .description("Good for blocking")
+                .typeOfItem(ItemEnum.SHIELD)
+                .build(),
+            ItemEntity.builder()
+                .itemName("Potion")
+                .description("Heals your wounds")
+                .typeOfItem(ItemEnum.CONSUMABLE)
+                .build()
+        )
+    );
+
+    for (ItemEntity item : innItems) {
+      innInv.getItems().add(item);
+      item.setInventory(innInv);
     }
+
+    RoomEntity inn = roomService.saveRoom(RoomEntity.builder().name("Inn").inventory(innInv).build());
   }
 
   public InventoryEntity createInventory(InventoryEntity newInventory) {
@@ -124,7 +119,7 @@ public class InventoryService implements InitializingBean {
         .itemName(itemEntity.getItemName())
         .description(itemEntity.getDescription())
         .typeOfItem(itemEntity.getTypeOfItem())
-//            .inventoryId(itemEntity.getInventory().getId())
+//        .inventoryId(itemEntity.getInventory().getId())
         .build();
   }
 

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
 <head>
     <meta charset="UTF-8">
     <!-- Required meta tags -->
@@ -36,12 +36,12 @@
         crossorigin="anonymous"></script>
 
 <h1 th:text="${'Room Name: ' + currRoom.getRoomName()}">Room Name</h1>
-<!--<h3>Room Inventory:</h3>-->
-<!--<ul>-->
-<!--    <div th:each="item : ${currRoom.getItems()}">-->
-<!--        <li th:text="${item}">Item Name</li>-->
-<!--    </div>-->
-<!--</ul>-->
+<h3>Room Inventory:</h3>
+<ul>
+    <div th:each="item : ${currRoomItems}">
+        <li th:text="${item}">Valami</li>
+    </div>
+</ul>
 <br>
 <h2 th:text="${'Character Name: ' + currPlayer.getName() + ' (' + currPlayer.getRace() + ')'}">Character Name</h2>
 <ul>

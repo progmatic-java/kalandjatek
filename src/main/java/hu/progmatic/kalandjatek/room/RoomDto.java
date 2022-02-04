@@ -1,5 +1,6 @@
 package hu.progmatic.kalandjatek.room;
 
+import hu.progmatic.kalandjatek.ItemDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;

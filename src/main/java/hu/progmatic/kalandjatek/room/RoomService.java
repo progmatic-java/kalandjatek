@@ -1,6 +1,8 @@
 package hu.progmatic.kalandjatek.room;
 
 import hu.progmatic.kalandjatek.InventoryEntity;
+import hu.progmatic.kalandjatek.InventoryService;
+import hu.progmatic.kalandjatek.ItemDto;
 import hu.progmatic.kalandjatek.ItemEntity;
 import hu.progmatic.kalandjatek.character.CharacterEntity;
 import org.springframework.beans.factory.InitializingBean;
@@ -46,10 +48,19 @@ public class RoomService implements InitializingBean {
   }
 
   private List<String> getItemList(InventoryEntity inventory) {
-//    return inventory.getItems().stream()
-//        .map(ItemEntity::getItemName)
-//        .toList();
-    return null;
+    return inventory.getItems().stream()
+        .map(ItemEntity::getItemName)
+        .toList();
+  }
+
+  private ItemDto buildItemDto(ItemEntity itemEntity) {
+    return ItemDto.builder()
+        .id(itemEntity.getId())
+        .itemName(itemEntity.getItemName())
+        .description(itemEntity.getDescription())
+        .typeOfItem(itemEntity.getTypeOfItem())
+//        .inventoryId(itemEntity.getInventory().getId())
+        .build();
   }
 
   private List<String> getCharactersName(List<CharacterEntity> characters) {
@@ -66,9 +77,9 @@ public class RoomService implements InitializingBean {
 
   @Override
   public void afterPropertiesSet() throws Exception {
-    if (roomRepository.count() == 0) {
-      roomRepository.saveAll(rooms);
-    }
+//    if (roomRepository.count() == 0) {
+//      roomRepository.saveAll(rooms);
+//    }
   }
 
   public RoomEntity saveRoom(RoomEntity room) {

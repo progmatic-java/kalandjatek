@@ -32,7 +32,9 @@ public class RoomController {
             @PathVariable Integer roomId,
             Model model
     ) {
-        model.addAttribute("currRoom", roomService.getRoomById(roomId));
+        RoomDto roomById = roomService.getRoomById(roomId);
+        model.addAttribute("currRoom", roomById);
+        model.addAttribute("currRoomItems", roomById.getItems());
         model.addAttribute("currPlayer", characterService.getById(characterId));
         return "/kalandjatek/room";
     }
