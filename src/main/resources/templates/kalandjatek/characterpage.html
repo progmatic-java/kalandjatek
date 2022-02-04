@@ -55,7 +55,7 @@
 
 <h1 style="text-align: center"> Character result </h1>
 
-<p style="text-align: center" th:text="${chosenCharacter.getName()}">Character name</p>
+<p style="text-align: center" th:text="${chosenCharacter.getDescription()}">Character description</p>
 <img th:src="@{${chosenCharacter.getImgRef()}}" style="float: right">
 
 <div>
@@ -63,6 +63,9 @@
 
     <div class="row">
         <div class="col-lg-6">
+            <div>
+                <h4 th:text="${'Name: ' + chosenCharacter.getName()}">Name: </h4>
+            </div>
             <div class="card mb-4 block">
                 <h4>Stats: </h4>
                 <ul>
@@ -85,16 +88,20 @@
 <br><br><br>
 
 <div class="buttons">
-    <form th:action="@{'/kalandjatek/introduction/{id}'  (id=${chosenCharacter.getId()})}" method="get">
-        <input type="submit" class="btn btn-dark" style="background-color: lightskyblue" value="Start Game"/>
+    <form th:action="@{'/kalandjatek/characterpage/{characterId}/room/{roomId}'(characterId=${chosenCharacter.getId()},roomId=${startingRoom.getId()})}" method="get">
+        <input type="submit" class="btn btn-dark" style="background-color: lightskyblue" value="I love my character, I want to continue"/>
     </form>
 
     <form th:action="@{/kalandjatek/fooldal}" method="get">
-        <input type="submit" class="btn btn-dark" style="background-color: green" value="Go Back"/>
+        <input type="submit" class="btn btn-dark" style="background-color: green" value="Get back to the main menu"/>
+    </form>
+
+    <form th:if="${retakeTest}" th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="post">
+        <input type="submit" class="btn btn-dark" value="Aren't pleased with your character? Retake the test!"/>
     </form>
 
     <form th:if="${hasUserWriteRole}" th:action="@{'/kalandjatek/characterpage/delete/{id}'  (id=${chosenCharacter.getId()})}  " method="post">
-        <input type="submit" class="btn btn-danger" style="background-color: red" value="Delete"/>
+        <input type="submit" class="btn btn-danger" style="background-color: red" value="Delete character"/>
     </form>
 </div>
 

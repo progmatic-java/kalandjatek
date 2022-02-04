@@ -71,6 +71,21 @@ public class KalandjatekController {
         return "/kalandjatek/karaktertemplate";
     }
 
+    @PostMapping("/kalandjatek/unwantedcharacter/{id}")
+    public String unwantedCharacter(
+            @ModelAttribute("testAnswer")
+            @PathVariable Integer id,
+            Model model
+    ) {
+        CharacterEntity character = characterService.getById(id);
+        Answer resultCharacter = character.getAnswer();
+        characterService.delete(id);
+        model.addAttribute("chosenCharacter", resultCharacter);
+        return "/kalandjatek/szemelyisegtesztmixelt";
+    }
+
+
+
     @GetMapping("/kalandjatek/introduction/{id}")
     public String intro(@PathVariable Integer id, Model model) {
         CharacterEntity chosenCharacter = characterService.getById(id);
@@ -97,6 +112,11 @@ public class KalandjatekController {
     @ModelAttribute("defaultCharacters")
     public List<Character> getDefaultCharacters() {
         return defaultCharacters;
+    }
+
+    @ModelAttribute("retakeTest")
+    public boolean retakeTest() {
+        return false;
     }
 
     @ModelAttribute("hasUserWriteRole")

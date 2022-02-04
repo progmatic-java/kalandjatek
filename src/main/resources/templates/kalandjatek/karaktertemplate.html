@@ -18,7 +18,7 @@
 <style>
     h1 {
         color: whitesmoke;
-        font-family: MedievalSharp,serif;
+        font-family: MedievalSharp, serif;
         font-weight: 700;
         border-style: double;
         font-size: 50px;
@@ -26,22 +26,21 @@
 
     p {
         color: whitesmoke;
-        font-family: MedievalSharp,serif;
+        font-family: MedievalSharp, serif;
         font-weight: 500;
         border-style: double;
         font-size: 35px;
     }
 
-    h4,li {
+    h4, li {
         color: whitesmoke;
-        font-family: MedievalSharp,serif;
+        font-family: MedievalSharp, serif;
         font-weight: 500;
         font-size: 25px;
     }
 
 
 </style>
-
 
 
 <h1 style="text-align: center"> Character result </h1>
@@ -75,7 +74,7 @@
 <br><br><br>
 
 <div class="buttons">
-    <form th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="post">
+    <form th:action="@{'/kalandjatek/unwantedcharacter/{id}'  (id=${chosenCharacter.getId()})}" method="post">
         <input type="submit" class="btn btn-dark" value="Aren't pleased with your character? Retake the test!"/>
     </form>
     <form th:action="@{'/kalandjatek/introduction/{id}'  (id=${chosenCharacter.getId()})}" method="get">
