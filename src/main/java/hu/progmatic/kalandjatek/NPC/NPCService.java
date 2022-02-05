@@ -1,12 +1,10 @@
 package hu.progmatic.kalandjatek.NPC;
 
 
-import hu.progmatic.felhasznalo.UserType;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.annotation.security.RolesAllowed;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -30,7 +28,7 @@ public class NPCService implements InitializingBean {
                 .name(entity.getName())
                 .id(entity.getId())
                 .description(entity.getDescription())
-                .isItFriendly(entity.getIsItFriendly())
+                .isItFriendly(entity.getFriendly())
                 .hp(entity.getHp())
                 .mp(entity.getMp())
                 .gold(entity.getGold())
@@ -39,7 +37,6 @@ public class NPCService implements InitializingBean {
     }
 
 
-    @RolesAllowed(UserType.Roles.USER_WRITE_ROLE)
     public void delete(Integer id) {
         npcRepository.deleteById(id);
     }
@@ -48,12 +45,12 @@ public class NPCService implements InitializingBean {
         return npcRepository.saveAllAndFlush(list);
     }
 
-    public List<NPCEntity> findAllByName(String name) {
-        return npcRepository.findAllByNameContains(name);
+    public NPCEntity findByName(String name) {
+        return npcRepository.findByName(name).orElseThrow();
     }
 
-    public List<NPCEntity> findAllByIsItFriendly(Boolean isItFriendly) {
-        return npcRepository.findAllByIsItFriendly(isItFriendly);
+    public List<NPCEntity> findAllByFriendly(Boolean friendly) {
+        return npcRepository.findAllByFriendly(friendly);
     }
 
 
@@ -64,7 +61,7 @@ public class NPCService implements InitializingBean {
                     NPCEntity.builder()
                             .name("Burrows")
                             .description("The drunk owner of The Black Hole Inn.")
-                            .isItFriendly(true)
+                            .friendly(true)
                             .hp(50)
                             .mp(50)
                             .gold(1000)
@@ -73,7 +70,7 @@ public class NPCService implements InitializingBean {
                     NPCEntity.builder()
                             .name("Switcher")
                             .description("Your old friend from the prison.")
-                            .isItFriendly(true)
+                            .friendly(true)
                             .hp(100)
                             .mp(20)
                             .gold(500)
@@ -82,7 +79,7 @@ public class NPCService implements InitializingBean {
                     NPCEntity.builder()
                             .name("Lady Regex")
                             .description("A mysterious witch from another town.")
-                            .isItFriendly(false)
+                            .friendly(false)
                             .hp(200)
                             .mp(300)
                             .gold(250)

@@ -1,10 +1,8 @@
 package hu.progmatic.kalandjatek.NPC;
 
-import hu.progmatic.felhasznalo.UserType;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.security.test.context.support.WithMockUser;
 
 
 import java.util.List;
@@ -20,13 +18,31 @@ class NPCServiceTest {
     @Autowired
     private NPCService npcService;
 
+
     @Test
     @DisplayName("Create NPC")
     void createNpc() {
-        NPCEntity npc = NPCEntity.builder().name("Burrows").description("The drunk owner of The Black Hole Inn").build();
-        NPCEntity saved = npcService.save(npc);
-        assertNotNull(saved.getId());
+        NPCEntity newEntity = NPCEntity.builder().name("Runner").description("The coffee lover of The Black Hole Inn").build();
+        npcService.save(newEntity);
+        assertNotNull(newEntity.getId());
     }
+
+    @Test
+    @DisplayName("Delete an NPC")
+    void deleteCharacter() {
+        NPCEntity newEntity = NPCEntity.builder().name("Zs Black").description("Phantom of Progmatchique").build();
+        npcService.save(newEntity);
+        assertNotNull(newEntity.getId());
+        npcService.delete(newEntity.getId());
+        Exception exception = null;
+        try {
+            npcService.getNPCDtoById(newEntity.getId());
+        } catch (Exception e) {
+            exception = e;
+        }
+        assertNotNull(exception);
+    }
+
 
     @Nested
     @DisplayName("One NPC")
@@ -35,8 +51,13 @@ class NPCServiceTest {
 
         @BeforeEach
         void setUp() {
-            NPCEntity newNpc = NPCEntity.builder().name("Burrows").description("The drunk owner of The Black Hole Inn").build();
+            NPCEntity newNpc = NPCEntity.builder().name("Maya").description("The waitress of The Black Hole Inn").build();
             npc = npcService.save(newNpc);
+        }
+
+        @AfterEach
+        void tearDown() {
+            npcService.delete(npc.getId());
         }
 
         @Test
@@ -44,8 +65,8 @@ class NPCServiceTest {
         void getNpc() {
             NPCDto readed = npcService.getNPCDtoById(npc.getId());
             assertNotNull(readed.getId());
-            assertEquals("Burrows", readed.getName());
-            assertEquals("The drunk owner of The Black Hole Inn", readed.getDescription());
+            assertEquals("Maya", readed.getName());
+            assertEquals("The waitress of The Black Hole Inn", readed.getDescription());
         }
 
         @Test
@@ -57,21 +78,6 @@ class NPCServiceTest {
             assertEquals("Burrows the Saint", updated.getName());
         }
 
-        @Test
-        @DisplayName("Delete an NPC")
-        @WithMockUser(roles = UserType.Roles.USER_WRITE_ROLE)
-        void deleteCharacter() {
-            NPCEntity readed = npcService.getById(npc.getId());
-            assertNotNull(readed.getId());
-            npcService.delete(npc.getId());
-            Exception exception = null;
-            try {
-                npcService.getNPCDtoById(npc.getId());
-            } catch (Exception e) {
-                exception = e;
-            }
-            assertNotNull(exception);
-        }
     }
 
     @Nested
@@ -80,27 +86,26 @@ class NPCServiceTest {
         @Test
         @DisplayName("Find Burrows")
         void findAllByName() {
-            List<NPCEntity> multiple = npcService.findAllByName("Burrows");
-            assertThat(multiple)
-                    .extracting(NPCEntity::getName)
-                    .contains("Burrows");
+            NPCEntity burrow = npcService.findByName("Burrows");
+            assertNotNull(burrow.getId());
+            assertEquals("Burrows", burrow.getName());
+
         }
 
         @Test
         @DisplayName("Find all friendly")
         void findAllByRace() {
-            List<NPCEntity> multiple = npcService.findAllByIsItFriendly(true);
+            List<NPCEntity> multiple = npcService.findAllByFriendly(true);
             assertThat(multiple)
                     .extracting(NPCEntity::getName)
                     .containsExactlyInAnyOrder("Switcher", "Burrows");
         }
 
         @Test
-        @Disabled
         void findAll() {
             List<NPCEntity> allCharacters = npcService.findAll();
             assertThat(allCharacters)
-                    .hasSize(3)
+                    .hasSize(4)
                     .extracting(NPCEntity::getName)
                     .containsAnyOf("Switcher", "Burrows", "Lady Regex");
         }

@@ -16,9 +16,10 @@ public class NPCEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     Integer id;
+    @Column(unique=true)
     String name;
     String description;
-    Boolean isItFriendly;
+    Boolean friendly;
     Integer hp;
     Integer mp;
     Integer gold;
