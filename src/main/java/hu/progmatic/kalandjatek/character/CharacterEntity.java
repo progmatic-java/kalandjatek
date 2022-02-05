@@ -31,5 +31,5 @@ public class CharacterEntity {
   @JoinColumn
   InventoryEntity inventory;
   @ManyToOne(cascade = CascadeType.ALL)
-  RoomEntity room;
+  RoomEntity charRoom;
 }
