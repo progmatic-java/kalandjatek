@@ -73,7 +73,6 @@ public class KalandjatekController {
 
   @PostMapping("/kalandjatek/unwantedcharacter/{id}")
   public String unwantedCharacter(
-      @ModelAttribute("testAnswer")
       @PathVariable Integer id,
       Model model
   ) {
