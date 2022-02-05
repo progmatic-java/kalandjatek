@@ -33,6 +33,12 @@ public class CharacterService implements InitializingBean {
         .characterName(entity.getName())
         .id(entity.getId())
         .race(entity.getRace())
+        .description(entity.getDescription())
+        .hp(entity.getHp())
+        .mp(entity.getMp())
+        .gold(entity.getGold())
+        .imgRef(entity.getImgRef())
+        .answer(entity.getAnswer())
         .build();
   }
 
@@ -156,6 +162,7 @@ public class CharacterService implements InitializingBean {
         .imgRef(characterRace.img)
         .description(characterRace.description)
         .race(characterRace)
+        .answer(answer)
         .build();
   }
 }

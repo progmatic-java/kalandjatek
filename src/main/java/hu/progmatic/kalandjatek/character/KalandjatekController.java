@@ -68,6 +68,7 @@ public class KalandjatekController {
     CharacterEntity resultCharacter = characterService.getResultCharacter(answer);
     characterService.save(resultCharacter);
     model.addAttribute("chosenCharacter", resultCharacter);
+    model.addAttribute("retakeTest", true);
     return "/kalandjatek/characterpage";
   }
 
@@ -77,9 +78,8 @@ public class KalandjatekController {
       Model model
   ) {
     CharacterEntity character = characterService.getById(id);
-    Answer resultCharacter = character.getAnswer();
+    Answer answer = character.getAnswer();
     characterService.delete(id);
-    model.addAttribute("chosenCharacter", resultCharacter);
     return "/kalandjatek/szemelyisegtesztmixelt";
   }
 

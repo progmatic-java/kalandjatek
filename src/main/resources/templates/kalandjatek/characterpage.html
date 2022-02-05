@@ -96,7 +96,7 @@
         <input type="submit" class="btn btn-dark" style="background-color: green" value="Get back to the main menu"/>
     </form>
 
-    <form th:if="${retakeTest}" th:action="@{/kalandjatek/szemelyisegtesztmixelt}" method="post">
+    <form th:if="${retakeTest}" th:action="@{'/kalandjatek/unwantedcharacter/{id}'(id=${chosenCharacter.getId()})}" method="post">
         <input type="submit" class="btn btn-dark" value="Aren't pleased with your character? Retake the test!"/>
     </form>
 
