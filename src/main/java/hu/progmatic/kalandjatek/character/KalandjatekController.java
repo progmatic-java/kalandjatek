@@ -19,113 +19,112 @@ import java.util.List;
 
 @Controller
 public class KalandjatekController {
-    private final List<Character> defaultCharacters = List.of(
-            new Character("Orkeo", Race.ORC, 100, 50, 150),
-            new Character("Elfy", Race.ELF, 100, 50, 150),
-            new Character("Bence", Race.HUMAN, 50, 50, 50),
-            new Character("Sugar Alien", Race.REPTILIAN, 200, 200, 200)
-    );
+  private final List<Character> defaultCharacters = List.of(
+      new Character("Orkeo", Race.ORC, 100, 50, 150),
+      new Character("Elfy", Race.ELF, 100, 50, 150),
+      new Character("Bence", Race.HUMAN, 50, 50, 50),
+      new Character("Sugar Alien", Race.REPTILIAN, 200, 200, 200)
+  );
 
 
-    @Autowired
-    private CharacterService characterService;
+  @Autowired
+  private CharacterService characterService;
 
-    @Autowired
-    private FelhasznaloService felhasznaloService;
+  @Autowired
+  private FelhasznaloService felhasznaloService;
 
-    @Autowired
-    private RoomService roomService;
+  @Autowired
+  private RoomService roomService;
 
 
-    @GetMapping("/kalandjatek/szemelyisegtesztmixelt")
-    public String teszMix() {
-        return "/kalandjatek/szemelyisegtesztmixelt";
+  @GetMapping("/kalandjatek/szemelyisegtesztmixelt")
+  public String teszMix() {
+    return "/kalandjatek/szemelyisegtesztmixelt";
+  }
+
+  @GetMapping("/kalandjatek/characterpage/{id}")
+  public String characterId(
+      @PathVariable Integer id, Model model) {
+    CharacterEntity chosenCharacter = characterService.getById(id);
+    model.addAttribute("chosenCharacter", chosenCharacter);
+    return "/kalandjatek/characterpage";
+  }
+
+  @PostMapping("/kalandjatek/characterpage/delete/{id}")
+  public String delete(@PathVariable Integer id) {
+    characterService.delete(id);
+    return "/kalandjatek/fooldal";
+  }
+
+  @PostMapping("/kalandjatek/szemelyisegtesztmixelt")
+  public String tesztResult(
+      @ModelAttribute("testAnswer") @Valid Answer answer,
+      BindingResult bindingResult,
+      Model model
+  ) {
+    if (bindingResult.hasErrors()) {
+      return "/kalandjatek/szemelyisegtesztmixelt";
     }
+    CharacterEntity resultCharacter = characterService.getResultCharacter(answer);
+    characterService.save(resultCharacter);
+    model.addAttribute("chosenCharacter", resultCharacter);
+    return "/kalandjatek/characterpage";
+  }
 
-    @GetMapping("/kalandjatek/characterpage/{id}")
-    public String characterId(
-            @PathVariable Integer id, Model model) {
-        CharacterEntity chosenCharacter = characterService.getById(id);
-        model.addAttribute("chosenCharacter", chosenCharacter);
-        return "/kalandjatek/characterpage";
-    }
-
-    @PostMapping("/kalandjatek/characterpage/delete/{id}")
-    public String delete(@PathVariable Integer id) {
-        characterService.delete(id);
-        return "/kalandjatek/fooldal";
-    }
-
-    @PostMapping("/kalandjatek/szemelyisegtesztmixelt")
-    public String tesztResult(
-            @ModelAttribute("testAnswer") @Valid Answer answer,
-            BindingResult bindingResult,
-            Model model
-    ) {
-        if (bindingResult.hasErrors()) {
-            return "/kalandjatek/szemelyisegtesztmixelt";
-        }
-        CharacterEntity resultCharacter = characterService.getResultCharacter(answer);
-        characterService.save(resultCharacter);
-        model.addAttribute("chosenCharacter", resultCharacter);
-        return "/kalandjatek/characterpage";
-    }
-
-    @PostMapping("/kalandjatek/unwantedcharacter/{id}")
-    public String unwantedCharacter(
-            @ModelAttribute("testAnswer")
-            @PathVariable Integer id,
-            Model model
-    ) {
-        CharacterEntity character = characterService.getById(id);
-        Answer resultCharacter = character.getAnswer();
-        characterService.delete(id);
-        model.addAttribute("chosenCharacter", resultCharacter);
-        return "/kalandjatek/szemelyisegtesztmixelt";
-    }
+  @PostMapping("/kalandjatek/unwantedcharacter/{id}")
+  public String unwantedCharacter(
+      @ModelAttribute("testAnswer")
+      @PathVariable Integer id,
+      Model model
+  ) {
+    CharacterEntity character = characterService.getById(id);
+    Answer resultCharacter = character.getAnswer();
+    characterService.delete(id);
+    model.addAttribute("chosenCharacter", resultCharacter);
+    return "/kalandjatek/szemelyisegtesztmixelt";
+  }
 
 
+  @GetMapping("/kalandjatek/introduction/{id}")
+  public String intro(@PathVariable Integer id, Model model) {
+    CharacterEntity chosenCharacter = characterService.getById(id);
+    model.addAttribute("chosenCharacter", chosenCharacter);
+    return "/kalandjatek/introduction";
+  }
 
-    @GetMapping("/kalandjatek/introduction/{id}")
-    public String intro(@PathVariable Integer id, Model model) {
-        CharacterEntity chosenCharacter = characterService.getById(id);
-        model.addAttribute("chosenCharacter", chosenCharacter);
-        return "/kalandjatek/introduction";
-    }
 
+  @ModelAttribute("chosenCharacter")
+  public CharacterEntity chosenCharacter() {
+    return new CharacterEntity();
+  }
 
-    @ModelAttribute("chosenCharacter")
-    public CharacterEntity chosenCharacter() {
-        return new CharacterEntity();
-    }
+  @ModelAttribute("startingRoom")
+  public RoomEntity startRoom() {
+    return roomService.getByName("Inn");
+  }
 
-    @ModelAttribute("startingRoom")
-    public RoomEntity startRoom() {
-        return roomService.getByName("Inn");
-    }
+  @ModelAttribute("testAnswer")
+  public Answer testAnswer() {
+    return new Answer();
+  }
 
-    @ModelAttribute("testAnswer")
-    public Answer testAnswer() {
-        return new Answer();
-    }
+  @ModelAttribute("defaultCharacters")
+  public List<Character> getDefaultCharacters() {
+    return defaultCharacters;
+  }
 
-    @ModelAttribute("defaultCharacters")
-    public List<Character> getDefaultCharacters() {
-        return defaultCharacters;
-    }
+  @ModelAttribute("retakeTest")
+  public boolean retakeTest() {
+    return false;
+  }
 
-    @ModelAttribute("retakeTest")
-    public boolean retakeTest() {
-        return false;
-    }
+  @ModelAttribute("hasUserWriteRole")
+  public boolean userWriteRole() {
+    return felhasznaloService.hasRole(UserType.Roles.USER_WRITE_ROLE);
+  }
 
-    @ModelAttribute("hasUserWriteRole")
-    public boolean userWriteRole() {
-        return felhasznaloService.hasRole(UserType.Roles.USER_WRITE_ROLE);
-    }
-
-    @ModelAttribute("hasUserReadRole")
-    public boolean userReadRole() {
-        return felhasznaloService.hasRole(UserType.Roles.USER_READ_ROLE);
-    }
+  @ModelAttribute("hasUserReadRole")
+  public boolean userReadRole() {
+    return felhasznaloService.hasRole(UserType.Roles.USER_READ_ROLE);
+  }
 }

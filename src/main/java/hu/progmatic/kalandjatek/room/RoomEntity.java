@@ -23,6 +23,7 @@ public class RoomEntity {
   @Column(unique = true)
   private String name;
   @OneToOne
+  @JoinColumn
   private InventoryEntity inventory;
   @OneToMany(mappedBy = "room", cascade = CascadeType.ALL)
   @Builder.Default
