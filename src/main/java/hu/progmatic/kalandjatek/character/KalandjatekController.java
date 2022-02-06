@@ -77,9 +77,11 @@ public class KalandjatekController {
       @PathVariable Integer id,
       Model model
   ) {
-    CharacterEntity character = characterService.getById(id);
-    Answer answer = character.getAnswer();
+  //  CharacterEntity character = characterService.getById(id);
+  //  Answer answer = character.getAnswer();
+    CharacterDto characterDto = characterService.getCharacterDtoById(id);
     characterService.delete(id);
+    model.addAttribute("testAnswer", characterDto.getAnswer());
     return "/kalandjatek/szemelyisegtesztmixelt";
   }
 
