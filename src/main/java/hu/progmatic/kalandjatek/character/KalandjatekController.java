@@ -42,6 +42,11 @@ public class KalandjatekController {
     return "/kalandjatek/szemelyisegtesztmixelt";
   }
 
+  @GetMapping("/kalandjatek/menutest")
+  public String menuTest() {
+    return "/kalandjatek/menutest";
+  }
+
   @GetMapping("/kalandjatek/characterpage/{id}")
   public String characterId(
       @PathVariable Integer id, Model model) {
