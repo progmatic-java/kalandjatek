@@ -20,8 +20,6 @@ public class InventoryService implements InitializingBean {
   @Autowired
   private ItemRepository itemRepository; // child
   @Autowired
-  private RoomService roomService;
-  @Autowired
   private RoomRepository roomRepository;
 
 
