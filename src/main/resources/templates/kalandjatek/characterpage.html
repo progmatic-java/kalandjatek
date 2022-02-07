@@ -93,7 +93,7 @@
         <input type="submit" class="btn btn-dark" style="background-color: lightskyblue" value="I love my character, I want to continue"/>
     </form>
 
-    <form th:unless="${newCharacter}" th:action="@{'/kalandjatek/introduction/{id}'(id=${chosenCharacter.getId()})}" method="get">
+    <form th:unless="${newCharacter}" th:action="@{'/kalandjatek/characterpage/{characterId}/room/{roomId}'(characterId=${chosenCharacter.getId()},roomId=${startingRoom.getId()})}" method="get">
         <input type="submit" class="btn btn-dark" style="background-color: lightskyblue" value="Start game"/>
     </form>
 
