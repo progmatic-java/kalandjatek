@@ -26,7 +26,7 @@ public class RoomEntity {
   @Column(unique = true)
   private String name;
 
-  @OneToOne
+  @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn
   private InventoryEntity inventory;
 
