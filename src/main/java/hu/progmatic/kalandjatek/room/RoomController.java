@@ -1,5 +1,7 @@
 package hu.progmatic.kalandjatek.room;
 
+import hu.progmatic.kalandjatek.NPC.NPCEntity;
+import hu.progmatic.kalandjatek.NPC.NPCService;
 import hu.progmatic.kalandjatek.character.CharacterEntity;
 import hu.progmatic.kalandjatek.character.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,10 @@ public class RoomController {
   @Autowired
   private CharacterService characterService;
 
+  @Autowired
+  private NPCService npcService;
+
+
   @GetMapping("/kalandjatek/room")
   public String roomPage() {
     return "/kalandjatek/room";
@@ -35,6 +41,7 @@ public class RoomController {
     model.addAttribute("currRoom", roomById);
     model.addAttribute("currRoomItems", roomById.getItems());
     model.addAttribute("currPlayer", characterService.getById(characterId));
+    model.addAttribute("currNpcs", roomById.getNpcEntities());
     return "/kalandjatek/room";
   }
 
@@ -52,4 +59,5 @@ public class RoomController {
   public CharacterEntity currPlayer() {
     return new CharacterEntity();
   }
+
 }

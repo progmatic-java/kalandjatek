@@ -16,6 +16,6 @@ public class RoomDto {
   private Integer id;
   private String roomName;
   private List<String> items;
-  private List<String> characters;
   private List<String> adjacentRooms;
+  private List<String> npcEntities;
 }

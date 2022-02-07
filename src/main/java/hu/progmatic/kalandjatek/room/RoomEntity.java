@@ -30,9 +30,9 @@ public class RoomEntity {
   @JoinColumn
   private InventoryEntity inventory;
 
-  @OneToMany(mappedBy = "charRoom", cascade = CascadeType.ALL)
-  @Builder.Default
-  private List<CharacterEntity> characters = new ArrayList<>();
+//  @OneToMany(mappedBy = "charRoom", cascade = CascadeType.ALL)
+//  @Builder.Default
+//  private List<CharacterEntity> characters = new ArrayList<>();
 
   @OneToMany(mappedBy = "npcRoom", cascade = CascadeType.ALL)
   @Builder.Default

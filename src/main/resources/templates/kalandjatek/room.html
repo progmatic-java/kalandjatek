@@ -38,8 +38,8 @@
 <h1 th:text="${'Room Name: ' + currRoom.getRoomName()}">Room Name</h1>
 <h3>Room Inventory:</h3>
 <ul>
-    <div th:each="item : ${currRoomItems}">
-        <li th:text="${item}">Valami</li>
+    <div th:each="itemName : ${currRoomItems}">
+        <li th:text="${itemName}">Valami</li>
     </div>
 </ul>
 <br>
@@ -48,6 +48,13 @@
     <li th:text="${'Hp: ' + currPlayer.getHp()}">Hp: </li>
     <li th:text="${'Mp: ' + currPlayer.getMp()}">Mp: </li>
     <li th:text="${'Gold: ' + currPlayer.getGold()}">Gold: </li>
+</ul>
+
+<h3>NPCs in Room:</h3>
+<ul>
+    <div th:each="npcName : ${currNpcs}">
+        <li th:text="${npcName}">Burrows</li>
+    </div>
 </ul>
 <br>
 <form th:action="@{/kalandjatek/fooldal}" method="get">
