@@ -47,6 +47,7 @@ public class KalandjatekController {
       @PathVariable Integer id, Model model) {
     CharacterEntity chosenCharacter = characterService.getById(id);
     model.addAttribute("chosenCharacter", chosenCharacter);
+    model.addAttribute("newCharacter", false);
     return "/kalandjatek/characterpage";
   }
 
@@ -69,6 +70,7 @@ public class KalandjatekController {
     characterService.save(resultCharacter);
     model.addAttribute("chosenCharacter", resultCharacter);
     model.addAttribute("retakeTest", true);
+    model.addAttribute("newCharacter", true);
     return "/kalandjatek/characterpage";
   }
 
@@ -84,7 +86,6 @@ public class KalandjatekController {
     model.addAttribute("testAnswer", characterDto.getAnswer());
     return "/kalandjatek/szemelyisegtesztmixelt";
   }
-
 
   @GetMapping("/kalandjatek/introduction/{id}")
   public String intro(@PathVariable Integer id, Model model) {
@@ -116,6 +117,11 @@ public class KalandjatekController {
 
   @ModelAttribute("retakeTest")
   public boolean retakeTest() {
+    return false;
+  }
+
+  @ModelAttribute("newCharacter")
+  public boolean newCharacter() {
     return false;
   }
 
