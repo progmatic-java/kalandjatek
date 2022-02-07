@@ -99,7 +99,6 @@ public class KalandjatekController {
     return "/kalandjatek/introduction";
   }
 
-
   @ModelAttribute("chosenCharacter")
   public CharacterEntity chosenCharacter() {
     return new CharacterEntity();

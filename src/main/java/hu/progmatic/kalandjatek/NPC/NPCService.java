@@ -36,13 +36,12 @@ public class NPCService implements InitializingBean {
                 .build();
     }
 
-
     public void delete(Integer id) {
         npcRepository.deleteById(id);
     }
 
-    public List<NPCEntity> saveAll(List<NPCEntity> list) {
-        return npcRepository.saveAllAndFlush(list);
+    public void saveAll(List<NPCEntity> list) {
+        npcRepository.saveAllAndFlush(list);
     }
 
     public NPCEntity findByName(String name) {
@@ -52,7 +51,6 @@ public class NPCService implements InitializingBean {
     public List<NPCEntity> findAllByFriendly(Boolean friendly) {
         return npcRepository.findAllByFriendly(friendly);
     }
-
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -86,11 +84,9 @@ public class NPCService implements InitializingBean {
                             .imgRef("https://i.imgur.com/RpbOdHt.png")
                             .build()));
         }
-
     }
 
     public List<NPCEntity> findAll() {
         return npcRepository.findAll();
     }
-
 }
