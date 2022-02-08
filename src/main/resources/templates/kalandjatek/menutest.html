@@ -186,50 +186,26 @@
 <nav class="menu">
     <input checked="checked" class="menu-toggler" id="menu-toggler" type="checkbox"></input>
     <label for="menu-toggler"></label>
-    <!--    <div th:each="character : ${dropDown}">-->
-    <ul th:each="character : ${dropDown}">
+    <ul>
 
-<!--        <form th:action="@{'/kalandjatek/characterpage/{id}'(id=${character.id})}" method="get">-->
-<!--            <input th:value="${character.name + ' (' + character.race +')'}"/>-->
-<!--        </form>-->
+        <!--        <form th:action="@{'/kalandjatek/characterpage/{id}'(id=${character.id})}" method="get">-->
+        <!--            <input th:value="${character.name + ' (' + character.race +')'}"/>-->
+        <!--        </form>-->
+        <div th:each="character : ${dropDown}">
 
-
-        <li class="menu-item">
-            <!--                <a class="fa fa-facebook" href="https://www.facebook.com/" target="_blank"></a>-->
-            <form th:action="@{'/kalandjatek/characterpage/{id}'(id=${character.id})}" method="get">
-                <input th:value="${character.imgRef}"/>
-            </form>
-        </li>
-        <li class="menu-item">
-            <!--                <a class="fa fa-google" href="https://www.google.com/" target="_blank"></a>-->
-            <form th:action="@{'/kalandjatek/characterpage/{id}'(id=${character.id})}" method="get">
-                <input th:value="${character.imgRef}"/>
-            </form>
-        </li>
-        <li class="menu-item">
-            <!--                <a class="fa fa-dribbble" href="https://dribbble.com/" target="_blank"></a>-->
-            <form th:action="@{'/kalandjatek/characterpage/{id}'(id=${character.id})}" method="get">
-                <input th:value="${character.imgRef}"/>
-            </form>
-        </li>
-        <li class="menu-item">
-            <!--                <a class="fa fa-codepen" href="https://codepen.io/" target="_blank"></a>-->
-            <form th:action="@{'/kalandjatek/characterpage/{id}'(id=${character.id})}" method="get">
-                <input th:value="${character.imgRef}"/>
-            </form>
-        </li>
-        <li class="menu-item">
-            <!--                <a class="fa fa-linkedin" href="https://www.linkedin.com/" target="_blank"></a>-->
-            <form th:action="@{'/kalandjatek/characterpage/{id}'(id=${character.id})}" method="get">
-                <input th:value="${character.imgRef}"/>
-            </form>
-        </li>
-        <li class="menu-item">
-            <!--                <a class="fa fa-github" href="https://github.com/" target="_blank"></a>-->
-            <form th:action="@{'/kalandjatek/characterpage/{id}'(id=${character.id})}" method="get">
-                <input th:value="${character.imgRef}"/>
-            </form>
-        </li>
+            <li class="menu-item">
+                <a href="https://www.facebook.com/" target="_blank"></a></li>
+            <li class="menu-item">
+                <a href="https://www.google.com/" target="_blank"></a></li>
+            <li class="menu-item">
+                <a href="https://dribbble.com/" target="_blank"></a></li>
+            <li class="menu-item">
+                <a href="https://codepen.io/" target="_blank"></a></li>
+            <li class="menu-item">
+                <a href="https://www.linkedin.com/" target="_blank"></a></li>
+            <li class="menu-item">
+                <a href="https://github.com/" target="_blank"></a></li>
+        </div>
     </ul>
     </div>
 </nav>
