@@ -38,6 +38,4 @@ public abstract class InitRoom {
   abstract List<NPC> getInitNpcs();
 
   abstract List<Item> getInitItems();
-
-
 }

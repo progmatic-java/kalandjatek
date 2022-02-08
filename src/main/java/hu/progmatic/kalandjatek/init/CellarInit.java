@@ -7,9 +7,9 @@ import hu.progmatic.kalandjatek.NPC.NPC;
 import java.util.List;
 
 public class CellarInit extends InitRoom {
-    public CellarInit() {
-        super();
-        setName("Inn cellar");
+    @Override
+    public String getName() {
+        return "Inn cellar";
     }
 
     @Override

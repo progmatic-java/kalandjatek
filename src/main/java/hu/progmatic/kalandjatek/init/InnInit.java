@@ -11,9 +11,9 @@ import java.util.List;
 @Getter
 @Setter
 public class InnInit extends InitRoom{
-  public InnInit() {
-    super();
-    setName("Inn");
+  @Override
+  public String getName() {
+    return "Inn";
   }
 
   List<NPC> getInitNpcs() {
