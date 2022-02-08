@@ -105,7 +105,7 @@ class NPCServiceTest {
         void findAll() {
             List<NPC> allCharacters = npcService.findAll();
             assertThat(allCharacters)
-                    .hasSize(4)
+                    .hasSize(5)
                     .extracting(NPC::getName)
                     .containsAnyOf("Switcher", "Burrows", "Lady Regex");
         }
