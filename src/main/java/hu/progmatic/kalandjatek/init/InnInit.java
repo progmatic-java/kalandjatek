@@ -67,4 +67,9 @@ public class InnInit extends InitRoom{
             .build()
     );
   }
+
+  @Override
+  public String getRoomImgRef() {
+    return "https://wallpaperaccess.com/full/6079735.png";
+  }
 }

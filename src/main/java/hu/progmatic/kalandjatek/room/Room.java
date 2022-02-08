@@ -25,6 +25,8 @@ public class Room {
   @Column(unique = true)
   private String name;
 
+  private String roomImgRef;
+
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn
   private Inventory inventory;

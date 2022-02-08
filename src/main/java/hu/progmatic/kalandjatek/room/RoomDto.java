@@ -15,6 +15,7 @@ import java.util.Map;
 public class RoomDto {
   private Integer id;
   private String roomName;
+  private String roomImgRef;
   private List<String> items;
   private Map<String, Integer> adjacentRooms;
   private List<String> npcEntities;

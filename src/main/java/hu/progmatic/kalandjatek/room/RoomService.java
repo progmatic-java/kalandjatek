@@ -47,6 +47,7 @@ public class RoomService implements InitializingBean {
         return RoomDto.builder()
                 .id(room.getId())
                 .roomName(room.getName())
+                .roomImgRef(room.getRoomImgRef())
                 .adjacentRooms(getAdjacentRooms(room))
                 .npcEntities(getNpcsName(room.getNpcEntities()))
                 .items(getItemList(room.getInventory()))

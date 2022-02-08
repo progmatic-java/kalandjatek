@@ -40,7 +40,7 @@ public class InitService implements InitializingBean {
   }
 
   private Room createRoom(InitRoom initRoom) {
-    Room room = Room.builder().name(initRoom.getName()).inventory(initRoom.getInventory()).build();
+    Room room = Room.builder().name(initRoom.getName()).roomImgRef(initRoom.getRoomImgRef()).inventory(initRoom.getInventory()).build();
     addNpcToRoom(initRoom.getNpcs(), room);
     return room;
   }
