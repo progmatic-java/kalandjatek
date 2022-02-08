@@ -34,13 +34,20 @@ public class InitService implements InitializingBean {
   }
 
   private void createDoorBetweenRooms(Room room1, Room room2) {
-    Door innToCellar = Door.builder().room1(room1).room2(room2).build();
+    Door innToCellar = Door.builder()
+        .room1(room1)
+        .room2(room2)
+        .build();
     room1.getDoors1().add(innToCellar);
     room2.getDoors2().add(innToCellar);
   }
 
   private Room createRoom(InitRoom initRoom) {
-    Room room = Room.builder().name(initRoom.getName()).roomImgRef(initRoom.getRoomImgRef()).inventory(initRoom.getInventory()).build();
+    Room room = Room.builder()
+        .name(initRoom.getName())
+        .roomImgRef(initRoom.getRoomImgRef())
+        .inventory(initRoom.getInventory())
+        .build();
     addNpcToRoom(initRoom.getNpcs(), room);
     return room;
   }
