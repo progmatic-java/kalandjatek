@@ -10,14 +10,14 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import java.util.List;
 
 @Controller
-public class FooldalController {
+public class MainPageController {
 
     @Autowired
     private CharacterService characterService;
 
     @GetMapping("/kalandjatek")
     public String beforeMain() {
-        return "/kalandjatek/jatekfooldalelotti";
+        return "beforemainpage";
     }
 
     @GetMapping("/kalandjatek/fooldal")

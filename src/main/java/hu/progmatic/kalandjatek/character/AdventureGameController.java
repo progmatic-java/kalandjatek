@@ -18,7 +18,7 @@ import java.util.List;
 
 
 @Controller
-public class KalandjatekController {
+public class AdventureGameController {
   private final List<Character> defaultCharacters = List.of(
       new Character("Orkeo", Race.ORC, 100, 50, 150),
       new Character("Elfy", Race.ELF, 100, 50, 150),

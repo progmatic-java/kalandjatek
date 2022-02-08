@@ -6,8 +6,6 @@ import hu.progmatic.kalandjatek.character.CharacterDto;
 import hu.progmatic.kalandjatek.character.CharacterEntity;
 import hu.progmatic.kalandjatek.character.CharacterService;
 import hu.progmatic.kalandjatek.character.Race;
-import hu.progmatic.felhasznalo.UserType;
-import hu.progmatic.kalandjatek.character.*;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
