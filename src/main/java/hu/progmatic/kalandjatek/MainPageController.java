@@ -1,6 +1,6 @@
 package hu.progmatic.kalandjatek;
 
-import hu.progmatic.kalandjatek.character.CharacterEntity;
+import hu.progmatic.kalandjatek.character.Character;
 import hu.progmatic.kalandjatek.character.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -26,7 +26,7 @@ public class MainPageController {
     }
 
     @ModelAttribute("dropDown")
-    public List<CharacterEntity> dropDown() {
+    public List<Character> dropDown() {
         return characterService.findAll();
     }
 }
