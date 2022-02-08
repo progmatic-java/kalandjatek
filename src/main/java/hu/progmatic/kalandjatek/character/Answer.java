@@ -23,23 +23,23 @@ public class Answer {
   public static final String PLEASE_ANSWER_THE_QUESTION = "Please answer the question";
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
-  Integer id;
+  private Integer id;
   @NotEmpty(message = "Please choose a name")
-  String name;
+  private String name;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
-  Race race1;
+  private Race race1;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
-  Race race2;
+  private Race race2;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
-  Race race3;
+  private Race race3;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
-  Race race4;
+  private Race race4;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
-  Race race5;
+  private Race race5;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
-  Race race6;
+  private Race race6;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
-  Race race7;
+  private Race race7;
   @NotNull(message = PLEASE_ANSWER_THE_QUESTION)
-  Race race8;
+  private Race race8;
 }

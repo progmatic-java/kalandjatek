@@ -10,7 +10,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class ItemEntity {
+public class Item {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
@@ -19,6 +19,6 @@ public class ItemEntity {
     @Enumerated(EnumType.STRING)
     private ItemEnum typeOfItem;
     @ManyToOne
-    private InventoryEntity inventory;
+    private Inventory inventory;
 
 }

@@ -22,7 +22,7 @@ class NPCServiceTest {
     @Test
     @DisplayName("Create NPC")
     void createNpc() {
-        NPCEntity newEntity = NPCEntity.builder().name("Runner").description("The coffee lover of The Black Hole Inn").build();
+        NPC newEntity = NPC.builder().name("Runner").description("The coffee lover of The Black Hole Inn").build();
         npcService.save(newEntity);
         assertNotNull(newEntity.getId());
     }
@@ -30,7 +30,7 @@ class NPCServiceTest {
     @Test
     @DisplayName("Delete an NPC")
     void deleteCharacter() {
-        NPCEntity newEntity = NPCEntity.builder().name("Zs Black").description("Phantom of Progmatchique").build();
+        NPC newEntity = NPC.builder().name("Zs Black").description("Phantom of Progmatchique").build();
         npcService.save(newEntity);
         assertNotNull(newEntity.getId());
         npcService.delete(newEntity.getId());
@@ -47,11 +47,11 @@ class NPCServiceTest {
     @Nested
     @DisplayName("One NPC")
     class NpcExistsTest {
-        private NPCEntity npc;
+        private NPC npc;
 
         @BeforeEach
         void setUp() {
-            NPCEntity newNpc = NPCEntity.builder().name("Maya").description("The waitress of The Black Hole Inn").build();
+            NPC newNpc = NPC.builder().name("Maya").description("The waitress of The Black Hole Inn").build();
             npc = npcService.save(newNpc);
         }
 
@@ -86,7 +86,7 @@ class NPCServiceTest {
         @Test
         @DisplayName("Find Burrows")
         void findAllByName() {
-            NPCEntity burrow = npcService.findByName("Burrows");
+            NPC burrow = npcService.findByName("Burrows");
             assertNotNull(burrow.getId());
             assertEquals("Burrows", burrow.getName());
 
@@ -95,18 +95,18 @@ class NPCServiceTest {
         @Test
         @DisplayName("Find all friendly")
         void findAllByRace() {
-            List<NPCEntity> multiple = npcService.findAllByFriendly(true);
+            List<NPC> multiple = npcService.findAllByFriendly(true);
             assertThat(multiple)
-                    .extracting(NPCEntity::getName)
+                    .extracting(NPC::getName)
                     .containsExactlyInAnyOrder("Switcher", "Burrows");
         }
 
         @Test
         void findAll() {
-            List<NPCEntity> allCharacters = npcService.findAll();
+            List<NPC> allCharacters = npcService.findAll();
             assertThat(allCharacters)
                     .hasSize(4)
-                    .extracting(NPCEntity::getName)
+                    .extracting(NPC::getName)
                     .containsAnyOf("Switcher", "Burrows", "Lady Regex");
         }
     }

@@ -1,11 +1,11 @@
 package hu.progmatic.kalandjatek.init;
 
-import hu.progmatic.kalandjatek.InventoryEntity;
-import hu.progmatic.kalandjatek.ItemEntity;
+import hu.progmatic.kalandjatek.Inventory;
+import hu.progmatic.kalandjatek.Item;
 import hu.progmatic.kalandjatek.ItemEnum;
-import hu.progmatic.kalandjatek.NPC.NPCEntity;
-import hu.progmatic.kalandjatek.room.DoorEntity;
-import hu.progmatic.kalandjatek.room.RoomEntity;
+import hu.progmatic.kalandjatek.NPC.NPC;
+import hu.progmatic.kalandjatek.room.Door;
+import hu.progmatic.kalandjatek.room.Room;
 import hu.progmatic.kalandjatek.room.RoomRepository;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -23,42 +23,42 @@ public class InitService implements InitializingBean {
 
   @Override
   public void afterPropertiesSet() throws Exception {
-    RoomEntity inn = RoomEntity.builder().name("Inn").build();
-    RoomEntity cellar = RoomEntity.builder().name("Inn cellar").build();
+    Room inn = Room.builder().name("Inn").build();
+    Room cellar = Room.builder().name("Inn cellar").build();
 
-    InventoryEntity innInv = InventoryEntity.builder().build();
-    InventoryEntity cellarInv = InventoryEntity.builder().build();
+    Inventory innInv = Inventory.builder().build();
+    Inventory cellarInv = Inventory.builder().build();
 
-    List<ItemEntity> innItems = List.of(
-        ItemEntity.builder()
+    List<Item> innItems = List.of(
+        Item.builder()
             .itemName("Beer")
             .description("A cold drink from Go'odor")
             .typeOfItem(ItemEnum.CONSUMABLE)
             .build(),
-        ItemEntity.builder()
+        Item.builder()
             .itemName("Knife")
             .description("Good for slicing bread")
             .typeOfItem(ItemEnum.ATTACK)
             .build(),
-        ItemEntity.builder()
+        Item.builder()
             .itemName("Coins")
             .description("You should take it")
             .typeOfItem(ItemEnum.CONSUMABLE)
             .build()
     );
 
-    List<ItemEntity> cellarItems = List.of(
-        ItemEntity.builder()
+    List<Item> cellarItems = List.of(
+        Item.builder()
             .itemName("Imported Beer")
             .description("It's a holy drink from Ko'olossy")
             .typeOfItem(ItemEnum.CONSUMABLE)
             .build(),
-        ItemEntity.builder()
+        Item.builder()
             .itemName("Wine")
             .description("It has a lot of antioxidants")
             .typeOfItem(ItemEnum.CONSUMABLE)
             .build(),
-        ItemEntity.builder()
+        Item.builder()
             .itemName("Dead body")
             .description("Dog food")
             .typeOfItem(ItemEnum.CONSUMABLE)
@@ -83,8 +83,8 @@ public class InitService implements InitializingBean {
 //            .build()
 //    );
 
-    List<NPCEntity> npcList = List.of(
-        NPCEntity.builder()
+    List<NPC> npcList = List.of(
+        NPC.builder()
             .name("Burrows")
             .description("The drunk owner of The Black Hole Inn.")
             .friendly(true)
@@ -93,7 +93,7 @@ public class InitService implements InitializingBean {
             .gold(1000)
             .imgRef("https://i.imgur.com/9AnmjLg.png")
             .build(),
-        NPCEntity.builder()
+        NPC.builder()
             .name("Switcher")
             .description("Your old friend from the prison.")
             .friendly(true)
@@ -102,7 +102,7 @@ public class InitService implements InitializingBean {
             .gold(500)
             .imgRef("https://i.imgur.com/3IOuWgJ.png")
             .build(),
-        NPCEntity.builder()
+        NPC.builder()
             .name("Lady Regex")
             .description("A mysterious witch from another town.")
             .friendly(false)
@@ -113,21 +113,21 @@ public class InitService implements InitializingBean {
             .build()
     );
 
-    NPCEntity madDog = NPCEntity.builder().name("Mad dog").description("Precious pet of Burrows").build();
+    NPC madDog = NPC.builder().name("Mad dog").description("Precious pet of Burrows").build();
 
-    for (ItemEntity item : innItems) {
+    for (Item item : innItems) {
       innInv.getItems().add(item);
       item.setInventory(innInv);
     }
     inn.setInventory(innInv);
 
-    for (ItemEntity item : cellarItems) {
+    for (Item item : cellarItems) {
       cellarInv.getItems().add(item);
       item.setInventory(cellarInv);
     }
     cellar.setInventory(cellarInv);
 
-    for (NPCEntity npc : npcList) {
+    for (NPC npc : npcList) {
       npc.setNpcRoom(inn);
     }
     inn.setNpcEntities(npcList);
@@ -135,7 +135,7 @@ public class InitService implements InitializingBean {
     madDog.setNpcRoom(cellar);
     cellar.getNpcEntities().add(madDog);
 
-    DoorEntity innToCellar = DoorEntity.builder().room1(inn).room2(cellar).build();
+    Door innToCellar = Door.builder().room1(inn).room2(cellar).build();
     inn.getDoors1().add(innToCellar);
     cellar.getDoors2().add(innToCellar);
 

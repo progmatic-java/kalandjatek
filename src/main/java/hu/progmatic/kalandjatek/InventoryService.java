@@ -1,8 +1,5 @@
 package hu.progmatic.kalandjatek;
 
-import hu.progmatic.kalandjatek.room.RoomEntity;
-import hu.progmatic.kalandjatek.room.RoomRepository;
-import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -18,11 +15,11 @@ public class InventoryService{
   @Autowired
   private ItemRepository itemRepository; // child
 
-  public InventoryEntity createInventory(InventoryEntity newInventory) {
+  public Inventory createInventory(Inventory newInventory) {
     return inventoryRepository.save(newInventory);
   }
 
-  private InvetoryDto buildInventoryDto(InventoryEntity savedEntity) {
+  private InvetoryDto buildInventoryDto(Inventory savedEntity) {
     List<ItemDto> itemDtoList = savedEntity.getItems().stream()
         .map(this::buildItemDto)
         .toList();
@@ -32,11 +29,11 @@ public class InventoryService{
         .build();
   }
 
-  public ItemEntity createItem(ItemEntity newItem) {
+  public Item createItem(Item newItem) {
     return itemRepository.save(newItem);
   }
 
-  public List<ItemEntity> getItemsByInventoryId(Integer inventoryId) {
+  public List<Item> getItemsByInventoryId(Integer inventoryId) {
     return inventoryRepository.getById(inventoryId).getItems().stream().toList();
   }
 
@@ -52,16 +49,16 @@ public class InventoryService{
     return itemRepository.existsById(id);
   }
 
-  public List<ItemEntity> createItems(List<ItemEntity> items) {
+  public List<Item> createItems(List<Item> items) {
     return itemRepository.saveAll(items);
   }
 
-  private ItemDto buildItemDto(ItemEntity itemEntity) {
+  private ItemDto buildItemDto(Item item) {
     return ItemDto.builder()
-        .id(itemEntity.getId())
-        .itemName(itemEntity.getItemName())
-        .description(itemEntity.getDescription())
-        .typeOfItem(itemEntity.getTypeOfItem())
+        .id(item.getId())
+        .itemName(item.getItemName())
+        .description(item.getDescription())
+        .typeOfItem(item.getTypeOfItem())
 //        .inventoryId(itemEntity.getInventory().getId())
         .build();
   }
@@ -71,8 +68,8 @@ public class InventoryService{
   }
 
   public void addItemToInventory(Integer inventoryId, Integer itemId) {
-    ItemEntity item = itemRepository.getById(itemId);
-    InventoryEntity inventory = inventoryRepository.getById(inventoryId);
+    Item item = itemRepository.getById(itemId);
+    Inventory inventory = inventoryRepository.getById(inventoryId);
     item.setInventory(inventory);
     inventory.getItems().add(item);
   }
@@ -86,8 +83,8 @@ public class InventoryService{
   }
 
   public void deleteItemFromInvetory(Integer inventoryId, Integer itemId) {
-    InventoryEntity inventory = inventoryRepository.getById(inventoryId);
-    ItemEntity item = itemRepository.getById(itemId);
+    Inventory inventory = inventoryRepository.getById(inventoryId);
+    Item item = itemRepository.getById(itemId);
     inventory.getItems().remove(item);
     item.setInventory(null);
   }

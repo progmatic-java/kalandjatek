@@ -1,9 +1,8 @@
 package hu.progmatic.kalandjatek;
 
 import hu.progmatic.felhasznalo.UserType;
-import hu.progmatic.kalandjatek.character.Character;
 import hu.progmatic.kalandjatek.character.CharacterDto;
-import hu.progmatic.kalandjatek.character.CharacterEntity;
+import hu.progmatic.kalandjatek.character.Character;
 import hu.progmatic.kalandjatek.character.CharacterService;
 import hu.progmatic.kalandjatek.character.Race;
 import org.junit.jupiter.api.BeforeEach;
@@ -30,19 +29,19 @@ class CharacterServiceTest {
     @Test
     @DisplayName("Create character")
     void createCharacter() {
-        CharacterEntity character = CharacterEntity.builder().name("Name").race(Race.ELF).build();
-        CharacterEntity saved = characterService.save(character);
+        Character character = Character.builder().name("Name").race(Race.ELF).build();
+        Character saved = characterService.save(character);
         assertNotNull(saved.getId());
     }
 
     @Nested
     @DisplayName("One character")
     class CharacterExistsTest {
-        private CharacterEntity character;
+        private Character character;
 
         @BeforeEach
         void setUp() {
-            CharacterEntity newCharacter = CharacterEntity.builder().name("Name").race(Race.ELF).build();
+            Character newCharacter = Character.builder().name("Name").race(Race.ELF).build();
             character = characterService.save(newCharacter);
         }
 
@@ -68,7 +67,7 @@ class CharacterServiceTest {
         @DisplayName("Delete a character")
         @WithMockUser(roles = UserType.Roles.USER_WRITE_ROLE)
         void deleteCharacter() {
-            CharacterEntity readed = characterService.getById(character.getId());
+            Character readed = characterService.getById(character.getId());
             assertNotNull(readed.getId());
             characterService.delete(character.getId());
             Exception exception = null;
@@ -87,40 +86,28 @@ class CharacterServiceTest {
         @Test
         @DisplayName("Find Mark Zuckerberg")
         void findAllByName() {
-            List<CharacterEntity> multiple = characterService.findAllByName("Mark Zuckerberg");
+            List<Character> multiple = characterService.findAllByName("Mark Zuckerberg");
             assertThat(multiple)
-                    .extracting(CharacterEntity::getName)
+                    .extracting(Character::getName)
                     .contains("Mark Zuckerberg");
         }
 
         @Test
         @DisplayName("Find all reptilian")
         void findAllByRace() {
-            List<CharacterEntity> multiple = characterService.findAllByRace(Race.REPTILIAN);
+            List<Character> multiple = characterService.findAllByRace(Race.REPTILIAN);
             assertThat(multiple)
-                    .extracting(CharacterEntity::getName)
+                    .extracting(Character::getName)
                     .containsExactlyInAnyOrder("Mark Zuckerberg");
         }
 
         @Test
         void findAll() {
-            List<CharacterEntity> allCharacters = characterService.findAll();
+            List<Character> allCharacters = characterService.findAll();
             assertThat(allCharacters)
                     .hasSize(5)
-                    .extracting(CharacterEntity::getName)
+                    .extracting(Character::getName)
                     .containsAnyOf("Mark Zuckerberg", "Malfoy", "Bence");
         }
-    }
-
-    @Test
-    @DisplayName("Character to CharacterEntity")
-    void characterToEntity() {
-        Character character = new Character("Elfy", Race.ELF, 100, 50, 150);
-        CharacterEntity characterEntity = characterService.characterToEntity(character);
-        assertEquals("Elfy", characterEntity.getName());
-        assertEquals(Race.ELF, characterEntity.getRace());
-        assertEquals(100, characterEntity.getHp());
-        assertEquals(50, characterEntity.getMp());
-        assertEquals(150, characterEntity.getGold());
     }
 }

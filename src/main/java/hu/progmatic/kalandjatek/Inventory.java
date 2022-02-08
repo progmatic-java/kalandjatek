@@ -12,11 +12,11 @@ import java.util.List;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class InventoryEntity {
+public class Inventory {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @Builder.Default
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL)
-    private List<ItemEntity> items = new ArrayList<>();
+    private List<Item> items = new ArrayList<>();
 }

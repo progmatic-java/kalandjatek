@@ -17,47 +17,47 @@ class InventoryServiceTest {
 
     @Test
     void createInventory() {
-        InventoryEntity inventory = inventoryService.createInventory(InventoryEntity.builder().build());
+        Inventory inventory = inventoryService.createInventory(Inventory.builder().build());
         assertThat(inventory.getId()).isNotNull();
     }
 
     @Test
     void createItem() {
-        ItemEntity newItem = ItemEntity.builder()
+        Item newItem = Item.builder()
                 .itemName("Beer")
                 .description("A good old ale from Gödör, it always comes handy")
                 .typeOfItem(ItemEnum.CONSUMABLE)
                 .build();
-        ItemEntity createdItem = inventoryService.createItem(newItem);
+        Item createdItem = inventoryService.createItem(newItem);
         assertNotNull(createdItem.getId());
         assertEquals("Beer", createdItem.getItemName());
     }
 
     @Test
     void createMultipleItems() {
-        List<ItemEntity> items = inventoryService.createItems(
+        List<Item> items = inventoryService.createItems(
             List.of(
-                ItemEntity.builder()
+                Item.builder()
                     .itemName("Beer")
                     .description("Good cold beer")
                     .typeOfItem(ItemEnum.CONSUMABLE)
                     .build(),
-                ItemEntity.builder()
+                Item.builder()
                     .itemName("Sword")
                     .description("Mighty sword")
                     .typeOfItem(ItemEnum.ATTACK)
                     .build(),
-                ItemEntity.builder()
+                Item.builder()
                     .itemName("Shield")
                     .description("Strong AF")
                     .typeOfItem(ItemEnum.SHIELD)
                     .build(),
-                ItemEntity.builder()
+                Item.builder()
                     .itemName("Helmet")
                     .description("Anti bonk item")
                     .typeOfItem(ItemEnum.SHIELD)
                     .build(),
-                ItemEntity.builder()
+                Item.builder()
                     .itemName("Cheese")
                     .description("Tasty and stinky")
                     .typeOfItem(ItemEnum.CONSUMABLE)
@@ -66,13 +66,13 @@ class InventoryServiceTest {
         );
         assertThat(items)
             .hasSize(5)
-            .extracting(ItemEntity::getItemName)
+            .extracting(Item::getItemName)
             .containsExactlyInAnyOrder("Cheese", "Helmet", "Shield", "Sword", "Beer");
     }
 
     @Test
     void getItemById() {
-        ItemEntity item = inventoryService.createItem(ItemEntity.builder().itemName("Potion").build());
+        Item item = inventoryService.createItem(Item.builder().itemName("Potion").build());
         ItemDto dto = inventoryService.getItemById(item.getId());
         assertEquals("Potion", dto.getItemName());
         assertNotNull(dto.getId());
@@ -80,35 +80,35 @@ class InventoryServiceTest {
 
     @Nested
     class InventoryItemTest {
-        List<ItemEntity> itemList;
-        InventoryEntity inventory;
+        List<Item> itemList;
+        Inventory inventory;
 
         @BeforeEach
         void setUp() {
-            inventory = inventoryService.createInventory(InventoryEntity.builder().build());
+            inventory = inventoryService.createInventory(Inventory.builder().build());
             itemList = inventoryService.createItems(
                 List.of(
-                    ItemEntity.builder()
+                    Item.builder()
                         .itemName("Beer")
                         .description("Good cold beer")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .build(),
-                    ItemEntity.builder()
+                    Item.builder()
                         .itemName("Sword")
                         .description("Mighty sword")
                         .typeOfItem(ItemEnum.ATTACK)
                         .build(),
-                    ItemEntity.builder()
+                    Item.builder()
                         .itemName("Shield")
                         .description("Strong AF")
                         .typeOfItem(ItemEnum.SHIELD)
                         .build(),
-                    ItemEntity.builder()
+                    Item.builder()
                         .itemName("Helmet")
                         .description("Anti bonk item")
                         .typeOfItem(ItemEnum.SHIELD)
                         .build(),
-                    ItemEntity.builder()
+                    Item.builder()
                         .itemName("Cheese")
                         .description("Tasty and stinky")
                         .typeOfItem(ItemEnum.CONSUMABLE)
@@ -125,7 +125,7 @@ class InventoryServiceTest {
 
         @Test
         void addItemToInventory() {
-            ItemEntity sword = itemList.stream().filter(item -> item.getItemName().equals("Sword")).findAny().orElseThrow();
+            Item sword = itemList.stream().filter(item -> item.getItemName().equals("Sword")).findAny().orElseThrow();
             inventoryService.addItemToInventory(inventory.getId(), sword.getId());
             InvetoryDto dto = inventoryService.getInventoryById(inventory.getId());
             assertThat(dto.getItems())
@@ -136,7 +136,7 @@ class InventoryServiceTest {
 
         @Test
         void deleteItemFromInventory() {
-            ItemEntity beer = itemList.stream().filter(item -> item.getItemName().equals("Beer")).findAny().orElseThrow();
+            Item beer = itemList.stream().filter(item -> item.getItemName().equals("Beer")).findAny().orElseThrow();
             inventoryService.addItemToInventory(inventory.getId(), beer.getId());
             InvetoryDto dto = inventoryService.getInventoryById(inventory.getId());
             assertThat(dto.getItems())

@@ -5,8 +5,8 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import java.util.List;
 import java.util.Optional;
 
-public interface CharacterRepository extends JpaRepository<CharacterEntity, Integer> {
-    List<CharacterEntity> findAllByNameContains(String name);
-    List<CharacterEntity> findAllByRace(Race race);
-    Optional<CharacterEntity> findByRace(Race race);
+public interface CharacterRepository extends JpaRepository<Character, Integer> {
+    List<Character> findAllByNameContains(String name);
+    List<Character> findAllByRace(Race race);
+    Optional<Character> findByRace(Race race);
 }

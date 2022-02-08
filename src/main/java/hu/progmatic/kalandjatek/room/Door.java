@@ -10,12 +10,12 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Builder
-public class DoorEntity {
+public class Door {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
     @ManyToOne
-    private RoomEntity room1;
+    private Room room1;
     @ManyToOne
-    private RoomEntity room2;
+    private Room room2;
 }

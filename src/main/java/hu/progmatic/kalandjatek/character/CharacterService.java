@@ -19,16 +19,16 @@ public class CharacterService implements InitializingBean {
   private CharacterRepository repository;
 
 
-  public CharacterEntity save(CharacterEntity character) {
+  public Character save(Character character) {
     return repository.save(character);
   }
 
-  public CharacterEntity getById(Integer id) {
+  public Character getById(Integer id) {
     return repository.getById(id);
   }
 
   public CharacterDto getCharacterDtoById(Integer id) {
-    CharacterEntity entity = getById(id);
+    Character entity = getById(id);
     return CharacterDto.builder()
         .characterName(entity.getName())
         .id(entity.getId())
@@ -48,28 +48,16 @@ public class CharacterService implements InitializingBean {
     repository.deleteById(id);
   }
 
-  public List<CharacterEntity> saveAll(List<CharacterEntity> list) {
+  public List<Character> saveAll(List<Character> list) {
     return repository.saveAllAndFlush(list);
   }
 
-  public List<CharacterEntity> findAllByName(String name) {
+  public List<Character> findAllByName(String name) {
     return repository.findAllByNameContains(name);
   }
 
-  public List<CharacterEntity> findAllByRace(Race race) {
+  public List<Character> findAllByRace(Race race) {
     return repository.findAllByRace(race);
-  }
-
-  public CharacterEntity characterToEntity(Character character) {
-    return CharacterEntity.builder()
-        .name(character.getName())
-        .race(character.getRace())
-        .description(character.getDescription())
-        .hp(character.getHp())
-        .mp(character.getMp())
-        .gold(character.getGold())
-        .imgRef(character.getImgRef())
-        .build();
   }
 
 
@@ -77,7 +65,7 @@ public class CharacterService implements InitializingBean {
   public void afterPropertiesSet() throws Exception {
     if (findAll().isEmpty()) {
       saveAll(List.of(
-          CharacterEntity
+          Character
               .builder()
               .name("Vallak")
               .race(Race.ORC)
@@ -87,7 +75,7 @@ public class CharacterService implements InitializingBean {
               .imgRef("https://i.imgur.com/lXcw2hg.png")
               .description(Race.ORC.description)
               .build(),
-          CharacterEntity.builder().name("Lyah")
+          Character.builder().name("Lyah")
               .race(Race.ELF)
               .hp(100)
               .mp(200)
@@ -95,7 +83,7 @@ public class CharacterService implements InitializingBean {
               .imgRef("https://i.imgur.com/13NVorA.png")
               .description(Race.ELF.description)
               .build(),
-          CharacterEntity
+          Character
               .builder()
               .name("Bence")
               .race(Race.HUMAN)
@@ -105,7 +93,7 @@ public class CharacterService implements InitializingBean {
               .imgRef("https://i.imgur.com/MQRZudq.png")
               .description(Race.HUMAN.description)
               .build(),
-          CharacterEntity
+          Character
               .builder()
               .name("Mark Zuckerberg")
               .race(Race.REPTILIAN)
@@ -120,14 +108,14 @@ public class CharacterService implements InitializingBean {
 
   public Race getResults(Answer answer) {
     Map<Race, Integer> answerEvaluation = new HashMap<>();
-    fillEvaluationMap(answerEvaluation, answer.race1);
-    fillEvaluationMap(answerEvaluation, answer.race2);
-    fillEvaluationMap(answerEvaluation, answer.race3);
-    fillEvaluationMap(answerEvaluation, answer.race4);
-    fillEvaluationMap(answerEvaluation, answer.race5);
-    fillEvaluationMap(answerEvaluation, answer.race6);
-    fillEvaluationMap(answerEvaluation, answer.race7);
-    fillEvaluationMap(answerEvaluation, answer.race8);
+    fillEvaluationMap(answerEvaluation, answer.getRace1());
+    fillEvaluationMap(answerEvaluation, answer.getRace2());
+    fillEvaluationMap(answerEvaluation, answer.getRace3());
+    fillEvaluationMap(answerEvaluation, answer.getRace4());
+    fillEvaluationMap(answerEvaluation, answer.getRace5());
+    fillEvaluationMap(answerEvaluation, answer.getRace6());
+    fillEvaluationMap(answerEvaluation, answer.getRace7());
+    fillEvaluationMap(answerEvaluation, answer.getRace8());
     return getMaxKey(answerEvaluation);
   }
 
@@ -148,13 +136,13 @@ public class CharacterService implements InitializingBean {
     answerEvaluation.put(race, value + 1);
   }
 
-  public List<CharacterEntity> findAll() {
+  public List<Character> findAll() {
     return repository.findAll();
   }
 
-  public CharacterEntity getResultCharacter(Answer answer) {
+  public Character getResultCharacter(Answer answer) {
     Race characterRace = getResults(answer);
-    return CharacterEntity.builder()
+    return Character.builder()
         .name(answer.getName())
         .hp(characterRace.hp)
         .mp(characterRace.mp)

@@ -1,8 +1,7 @@
 package hu.progmatic.kalandjatek.room;
 
-import hu.progmatic.kalandjatek.InventoryEntity;
-import hu.progmatic.kalandjatek.NPC.NPCEntity;
-import hu.progmatic.kalandjatek.character.CharacterEntity;
+import hu.progmatic.kalandjatek.Inventory;
+import hu.progmatic.kalandjatek.NPC.NPC;
 import lombok.*;
 
 import javax.persistence.*;
@@ -16,7 +15,7 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
-public class RoomEntity {
+public class Room {
 
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
@@ -28,7 +27,7 @@ public class RoomEntity {
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn
-  private InventoryEntity inventory;
+  private Inventory inventory;
 
 //  @OneToMany(mappedBy = "charRoom", cascade = CascadeType.ALL)
 //  @Builder.Default
@@ -36,13 +35,13 @@ public class RoomEntity {
 
   @OneToMany(mappedBy = "npcRoom", cascade = CascadeType.ALL)
   @Builder.Default
-  private List<NPCEntity> npcEntities = new ArrayList<>();
+  private List<NPC> npcEntities = new ArrayList<>();
 
   @OneToMany(mappedBy = "room1", cascade = CascadeType.ALL, orphanRemoval = true)
   @Builder.Default
-  private List<DoorEntity> doors1 = new ArrayList<>();
+  private List<Door> doors1 = new ArrayList<>();
 
   @OneToMany(mappedBy = "room2", cascade = CascadeType.ALL, orphanRemoval = true)
   @Builder.Default
-  private List<DoorEntity> doors2 = new ArrayList<>();
+  private List<Door> doors2 = new ArrayList<>();
 }

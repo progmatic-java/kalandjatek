@@ -1,18 +1,15 @@
 package hu.progmatic.kalandjatek.room;
 
-import hu.progmatic.kalandjatek.InventoryEntity;
-import hu.progmatic.kalandjatek.InventoryService;
+import hu.progmatic.kalandjatek.Inventory;
 import hu.progmatic.kalandjatek.ItemDto;
-import hu.progmatic.kalandjatek.ItemEntity;
-import hu.progmatic.kalandjatek.NPC.NPCEntity;
+import hu.progmatic.kalandjatek.Item;
+import hu.progmatic.kalandjatek.NPC.NPC;
 import hu.progmatic.kalandjatek.NPC.NPCRepository;
-import hu.progmatic.kalandjatek.character.CharacterEntity;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -20,11 +17,11 @@ import java.util.Map;
 @Service
 @Transactional
 public class RoomService implements InitializingBean {
-    private List<RoomEntity> rooms = List.of(
-            RoomEntity.builder().name("Inn").build(),
-            RoomEntity.builder().name("Main square").build(),
-            RoomEntity.builder().name("Forest").build(),
-            RoomEntity.builder().name("Inn cellar").build()
+    private List<Room> rooms = List.of(
+            Room.builder().name("Inn").build(),
+            Room.builder().name("Main square").build(),
+            Room.builder().name("Forest").build(),
+            Room.builder().name("Inn cellar").build()
     );
 
     @Autowired
@@ -34,11 +31,11 @@ public class RoomService implements InitializingBean {
     @Autowired
     private NPCRepository NPCRepository;
 
-    public List<RoomEntity> findAllRooms() {
+    public List<Room> findAllRooms() {
         return roomRepository.findAll();
     }
 
-    public List<NPCEntity> getNpcEntities() {
+    public List<NPC> getNpcEntities() {
         return NPCRepository.findAll();
     }
 
@@ -46,39 +43,39 @@ public class RoomService implements InitializingBean {
         return buildRoomDto(roomRepository.getById(id));
     }
 
-    private RoomDto buildRoomDto(RoomEntity roomEntity) {
+    private RoomDto buildRoomDto(Room room) {
         return RoomDto.builder()
-                .id(roomEntity.getId())
-                .roomName(roomEntity.getName())
-                .adjacentRooms(getAdjacentRooms(roomEntity))
-                .npcEntities(getNpcsName(roomEntity.getNpcEntities()))
-                .items(getItemList(roomEntity.getInventory()))
+                .id(room.getId())
+                .roomName(room.getName())
+                .adjacentRooms(getAdjacentRooms(room))
+                .npcEntities(getNpcsName(room.getNpcEntities()))
+                .items(getItemList(room.getInventory()))
                 .build();
     }
 
-    private List<String> getItemList(InventoryEntity inventory) {
+    private List<String> getItemList(Inventory inventory) {
         return inventory.getItems().stream()
-                .map(ItemEntity::getItemName)
+                .map(Item::getItemName)
                 .toList();
     }
 
-    private ItemDto buildItemDto(ItemEntity itemEntity) {
+    private ItemDto buildItemDto(Item item) {
         return ItemDto.builder()
-                .id(itemEntity.getId())
-                .itemName(itemEntity.getItemName())
-                .description(itemEntity.getDescription())
-                .typeOfItem(itemEntity.getTypeOfItem())
+                .id(item.getId())
+                .itemName(item.getItemName())
+                .description(item.getDescription())
+                .typeOfItem(item.getTypeOfItem())
 //        .inventoryId(itemEntity.getInventory().getId())
                 .build();
     }
 
-    private List<String> getNpcsName(List<NPCEntity> npcEntities) {
+    private List<String> getNpcsName(List<NPC> npcEntities) {
         return npcEntities.stream()
-                .map(NPCEntity::getName)
+                .map(NPC::getName)
                 .toList();
     }
 
-    public RoomEntity getByName(String name) {
+    public Room getByName(String name) {
         return roomRepository.getRoomEntityByName(name).orElseThrow();
     }
 
@@ -89,16 +86,16 @@ public class RoomService implements InitializingBean {
 //    }
     }
 
-    public RoomEntity saveRoom(RoomEntity room) {
+    public Room saveRoom(Room room) {
         return roomRepository.save(room);
     }
 
-    public List<RoomEntity> saveAllRoom(List<RoomEntity> rooms) {
+    public List<Room> saveAllRoom(List<Room> rooms) {
         return roomRepository.saveAll(rooms);
     }
 
-    public DoorEntity saveDoor(RoomEntity room1, RoomEntity room2) {
-        DoorEntity newDoor = doorRepository.save(DoorEntity.builder()
+    public Door saveDoor(Room room1, Room room2) {
+        Door newDoor = doorRepository.save(Door.builder()
                 .room1(room1)
                 .room2(room2)
                 .build()
@@ -108,24 +105,24 @@ public class RoomService implements InitializingBean {
         return newDoor;
     }
 
-    public Map<String, Integer> getAdjacentRooms(RoomEntity room) {
-        List<DoorEntity> allDoors = room.getDoors1();
+    public Map<String, Integer> getAdjacentRooms(Room room) {
+        List<Door> allDoors = room.getDoors1();
         allDoors.addAll(room.getDoors2());
-        List<RoomEntity> nextRooms = allDoors.stream()
+        List<Room> nextRooms = allDoors.stream()
             .map(door -> getOtherRoom(door, room))
             .toList();
         return getRoomMap(nextRooms);
     }
 
-    private Map<String, Integer> getRoomMap(List<RoomEntity> nextRooms) {
+    private Map<String, Integer> getRoomMap(List<Room> nextRooms) {
         Map<String, Integer> roomMap = new HashMap<>();
-        for (RoomEntity room : nextRooms) {
+        for (Room room : nextRooms) {
             roomMap.put(room.getName(), room.getId());
         }
         return roomMap;
     }
 
-    private RoomEntity getOtherRoom(DoorEntity door, RoomEntity room) {
+    private Room getOtherRoom(Door door, Room room) {
         if (door.getRoom1().equals(room)) {
             return door.getRoom2();
         } else {

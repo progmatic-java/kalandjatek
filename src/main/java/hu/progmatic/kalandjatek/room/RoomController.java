@@ -1,7 +1,6 @@
 package hu.progmatic.kalandjatek.room;
 
-import hu.progmatic.kalandjatek.NPC.NPCService;
-import hu.progmatic.kalandjatek.character.CharacterEntity;
+import hu.progmatic.kalandjatek.character.Character;
 import hu.progmatic.kalandjatek.character.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -42,7 +41,7 @@ public class RoomController {
   }
 
   @ModelAttribute("startingRoom")
-  public RoomEntity startRoom() {
+  public Room startRoom() {
     return roomService.getByName("Inn");
   }
 
@@ -52,8 +51,8 @@ public class RoomController {
   }
 
   @ModelAttribute("currPlayer")
-  public CharacterEntity currPlayer() {
-    return new CharacterEntity();
+  public Character currPlayer() {
+    return new Character();
   }
 
 }

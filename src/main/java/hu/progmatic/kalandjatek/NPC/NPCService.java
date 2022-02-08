@@ -13,16 +13,16 @@ public class NPCService {
     @Autowired
     private NPCRepository npcRepository;
 
-    public NPCEntity save(NPCEntity npc) {
+    public NPC save(NPC npc) {
         return npcRepository.save(npc);
     }
 
-    public NPCEntity getById(Integer id) {
+    public NPC getById(Integer id) {
         return npcRepository.getById(id);
     }
 
     public NPCDto getNPCDtoById(Integer id) {
-        NPCEntity entity = getById(id);
+        NPC entity = getById(id);
         return NPCDto.builder()
                 .name(entity.getName())
                 .id(entity.getId())
@@ -39,19 +39,19 @@ public class NPCService {
         npcRepository.deleteById(id);
     }
 
-    public void saveAll(List<NPCEntity> list) {
+    public void saveAll(List<NPC> list) {
         npcRepository.saveAllAndFlush(list);
     }
 
-    public NPCEntity findByName(String name) {
+    public NPC findByName(String name) {
         return npcRepository.findByName(name).orElseThrow();
     }
 
-    public List<NPCEntity> findAllByFriendly(Boolean friendly) {
+    public List<NPC> findAllByFriendly(Boolean friendly) {
         return npcRepository.findAllByFriendly(friendly);
     }
 
-    public List<NPCEntity> findAll() {
+    public List<NPC> findAll() {
         return npcRepository.findAll();
     }
 }
