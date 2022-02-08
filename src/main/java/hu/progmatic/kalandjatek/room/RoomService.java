@@ -13,7 +13,9 @@ import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Service
 @Transactional
@@ -48,7 +50,7 @@ public class RoomService implements InitializingBean {
         return RoomDto.builder()
                 .id(roomEntity.getId())
                 .roomName(roomEntity.getName())
-                .adjacentRooms(new ArrayList<>())
+                .adjacentRooms(getAdjacentRooms(roomEntity))
                 .npcEntities(getNpcsName(roomEntity.getNpcEntities()))
                 .items(getItemList(roomEntity.getInventory()))
                 .build();
@@ -71,10 +73,9 @@ public class RoomService implements InitializingBean {
     }
 
     private List<String> getNpcsName(List<NPCEntity> npcEntities) {
-//        return npcEntities.stream()
-//                .map(NPCEntity::getName)
-//                .toList();
-        return null;
+        return npcEntities.stream()
+                .map(NPCEntity::getName)
+                .toList();
     }
 
     public RoomEntity getByName(String name) {
@@ -105,6 +106,31 @@ public class RoomService implements InitializingBean {
         room1.getDoors1().add(newDoor);
         room1.getDoors2().add(newDoor);
         return newDoor;
+    }
+
+    public Map<String, Integer> getAdjacentRooms(RoomEntity room) {
+        List<DoorEntity> allDoors = room.getDoors1();
+        allDoors.addAll(room.getDoors2());
+        List<RoomEntity> nextRooms = allDoors.stream()
+            .map(door -> getOtherRoom(door, room))
+            .toList();
+        return getRoomMap(nextRooms);
+    }
+
+    private Map<String, Integer> getRoomMap(List<RoomEntity> nextRooms) {
+        Map<String, Integer> roomMap = new HashMap<>();
+        for (RoomEntity room : nextRooms) {
+            roomMap.put(room.getName(), room.getId());
+        }
+        return roomMap;
+    }
+
+    private RoomEntity getOtherRoom(DoorEntity door, RoomEntity room) {
+        if (door.getRoom1().equals(room)) {
+            return door.getRoom2();
+        } else {
+            return door.getRoom1();
+        }
     }
 
     public void dropAllRoom() {

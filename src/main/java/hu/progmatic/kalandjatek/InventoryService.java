@@ -2,77 +2,21 @@ package hu.progmatic.kalandjatek;
 
 import hu.progmatic.kalandjatek.room.RoomEntity;
 import hu.progmatic.kalandjatek.room.RoomRepository;
-import hu.progmatic.kalandjatek.room.RoomService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.transaction.Transactional;
 import java.util.List;
 
 @Service
 @Transactional
-public class InventoryService implements InitializingBean {
+public class InventoryService{
 
   @Autowired
   private InventoryRepository inventoryRepository; //parent
   @Autowired
   private ItemRepository itemRepository; // child
-  @Autowired
-  private RoomRepository roomRepository;
-
-
-  @Override
-  public void afterPropertiesSet() throws Exception {
-    InventoryEntity innInv = InventoryEntity.builder().build();
-//    InventoryEntity charInv = createInventory(InventoryEntity.builder().build());
-
-    List<ItemEntity> innItems = List.of(
-            ItemEntity.builder()
-                .itemName("Beer")
-                .description("A cold drink from Go'odor")
-                .typeOfItem(ItemEnum.CONSUMABLE)
-                .build(),
-            ItemEntity.builder()
-                .itemName("Knife")
-                .description("Good for slicing bread")
-                .typeOfItem(ItemEnum.ATTACK)
-                .build(),
-            ItemEntity.builder()
-                .itemName("Coins")
-                .description("You should take it")
-                .typeOfItem(ItemEnum.CONSUMABLE)
-                .build()
-    );
-
-//    List<ItemEntity> charItems = createItems(
-//        List.of(
-//            ItemEntity.builder()
-//                .itemName("Long sword")
-//                .description("Finest weapon in town")
-//                .typeOfItem(ItemEnum.ATTACK)
-//                .build(),
-//            ItemEntity.builder()
-//                .itemName("Wooden shield")
-//                .description("Good for blocking")
-//                .typeOfItem(ItemEnum.SHIELD)
-//                .build(),
-//            ItemEntity.builder()
-//                .itemName("Potion")
-//                .description("Heals your wounds")
-//                .typeOfItem(ItemEnum.CONSUMABLE)
-//                .build()
-//        )
-//    );
-
-    for (ItemEntity item : innItems) {
-      innInv.getItems().add(item);
-      item.setInventory(innInv);
-    }
-
-    RoomEntity inn = roomRepository.save(RoomEntity.builder().name("Inn").inventory(innInv).build());
-  }
 
   public InventoryEntity createInventory(InventoryEntity newInventory) {
     return inventoryRepository.save(newInventory);

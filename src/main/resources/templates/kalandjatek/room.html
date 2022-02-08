@@ -24,7 +24,64 @@
             background: url(https://wallpaperaccess.com/full/6079735.png) no-repeat;
             background-size: 100% 100%;
         }
+        .dropbtn {
+            background-color: black;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            position: center;
+            text-align: center;
 
+        }
+
+        .dropdown {
+            font-style: italic;
+            font-family: MedievalSharp,serif;
+            font-weight: 700;
+            font-size: 40px;
+            padding: 25px 25px;
+            float: bottom;
+            text-align: center;
+            left: 0;
+            position: absolute;
+            bottom: 55%;
+            display: inline-block;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: black;
+            min-width: 160px;
+            box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            text-align: center;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+
+        .dropdown-content a:hover {
+            background-color: black;
+            text-align: center;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            text-align: center;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: black;
+            text-align: center;
+        }
     </style>
 
     <title>Room</title>
@@ -49,13 +106,33 @@
     <li th:text="${'Mp: ' + currPlayer.getMp()}">Mp: </li>
     <li th:text="${'Gold: ' + currPlayer.getGold()}">Gold: </li>
 </ul>
-
+<br>
 <h3>NPCs in Room:</h3>
 <ul>
     <div th:each="npcName : ${currNpcs}">
         <li th:text="${npcName}">Burrows</li>
     </div>
 </ul>
+<br>
+<!--<h3>Next rooms:</h3>-->
+<!--<ul>-->
+<!--    <div th:each="nextRoom : ${currDoors}">-->
+<!--        <li th:text="${nextRoom}">Next Room</li>-->
+<!--    </div>-->
+<!--</ul>-->
+<div class="dropdown">
+    <button class="dropbtn">Next rooms</button>
+    <div class="dropdown-content">
+
+        <div th:each="nextRoom : ${currDoors.entrySet()}">
+            <form th:action="@{'/kalandjatek/characterpage/{characterId}/room/{roomId}'(characterId=${currPlayer.getId()},roomId=${nextRoom.getValue()})}" method="get">
+                <input type="submit" class="btn btn-dark" th:value="${nextRoom.getKey()}"/>
+            </form>
+
+        </div>
+
+    </div>
+</div>
 <br>
 <form th:action="@{/kalandjatek/fooldal}" method="get">
     <input type="submit" class="btn btn-dark" style="background-color: green" value="Go Back"/>
