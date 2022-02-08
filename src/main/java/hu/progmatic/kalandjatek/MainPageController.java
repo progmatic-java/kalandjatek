@@ -17,7 +17,7 @@ public class MainPageController {
 
     @GetMapping("/kalandjatek")
     public String beforeMain() {
-        return "beforemainpage";
+        return "/kalandjatek/beforemainpage";
     }
 
     @GetMapping("/kalandjatek/fooldal")
