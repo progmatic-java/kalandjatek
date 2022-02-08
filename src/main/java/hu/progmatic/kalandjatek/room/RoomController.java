@@ -19,9 +19,6 @@ public class RoomController {
   @Autowired
   private CharacterService characterService;
 
-  @Autowired
-  private NPCService npcService;
-
 
   @GetMapping("/kalandjatek/room")
   public String roomPage() {
