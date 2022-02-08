@@ -2,7 +2,7 @@ package hu.progmatic.kalandjatek.character;
 
 import hu.progmatic.felhasznalo.FelhasznaloService;
 import hu.progmatic.felhasznalo.UserType;
-import hu.progmatic.kalandjatek.room.RoomEntity;
+import hu.progmatic.kalandjatek.room.Room;
 import hu.progmatic.kalandjatek.room.RoomService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -19,12 +19,7 @@ import java.util.List;
 
 @Controller
 public class AdventureGameController {
-  private final List<Character> defaultCharacters = List.of(
-      new Character("Orkeo", Race.ORC, 100, 50, 150),
-      new Character("Elfy", Race.ELF, 100, 50, 150),
-      new Character("Bence", Race.HUMAN, 50, 50, 50),
-      new Character("Sugar Alien", Race.REPTILIAN, 200, 200, 200)
-  );
+
 
 
   @Autowired
@@ -50,7 +45,7 @@ public class AdventureGameController {
   @GetMapping("/kalandjatek/characterpage/{id}")
   public String characterId(
       @PathVariable Integer id, Model model) {
-    CharacterEntity chosenCharacter = characterService.getById(id);
+    Character chosenCharacter = characterService.getById(id);
     model.addAttribute("chosenCharacter", chosenCharacter);
     model.addAttribute("newCharacter", false);
     return "/kalandjatek/characterpage";
@@ -71,7 +66,7 @@ public class AdventureGameController {
     if (bindingResult.hasErrors()) {
       return "/kalandjatek/szemelyisegtesztmixelt";
     }
-    CharacterEntity resultCharacter = characterService.getResultCharacter(answer);
+    Character resultCharacter = characterService.getResultCharacter(answer);
     characterService.save(resultCharacter);
     model.addAttribute("chosenCharacter", resultCharacter);
     model.addAttribute("retakeTest", true);
@@ -94,18 +89,18 @@ public class AdventureGameController {
 
   @GetMapping("/kalandjatek/introduction/{id}")
   public String intro(@PathVariable Integer id, Model model) {
-    CharacterEntity chosenCharacter = characterService.getById(id);
+    Character chosenCharacter = characterService.getById(id);
     model.addAttribute("chosenCharacter", chosenCharacter);
     return "/kalandjatek/introduction";
   }
 
   @ModelAttribute("chosenCharacter")
-  public CharacterEntity chosenCharacter() {
-    return new CharacterEntity();
+  public Character chosenCharacter() {
+    return new Character();
   }
 
   @ModelAttribute("startingRoom")
-  public RoomEntity startRoom() {
+  public Room startRoom() {
     return roomService.getByName("Inn");
   }
 
@@ -114,10 +109,6 @@ public class AdventureGameController {
     return new Answer();
   }
 
-  @ModelAttribute("defaultCharacters")
-  public List<Character> getDefaultCharacters() {
-    return defaultCharacters;
-  }
 
   @ModelAttribute("retakeTest")
   public boolean retakeTest() {
