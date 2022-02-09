@@ -39,19 +39,7 @@ public class NPCService {
         npcRepository.deleteById(id);
     }
 
-    public void saveAll(List<NPC> list) {
-        npcRepository.saveAllAndFlush(list);
-    }
-
     public NPC findByName(String name) {
         return npcRepository.findByName(name).orElseThrow();
-    }
-
-    public List<NPC> findAllByFriendly(Boolean friendly) {
-        return npcRepository.findAllByFriendly(friendly);
-    }
-
-    public List<NPC> findAll() {
-        return npcRepository.findAll();
     }
 }

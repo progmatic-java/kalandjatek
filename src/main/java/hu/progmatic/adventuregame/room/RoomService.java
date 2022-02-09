@@ -16,28 +16,12 @@ import java.util.Map;
 
 @Service
 @Transactional
-public class RoomService implements InitializingBean {
-    private List<Room> rooms = List.of(
-            Room.builder().name("Inn").build(),
-            Room.builder().name("Main square").build(),
-            Room.builder().name("Forest").build(),
-            Room.builder().name("Inn cellar").build()
-    );
+public class RoomService{
 
     @Autowired
     private RoomRepository roomRepository;
     @Autowired
     private DoorRepository doorRepository;
-    @Autowired
-    private NPCRepository NPCRepository;
-
-    public List<Room> findAllRooms() {
-        return roomRepository.findAll();
-    }
-
-    public List<NPC> getNpcEntities() {
-        return NPCRepository.findAll();
-    }
 
     public RoomDto getRoomById(Integer id) {
         return buildRoomDto(roomRepository.getById(id));
@@ -60,16 +44,6 @@ public class RoomService implements InitializingBean {
                 .toList();
     }
 
-    private ItemDto buildItemDto(Item item) {
-        return ItemDto.builder()
-                .id(item.getId())
-                .itemName(item.getItemName())
-                .description(item.getDescription())
-                .typeOfItem(item.getTypeOfItem())
-//        .inventoryId(itemEntity.getInventory().getId())
-                .build();
-    }
-
     private List<String> getNpcsName(List<NPC> npcEntities) {
         return npcEntities.stream()
                 .map(NPC::getName)
@@ -78,13 +52,6 @@ public class RoomService implements InitializingBean {
 
     public Room getByName(String name) {
         return roomRepository.getRoomEntityByName(name).orElseThrow();
-    }
-
-    @Override
-    public void afterPropertiesSet() throws Exception {
-//    if (roomRepository.count() == 0) {
-//      roomRepository.saveAll(rooms);
-//    }
     }
 
     public Room saveRoom(Room room) {

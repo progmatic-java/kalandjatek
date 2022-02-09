@@ -41,7 +41,7 @@ class RoomServiceTest {
           List.of(
               Room.builder().name("Wasteland").build(),
               Room.builder().name("Church").build(),
-              Room.builder().name("Inn").build(),
+              Room.builder().name("The Black Hole Inn").build(),
               Room.builder().name("Main square").build(),
               Room.builder().name("Forest").build(),
               Room.builder().name("Inn cellar").build()
@@ -56,29 +56,16 @@ class RoomServiceTest {
           .isNotNull()
           .hasSize(6)
           .extracting(Room::getName)
-          .containsExactlyInAnyOrder("Wasteland", "Church", "Inn", "Main square", "Forest", "Inn cellar");
+          .containsExactlyInAnyOrder("Wasteland", "Church", "The Black Hole Inn", "Main square", "Forest", "Inn cellar");
     }
 
     @Test
     @DisplayName("Get room by name test")
     void getRoomByNameTest() {
-      Room inn = roomService.getByName("Inn");
-      assertEquals("Inn", inn.getName());
+      Room inn = roomService.getByName("The Black Hole Inn");
+      assertEquals("The Black Hole Inn", inn.getName());
       Room forest = roomService.getByName("Forest");
       assertEquals("Forest", forest.getName());
-    }
-
-    @Test
-    @Disabled
-    @DisplayName("Add door test")
-    void addDoorTest() {
-      Room inn = roomService.getByName("Inn");
-      Room innCellar = roomService.getByName("Inn cellar");
-      Door cellarDoor = roomService.saveDoor(inn, innCellar);
-
-      assertThat(cellarDoor.getId()).isNotNull();
-      assertEquals("Inn", cellarDoor.getRoom1().getName());
-      assertEquals("Inn cellar", cellarDoor.getRoom2().getName());
     }
   }
 }

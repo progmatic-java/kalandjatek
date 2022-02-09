@@ -37,16 +37,8 @@ public class InventoryService{
     return inventoryRepository.getById(inventoryId).getItems().stream().toList();
   }
 
-  public void deleteById(Integer itemId) {
-    itemRepository.deleteById(itemId);
-  }
-
   public void deleteInventory(Integer inventoryId) {
     inventoryRepository.deleteById(inventoryId);
-  }
-
-  public boolean itemExistsById(Integer id) {
-    return itemRepository.existsById(id);
   }
 
   public List<Item> createItems(List<Item> items) {

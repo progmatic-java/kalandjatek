@@ -98,7 +98,7 @@ public class CharacterController {
 
   @ModelAttribute("startingRoom")
   public Room startRoom() {
-    return roomService.getByName("Inn");
+    return roomService.getByName("The Black Hole Inn");
   }
 
   @ModelAttribute("testAnswer")
