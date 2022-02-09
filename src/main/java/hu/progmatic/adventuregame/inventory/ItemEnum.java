@@ -1,4 +1,4 @@
-package hu.progmatic.adventuregame;
+package hu.progmatic.adventuregame.inventory;
 
 public enum ItemEnum {
     SHIELD,

@@ -1,8 +1,8 @@
 package hu.progmatic.adventuregame.room;
 
-import hu.progmatic.adventuregame.Inventory;
-import hu.progmatic.adventuregame.ItemDto;
-import hu.progmatic.adventuregame.Item;
+import hu.progmatic.adventuregame.inventory.Inventory;
+import hu.progmatic.adventuregame.inventory.ItemDto;
+import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.NPC.NPC;
 import hu.progmatic.adventuregame.NPC.NPCRepository;
 import org.springframework.beans.factory.InitializingBean;

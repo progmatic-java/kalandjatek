@@ -19,8 +19,6 @@ import javax.validation.Valid;
 @Controller
 public class CharacterController {
 
-
-
   @Autowired
   private CharacterService characterService;
 
@@ -53,7 +51,7 @@ public class CharacterController {
   @PostMapping("/adventuregame/characterpage/delete/{id}")
   public String delete(@PathVariable Integer id) {
     characterService.delete(id);
-    return "/adventuregame/mainpage";
+    return "redirect:/adventuregame/mainpage";
   }
 
   @PostMapping("/adventuregame/personalitytest")

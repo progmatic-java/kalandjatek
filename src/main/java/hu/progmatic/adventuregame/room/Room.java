@@ -1,6 +1,6 @@
 package hu.progmatic.adventuregame.room;
 
-import hu.progmatic.adventuregame.Inventory;
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.NPC.NPC;
 import lombok.*;
 

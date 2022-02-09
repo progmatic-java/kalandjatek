@@ -1,7 +1,7 @@
 package hu.progmatic.adventuregame.init;
 
-import hu.progmatic.adventuregame.Item;
-import hu.progmatic.adventuregame.ItemEnum;
+import hu.progmatic.adventuregame.inventory.Item;
+import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.NPC.NPC;
 
 import java.util.List;

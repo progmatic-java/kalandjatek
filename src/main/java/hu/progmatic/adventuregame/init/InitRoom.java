@@ -1,7 +1,7 @@
 package hu.progmatic.adventuregame.init;
 
-import hu.progmatic.adventuregame.Inventory;
-import hu.progmatic.adventuregame.Item;
+import hu.progmatic.adventuregame.inventory.Inventory;
+import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.NPC.NPC;
 import lombok.Getter;
 import lombok.Setter;
