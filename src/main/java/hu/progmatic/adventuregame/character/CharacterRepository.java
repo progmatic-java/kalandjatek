@@ -8,5 +8,5 @@ import java.util.Optional;
 public interface CharacterRepository extends JpaRepository<Character, Integer> {
     List<Character> findAllByNameContains(String name);
     List<Character> findAllByRace(Race race);
-    Optional<Character> findByRace(Race race);
+    Optional<Character> getCharacterByName(String name);
 }

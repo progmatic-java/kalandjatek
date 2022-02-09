@@ -38,16 +38,14 @@ class CharacterControllerTest {
     }
 
     @Test
-    @Disabled
     @DisplayName("Character page megjelenik")
     void characterPage() throws Exception {
+        Integer characterId = characterService.getIdByName("Vallak");
+
         mockMvc.perform(
-                        post("/adventuregame/characterpage")
-                                .contentType(MediaType.APPLICATION_FORM_URLENCODED)
-                                .content("chosenCharacter.getName()=characternevestring")
+                        get("/adventuregame/characterpage/" + characterId)
                 ).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("characternevestring")))
-                .andExpect(content().string(containsString("Kukorica")))
-                .andExpect(content().string(containsString("1000")));
+                .andExpect(content().string(containsString("Vallak")))
+                .andExpect(content().string(containsString("Character page")));
     }
 }

@@ -153,4 +153,8 @@ public class CharacterService implements InitializingBean {
         .answer(answer)
         .build();
   }
+
+  public Integer getIdByName(String name) {
+    return repository.getCharacterByName(name).orElseThrow().getId();
+  }
 }
