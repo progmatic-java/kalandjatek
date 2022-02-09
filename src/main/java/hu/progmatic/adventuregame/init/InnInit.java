@@ -9,10 +9,10 @@ import java.util.List;
 
 @Getter
 @Setter
-public class InnInit extends InitRoom{
+public class InnInit extends InitRoom {
   @Override
   public String getName() {
-    return "Inn";
+    return "The Black Hole Inn";
   }
 
   List<NPC> getInitNpcs() {
@@ -62,7 +62,7 @@ public class InnInit extends InitRoom{
         Item.builder()
             .itemName("Coins")
             .description("You should take it")
-            .typeOfItem(ItemEnum.CONSUMABLE)
+            .typeOfItem(ItemEnum.VALUABLE)
             .build()
     );
   }

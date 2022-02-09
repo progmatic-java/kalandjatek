@@ -6,15 +6,10 @@ import hu.progmatic.adventuregame.npc.NPC;
 
 import java.util.List;
 
-public class MainSquareInit extends InitRoom{
+public class MainSquareInit extends InitRoom {
   @Override
   public String getName() {
     return "Ko’lossy Square";
-  }
-
-  @Override
-  public String getRoomImgRef() {
-    return "https://i.pinimg.com/originals/30/91/a0/3091a017b704dd6c24339700f4a16ff4.jpg";
   }
 
   @Override
@@ -40,7 +35,7 @@ public class MainSquareInit extends InitRoom{
     return List.of(
         Item.builder()
             .itemName("Coins")
-            .typeOfItem(ItemEnum.CONSUMABLE)
+            .typeOfItem(ItemEnum.VALUABLE)
             .build(),
         Item.builder()
             .itemName("Stale bread")
@@ -52,8 +47,13 @@ public class MainSquareInit extends InitRoom{
             .build(),
         Item.builder()
             .itemName("Suspicious letter")
-            .typeOfItem(ItemEnum.CONSUMABLE)
+            .typeOfItem(ItemEnum.JUNK)
             .build()
     );
+  }
+
+  @Override
+  public String getRoomImgRef() {
+    return "https://i.pinimg.com/originals/30/91/a0/3091a017b704dd6c24339700f4a16ff4.jpg";
   }
 }

@@ -6,15 +6,10 @@ import hu.progmatic.adventuregame.npc.NPC;
 
 import java.util.List;
 
-public class ShopInit extends InitRoom{
+public class ShopInit extends InitRoom {
   @Override
   public String getName() {
     return "Tezco’s Shop";
-  }
-
-  @Override
-  public String getRoomImgRef() {
-    return "https://i.pinimg.com/originals/40/70/2d/40702d8635092eeb1925f9bfca13dfd2.jpg";
   }
 
   @Override
@@ -55,5 +50,10 @@ public class ShopInit extends InitRoom{
             .typeOfItem(ItemEnum.CONSUMABLE)
             .build()
     );
+  }
+
+  @Override
+  public String getRoomImgRef() {
+    return "https://i.pinimg.com/originals/40/70/2d/40702d8635092eeb1925f9bfca13dfd2.jpg";
   }
 }

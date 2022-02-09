@@ -16,6 +16,12 @@ import java.util.List;
 public class InitService implements InitializingBean {
   private final InnInit innInit = new InnInit();
   private final CellarInit cellarInit = new CellarInit();
+  private final ChurchInit churchInit = new ChurchInit();
+  private final ChurchDungeonsInit churchDungeonsInit = new ChurchDungeonsInit();
+  private final MainSquareInit mainSquareInit = new MainSquareInit();
+  private final ShopInit shopInit = new ShopInit();
+  private final RoadToTheForestInit roadToTheForestInit = new RoadToTheForestInit();
+  private final ForestInit forestInit = new ForestInit();
 
   @Autowired
   private RoomRepository roomRepository;
@@ -24,10 +30,22 @@ public class InitService implements InitializingBean {
   public void afterPropertiesSet() throws Exception {
     Room inn = createRoom(innInit);
     Room cellar = createRoom(cellarInit);
+    Room church = createRoom(churchInit);
+    Room churchDungeons = createRoom(churchDungeonsInit);
+    Room mainSquare = createRoom(mainSquareInit);
+    Room shop = createRoom(shopInit);
+    Room roadToTheForest = createRoom(roadToTheForestInit);
+    Room forest = createRoom(forestInit);
 
     createDoorBetweenRooms(inn, cellar);
+    createDoorBetweenRooms(church, churchDungeons);
+    createDoorBetweenRooms(mainSquare, inn);
+    createDoorBetweenRooms(mainSquare, church);
+    createDoorBetweenRooms(mainSquare, shop);
+    createDoorBetweenRooms(mainSquare, roadToTheForest);
+    createDoorBetweenRooms(roadToTheForest, forest);
 
-    roomRepository.saveAll(List.of(inn, cellar));
+    roomRepository.saveAll(List.of(inn, cellar, church, churchDungeons, mainSquare, shop, forest, roadToTheForest));
   }
 
   private void createDoorBetweenRooms(Room room1, Room room2) {

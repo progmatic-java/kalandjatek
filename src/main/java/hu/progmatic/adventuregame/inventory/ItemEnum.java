@@ -5,5 +5,6 @@ public enum ItemEnum {
     ATTACK,
     CONSUMABLE,
     JUNK,
-    KEY
+    KEY,
+    VALUABLE
 }
