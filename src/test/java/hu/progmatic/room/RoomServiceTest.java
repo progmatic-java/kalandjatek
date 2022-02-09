@@ -1,8 +1,8 @@
 package hu.progmatic.room;
 
-import hu.progmatic.kalandjatek.room.Door;
-import hu.progmatic.kalandjatek.room.Room;
-import hu.progmatic.kalandjatek.room.RoomService;
+import hu.progmatic.adventuregame.room.Door;
+import hu.progmatic.adventuregame.room.Room;
+import hu.progmatic.adventuregame.room.RoomService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;

@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Character result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+</head>
+<body>
+<style>
+
+
+    h1 {
+        color: whitesmoke;
+        font-family: MedievalSharp, serif;
+        font-weight: 400;
+        font-size: 50px;
+        text-align: center;
+        text-shadow:
+                -2px -2px 0 #000,
+                1px -1px 0 #000,
+                -2px 2px 0 #000,
+                1px 1px 0 #000;
+    }
+
+    .fade-in {
+        animation: fadeIn ease 10s;
+        -webkit-animation: fadeIn ease 10s;
+        -moz-animation: fadeIn ease 10s;
+        -o-animation: fadeIn ease 10s;
+        -ms-animation: fadeIn ease 10s;
+    }
+
+    @keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-moz-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-webkit-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-o-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+    @-ms-keyframes fadeIn {
+        0% {
+            opacity: 0;
+        }
+        100% {
+            opacity: 1;
+        }
+    }
+
+
+
+    .buttons{
+        text-align: center;
+    }
+
+
+    html,
+    body {
+        height: 100%;
+    }
+
+    body {
+        background: url(https://miro.medium.com/max/1199/1*AtkkTkSLk6Jd0nwVqifzeQ.jpeg) no-repeat;
+        background-size: 100% 100%;
+
+    }
+
+
+</style>
+
+<div class="fade-in">
+
+    <h1 th:text="${'Welcome ' + chosenCharacter.getName()}+ ' to the World of Prougmathicque!'">Welcome young warrior, to the World of Prougmathicque!</h1>
+    <br>
+    <br>
+    <br>
+    <br>
+    <h1>
+        It is the year 609 B.F, and after many years of war the great Kingdom of K'aam is experiencing an era of peace
+        and prosperity! Wander and explore the lands, converse with strange travelers and help the inhabitants of the
+        realm by solving quests!
+
+    </h1>
+
+
+    <div class="buttons">
+        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${chosenCharacter.getId()},roomId=${startingRoom.getId()})}" method="get">
+            <input type="submit" class="btn btn-dark" value="Click to continue..."/>
+        </form>
+    </div>
+
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+    </style>
+
+</div>
+</body>
+
+</html>

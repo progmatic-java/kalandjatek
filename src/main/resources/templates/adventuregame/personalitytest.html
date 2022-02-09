@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Personality Test</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        img {
+            width: 70%
+        }
+
+    </style>
+
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+
+        body {
+            color: whitesmoke;
+            font-family: MedievalSharp,serif;
+            font-size: 15px;
+            font-weight: 500;
+            background: url(https://i.imgur.com/gOpvF4i.jpg) no-repeat center center fixed;
+        }
+
+        h1 {
+            font-style: italic;
+            text-align: left;
+            font-family: MedievalSharp,serif;
+            font-weight: 700;
+            font-size: 70px;
+            padding: 50px 80px;
+            color: whitesmoke;
+            background-image: url(https://www.gannett-cdn.com/-mm-/20633832158166c7e630e2110f6d5b4e08bbda9c/c=0-377-1732-1356/local/-/media/2017/09/21/USATODAY/USATODAY/636415913442262218-GettyImages-481013807.jpg);
+
+
+        }
+
+
+        .szoveg {
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+            0px 8px 13px rgba(0, 0, 0, 0.5),
+            0px 18px 23px rgba(0, 0, 0, 0.1);
+            background-color: #ffffff50;
+            font-style: italic;
+            text-align: center;
+            color: whitesmoke;
+            font-family: MedievalSharp,serif;
+            font-weight: 500;
+            border-style: double;
+            font-size: 30px;
+
+        }
+
+        .kiemeltSzoveg {
+            color: whitesmoke;
+            font-style: italic;
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+            0px 8px 13px rgba(0, 0, 0, 0.5),
+            0px 18px 23px rgba(0, 0, 0, 0.1);
+            font-family: MedievalSharp,serif;
+            font-size: 20px;
+            font-weight: 500;
+        }
+
+        .kerdesek {
+            color: whitesmoke;
+            text-shadow: 0px 4px 3px rgba(0, 0, 0, 0.4),
+            0px 8px 13px rgba(0, 0, 0, 0.1),
+            0px 18px 23px rgba(0, 0, 0, 0.1);
+            font-family: MedievalSharp,serif;
+            font-size: 25px;
+            font-weight: 500;
+        }
+
+        .card {
+            background-image: url(https://i.imgur.com/6sWk1OR.jpg);
+
+        }
+
+    </style>
+
+</head>
+<body>
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+        crossorigin="anonymous"></script>
+
+<h1>Personality Test</h1>
+<p class="szoveg">Get ready for a personality test! You will be given a character!</p>
+
+<form th:action="@{/adventuregame/personalitytest}" method="post" th:object="${testAnswer}">
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4 block">
+                <div class="card-header">
+                    <label class="kiemeltSzoveg" for="name"> Character Name: <br>
+                        <input type="text" placeholder="Bilbo Baggins" id="name" name="name" maxlength="13"
+                               th:field="*{name}"
+                               th:classappend="${#fields.hasErrors('name')} ? 'is-invalid' : 'is-valid'"><br>
+                        <div class="invalid-feedback"
+                             th:if="${#fields.hasErrors('name')}"
+                             th:errors="*{name}">
+                            Hibaüzenet
+                        </div>
+                    </label>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <p class="szoveg">Please choose the answer you most agree with!</p>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4 block">
+                <div class="card-header">
+                    <p class="kerdesek">What is your favourite kind of bread? </p>
+                </div>
+                <input type="radio" id="a1" name="favbread" value="ELF" th:field="*{race1}">
+                <label for="a1">Melon Pan</label><br>
+                <input type="radio" id="a2" name="favbread" value="HUMAN" th:field="*{race1}">
+                <label for="a2">Baguette</label><br>
+                <input type="radio" id="a3" name="favbread" value="ORC" th:field="*{race1}">
+                <label for="a3">Sourdough Bread</label><br>
+                <input type="radio" id="a4" name="favbread" value="REPTILIAN" th:field="*{race1}">
+                <label for="a4">Garlic Bread</label><br>
+                <p class="" th:if="${#fields.hasErrors('race1')}" th:errors="*{race1}" style="color:red;">Radio1 hiba</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4 block">
+                <div class="card-header">
+                    <p class="kerdesek">What is your favourite animal? </p>
+                </div>
+                <input type="radio" id="a5" name="favanimal" value="ORC" th:field="*{race2}">
+                <label for="a5">Pig</label><br>
+                <input type="radio" id="a6" name="favanimal" value="ELF" th:field="*{race2}">
+                <label for="a6">Fox</label><br>
+                <input type="radio" id="a7" name="favanimal" value="HUMAN" th:field="*{race2}">
+                <label for="a7">Orangutan</label><br>
+                <input type="radio" id="a8" name="favanimal" value="REPTILIAN" th:field="*{race2}">
+                <label for="a8">Penguin</label><br>
+                <p class="" th:if="${#fields.hasErrors('race2')}" th:errors="*{race2}" style="color:red;">Radio2 hiba</p>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4 block">
+                <div class="card-header">
+                    <p class="kerdesek">Where is your happy place? </p>
+                </div>
+                <input type="radio" id="a9" name="favplace" value="ELF" th:field="*{race3}">
+                <label for="a9">Shangri-La</label><br>
+                <input type="radio" id="a10" name="favplace" value="HUMAN" th:field="*{race3}">
+                <label for="a10">Nógrád county</label><br>
+                <input type="radio" id="a11" name="favplace" value="ORC" th:field="*{race3}">
+                <label for="a11">At home with my cat</label><br>
+                <input type="radio" id="a12" name="favplace" value="REPTILIAN" th:field="*{race3}">
+                <label for="a12">Progmatic</label><br>
+                <p class="" th:if="${#fields.hasErrors('race3')}" th:errors="*{race3}" style="color:red;">Radio3 hiba</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4 block">
+                <div class="card-header">
+                    <p class="kerdesek">What is your favourite planet? </p>
+                </div>
+                <input type="radio" id="a13" name="favplanet" value="HUMAN" th:field="*{race4}">
+                <label for="a13">Venus</label><br>
+                <input type="radio" id="a14" name="favplanet" value="REPTILIAN" th:field="*{race4}">
+                <label for="a14">Neptune</label><br>
+                <input type="radio" id="a15" name="favplanet" value="ELF" th:field="*{race4}">
+                <label for="a15">Saturn</label><br>
+                <input type="radio" id="a16" name="favplanet" value="ORC" th:field="*{race4}">
+                <label for="a16">Mars</label><br>
+                <p class="" th:if="${#fields.hasErrors('race4')}" th:errors="*{race4}" style="color:red;">Radio4 hiba</p>
+            </div>
+        </div>
+    </div>
+
+    <!--    <div class="col-lg-6">-->
+    <!--        <div class="card mb-4 block">-->
+    <!--            <div class="card-header">-->
+    <!--                <p class="kerdesek">What kind of weapon would you use? </p>-->
+    <!--            </div>-->
+    <!--            <input type="checkbox" id="c1" name="weapon" value="Axe">-->
+    <!--            <label for="c1">Axe</label><br>-->
+    <!--            <input type="checkbox" id="c2" name="weapon" value="Bow and Arrow">-->
+    <!--            <label for="c2">Bow and Arrow</label><br>-->
+    <!--            <input type="checkbox" id="c3" name="weapon" value="Kalasnikov">-->
+    <!--            <label for="c3">Kalasnikov</label><br>-->
+    <!--            <input type="checkbox" id="c4" name="weapon" value="Sword">-->
+    <!--            <label for="c4">Sword</label><br>-->
+
+
+    <!--            <input type="submit" value="Submit">-->
+    <!--        </div>-->
+    <!--    </div>-->
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4 block">
+                <div class="card-header">
+                    <p class="kerdesek">What kind of weapon would you use? </p>
+                </div>
+                <input type="radio" id="a17" name="weapon" value="ORC" th:field="*{race5}">
+                <label for="a17">Axe</label><br>
+                <input type="radio" id="a18" name="weapon" value="ELF" th:field="*{race5}">
+                <label for="a18">Bow and Arrow</label><br>
+                <input type="radio" id="a19" name="weapon" value="HUMAN" th:field="*{race5}">
+                <label for="a19">Kalasnikov</label><br>
+                <input type="radio" id="a20" name="weapon" value="REPTILIAN" th:field="*{race5}">
+                <label for="a20">Sword</label><br>
+                <p class="" th:if="${#fields.hasErrors('race5')}" th:errors="*{race5}" style="color:red;">Radio5 hiba</p>
+            </div>
+        </div>
+        <div class="col-lg-6">
+            <div class="card mb-4 block">
+                <div class="card-header">
+                    <p class="kerdesek">What is your go-to cocktail? </p>
+                </div>
+                <input type="radio" id="a21" name="cocktail" value="HUMAN" th:field="*{race6}">
+                <label for="a21">White Russian</label><br>
+                <input type="radio" id="a22" name="cocktail" value="ELF" th:field="*{race6}">
+                <label for="a22">Magic Potion</label><br>
+                <input type="radio" id="a23" name="cocktail" value="ORC" th:field="*{race6}">
+                <label for="a23">Gin Tonic</label><br>
+                <input type="radio" id="a24" name="cocktail" value="REPTILIAN" th:field="*{race6}">
+                <label for="a24">Bloody Mary</label><br>
+                <p class="" th:if="${#fields.hasErrors('race6')}" th:errors="*{race6}" style="color:red;">Radio6 hiba</p>
+            </div>
+        </div>
+    </div>
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div class="card mb-4 block">
+                <div class="card-header">
+                    <p class="kerdesek">Which element would you be? </p>
+                </div>
+                <input type="radio" id="a25" name="element" value="ORC" th:field="*{race7}">
+                <label for="a25">Fire</label><br>
+                <input type="radio" id="a26" name="element" value="ELF" th:field="*{race7}">
+                <label for="a26">Air</label><br>
+                <input type="radio" id="a27" name="element" value="HUMAN" th:field="*{race7}">
+                <label for="a27">Earth</label><br>
+                <input type="radio" id="a28" name="element" value="REPTILIAN" th:field="*{race7}">
+                <label for="a28">Water</label><br>
+                <p class="" th:if="${#fields.hasErrors('race7')}" th:errors="*{race7}" style="color:red;">Radio7 hiba</p>
+            </div>
+        </div>
+
+        <div class="col-lg-6">
+            <div class="card mb-4 block">
+                <div class="card-header">
+                    <p class="kerdesek">What is the best day of the week? </p>
+                </div>
+                <input type="radio" id="a29" name="element" value="ORC" th:field="*{race8}">
+                <label for="a29">Monday</label><br>
+                <input type="radio" id="a30" name="element" value="HUMAN" th:field="*{race8}">
+                <label for="a30">Friday</label><br>
+                <input type="radio" id="a31" name="element" value="ELF" th:field="*{race8}">
+                <label for="a31">Sunday</label><br>
+                <input type="radio" id="a32" name="element" value="REPTILIAN" th:field="*{race8}">
+                <label for="a32">Wednesday</label><br>
+                <p class="" th:if="${#fields.hasErrors('race8')}" th:errors="*{race8}" style="color:red;">Radio8 hiba</p>
+            </div>
+        </div>
+    </div>
+    </div>
+    <input type="submit" value="Submit">
+
+</form>
+
+<form th:action="@{/adventuregame/mainpage}" method="get">
+    <input type="submit" class="btn btn-dark" style="background-color: green" value="Go Back"/>
+</form>
+
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+</style>
+
+
+</body>
+
+</html>

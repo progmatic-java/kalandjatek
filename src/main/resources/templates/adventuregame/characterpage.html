@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Character result</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        img {
+            width: 40%
+        }
+
+        img {
+            height: 70%
+        }
+    </style>
+</head>
+<body>
+<style>
+    h1 {
+        color: whitesmoke;
+        font-family: MedievalSharp, serif;
+        font-weight: 700;
+        border-style: double;
+        font-size: 50px;
+    }
+
+    p {
+        color: whitesmoke;
+        font-family: MedievalSharp, serif;
+        font-weight: 500;
+        border-style: double;
+        font-size: 35px;
+    }
+
+    h4, li {
+        color: whitesmoke;
+        font-family: MedievalSharp, serif;
+        font-weight: 500;
+        font-size: 25px;
+    }
+
+    .buttons{
+        color: darkred;
+    }
+
+    body {
+        background: url(https://i.redd.it/gp9h8w3yojx41.jpg);
+        background-size: auto;
+
+    }
+
+
+</style>
+
+
+<h1 style="text-align: center" th:if="${newCharacter}"> Character result </h1>
+<h1 style="text-align: center" th:unless="${newCharacter}"> Character page </h1>
+
+<p style="text-align: center" th:text="${chosenCharacter.getDescription()}">Character description</p>
+<img th:src="@{${chosenCharacter.getImgRef()}}" style="float: right">
+
+<div>
+
+
+    <div class="row">
+        <div class="col-lg-6">
+            <div>
+                <h4 th:text="${'Name: ' + chosenCharacter.getName()}">Name: </h4>
+            </div>
+            <div class="card mb-4 block">
+                <h4>Stats: </h4>
+                <ul>
+                    <li th:text="${'Hp = ' + chosenCharacter.getHp()}">
+                        Hp = 80
+                    </li>
+                    <li th:text="${'Mp = ' + chosenCharacter.getMp()}">
+                        Mp = 100
+                    </li>
+                    <li th:text="${'Gold = ' + chosenCharacter.getGold()}">
+                        Gold = 50
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
+<br><br><br>
+
+<div class="buttons">
+    <form th:if="${newCharacter}" th:action="@{'/adventuregame/introduction/{id}'(id=${chosenCharacter.getId()})}" method="get">
+        <input type="submit" class="btn btn-dark" style="background-color: lightskyblue" value="I love my character, I want to continue"/>
+    </form>
+
+    <form th:unless="${newCharacter}" th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${chosenCharacter.getId()},roomId=${startingRoom.getId()})}" method="get">
+        <input type="submit" class="btn btn-dark" style="background-color: lightskyblue" value="Start game"/>
+    </form>
+
+    <form th:action="@{/adventuregame/mainpage}" method="get">
+        <input type="submit" class="btn btn-dark" style="background-color: green" value="Get back to the main menu"/>
+    </form>
+
+    <form th:if="${retakeTest}" th:action="@{'/adventuregame/unwantedcharacter/{id}'(id=${chosenCharacter.getId()})}" method="post">
+        <input type="submit" class="btn btn-dark" value="Aren't pleased with your character? Retake the test!"/>
+    </form>
+
+    <form th:if="${hasUserWriteRole}" th:action="@{'/adventuregame/characterpage/delete/{id}'  (id=${chosenCharacter.getId()})}  " method="post">
+        <input type="submit" class="btn btn-danger" style="background-color: red" value="Delete character"/>
+    </form>
+</div>
+
+<style>
+    @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+    @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+</style>
+
+</body>
+</html>
