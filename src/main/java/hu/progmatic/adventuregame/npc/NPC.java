@@ -1,4 +1,4 @@
-package hu.progmatic.adventuregame.NPC;
+package hu.progmatic.adventuregame.npc;
 
 import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.room.Room;

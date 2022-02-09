@@ -1,7 +1,7 @@
 package hu.progmatic.adventuregame.room;
 
 import hu.progmatic.adventuregame.inventory.Inventory;
-import hu.progmatic.adventuregame.NPC.NPC;
+import hu.progmatic.adventuregame.npc.NPC;
 import lombok.*;
 
 import javax.persistence.*;

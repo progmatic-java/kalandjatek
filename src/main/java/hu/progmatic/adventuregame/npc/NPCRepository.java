@@ -1,4 +1,4 @@
-package hu.progmatic.adventuregame.NPC;
+package hu.progmatic.adventuregame.npc;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

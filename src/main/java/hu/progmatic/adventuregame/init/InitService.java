@@ -1,6 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
-import hu.progmatic.adventuregame.NPC.NPC;
+import hu.progmatic.adventuregame.npc.NPC;
 import hu.progmatic.adventuregame.room.Door;
 import hu.progmatic.adventuregame.room.Room;
 import hu.progmatic.adventuregame.room.RoomRepository;
