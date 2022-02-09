@@ -47,4 +47,9 @@ public class CellarInit extends InitRoom {
   public String getRoomImgRef() {
     return "https://i.imgur.com/qqBe4IX.jpg";
   }
+
+  @Override
+  public String getRoomAudio() {
+    return "music/Damp.mp3";
+  }
 }

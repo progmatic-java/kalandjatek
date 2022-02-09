@@ -91,6 +91,10 @@
         integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
         crossorigin="anonymous"></script>
 
+<audio th:audio="'background-soundscape: ' + ${currRoom.getRoomAudio()} + ''">
+    <p>If you are reading this, it is because your browser does not support the audio element.</p>
+</audio>
+
 <h1 th:text="${'Room Name: ' + currRoom.getRoomName()}">Room Name</h1>
 <h3>Room Inventory:</h3>
 <ul>

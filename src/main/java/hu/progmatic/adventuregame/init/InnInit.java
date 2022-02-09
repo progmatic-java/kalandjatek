@@ -71,4 +71,9 @@ public class InnInit extends InitRoom {
   public String getRoomImgRef() {
     return "https://wallpaperaccess.com/full/6079735.png";
   }
+
+  @Override
+  public String getRoomAudio() {
+    return "music/Tavern.mp3";
+  }
 }
