@@ -1,4 +1,4 @@
-package hu.progmatic.mainpage;
+package hu.progmatic.adventuregame.mainpage;
 
 import hu.progmatic.adventuregame.character.Character;
 import hu.progmatic.adventuregame.character.CharacterService;
