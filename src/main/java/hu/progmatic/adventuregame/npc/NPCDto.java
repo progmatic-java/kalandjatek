@@ -11,7 +11,7 @@ public class NPCDto implements Serializable {
     private final Integer id;
     private final String name;
     private final String description;
-    private final Boolean isItFriendly;
+    private final Boolean friendly;
     private Integer hp;
     private Integer mp;
     private Integer gold;
