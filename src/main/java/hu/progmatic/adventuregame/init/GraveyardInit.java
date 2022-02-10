@@ -32,23 +32,23 @@ public class GraveyardInit extends InitRoom {
         return List.of(
                 Item.builder()
                         .itemName("Pomegranates")
-                        .description("Blood-red fruits")
+                        .description("Blood-red delicacy from the Underworld")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .build(),
                 Item.builder()
                         .itemName("Bones")
-                        .description("They're everywhere")
+                        .description("Why are they scattered outside of the graves?")
                         .typeOfItem(ItemEnum.JUNK)
                         .build(),
                 Item.builder()
                         .itemName("Stake")
-                        .description("Might be useful")
+                        .description("You better take it with you")
                         .typeOfItem(ItemEnum.ATTACK)
                         .build(),
                 Item.builder()
                         .itemName("Wilted Lilies")
                         .description("In memory of the deceased")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .typeOfItem(ItemEnum.JUNK)
                         .build()
         );
     }
