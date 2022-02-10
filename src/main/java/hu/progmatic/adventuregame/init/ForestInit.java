@@ -7,6 +7,7 @@ import hu.progmatic.adventuregame.npc.NPC;
 import java.util.List;
 
 public class ForestInit extends InitRoom {
+
   @Override
   public String getName() {
     return "The Dark Forest of K'aam\n";
