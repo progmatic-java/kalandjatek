@@ -23,6 +23,7 @@ public class InitService implements InitializingBean {
   private final RoadToTheForestInit roadToTheForestInit = new RoadToTheForestInit();
   private final ForestInit forestInit = new ForestInit();
   private final ForestLakeInit forestLakeInit = new ForestLakeInit();
+  private final BrothelInit brothelInit = new BrothelInit();
 
   @Autowired
   private RoomRepository roomRepository;
@@ -38,17 +39,19 @@ public class InitService implements InitializingBean {
     Room roadToTheForest = createRoom(roadToTheForestInit);
     Room forest = createRoom(forestInit);
     Room forestLake = createRoom(forestLakeInit);
+    Room brothel = createRoom(brothelInit);
 
     createDoorBetweenRooms(inn, cellar);
     createDoorBetweenRooms(church, churchDungeons);
     createDoorBetweenRooms(mainSquare, inn);
     createDoorBetweenRooms(mainSquare, church);
     createDoorBetweenRooms(mainSquare, shop);
+    createDoorBetweenRooms(mainSquare, brothel);
     createDoorBetweenRooms(mainSquare, roadToTheForest);
     createDoorBetweenRooms(roadToTheForest, forest);
     createDoorBetweenRooms(forest, forestLake);
 
-    roomRepository.saveAll(List.of(inn, cellar, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake));
+    roomRepository.saveAll(List.of(inn, cellar, brothel, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake));
   }
 
   private void createDoorBetweenRooms(Room room1, Room room2) {

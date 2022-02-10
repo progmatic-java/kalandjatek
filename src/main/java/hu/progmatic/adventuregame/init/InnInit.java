@@ -34,15 +34,6 @@ public class InnInit extends InitRoom {
             .mp(20)
             .gold(500)
             .imgRef("https://i.imgur.com/3IOuWgJ.png")
-            .build(),
-        NPC.builder()
-            .name("Lady Regex")
-            .description("A mysterious witch from another town.")
-            .friendly(false)
-            .hp(200)
-            .mp(300)
-            .gold(250)
-            .imgRef("https://i.imgur.com/RpbOdHt.png")
             .build()
     );
   }
