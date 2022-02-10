@@ -9,7 +9,7 @@ import java.util.List;
 public class ForestInit extends InitRoom {
   @Override
   public String getName() {
-    return "The Dark Forest of K'aaam\n";
+    return "The Dark Forest of K'aam\n";
   }
 
   @Override
