@@ -13,7 +13,8 @@ import java.util.List;
 
 @Service
 @Transactional
-public class InitService implements InitializingBean {
+public class
+InitService implements InitializingBean {
     private final InnInit innInit = new InnInit();
     private final CellarInit cellarInit = new CellarInit();
     private final ChurchInit churchInit = new ChurchInit();
@@ -26,6 +27,7 @@ public class InitService implements InitializingBean {
     private final BrothelInit brothelInit = new BrothelInit();
     private final ThePathToTheAcademyInit pathToTheAcademyInit = new ThePathToTheAcademyInit();
     private final AcademyInnit academyInnit = new AcademyInnit();
+    private final GraveyardInit graveyardInit = new GraveyardInit();
 
     @Autowired
     private RoomRepository roomRepository;
@@ -44,20 +46,23 @@ public class InitService implements InitializingBean {
         Room brothel = createRoom(brothelInit);
         Room pathToAcademy = createRoom(pathToTheAcademyInit);
         Room academy = createRoom(academyInnit);
+        Room graveyard = createRoom(graveyardInit);
 
         createDoorBetweenRooms(inn, cellar);
         createDoorBetweenRooms(church, churchDungeons);
+        createDoorBetweenRooms(church, graveyard);
         createDoorBetweenRooms(mainSquare, inn);
         createDoorBetweenRooms(mainSquare, church);
         createDoorBetweenRooms(mainSquare, shop);
         createDoorBetweenRooms(mainSquare, brothel);
         createDoorBetweenRooms(mainSquare, roadToTheForest);
+        createDoorBetweenRooms(mainSquare, graveyard);
         createDoorBetweenRooms(roadToTheForest, forest);
         createDoorBetweenRooms(forest, forestLake);
         createDoorBetweenRooms(mainSquare, pathToAcademy);
         createDoorBetweenRooms(pathToAcademy, academy);
 
-        roomRepository.saveAll(List.of(inn, cellar, brothel, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake,pathToAcademy,academy));
+        roomRepository.saveAll(List.of(inn, cellar, brothel, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake, pathToAcademy, academy, graveyard));
     }
 
     private void createDoorBetweenRooms(Room room1, Room room2) {
