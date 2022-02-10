@@ -22,13 +22,13 @@ public class ThePathToTheAcademyInit extends InitRoom {
     List<Item> getInitItems() {
         return List.of(
                 Item.builder()
-                        .itemName("Tored books")
+                        .itemName("Ripped books")
                         .description("Someone got expelled...")
                         .typeOfItem(ItemEnum.JUNK)
                         .build(),
                 Item.builder()
                         .itemName("Empty potion bottles")
-                        .description("These younglings dont care about the climate??")
+                        .description("These younglings don't care about the climate??")
                         .typeOfItem(ItemEnum.JUNK)
                         .build()
         );
