@@ -10,7 +10,7 @@ public class RoadToTheForestInit extends InitRoom {
 
   @Override
   public String getName() {
-    return "Road to the Forest of Ka’am";
+    return "Road to the Forest of K'aam";
   }
 
   @Override
