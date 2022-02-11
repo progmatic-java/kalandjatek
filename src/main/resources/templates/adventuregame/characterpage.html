@@ -56,7 +56,9 @@
 <h1 style="text-align: center" th:if="${newCharacter}"> Character result </h1>
 <h1 style="text-align: center" th:unless="${newCharacter}"> Character page </h1>
 
-<p style="text-align: center" th:text="${chosenCharacter.getDescription()}">Character description</p>
+<p th:if="${newCharacter}" style="text-align: center" th:text="${'Congratulations! ' + chosenCharacter.getDescription()}">Character description</p>
+<p th:unless="${newCharacter}" style="text-align: center" th:text="${chosenCharacter.getDescription()}">Character description</p>
+
 <img th:src="@{${chosenCharacter.getImgRef()}}" style="float: right">
 
 <div>
