@@ -70,7 +70,7 @@
             width: 100%;
         }
 
-        .goback {
+        .signout {
             font-style: italic;
             font-family: MedievalSharp;
             font-weight: 700;
@@ -165,9 +165,9 @@
         </form>
     </div>
     <div>
-        <div class="goback">
-            <form th:action="@{/adventuregame}" method="get">
-                <input type="submit" class="btn btn-dark" value="Go Back"/>
+        <div class="signout">
+            <form th:action="@{/logout}" method="post">
+                <input type="submit" class="btn btn-dark" value="Sign out"/>
             </form>
         </div>
     </div>
