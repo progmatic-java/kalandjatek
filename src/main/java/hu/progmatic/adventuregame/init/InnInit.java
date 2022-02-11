@@ -2,6 +2,7 @@ package hu.progmatic.adventuregame.init;
 
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
+import hu.progmatic.adventuregame.npc.Action;
 import hu.progmatic.adventuregame.npc.NPC;
 import lombok.*;
 
@@ -25,6 +26,66 @@ public class InnInit extends InitRoom {
             .mp(50)
             .gold(1000)
             .imgRef("https://i.imgur.com/9AnmjLg.png")
+                .action(
+                        Action.builder()
+                                .conversationText("Welcome sexy traveler to my inn! What can I do for you?")
+                                .childActions(
+                                        List.of(
+                                                Action.builder()
+                                                        .conversationText("Hello, I just want a beer!")
+                                                        .childActions(
+                                                                List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("The first beer is on the house! Anything else I can get for you?")
+                                                                                .childActions(
+                                                                                List.of(
+                                                                                        Action.builder()
+                                                                                                .conversationText("No thanks!")
+                                                                                                .build()
+                                                                                )
+                                                                        )
+                                                                                .build()
+                                                                )
+                                                        )
+                                                        .build(),
+                                                Action.builder()
+                                                        .conversationText("Hey, I'm actually in search of the town's brothel")
+                                                        .childActions(
+                                                                List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("The Red Try and Catch? You'll find it next to the Church of Holy Joe!")
+                                                                                .childActions(
+                                                                                        List.of(
+                                                                                                Action.builder()
+                                                                                                        .conversationText("Thanks!")
+                                                                                                        .build()
+                                                                                        )
+                                                                                )
+                                                                                .build()
+                                                                )
+                                                        )
+                                                        .build(),
+                                                Action.builder()
+                                                        .conversationText("Hi, I want to fight some big trolls!")
+                                                        .childActions(
+                                                                List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("Oh! Are you in search of a quest? Maybe I have a mission you'd be interested in...")
+                                                                                .childActions(
+                                                                                        List.of(
+                                                                                                Action.builder()
+                                                                                                        .conversationText("Oh really? Tell me more!")
+                                                                                                        .build()
+                                                                                        )
+                                                                                )
+                                                                                .build()
+                                                                )
+                                                        )
+                                                        .build()
+                                        )
+                                )
+                                .build()
+                )
             .build(),
         NPC.builder()
             .name("Switcher")

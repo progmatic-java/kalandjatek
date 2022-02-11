@@ -2,6 +2,8 @@ package hu.progmatic.adventuregame.room;
 
 import hu.progmatic.adventuregame.character.Character;
 import hu.progmatic.adventuregame.character.CharacterService;
+import hu.progmatic.adventuregame.npc.NPCDto;
+import hu.progmatic.adventuregame.npc.NPCService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -18,12 +20,14 @@ public class RoomController {
   @Autowired
   private CharacterService characterService;
 
+  @Autowired
+  private NPCService npcService;
+
 
   @GetMapping("/adventuregame/room")
   public String roomPage() {
     return "/adventuregame/room";
   }
-
 
   @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}")
   public String gameStarter(
@@ -40,6 +44,21 @@ public class RoomController {
     return "/adventuregame/room";
   }
 
+  @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}")
+  public String talkWithNpc(
+          @PathVariable Integer characterId,
+          @PathVariable Integer roomId,
+          @PathVariable Integer npcId,
+          Model model
+  ) {
+    RoomDto currRoom = roomService.getRoomById(roomId);
+    model.addAttribute("currRoom", currRoom);
+    model.addAttribute("currPlayer", characterService.getById(characterId));
+    model.addAttribute("currNpc", npcService.getNPCDtoById(npcId));
+    model.addAttribute("npcInterraction", true);
+    return "/adventuregame/room";
+  }
+
   @ModelAttribute("startingRoom")
   public Room startRoom() {
     return roomService.getByName("The Black Hole Inn");
@@ -53,6 +72,16 @@ public class RoomController {
   @ModelAttribute("currPlayer")
   public Character currPlayer() {
     return new Character();
+  }
+
+  @ModelAttribute("currNpc")
+  public NPCDto currNpc() {
+    return new NPCDto();
+  }
+
+  @ModelAttribute("npcInterraction")
+  public boolean npcInterraction() {
+    return false;
   }
 
 }

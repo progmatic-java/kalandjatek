@@ -29,4 +29,7 @@ public class NPC {
     private Inventory inventory;
     @ManyToOne(cascade = CascadeType.ALL)
     Room npcRoom;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Action action;
 }

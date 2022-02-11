@@ -1,17 +1,22 @@
 package hu.progmatic.adventuregame.npc;
 
 
+import hu.progmatic.adventuregame.inventory.InventoryService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @Transactional
 @Service
 public class NPCService {
     @Autowired
     private NPCRepository npcRepository;
+    @Autowired
+    private InventoryService inventoryService;
 
     public NPC save(NPC npc) {
         return npcRepository.save(npc);
@@ -32,7 +37,29 @@ public class NPCService {
                 .mp(entity.getMp())
                 .gold(entity.getGold())
                 .imgRef(entity.getImgRef())
+                .items(entity.getInventory().getItems().stream()
+                        .map(item -> inventoryService.buildItemDto(item))
+                        .toList())
+                .firstAction(buildFirstAction(entity.getAction()))
                 .build();
+    }
+
+    private ActionCommand buildFirstAction(Action action) {
+        String npcText = action.getConversationText();
+        List<Action> answers = action.getChildActions();
+        return ActionCommand.builder()
+                .npcText(npcText)
+                .playerAnswers(getPlayerAnswers(answers))
+                .build();
+    }
+
+    private Map<String, Integer> getPlayerAnswers(List<Action> answers) {
+        Map<String, Integer> playerAnswers = new HashMap<>();
+
+        for(Action action : answers) {
+            playerAnswers.put(action.getConversationText(), action.getId());
+        }
+        return playerAnswers;
     }
 
     public void delete(Integer id) {

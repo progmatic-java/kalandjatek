@@ -13,80 +13,81 @@ import java.util.List;
 
 @Service
 @Transactional
-public class InitService implements InitializingBean {
-  private final InnInit innInit = new InnInit();
-  private final CellarInit cellarInit = new CellarInit();
-  private final ChurchInit churchInit = new ChurchInit();
-  private final ChurchDungeonsInit churchDungeonsInit = new ChurchDungeonsInit();
-  private final MainSquareInit mainSquareInit = new MainSquareInit();
-  private final ShopInit shopInit = new ShopInit();
-  private final RoadToTheForestInit roadToTheForestInit = new RoadToTheForestInit();
-  private final ForestInit forestInit = new ForestInit();
-  private final ForestLakeInit forestLakeInit = new ForestLakeInit();
-  private final BrothelInit brothelInit = new BrothelInit();
-  private final ThePathToTheAcademyInit pathToTheAcademyInit = new ThePathToTheAcademyInit();
-  private final AcademyInnit academyInnit = new AcademyInnit();
-  private final GraveyardInit graveyardInit = new GraveyardInit();
+public class
+InitService implements InitializingBean {
+    private final InnInit innInit = new InnInit();
+    private final CellarInit cellarInit = new CellarInit();
+    private final ChurchInit churchInit = new ChurchInit();
+    private final ChurchDungeonsInit churchDungeonsInit = new ChurchDungeonsInit();
+    private final MainSquareInit mainSquareInit = new MainSquareInit();
+    private final ShopInit shopInit = new ShopInit();
+    private final RoadToTheForestInit roadToTheForestInit = new RoadToTheForestInit();
+    private final ForestInit forestInit = new ForestInit();
+    private final ForestLakeInit forestLakeInit = new ForestLakeInit();
+    private final BrothelInit brothelInit = new BrothelInit();
+    private final ThePathToTheAcademyInit pathToTheAcademyInit = new ThePathToTheAcademyInit();
+    private final AcademyInnit academyInnit = new AcademyInnit();
+    private final GraveyardInit graveyardInit = new GraveyardInit();
 
-  @Autowired
-  private RoomRepository roomRepository;
+    @Autowired
+    private RoomRepository roomRepository;
 
-  @Override
-  public void afterPropertiesSet() throws Exception {
-    Room inn = createRoom(innInit);
-    Room cellar = createRoom(cellarInit);
-    Room church = createRoom(churchInit);
-    Room churchDungeons = createRoom(churchDungeonsInit);
-    Room mainSquare = createRoom(mainSquareInit);
-    Room shop = createRoom(shopInit);
-    Room roadToTheForest = createRoom(roadToTheForestInit);
-    Room forest = createRoom(forestInit);
-    Room forestLake = createRoom(forestLakeInit);
-    Room brothel = createRoom(brothelInit);
-    Room pathToAcademy = createRoom(pathToTheAcademyInit);
-    Room academy = createRoom(academyInnit);
-    Room graveyard = createRoom(graveyardInit);
+    @Override
+    public void afterPropertiesSet() throws Exception {
+        Room inn = createRoom(innInit);
+        Room cellar = createRoom(cellarInit);
+        Room church = createRoom(churchInit);
+        Room churchDungeons = createRoom(churchDungeonsInit);
+        Room mainSquare = createRoom(mainSquareInit);
+        Room shop = createRoom(shopInit);
+        Room roadToTheForest = createRoom(roadToTheForestInit);
+        Room forest = createRoom(forestInit);
+        Room forestLake = createRoom(forestLakeInit);
+        Room brothel = createRoom(brothelInit);
+        Room pathToAcademy = createRoom(pathToTheAcademyInit);
+        Room academy = createRoom(academyInnit);
+        Room graveyard = createRoom(graveyardInit);
 
-    createDoorBetweenRooms(inn, cellar);
-    createDoorBetweenRooms(church, churchDungeons);
-    createDoorBetweenRooms(church, graveyard);
-    createDoorBetweenRooms(mainSquare, inn);
-    createDoorBetweenRooms(mainSquare, church);
-    createDoorBetweenRooms(mainSquare, shop);
-    createDoorBetweenRooms(mainSquare, brothel);
-    createDoorBetweenRooms(mainSquare, roadToTheForest);
-    createDoorBetweenRooms(mainSquare, graveyard);
-    createDoorBetweenRooms(roadToTheForest, forest);
-    createDoorBetweenRooms(forest, forestLake);
-    createDoorBetweenRooms(mainSquare, pathToAcademy);
-    createDoorBetweenRooms(pathToAcademy, academy);
+        createDoorBetweenRooms(inn, cellar);
+        createDoorBetweenRooms(church, churchDungeons);
+        createDoorBetweenRooms(church, graveyard);
+        createDoorBetweenRooms(mainSquare, inn);
+        createDoorBetweenRooms(mainSquare, church);
+        createDoorBetweenRooms(mainSquare, shop);
+        createDoorBetweenRooms(mainSquare, brothel);
+        createDoorBetweenRooms(mainSquare, roadToTheForest);
+        createDoorBetweenRooms(mainSquare, graveyard);
+        createDoorBetweenRooms(roadToTheForest, forest);
+        createDoorBetweenRooms(forest, forestLake);
+        createDoorBetweenRooms(mainSquare, pathToAcademy);
+        createDoorBetweenRooms(pathToAcademy, academy);
 
-    roomRepository.saveAll(List.of(inn, cellar, brothel, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake, pathToAcademy, academy, graveyard));
-  }
-
-  private void createDoorBetweenRooms(Room room1, Room room2) {
-    Door innToCellar = Door.builder()
-        .room1(room1)
-        .room2(room2)
-        .build();
-    room1.getDoors1().add(innToCellar);
-    room2.getDoors2().add(innToCellar);
-  }
-
-  private Room createRoom(InitRoom initRoom) {
-    Room room = Room.builder()
-        .name(initRoom.getName())
-        .roomImgRef(initRoom.getRoomImgRef())
-        .inventory(initRoom.getInventory())
-        .build();
-    addNpcToRoom(initRoom.getNpcs(), room);
-    return room;
-  }
-
-  private void addNpcToRoom(List<NPC> npcList, Room room) {
-    for (NPC npc : npcList) {
-      npc.setNpcRoom(room);
+        roomRepository.saveAll(List.of(inn, cellar, brothel, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake, pathToAcademy, academy, graveyard));
     }
-    room.setNpcEntities(npcList);
-  }
+
+    private void createDoorBetweenRooms(Room room1, Room room2) {
+        Door innToCellar = Door.builder()
+                .room1(room1)
+                .room2(room2)
+                .build();
+        room1.getDoors1().add(innToCellar);
+        room2.getDoors2().add(innToCellar);
+    }
+
+    private Room createRoom(InitRoom initRoom) {
+        Room room = Room.builder()
+                .name(initRoom.getName())
+                .roomImgRef(initRoom.getRoomImgRef())
+                .inventory(initRoom.getInventory())
+                .build();
+        addNpcToRoom(initRoom.getNpcs(), room);
+        return room;
+    }
+
+    private void addNpcToRoom(List<NPC> npcList, Room room) {
+        for (NPC npc : npcList) {
+            npc.setNpcRoom(room);
+        }
+        room.setNpcEntities(npcList);
+    }
 }
