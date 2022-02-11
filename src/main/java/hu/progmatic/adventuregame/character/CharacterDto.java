@@ -1,22 +1,24 @@
 package hu.progmatic.adventuregame.character;
 
-import hu.progmatic.adventuregame.inventory.Inventory;
+import hu.progmatic.adventuregame.inventory.ItemDto;
 import lombok.Builder;
 import lombok.Data;
 
 import java.io.Serializable;
+import java.util.List;
 
 @Data
 @Builder
 public class CharacterDto implements Serializable {
-    private final Integer id;
-    private final String characterName;
-    private final Race race;
-    private final String description;
+    private  Integer id;
+    private  String characterName;
+    private  Race race;
+    private  String description;
     private Integer hp;
     private Integer mp;
     private Integer gold;
-    private final String imgRef;
-    private final Answer answer;
-    private final Integer inventoryId;
+    private  String imgRef;
+    private  Answer answer;
+    private  Integer inventoryId;
+    private List<ItemDto> items;
 }

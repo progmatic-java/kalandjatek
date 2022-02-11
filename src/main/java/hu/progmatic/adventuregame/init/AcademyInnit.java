@@ -6,11 +6,12 @@ import hu.progmatic.adventuregame.npc.NPC;
 
 import java.util.List;
 
-public class AcademyInnit extends InitRoom{@Override
+public class AcademyInnit extends InitRoom {
 
-public String getName() {
-    return "Academy of Magic and Programming";
-}
+    @Override
+    public String getName() {
+        return "Academy of Magic and Programming";
+    }
 
     @Override
     List<NPC> getInitNpcs() {

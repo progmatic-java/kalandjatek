@@ -11,77 +11,69 @@
           integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
 
     <style>
-        html, body {
+
+        body, html {
             height: 100%;
+            width: 100%;
         }
 
-        /*@media screen only and (max-width: 992px){*/
-        /*    width: 50%;*/
-        /*}*/
-        /*    @media screen only and (max-width: 600px){*/
-        /*        width: 100%;*/
-        /*    }*/
-        body {
+
+        .container {
             display: grid;
-            grid-template-columns: 1fr 5fr 1fr;
-            grid-template-rows: 3fr 10fr 2fr;
+            grid-template-columns: 33% 33% 33%;
+            grid-template-rows: 33% 33% 33%;
+            gap: 0px 0px;
+            height: 100%;
+            width: 100%;
+            grid-auto-flow: row;
             grid-template-areas:
-        "header header header"
-        "nav main aside"
-        "footer footer footer";
-            /*grid:
-                "header header header": 3fr;
-                "nav main aside": 10fr;
-                "footer footer footer": 2fr
-                / 1fr 5fr 1fr;*/
-            grid-gap: 10px;
+    "ROOMITEMS . NEXTAREA"
+    "NPCs . CHARACTERINFO"
+    "INTERACTIONTEXT INTERACTIONTEXT INTERACTIONTEXT";
         }
 
-        div {
-            background-color: yellow;
-            /*border: thin solid red;*/
+
+        .ROOMITEMS {
+            grid-area: ROOMITEMS;
         }
 
-        header {
-            grid-area: header;
-            background-color: yellow;
-            grid-template-columns: 50% 50%;
+        .NPCs {
+            grid-area: NPCs;
         }
 
-        nav {
-            grid-area: nav;
-            background-color: red;
+        .NEXTAREA {
+            grid-area: NEXTAREA;
         }
 
-        main {
-            grid-area: main;
-            background-color: blue;
+        .CHARACTERINFO {
+            grid-area: CHARACTERINFO;
         }
 
-        aside {
-            grid-area: aside;
-            background-color: purple;
+        .INTERACTIONTEXT {
+            grid-area: INTERACTIONTEXT;
         }
 
-        footer {
-            grid-area: footer;
-            background-color: green;
-        }
     </style>
 </head>
 <body>
-<header>
-    FEJLÉC
-</header>
-<nav>
-    NPCs
-</nav>
-<main>
-    KÖZÉP
-</main>
-<aside>
-    KARAKTER
-</aside>
+
+<div class="container">
+    <div class="ROOMITEMS">
+        ROOMITEMS
+    </div>
+    <div class="NPCs">
+        NPCs
+    </div>
+    <div class="NEXTAREA">
+        NEXTAREA
+    </div>
+    <div class="CHARACTERINFO">
+        CHARACTERINFO
+    </div>
+    <div class="INTERACTIONTEXT">
+        INTERACTIONTEXT
+    </div>
+</div>
 
 </body>
 </html>

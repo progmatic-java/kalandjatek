@@ -45,7 +45,7 @@ public class InventoryService{
     return itemRepository.saveAll(items);
   }
 
-  private ItemDto buildItemDto(Item item) {
+  public ItemDto buildItemDto(Item item) {
     return ItemDto.builder()
         .id(item.getId())
         .itemName(item.getItemName())
@@ -80,4 +80,5 @@ public class InventoryService{
     inventory.getItems().remove(item);
     item.setInventory(null);
   }
+
 }
