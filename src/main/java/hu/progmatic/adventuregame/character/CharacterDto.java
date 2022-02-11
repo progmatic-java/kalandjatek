@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.character;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import lombok.Builder;
 import lombok.Data;
 
@@ -17,5 +18,5 @@ public class CharacterDto implements Serializable {
     private Integer gold;
     private final String imgRef;
     private final Answer answer;
-//    private final List<InventoryDto> inventory;
+    private final Integer inventoryId;
 }
