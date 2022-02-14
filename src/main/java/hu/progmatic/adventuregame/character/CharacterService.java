@@ -1,6 +1,7 @@
 package hu.progmatic.adventuregame.character;
 
 import hu.progmatic.adventuregame.inventory.*;
+import hu.progmatic.adventuregame.room.RoomService;
 import hu.progmatic.felhasznalo.UserType;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -20,6 +21,8 @@ public class CharacterService implements InitializingBean {
     private CharacterRepository repository;
     @Autowired
     private InventoryService inventoryService;
+    @Autowired
+    private RoomService roomService;
 
 
     public Character save(Character character) {
@@ -182,5 +185,12 @@ public class CharacterService implements InitializingBean {
 
     public Integer getIdByName(String name) {
         return repository.getCharacterByName(name).orElseThrow().getId();
+    }
+
+    public void moveRoomItemtoPlayer(Integer characterId, Integer roomId, Integer itemId) {
+        Item roomItem = inventoryService.getItemEntityById(itemId);
+        roomService.getRoomEntityById(roomId).getInventory().getItems().remove(roomItem);
+        repository.getById(characterId).getInventory().getItems().add(roomItem);
+        roomItem.setInventory(repository.getById(characterId).getInventory());
     }
 }

@@ -1,6 +1,7 @@
 package hu.progmatic.adventuregame.room;
 
 import hu.progmatic.adventuregame.inventory.Inventory;
+import hu.progmatic.adventuregame.inventory.InventoryService;
 import hu.progmatic.adventuregame.inventory.ItemDto;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.npc.NPC;
@@ -22,6 +23,8 @@ public class RoomService{
     private RoomRepository roomRepository;
     @Autowired
     private DoorRepository doorRepository;
+    @Autowired
+    private InventoryService inventoryService;
 
     public RoomDto getRoomById(Integer id) {
         return buildRoomDto(roomRepository.getById(id));
@@ -39,9 +42,9 @@ public class RoomService{
                 .build();
     }
 
-    private List<String> getItemList(Inventory inventory) {
+    private List<ItemDto> getItemList(Inventory inventory) {
         return inventory.getItems().stream()
-                .map(Item::getItemName)
+                .map(item -> inventoryService.buildItemDto(item))
                 .toList();
     }
 
@@ -101,5 +104,9 @@ public class RoomService{
 
     public void dropAllRoom() {
         roomRepository.deleteAll();
+    }
+
+    public Room getRoomEntityById(Integer id){
+        return roomRepository.getById(id);
     }
 }

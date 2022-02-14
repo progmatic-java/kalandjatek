@@ -182,12 +182,22 @@
     </div>
 
     <div class="ROOMITEMS">
-        <h3>Room Inventory:</h3>
-        <ul>
-            <div th:each="itemName : ${currRoomItems}">
-                <li th:text="${itemName}">Valami</li>
+        <div class="roomItemInfo">
+            <div class="dropdown">
+                <button class="dropbtn">Room Items</button>
+                <div class="dropdown-content">
+                    <div th:each="roomItems : ${currRoom.getItems()}">
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/item/{itemId}'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()},itemId=${roomItems.getId()})}"
+                              method="get">
+                            <input data-bs-toggle="tooltip" data-bs-placement="right"
+                                   th:title="${'Description: ' + roomItems.getDescription()  +  ' (' + roomItems.getTypeOfItem() + ')'}"
+                                   type="submit" class="btn btn-dark" th:value="${roomItems.getItemName()}"/>
+                        </form>
+
+                    </div>
+                </div>
             </div>
-        </ul>
+        </div>
     </div>
     <br>
     <div class="CHARACTERINFO">
@@ -201,12 +211,12 @@
                 <button class="dropbtn">Character Items</button>
                 <div class="dropdown-content">
                     <div th:each="characterItems : ${currPlayer.getItems()}">
-<!--                        <form th:action="@{'/adventuregame/characterpage/{characterId}/item/{itemId}'(characterId=${currPlayer.getId()},itemId=${characterItems.getId()})}"-->
-<!--                              method="get">-->
-                            <input data-bs-toggle="tooltip" data-bs-placement="right"
-                                   th:title="${'Description: ' + characterItems.getDescription()  +  ' (' + characterItems.getTypeOfItem() + ')'}"
-                                   type="submit" class="btn btn-dark" th:value="${characterItems.getItemName()}"/>
-<!--                        </form>-->
+                        <!--                        <form th:action="@{'/adventuregame/characterpage/{characterId}/item/{itemId}'(characterId=${currPlayer.getId()},itemId=${characterItems.getId()})}"-->
+                        <!--                              method="get">-->
+                        <input data-bs-toggle="tooltip" data-bs-placement="right"
+                               th:title="${'Description: ' + characterItems.getDescription()  +  ' (' + characterItems.getTypeOfItem() + ')'}"
+                               type="submit" class="btn btn-dark" th:value="${characterItems.getItemName()}"/>
+                        <!--                        </form>-->
 
                     </div>
                 </div>

@@ -81,4 +81,8 @@ public class InventoryService{
     item.setInventory(null);
   }
 
+  public Item getItemEntityById(Integer id){
+    return itemRepository.getById(id);
+  }
+
 }

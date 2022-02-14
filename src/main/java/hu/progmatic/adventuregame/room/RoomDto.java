@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.room;
 
+import hu.progmatic.adventuregame.inventory.ItemDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -17,7 +18,7 @@ public class RoomDto {
   private String roomName;
   private String roomImgRef;
   private String roomAudio;
-  private List<String> items;
+  private List<ItemDto> items;
   private Map<String, Integer> adjacentRooms;
   private List<String> npcEntities;
 }
