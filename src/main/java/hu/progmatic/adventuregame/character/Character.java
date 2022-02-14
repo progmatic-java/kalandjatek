@@ -30,6 +30,5 @@ public class Character {
   @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn
   Inventory inventory;
-  @ManyToOne(cascade = CascadeType.ALL)
-  Room charRoom;
+
 }

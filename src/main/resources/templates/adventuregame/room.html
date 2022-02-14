@@ -153,6 +153,8 @@
         .INFOTEXT {
             font-size: 20px;
             text-align: right;
+            display: flex;
+            justify-content: space-between;
         }
 
         .itemsbutton {
@@ -191,17 +193,20 @@
     <div class="CHARACTERINFO">
 
 
-        <h2 th:text="${'Character Name: ' + currPlayer.getName() + ' (' + currPlayer.getRace() + ')'}">Character
+        <h2 th:text="${'Character Name: ' + currPlayer.getCharacterName() + ' (' + currPlayer.getRace() + ')'}">
+            Character
             Name</h2>
         <div class="characterinfo">
             <div class="dropdown">
                 <button class="dropbtn">Character Items</button>
                 <div class="dropdown-content">
-                    <div th:each="nextRoom : ${currDoors.entrySet()}">
-                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${currPlayer.getId()},roomId=${nextRoom.getValue()})}"
-                              method="get">
-                            <input type="submit" class="btn btn-dark" th:value="${nextRoom.getKey()}"/>
-                        </form>
+                    <div th:each="characterItems : ${currPlayer.getItems()}">
+<!--                        <form th:action="@{'/adventuregame/characterpage/{characterId}/item/{itemId}'(characterId=${currPlayer.getId()},itemId=${characterItems.getId()})}"-->
+<!--                              method="get">-->
+                            <input data-bs-toggle="tooltip" data-bs-placement="right"
+                                   th:title="${'Description: ' + characterItems.getDescription()  +  ' (' + characterItems.getTypeOfItem() + ')'}"
+                                   type="submit" class="btn btn-dark" th:value="${characterItems.getItemName()}"/>
+<!--                        </form>-->
 
                     </div>
                 </div>

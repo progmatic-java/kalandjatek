@@ -1,7 +1,6 @@
 package hu.progmatic.adventuregame.character;
 
-import hu.progmatic.adventuregame.inventory.InventoryService;
-import hu.progmatic.adventuregame.inventory.Item;
+import hu.progmatic.adventuregame.inventory.*;
 import hu.progmatic.felhasznalo.UserType;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -32,19 +31,19 @@ public class CharacterService implements InitializingBean {
     }
 
     public CharacterDto getCharacterDtoById(Integer id) {
-        Character entity = getById(id);
+        Character entity = repository.getById(id);
+        List<ItemDto> items = entity.getInventory().getItems().stream().map(item -> inventoryService.buildItemDto(item)).toList();
         return CharacterDto.builder()
                 .characterName(entity.getName())
                 .id(entity.getId())
                 .race(entity.getRace())
                 .description(entity.getDescription())
-                .inventoryId(entity.inventory.getId())
                 .hp(entity.getHp())
                 .mp(entity.getMp())
                 .gold(entity.getGold())
                 .imgRef(entity.getImgRef())
                 .answer(entity.getAnswer())
-                .items(entity.inventory.getItems().stream().map(item -> inventoryService.buildItemDto(item)).toList())
+                .items(items)
                 .build();
     }
 
@@ -69,8 +68,23 @@ public class CharacterService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        Inventory elf = Inventory.builder().build();
+        Inventory orc = Inventory.builder().build();
+        Inventory human = Inventory.builder().build();
+        Inventory reptilian = Inventory.builder().build();
+
+        Item shield = Item.builder().itemName("Shield").typeOfItem(ItemEnum.SHIELD).description("He protect.").inventory(elf).build();
+        Item sword = Item.builder().itemName("Sword").typeOfItem(ItemEnum.ATTACK).description("He attack.").inventory(human).build();
+        Item mace = Item.builder().itemName("Mace").typeOfItem(ItemEnum.ATTACK).description("So big.").inventory(orc).build();
+        Item rock = Item.builder().itemName("Rock").typeOfItem(ItemEnum.ATTACK).description("Tasty").inventory(reptilian).build();
+
+        elf.getItems().add(shield);
+        orc.getItems().add(mace);
+        human.getItems().add(sword);
+        reptilian.getItems().add(rock);
+
         if (findAll().isEmpty()) {
-            saveAll(List.of(
+            List<Character> buildingCharacter = List.of(
                     Character
                             .builder()
                             .name("Vallak")
@@ -80,6 +94,7 @@ public class CharacterService implements InitializingBean {
                             .gold(100)
                             .imgRef("https://i.imgur.com/lXcw2hg.png")
                             .description(Race.ORC.description)
+                            .inventory(orc)
                             .build(),
                     Character.builder().name("Lyah")
                             .race(Race.ELF)
@@ -88,6 +103,7 @@ public class CharacterService implements InitializingBean {
                             .gold(150)
                             .imgRef("https://i.imgur.com/13NVorA.png")
                             .description(Race.ELF.description)
+                            .inventory(elf)
                             .build(),
                     Character
                             .builder()
@@ -98,6 +114,7 @@ public class CharacterService implements InitializingBean {
                             .gold(100)
                             .imgRef("https://i.imgur.com/MQRZudq.png")
                             .description(Race.HUMAN.description)
+                            .inventory(human)
                             .build(),
                     Character
                             .builder()
@@ -108,7 +125,10 @@ public class CharacterService implements InitializingBean {
                             .gold(666)
                             .imgRef("https://i.imgur.com/0f45Fce.png")
                             .description(Race.REPTILIAN.description)
-                            .build()));
+                            .inventory(reptilian)
+                            .build());
+            List<Character> characters = saveAll(buildingCharacter);
+
         }
     }
 

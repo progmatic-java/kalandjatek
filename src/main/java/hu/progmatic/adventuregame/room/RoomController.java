@@ -1,6 +1,7 @@
 package hu.progmatic.adventuregame.room;
 
 import hu.progmatic.adventuregame.character.Character;
+import hu.progmatic.adventuregame.character.CharacterDto;
 import hu.progmatic.adventuregame.character.CharacterService;
 import hu.progmatic.adventuregame.npc.NPCDto;
 import hu.progmatic.adventuregame.npc.NPCService;
@@ -38,7 +39,7 @@ public class RoomController {
     RoomDto currRoom = roomService.getRoomById(roomId);
     model.addAttribute("currRoom", currRoom);
     model.addAttribute("currRoomItems", currRoom.getItems());
-    model.addAttribute("currPlayer", characterService.getById(characterId));
+    model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
     model.addAttribute("currNpcs", currRoom.getNpcEntities());
     model.addAttribute("currDoors", currRoom.getAdjacentRooms());
     return "/adventuregame/room";
@@ -53,7 +54,7 @@ public class RoomController {
   ) {
     RoomDto currRoom = roomService.getRoomById(roomId);
     model.addAttribute("currRoom", currRoom);
-    model.addAttribute("currPlayer", characterService.getById(characterId));
+    model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
     model.addAttribute("currNpc", npcService.getNPCDtoById(npcId));
     model.addAttribute("npcInterraction", true);
     return "/adventuregame/room";
@@ -70,8 +71,8 @@ public class RoomController {
   }
 
   @ModelAttribute("currPlayer")
-  public Character currPlayer() {
-    return new Character();
+  public CharacterDto currPlayer() {
+    return new CharacterDto();
   }
 
   @ModelAttribute("currNpc")
