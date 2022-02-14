@@ -58,12 +58,24 @@
             font-weight: 700;
             font-size: 40px;
             padding: 25px 25px;
+
+            display: inline-block;
+        }
+
+        .itemsbutton {
+            float: bottom;
+            text-align: center;
+            right: 90%;
+            position: absolute;
+            bottom: 90%;
+        }
+
+        .nextarea {
             float: bottom;
             text-align: center;
             left: 80%;
             position: absolute;
             bottom: 85%;
-            display: inline-block;
         }
 
         .dropdown-content {
@@ -139,10 +151,11 @@
         }
 
         .INFOTEXT {
-            font-size: 25px;
-            text-align: left;
+            font-size: 20px;
+            text-align: right;
         }
-        .itemsbutton{
+
+        .itemsbutton {
             text-align: right;
 
         }
@@ -180,24 +193,25 @@
 
         <h2 th:text="${'Character Name: ' + currPlayer.getName() + ' (' + currPlayer.getRace() + ')'}">Character
             Name</h2>
-        <div class="itemsbutton">
-            <button class="dropbtn">Character Items</button>
-            <div class="dropdown-content">
-                <div th:each="nextRoom : ${currDoors.entrySet()}">
-                    <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${currPlayer.getId()},roomId=${nextRoom.getValue()})}"
-                          method="get">
-                        <input type="submit" class="btn btn-dark" th:value="${nextRoom.getKey()}"/>
-                    </form>
+        <div class="characterinfo">
+            <div class="dropdown">
+                <button class="dropbtn">Character Items</button>
+                <div class="dropdown-content">
+                    <div th:each="nextRoom : ${currDoors.entrySet()}">
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${currPlayer.getId()},roomId=${nextRoom.getValue()})}"
+                              method="get">
+                            <input type="submit" class="btn btn-dark" th:value="${nextRoom.getKey()}"/>
+                        </form>
 
+                    </div>
                 </div>
             </div>
         </div>
         <div class="INFOTEXT">
-            <ul>
-                <li th:text="${'Hp: ' + currPlayer.getHp()}">Hp:</li>
-                <li th:text="${'Mp: ' + currPlayer.getMp()}">Mp:</li>
-                <li th:text="${'Gold: ' + currPlayer.getGold()}">Gold:</li>
-            </ul>
+            <p th:text="${'Hp: ' + currPlayer.getHp()}">Hp:</p>
+            <p th:text="${'Mp: ' + currPlayer.getMp()}">Mp:</p>
+            <p th:text="${'Gold: ' + currPlayer.getGold()}">Gold:</p>
+
         </div>
 
 
@@ -219,18 +233,20 @@
     <!--    </div>-->
     <!--</ul>-->
     <div class="NEXTAREA">
-        <div class="dropdown">
-            <button class="dropbtn">Adjacent areas</button>
-            <div class="dropdown-content">
+        <div class="nextarea">
+            <div class="dropdown">
+                <button class="dropbtn">Adjacent areas</button>
+                <div class="dropdown-content">
 
-                <div th:each="nextRoom : ${currDoors.entrySet()}">
-                    <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${currPlayer.getId()},roomId=${nextRoom.getValue()})}"
-                          method="get">
-                        <input type="submit" class="btn btn-dark" th:value="${nextRoom.getKey()}"/>
-                    </form>
+                    <div th:each="nextRoom : ${currDoors.entrySet()}">
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${currPlayer.getId()},roomId=${nextRoom.getValue()})}"
+                              method="get">
+                            <input type="submit" class="btn btn-dark" th:value="${nextRoom.getKey()}"/>
+                        </form>
+
+                    </div>
 
                 </div>
-
             </div>
         </div>
     </div>
