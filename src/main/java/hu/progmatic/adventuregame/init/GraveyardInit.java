@@ -55,7 +55,7 @@ public class GraveyardInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "NEMTUDOM";
+    return "Are you here for your own funeral? If not, you'd better leave quickly. The cemetery is the lair of the Witch King, who will easily finish you off with his dark magic. The gate that links together the Underworld with the world of the living is found here.";
   }
 
   @Override

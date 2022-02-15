@@ -25,10 +25,10 @@ public class InnInit extends InitRoom {
                         .hp(50)
                         .mp(50)
                         .gold(1000)
-                        .imgRef("https://i.imgur.com/9AnmjLg.png")
+                        .imgRef("https://i.imgur.com/v436jHn.png")
                         .action(
                                 Action.builder()
-                                        .conversationText("Welcome sexy traveler to my inn! What can I do for you?")
+                                        .conversationText("Welcome sexy traveller to my inn! What can I do for you?")
                                         .childActions(
                                                 List.of(
                                                         Action.builder()
@@ -41,6 +41,12 @@ public class InnInit extends InitRoom {
                                                                                                 List.of(
                                                                                                         Action.builder()
                                                                                                                 .conversationText("No thanks!")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("Have a good day my friend!")
+                                                                                                                                        .build())
+                                                                                                                )
                                                                                                                 .build()
                                                                                                 )
                                                                                         )

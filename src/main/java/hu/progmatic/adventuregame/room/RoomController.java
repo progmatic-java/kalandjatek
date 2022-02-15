@@ -2,6 +2,7 @@ package hu.progmatic.adventuregame.room;
 
 import hu.progmatic.adventuregame.character.CharacterDto;
 import hu.progmatic.adventuregame.character.CharacterService;
+import hu.progmatic.adventuregame.npc.ActionCommand;
 import hu.progmatic.adventuregame.npc.NPCDto;
 import hu.progmatic.adventuregame.npc.NPCService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,7 @@ public class RoomController {
     model.addAttribute("currRoom", currRoom);
     model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
     model.addAttribute("currNpc", npcService.getNPCDtoById(npcId));
+    model.addAttribute("currNpcAction", npcService.getNPCDtoById(npcId).getFirstAction());
     model.addAttribute("npcInterraction", true);
     return "/adventuregame/room";
   }
@@ -86,11 +88,13 @@ public class RoomController {
           Model model
   ) {
     RoomDto currRoom = roomService.getRoomById(roomId);
+    ActionCommand nextAction = npcService.getNextAction(actionId);
     model.addAttribute("currRoom", currRoom);
     model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
     model.addAttribute("currNpc", npcService.getNPCDtoById(npcId));
-    model.addAttribute("currNpcAction", npcService.getNextAction(actionId));
+    model.addAttribute("currNpcAction", nextAction);
     model.addAttribute("npcInterraction", true);
+    model.addAttribute("conversationOver", nextAction.getPlayerAnswers().isEmpty());
     return "/adventuregame/room";
   }
 
@@ -116,6 +120,11 @@ public class RoomController {
 
   @ModelAttribute("npcInterraction")
   public boolean npcInterraction() {
+    return false;
+  }
+
+  @ModelAttribute("conversationOver")
+  public boolean conversationOver() {
     return false;
   }
 

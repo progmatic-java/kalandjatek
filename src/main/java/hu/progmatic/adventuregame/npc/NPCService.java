@@ -63,7 +63,7 @@ public class NPCService {
     private Map<String, Integer> getPlayerAnswers(List<Action> answers) {
         Map<String, Integer> playerAnswers = new HashMap<>();
 
-        for(Action action : answers) {
+        for (Action action : answers) {
             playerAnswers.put(action.getConversationText(), action.getId());
         }
         return playerAnswers;
@@ -78,7 +78,7 @@ public class NPCService {
     }
 
     public ActionCommand getNextAction(Integer actionId) {
-        Action action = actionRepository.getActionByChildActions(actionId).orElseThrow();
+        Action action = actionRepository.getById(actionId).getChildActions().stream().findFirst().orElseGet(Action::new);
         return buildNpcAction(action);
     }
 }
