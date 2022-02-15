@@ -43,7 +43,7 @@ public class BrothelInit extends InitRoom {
                                                         .childActions(
                                                                 List.of(
                                                                         Action.builder()
-                                                                                .conversationText("Well, you've come to the right place! Just follow me...")
+                                                                                .conversationText("Well, you've come to the right place! Just follow me to choose a lover...")
                                                                                 .build()
                                                                 )
                                                         )

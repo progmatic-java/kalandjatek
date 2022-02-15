@@ -77,7 +77,7 @@ public class ForestLakeInit extends InitRoom {
             .build(),
         Item.builder()
             .itemName("Rotten fish")
-            .description("They exude a disgusting stench!")
+            .description("They exude a disgusting stench!!")
             .typeOfItem(ItemEnum.JUNK)
             .build()
     );
@@ -85,7 +85,7 @@ public class ForestLakeInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "NEMTUDOM";
+    return "The gorgeous lake in the middle of the Forest of Ka'am. It's a tranquil place where you can rest a little!";
   }
 
   @Override
