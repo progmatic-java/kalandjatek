@@ -31,7 +31,7 @@ public class GraveyardInit extends InitRoom {
                                         .childActions(
                                                 List.of(
                                                         Action.builder()
-                                                                .conversationText("Hi, sorry, it seems I took the wrong road")
+                                                                .conversationText("It seems I took the wrong road...")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
@@ -62,7 +62,13 @@ public class GraveyardInit extends InitRoom {
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
-                                                                                                                .conversationText("I have nothing, I'll return another time")
+                                                                                                                .conversationText("I'll give you half the loot I get on my quest!")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("Hmmm, I'll think about it. Come back later to discuss the details")
+                                                                                                                                        .build())
+                                                                                                                )
                                                                                                                 .build()
                                                                                                 )
                                                                                         )
@@ -80,6 +86,12 @@ public class GraveyardInit extends InitRoom {
                                                                                                 List.of(
                                                                                                         Action.builder()
                                                                                                                 .conversationText("I'm in! Let's make a deal")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("Good, you won't regret your decision, child. I shall get in contact with you soon. Now leave")
+                                                                                                                                        .build())
+                                                                                                                )
                                                                                                                 .build()
                                                                                                 )
                                                                                         )
@@ -99,14 +111,14 @@ public class GraveyardInit extends InitRoom {
                         .hp(10000)
                         .mp(10000)
                         .gold(10000)
-                        .imgRef("https://mpng.subpng.com/20180615/rsq/kisspng-dragon-s-dogma-skeleton-the-elder-scrolls-v-skyri-dungeons-dragons-order-of-the-griffon-5b2346556c5791.1398915015290384214438.jpg")
+                        .imgRef("https://www.pikpng.com/pngl/b/407-4070001_final-fantasy-xiv-dragon-clipart.png")
                         .action(
                                 Action.builder()
                                         .conversationText("What brings you here, stranger? There's no return after you pass the Gate of the Underworld")
                                         .childActions(
                                                 List.of(
                                                         Action.builder()
-                                                                .conversationText("I'm looking for something")
+                                                                .conversationText("I'm looking for the last gold dragon egg")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
@@ -114,11 +126,11 @@ public class GraveyardInit extends InitRoom {
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
-                                                                                                                .conversationText("Yes. I have no other choice")
+                                                                                                                .conversationText("I do. I got no other choice")
                                                                                                                 .childActions(
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
-                                                                                                                                        .conversationText("You have been warned, stranger")
+                                                                                                                                        .conversationText("You have been warned, stranger. Your fate is in your hands now")
                                                                                                                                         .build())
                                                                                                                 )
                                                                                                                 .build()
