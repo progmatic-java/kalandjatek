@@ -56,22 +56,13 @@ public class ShopInit extends InitRoom {
                 .childActions(
                     List.of(
                         Action.builder()
-                            .conversationText("I'm looking for Red Dragon scales, did you have some in stock?")
+                            .conversationText("I'm looking for Red Dragon scales.")
                             .childActions(List.of(
                                     Action.builder()
-                                        .conversationText("")
-                                        .childActions(
-                                            List.of(
-                                                Action.builder()
-                                                    .build()
-                                            )
-                                        )
+                                        .conversationText("Oh Red Dragon scales. Hmmm interesting choice, but unfortunately I don't have them")
                                         .build()
                                 )
                             )
-                            .build(),
-                        Action.builder()
-                            .conversationText("")
                             .build()
                     )
                 )
