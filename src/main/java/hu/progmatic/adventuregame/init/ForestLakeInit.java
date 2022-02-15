@@ -2,6 +2,7 @@ package hu.progmatic.adventuregame.init;
 
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
+import hu.progmatic.adventuregame.npc.Action;
 import hu.progmatic.adventuregame.npc.NPC;
 
 import java.util.List;
@@ -18,6 +19,45 @@ public class ForestLakeInit extends InitRoom {
         NPC.builder()
             .name("Fairy of the Lake")
             .description("This beautiful fairy loves to seduce young travelers!")
+                .friendly(true)
+                .hp(200)
+                .mp(200)
+                .gold(1000)
+                .imgRef("https://cdn.pixabay.com/photo/2018/02/10/21/05/transparent-background-3144550_960_720.png")
+                .action(Action.builder()
+                        .conversationText("Hehehehe! Hello there, gorgeous!")
+                        .childActions(List.of(
+                                Action.builder()
+                                        .conversationText("Hello! Are you the fairy of the Lake?")
+                                        .childActions(
+                                                List.of(
+                                                        Action.builder()
+                                                                .conversationText("That's right. Why have you come here?")
+                                                                .childActions(List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("I'm in search of the Golden Dragon's Egg! Can you help me?")
+                                                                                .childActions(
+                                                                                        List.of(
+                                                                                                Action.builder()
+                                                                                                        .conversationText("You won't find it here..! It's beyond the forest.. That's all I can tell you!")
+                                                                                                        .build())
+                                                                                )
+                                                                                .build(),
+                                                                        Action.builder()
+                                                                                .conversationText("I accidentally wandered here.. How can I get out?")
+                                                                                .childActions(
+                                                                                        List.of(
+                                                                                                Action.builder()
+                                                                                                        .conversationText("Well, if you don't want to stay with me, just go back the way you came!")
+                                                                                                        .build())
+                                                                                )
+                                                                                .build()
+                                                                ))
+                                                                .build())
+                                        )
+                                        .build()
+                        ))
+                        .build())
             .build()
     );
   }
