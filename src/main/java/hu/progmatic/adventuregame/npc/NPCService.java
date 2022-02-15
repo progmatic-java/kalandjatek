@@ -17,6 +17,9 @@ public class NPCService {
     private NPCRepository npcRepository;
     @Autowired
     private InventoryService inventoryService;
+    @Autowired
+    private ActionRepository actionRepository;
+
 
     public NPC save(NPC npc) {
         return npcRepository.save(npc);
@@ -40,11 +43,11 @@ public class NPCService {
                 .items(entity.getInventory().getItems().stream()
                         .map(item -> inventoryService.buildItemDto(item))
                         .toList())
-                .firstAction(buildFirstAction(entity.getAction()))
+                .firstAction(buildNpcAction(entity.getAction()))
                 .build();
     }
 
-    private ActionCommand buildFirstAction(Action action) {
+    private ActionCommand buildNpcAction(Action action) {
         String npcText = action.getConversationText();
         List<Action> answers = action.getChildActions();
         return ActionCommand.builder()
@@ -68,5 +71,10 @@ public class NPCService {
 
     public NPC findByName(String name) {
         return npcRepository.findByName(name).orElseThrow();
+    }
+
+    public ActionCommand getNextAction(Integer actionId) {
+        Action action = actionRepository.getActionByChildActions(actionId).orElseThrow();
+        return buildNpcAction(action);
     }
 }
