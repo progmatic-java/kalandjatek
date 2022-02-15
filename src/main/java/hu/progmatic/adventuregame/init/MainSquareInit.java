@@ -53,6 +53,11 @@ public class MainSquareInit extends InitRoom {
   }
 
   @Override
+  public String getRoomDescription() {
+    return "NEMTUDOM";
+  }
+
+  @Override
   public String getRoomImgRef() {
     return "https://i.pinimg.com/originals/30/91/a0/3091a017b704dd6c24339700f4a16ff4.jpg";
   }

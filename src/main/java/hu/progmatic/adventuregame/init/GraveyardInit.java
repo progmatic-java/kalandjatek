@@ -54,6 +54,11 @@ public class GraveyardInit extends InitRoom {
   }
 
   @Override
+  public String getRoomDescription() {
+    return "NEMTUDOM";
+  }
+
+  @Override
   public String getRoomImgRef() {
     return "https://cdna.artstation.com/p/assets/images/images/002/748/540/large/yang-qi-.jpg?1465263258";
   }

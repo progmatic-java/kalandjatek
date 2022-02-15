@@ -14,6 +14,7 @@ public abstract class InitRoom {
   private String name;
   private String roomImgRef;
   private String roomAudio;
+  private String roomDescription;
   private final Inventory inventory;
   private final List<Item> items;
   private final List<NPC> npcs;
@@ -37,4 +38,5 @@ public abstract class InitRoom {
   abstract List<NPC> getInitNpcs();
 
   abstract List<Item> getInitItems();
+
 }

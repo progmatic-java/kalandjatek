@@ -49,6 +49,11 @@ public class ChurchDungeonsInit extends InitRoom {
   }
 
   @Override
+  public String getRoomDescription() {
+    return "NEMTUDOM";
+  }
+
+  @Override
   public String getRoomImgRef() {
     return "https://i.pinimg.com/originals/94/72/39/947239b51bb11bd3802cd2ab29414633.jpg";
   }

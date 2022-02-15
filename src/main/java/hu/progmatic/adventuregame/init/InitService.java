@@ -79,6 +79,7 @@ InitService implements InitializingBean {
                 .name(initRoom.getName())
                 .roomImgRef(initRoom.getRoomImgRef())
                 .inventory(initRoom.getInventory())
+                .roomDescription(initRoom.getRoomDescription())
                 .build();
         addNpcToRoom(initRoom.getNpcs(), room);
         return room;

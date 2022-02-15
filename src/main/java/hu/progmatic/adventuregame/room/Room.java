@@ -29,6 +29,8 @@ public class Room {
 
   private String roomAudio;
 
+  private String roomDescription;
+
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn
   private Inventory inventory;

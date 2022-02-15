@@ -18,6 +18,7 @@ public class RoomDto {
   private String roomName;
   private String roomImgRef;
   private String roomAudio;
+  private String roomDescription;
   private List<ItemDto> items;
   private Map<String, Integer> adjacentRooms;
   private List<String> npcEntities;

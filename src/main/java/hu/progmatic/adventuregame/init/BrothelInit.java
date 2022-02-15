@@ -44,6 +44,11 @@ public class BrothelInit extends InitRoom {
   }
 
   @Override
+  public String getRoomDescription() {
+    return "NEMTUDOM";
+  }
+
+  @Override
   public String getRoomImgRef() {
     return "https://www.scabard.com/user/Pochibella/image/a61e06d492332f186a58ce2baa1d30c2.jpg";
   }

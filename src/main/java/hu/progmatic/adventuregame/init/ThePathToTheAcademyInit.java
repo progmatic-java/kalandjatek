@@ -35,6 +35,11 @@ public class ThePathToTheAcademyInit extends InitRoom {
   }
 
   @Override
+  public String getRoomDescription() {
+    return "NEMTUDOM";
+  }
+
+  @Override
   public String getRoomImgRef() {
     return "https://i.imgur.com/E7k4guh.jpg";
   }

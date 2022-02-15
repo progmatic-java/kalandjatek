@@ -40,6 +40,11 @@ public class RoadToTheForestInit extends InitRoom {
   }
 
   @Override
+  public String getRoomDescription() {
+    return "NEMTUDOM";
+  }
+
+  @Override
   public String getRoomImgRef() {
     return "https://www.worldanvil.com/uploads/images/085e0ae64f26ed79426cdb5c1a3bb060.jpg";
   }

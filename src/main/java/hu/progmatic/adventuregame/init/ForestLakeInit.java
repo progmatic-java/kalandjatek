@@ -44,6 +44,11 @@ public class ForestLakeInit extends InitRoom {
   }
 
   @Override
+  public String getRoomDescription() {
+    return "NEMTUDOM";
+  }
+
+  @Override
   public String getRoomImgRef() {
     return "https://i.pinimg.com/originals/da/52/4e/da524e6c19b3a3933daa7793d9b34ad4.jpg";
   }

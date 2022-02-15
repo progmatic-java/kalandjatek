@@ -44,6 +44,11 @@ public class CellarInit extends InitRoom {
   }
 
   @Override
+  public String getRoomDescription() {
+    return "ŐŐŐŐ";
+  }
+
+  @Override
   public String getRoomImgRef() {
     return "https://i.imgur.com/qqBe4IX.jpg";
   }

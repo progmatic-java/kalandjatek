@@ -36,6 +36,7 @@ public class RoomService{
                 .roomName(room.getName())
                 .roomImgRef(room.getRoomImgRef())
                 .roomAudio(room.getRoomAudio())
+                .roomDescription(room.getRoomDescription())
                 .adjacentRooms(getAdjacentRooms(room))
                 .npcEntities(getNpcsName(room.getNpcEntities()))
                 .items(getItemList(room.getInventory()))

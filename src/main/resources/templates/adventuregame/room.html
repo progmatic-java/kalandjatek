@@ -271,7 +271,8 @@
     </form>
 
     <div class="INTERACTIONTEXT">
-
+        <h2 th:unless="${npcInterraction}" th:text="${'Room Description: ' + currRoom.getRoomDescription()}">
+            Room Description: </h2>
     </div>
 </div>
 

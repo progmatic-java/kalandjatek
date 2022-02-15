@@ -45,6 +45,11 @@ public class AcademyInnit extends InitRoom {
     }
 
     @Override
+    public String getRoomDescription() {
+        return "NEMTUDOM";
+    }
+
+    @Override
     public String getRoomImgRef() {
         return "https://i.pinimg.com/originals/68/d2/6c/68d26cfe85a1557d62cb69d4f090fb49.jpg";
     }
