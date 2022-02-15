@@ -53,11 +53,13 @@ public class RoomController {
           Model model
   ) {
     RoomDto currRoom = roomService.getRoomById(roomId);
+    ActionCommand firstAction = npcService.getNPCDtoById(npcId).getFirstAction();
     model.addAttribute("currRoom", currRoom);
     model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
     model.addAttribute("currNpc", npcService.getNPCDtoById(npcId));
-    model.addAttribute("currNpcAction", npcService.getNPCDtoById(npcId).getFirstAction());
+    model.addAttribute("currNpcAction", firstAction);
     model.addAttribute("npcInterraction", true);
+    model.addAttribute("conversationOver", firstAction.getPlayerAnswers().isEmpty());
     return "/adventuregame/room";
   }
 

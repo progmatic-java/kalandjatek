@@ -2,6 +2,7 @@ package hu.progmatic.adventuregame.init;
 
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
+import hu.progmatic.adventuregame.npc.Action;
 import hu.progmatic.adventuregame.npc.NPC;
 
 import java.util.List;
@@ -18,14 +19,53 @@ public class MainSquareInit extends InitRoom {
         NPC.builder()
             .name("Trace")
             .description("A drunk guy sleeping outside of The Black Hole Inn.")
+            .action(
+                Action.builder()
+                    .conversationText("*Trace snoring loudly, while exhaling his nearly poisonous breath, filled with alcohol. You shake his shoulder, but it seems you can't wake him up now.*")
+                    .build()
+            )
             .build(),
         NPC.builder()
             .name("Tomcat")
             .description("The town's beggar and thief hunter.")
+            .action(
+                Action.builder()
+                    .conversationText("Hey traveller, can you toss me some coins? I'm living on the streets and slowly starving to DEATH!")
+                    .childActions(
+                        List.of(
+                            Action.builder()
+                                .conversationText("I'm not giving you anything, go and get some work!")
+                                .childActions(
+                                    List.of(
+                                        Action.builder()
+                                            .conversationText("Fuck you!")
+                                            .build()
+                                    )
+                                )
+                                .build(),
+                            Action.builder()
+                                .conversationText("Sorry, I ran out of coins.")
+                                .childActions(
+                                    List.of(
+                                        Action.builder()
+                                            .conversationText("LIAR! Do you think I'm blind? I can see that your purse is filled with coins. I'm cursing you for 100 years of serious back pain!")
+                                            .build()
+                                    )
+                                )
+                                .build()
+                        )
+                    )
+                    .build()
+            )
             .build(),
         NPC.builder()
             .name("Admina")
             .description("The town's prostitute")
+            .action(
+                Action.builder()
+                    .conversationText("If you want to have some 'fun time' with me, talk to Lady Regexxx in The Red Try and Catch.")
+                    .build()
+            )
             .build()
     );
   }
