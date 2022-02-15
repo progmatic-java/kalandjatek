@@ -56,7 +56,10 @@ public class InnInit extends InitRoom {
                                                                                                                                                                                         .childActions(List.of(
                                                                                                                                                                                                 Action.builder()
                                                                                                                                                                                                         .conversationText("Thanks!")
-                                                                                                                                                                                                        .childActions(List.of(Action.builder().conversationText("Have a good day my friend!").build()))
+                                                                                                                                                                                                        .childActions(List.of(
+                                                                                                                                                                                                                Action.builder()
+                                                                                                                                                                                                                        .conversationText("Have a good day my friend!")
+                                                                                                                                                                                                                        .build()))
                                                                                                                                                                                                         .build()))
                                                                                                                                                                                         .build())
                                                                                                                                                                 )
@@ -188,9 +191,10 @@ public class InnInit extends InitRoom {
                                                                         .childActions(List.of(
                                                                                 Action.builder()
                                                                                         .conversationText("I'm good! Can you help me? I'm here to search for the last golden dragon egg and I heard it's here somewhere in Thorncall.")
-                                                                                        .childActions(List.of(Action.builder()
+                                                                                        .childActions(List.of(
+                                                                                                Action.builder()
                                                                                                         .conversationText("Sorry I haven't heard about it.")
-                                                                                                .build()))
+                                                                                                        .build()))
                                                                                         .build()))
                                                                         .build()))
                                                         .build(),
@@ -201,7 +205,7 @@ public class InnInit extends InitRoom {
                                                                         .conversationText("Really? I could've swore... Sorry, my bad.")
                                                                         .build()))
                                                         .build()
-                                                ))
+                                        ))
                                         .build())
 
                         .build()
