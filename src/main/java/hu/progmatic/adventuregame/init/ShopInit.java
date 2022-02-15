@@ -54,7 +54,7 @@ public class ShopInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "NEMTUDOM";
+    return "The shop where you're bound to find anything you'll need on a quest! A galore of weapons and magical items to aid you on your missions. Also, the shopkeeper is a renowned potion brewer. He sometimes adds a bit of poison to his concoctions, so if you fall ill, you might know whom to blame for it.";
   }
 
   @Override

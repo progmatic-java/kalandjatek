@@ -45,7 +45,7 @@ public class BrothelInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "NEMTUDOM";
+    return "Feel your best in the lap of luxury! Beautiful women and exotic men are waiting in line to satisfy all your needs. Mix pleasure with business, as you can also gather some essential information for completing your quest.";
   }
 
   @Override

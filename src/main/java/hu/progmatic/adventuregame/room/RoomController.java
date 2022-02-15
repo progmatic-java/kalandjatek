@@ -1,6 +1,5 @@
 package hu.progmatic.adventuregame.room;
 
-import hu.progmatic.adventuregame.character.Character;
 import hu.progmatic.adventuregame.character.CharacterDto;
 import hu.progmatic.adventuregame.character.CharacterService;
 import hu.progmatic.adventuregame.npc.NPCDto;
@@ -40,7 +39,7 @@ public class RoomController {
     model.addAttribute("currRoom", currRoom);
     model.addAttribute("currRoomItems", currRoom.getItems());
     model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
-    model.addAttribute("currNpcs", currRoom.getNpcEntities());
+    model.addAttribute("currNpcs", currRoom.getNpcDtoList());
     model.addAttribute("currDoors", currRoom.getAdjacentRooms());
     return "/adventuregame/room";
   }
@@ -72,7 +71,7 @@ public class RoomController {
     model.addAttribute("currRoom", currRoom);
     model.addAttribute("currRoomItems", currRoom.getItems());
     model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
-    model.addAttribute("currNpcs", currRoom.getNpcEntities());
+    model.addAttribute("currNpcs", currRoom.getNpcDtoList());
     model.addAttribute("currDoors", currRoom.getAdjacentRooms());
 
     return "/adventuregame/room";

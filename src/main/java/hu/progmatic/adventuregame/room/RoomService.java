@@ -3,10 +3,9 @@ package hu.progmatic.adventuregame.room;
 import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.InventoryService;
 import hu.progmatic.adventuregame.inventory.ItemDto;
-import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.npc.NPC;
-import hu.progmatic.adventuregame.npc.NPCRepository;
-import org.springframework.beans.factory.InitializingBean;
+import hu.progmatic.adventuregame.npc.NPCDto;
+import hu.progmatic.adventuregame.npc.NPCService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -17,7 +16,7 @@ import java.util.Map;
 
 @Service
 @Transactional
-public class RoomService{
+public class RoomService {
 
     @Autowired
     private RoomRepository roomRepository;
@@ -25,6 +24,9 @@ public class RoomService{
     private DoorRepository doorRepository;
     @Autowired
     private InventoryService inventoryService;
+    @Autowired
+    private NPCService NPCService;
+
 
     public RoomDto getRoomById(Integer id) {
         return buildRoomDto(roomRepository.getById(id));
@@ -38,7 +40,7 @@ public class RoomService{
                 .roomAudio(room.getRoomAudio())
                 .roomDescription(room.getRoomDescription())
                 .adjacentRooms(getAdjacentRooms(room))
-                .npcEntities(getNpcsName(room.getNpcEntities()))
+                .npcDtoList(getNPCDtoList(room.getNpcEntities()))
                 .items(getItemList(room.getInventory()))
                 .build();
     }
@@ -49,9 +51,9 @@ public class RoomService{
                 .toList();
     }
 
-    private List<String> getNpcsName(List<NPC> npcEntities) {
+    private List<NPCDto> getNPCDtoList(List<NPC> npcEntities) {
         return npcEntities.stream()
-                .map(NPC::getName)
+                .map(npc -> NPCService.buildNpcDto(npc))
                 .toList();
     }
 
@@ -82,8 +84,8 @@ public class RoomService{
         List<Door> allDoors = room.getDoors1();
         allDoors.addAll(room.getDoors2());
         List<Room> nextRooms = allDoors.stream()
-            .map(door -> getOtherRoom(door, room))
-            .toList();
+                .map(door -> getOtherRoom(door, room))
+                .toList();
         return getRoomMap(nextRooms);
     }
 
@@ -107,7 +109,7 @@ public class RoomService{
         roomRepository.deleteAll();
     }
 
-    public Room getRoomEntityById(Integer id){
+    public Room getRoomEntityById(Integer id) {
         return roomRepository.getById(id);
     }
 }

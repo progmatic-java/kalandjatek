@@ -31,6 +31,10 @@ public class NPCService {
 
     public NPCDto getNPCDtoById(Integer id) {
         NPC entity = getById(id);
+        return buildNpcDto(entity);
+    }
+
+    public NPCDto buildNpcDto(NPC entity) {
         return NPCDto.builder()
                 .name(entity.getName())
                 .id(entity.getId())
@@ -40,9 +44,9 @@ public class NPCService {
                 .mp(entity.getMp())
                 .gold(entity.getGold())
                 .imgRef(entity.getImgRef())
-                .items(entity.getInventory().getItems().stream()
-                        .map(item -> inventoryService.buildItemDto(item))
-                        .toList())
+//                .items(entity.getInventory().getItems().stream()
+//                        .map(item -> inventoryService.buildItemDto(item))
+//                        .toList())
                 .firstAction(buildNpcAction(entity.getAction()))
                 .build();
     }

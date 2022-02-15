@@ -86,16 +86,16 @@ public class InnInit extends InitRoom {
                                         )
                                         .build()
                         )
-                        .build(),
-                NPC.builder()
-                        .name("Switcher")
-                        .description("Your old friend from the prison.")
-                        .friendly(true)
-                        .hp(100)
-                        .mp(20)
-                        .gold(500)
-                        .imgRef("https://i.imgur.com/3IOuWgJ.png")
                         .build()
+//                NPC.builder()
+//                        .name("Switcher")
+//                        .description("Your old friend from the prison.")
+//                        .friendly(true)
+//                        .hp(100)
+//                        .mp(20)
+//                        .gold(500)
+//                        .imgRef("https://i.imgur.com/3IOuWgJ.png")
+//                        .build()
         );
     }
 

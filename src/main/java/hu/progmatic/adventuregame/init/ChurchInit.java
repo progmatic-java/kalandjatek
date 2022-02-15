@@ -54,7 +54,7 @@ public class ChurchInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "NEMTUDOM";
+    return "A space built for worshipping Holy Joe, the deity of the kingdom, who was also known as the Bringer of the Light. The more energy you devote and money you donate to the Church, the bigger the chance that Holy Joe will bless you";
   }
 
   @Override

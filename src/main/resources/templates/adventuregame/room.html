@@ -206,8 +206,6 @@
     </div>
     <br>
     <div class="CHARACTERINFO">
-
-
         <h2 th:text="${'Character Name: ' + currPlayer.getCharacterName() + ' (' + currPlayer.getRace() + ')'}">
             Character
             Name</h2>
@@ -238,12 +236,22 @@
     </div>
     <br>
     <div class="NPCs">
-        <h3>NPCs in Room:</h3>
-        <ul>
-            <div th:each="npcName : ${currNpcs}">
-                <li th:text="${npcName}">Burrows</li>
+        <div class="NpcInfo">
+            <div class="dropdown">
+                <button class="dropbtn">NPCs in Room</button>
+                <div class="dropdown-content">
+                    <div th:each="npcInRoom : ${currRoom.getNpcDtoList()}">
+                        <!--                                                <form th:action="@{'/adventuregame/characterpage/{characterId}/item/{itemId}'(characterId=${currPlayer.getId()},itemId=${characterItems.getId()})}"-->
+                        <!--                                                      method="get">-->
+                        <input data-bs-toggle="tooltip" data-bs-placement="right"
+                               th:title="${'Description: ' + npcInRoom.getDescription()  +  ' (friendly: ' + npcInRoom.getFriendly() + ')'}"
+                               type="submit" class="btn btn-dark" th:value="${npcInRoom.getName()}"/>
+                        <!--                                                </form>-->
+
+                    </div>
+                </div>
             </div>
-        </ul>
+        </div>
     </div>
     <br>
     <!--<h3>Next rooms:</h3>-->

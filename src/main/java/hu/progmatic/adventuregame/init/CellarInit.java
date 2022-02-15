@@ -45,7 +45,7 @@ public class CellarInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "ŐŐŐŐ";
+    return "Large barrels of wine and beer await thirsty customers, but beware, the cellar can be a dangerous place! There's a mad dog growling in the dark shadows, which seems to have an insatiable appetite... Especially for fresh meat..";
   }
 
   @Override
