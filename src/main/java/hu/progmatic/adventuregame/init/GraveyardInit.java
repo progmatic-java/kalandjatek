@@ -143,7 +143,8 @@ public class GraveyardInit extends InitRoom {
                                                 )
                                         )
                                         .build()
-                        ).build()
+                        )
+                        .build()
         );
 
     }
