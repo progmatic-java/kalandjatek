@@ -148,6 +148,11 @@
         .INTERACTIONTEXT {
             grid-area: INTERACTIONTEXT;
             background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            text-shadow: -2px -2px 0 #000,
+            1px -1px 0 #000,
+            -2px 2px 0 #000,
+            1px 1px 0 #000;
         }
 
         .INFOTEXT {
@@ -271,7 +276,7 @@
     </form>
 
     <div class="INTERACTIONTEXT">
-        <h2 th:unless="${npcInterraction}" th:text="${'Room Description: ' + currRoom.getRoomDescription()}">
+        <h2 th:unless="${npcInterraction}" th:text="${currRoom.getRoomDescription()}">
             Room Description: </h2>
     </div>
 </div>

@@ -17,33 +17,34 @@ import java.util.List;
 @Getter
 public class Room {
 
-  @Id
-  @GeneratedValue(strategy = GenerationType.AUTO)
-  private Integer id;
+    @Id
+    @GeneratedValue(strategy = GenerationType.AUTO)
+    private Integer id;
 
-  @NotEmpty
-  @Column(unique = true)
-  private String name;
+    @NotEmpty
+    @Column(unique = true)
+    private String name;
 
-  private String roomImgRef;
+    private String roomImgRef;
 
-  private String roomAudio;
+    private String roomAudio;
 
-  private String roomDescription;
+    @Column(length = 1000)
+    private String roomDescription;
 
-  @OneToOne(cascade = CascadeType.ALL)
-  @JoinColumn
-  private Inventory inventory;
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn
+    private Inventory inventory;
 
-  @OneToMany(mappedBy = "npcRoom", cascade = CascadeType.ALL)
-  @Builder.Default
-  private List<NPC> npcEntities = new ArrayList<>();
+    @OneToMany(mappedBy = "npcRoom", cascade = CascadeType.ALL)
+    @Builder.Default
+    private List<NPC> npcEntities = new ArrayList<>();
 
-  @OneToMany(mappedBy = "room1", cascade = CascadeType.ALL, orphanRemoval = true)
-  @Builder.Default
-  private List<Door> doors1 = new ArrayList<>();
+    @OneToMany(mappedBy = "room1", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<Door> doors1 = new ArrayList<>();
 
-  @OneToMany(mappedBy = "room2", cascade = CascadeType.ALL, orphanRemoval = true)
-  @Builder.Default
-  private List<Door> doors2 = new ArrayList<>();
+    @OneToMany(mappedBy = "room2", cascade = CascadeType.ALL, orphanRemoval = true)
+    @Builder.Default
+    private List<Door> doors2 = new ArrayList<>();
 }

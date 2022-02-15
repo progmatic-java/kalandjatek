@@ -54,7 +54,7 @@ public class MainSquareInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "NEMTUDOM";
+    return "Every road leads to the main square of Thorncall. Watch out for any thieves who may steal your purse!";
   }
 
   @Override

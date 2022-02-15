@@ -121,7 +121,7 @@ public class InnInit extends InitRoom {
 
     @Override
     public String getRoomDescription() {
-        return "NEMTUDOM";
+        return "The famous inn of Thorncall, where every tired traveller can replenish themselves at. Even though the Black Hole Inn is a smokey space where prostitutes and thieves love to gather, it is also a friendly and warm tavern where you can refresh yourself with a pint of beer and a piece of fine bread.";
     }
 
     @Override
