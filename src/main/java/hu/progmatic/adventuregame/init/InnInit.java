@@ -28,7 +28,7 @@ public class InnInit extends InitRoom {
                         .imgRef("https://i.imgur.com/v436jHn.png")
                         .action(
                                 Action.builder()
-                                        .conversationText("Welcome sexy traveller to my inn! What can I do for you?")
+                                        .conversationText("Welcome traveller to my inn! What can I do for you?")
                                         .childActions(
                                                 List.of(
                                                         Action.builder()
@@ -39,6 +39,34 @@ public class InnInit extends InitRoom {
                                                                                         .conversationText("The first beer is on the house! Anything else I can get for you?")
                                                                                         .childActions(
                                                                                                 List.of(
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("I'm actually in search for the last gold dragon egg and I heard it's here somewhere in Thorncall. Is it true?")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("A gold dragon egg? That's a bedtime story that parents tell their kids to help them sleep. Don't tell me you believe in that.")
+                                                                                                                                        .childActions(
+                                                                                                                                                List.of(
+                                                                                                                                                        Action.builder()
+                                                                                                                                                                .conversationText("I don't, but if it exists, it is the most valuable item in all of Progmatique.")
+                                                                                                                                                                .childActions(
+                                                                                                                                                                        List.of(
+                                                                                                                                                                                Action.builder()
+                                                                                                                                                                                        .conversationText("You're crazy my friend! But if you want to begin somewhere, I would begin in Holy Joe's Church. That old guy had a lot of secrets.")
+                                                                                                                                                                                        .childActions(List.of(
+                                                                                                                                                                                                Action.builder()
+                                                                                                                                                                                                        .conversationText("Thanks!")
+                                                                                                                                                                                                        .childActions(List.of(Action.builder().conversationText("Have a good day my friend!").build()))
+                                                                                                                                                                                                        .build()))
+                                                                                                                                                                                        .build())
+                                                                                                                                                                )
+                                                                                                                                                                .build()
+                                                                                                                                                )
+                                                                                                                                        )
+                                                                                                                                        .build()
+                                                                                                                        )
+                                                                                                                )
+                                                                                                                .build(),
                                                                                                         Action.builder()
                                                                                                                 .conversationText("No thanks!")
                                                                                                                 .childActions(
@@ -55,15 +83,26 @@ public class InnInit extends InitRoom {
                                                                 )
                                                                 .build(),
                                                         Action.builder()
-                                                                .conversationText("Hey, I'm actually in search of the town's brothel")
+                                                                .conversationText("Hey, I'm actually in search for the last gold dragon egg and I heard it's here somewhere in Thorncall. Is it true?")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("The Red Try and Catch? You'll find it next to the Church of Holy Joe!")
+                                                                                        .conversationText("A gold dragon egg? That's a bedtime story that parents tell their kids to help them sleep. Don't tell me you believe in that.")
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
-                                                                                                                .conversationText("Thanks!")
+                                                                                                                .conversationText("I don't, but if it exists, it is the most valuable item in all of Progmatique.")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("You're crazy my friend! But if you want to begin somewhere, I would begin in Holy Joe's Church. That old guy had a lot of secrets.")
+                                                                                                                                        .childActions(List.of(
+                                                                                                                                                Action.builder()
+                                                                                                                                                        .conversationText("Thanks!")
+                                                                                                                                                        .childActions(List.of(Action.builder().conversationText("Have a good day my friend!").build()))
+                                                                                                                                                        .build()))
+                                                                                                                                        .build())
+                                                                                                                )
                                                                                                                 .build()
                                                                                                 )
                                                                                         )
@@ -72,15 +111,51 @@ public class InnInit extends InitRoom {
                                                                 )
                                                                 .build(),
                                                         Action.builder()
-                                                                .conversationText("Hi, I want to fight some big trolls!")
+                                                                .conversationText("Hi, Im searching for a job opportunity.")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("Oh! Are you in search of a quest? Maybe I have a mission you'd be interested in...")
+                                                                                        .conversationText("Oh! Maybe I have a mission you'd be interested in...")
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
                                                                                                                 .conversationText("Oh really? Tell me more!")
+                                                                                                                .childActions(List.of(Action.builder()
+                                                                                                                        .conversationText("There's a forest just outside of the town. It has a very valuable ring that I need. I can give you a lot of money if you bring it back to me. But beware, legends say the forest is cursed!")
+                                                                                                                        .childActions(List.of(Action.builder()
+                                                                                                                                        .conversationText("Cursed?")
+                                                                                                                                        .childActions(List.of(Action.builder()
+                                                                                                                                                .conversationText("Yes, something lurks there... Something very dangerous. People call it X-epsion. Even it's name is scary.")
+                                                                                                                                                .childActions(List.of(
+                                                                                                                                                        Action.builder()
+                                                                                                                                                                .conversationText("Wow, yeah no sorry, I dont want to risk my life.")
+                                                                                                                                                                .childActions(List.of(
+                                                                                                                                                                        Action.builder()
+                                                                                                                                                                                .conversationText("I get it, if you change your mind, you know where to find me.")
+                                                                                                                                                                                .build()))
+                                                                                                                                                                .build(),
+                                                                                                                                                        Action.builder()
+                                                                                                                                                                .conversationText("Sounds scary, I'm in!")
+                                                                                                                                                                .childActions(List.of(
+                                                                                                                                                                        Action.builder()
+                                                                                                                                                                                .conversationText("Great! Please bring it back to me. I will give you a lot of coins and free beers for life!")
+                                                                                                                                                                                .build()))
+                                                                                                                                                                .build()))
+                                                                                                                                                .build()))
+                                                                                                                                        .build(),
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("WHATEVER I NEED THE COINS")
+                                                                                                                                        .childActions(List.of(Action.builder()
+                                                                                                                                                .conversationText("Great! Please bring it back to me. I will give you a lot of coins and free beers for life!")
+                                                                                                                                                .build()))
+                                                                                                                                        .build()))
+                                                                                                                        .build()))
+                                                                                                                .build(),
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("I'm not the one to boss around...")
+                                                                                                                .childActions(List.of(Action.builder()
+                                                                                                                        .conversationText("Geez calm down, I was just asking.")
+                                                                                                                        .build()))
                                                                                                                 .build()
                                                                                                 )
                                                                                         )
@@ -92,16 +167,44 @@ public class InnInit extends InitRoom {
                                         )
                                         .build()
                         )
+                        .build(),
+                NPC.builder()
+                        .name("Switcher")
+                        .description("Your old friend from the prison.")
+                        .friendly(true)
+                        .hp(100)
+                        .mp(20)
+                        .gold(500)
+                        .imgRef("https://i.imgur.com/3IOuWgJ.png")
+                        .action(
+                                Action.builder()
+                                        .conversationText("Wait, i know you!")
+                                        .childActions(List.of(
+                                                Action.builder()
+                                                        .conversationText("Switcher is that you!?")
+                                                        .childActions(List.of(
+                                                                Action.builder()
+                                                                        .conversationText("Yes, my friend! How are you? So good to see you!")
+                                                                        .childActions(List.of(
+                                                                                Action.builder()
+                                                                                        .conversationText("I'm good! Can you help me? I'm here to search for the last golden dragon egg and I heard it's here somewhere in Thorncall.")
+                                                                                        .childActions(List.of(Action.builder()
+                                                                                                        .conversationText("Sorry I haven't heard about it.")
+                                                                                                .build()))
+                                                                                        .build()))
+                                                                        .build()))
+                                                        .build(),
+                                                Action.builder()
+                                                        .conversationText("Sorry, you've got the wrong person.")
+                                                        .childActions(List.of(
+                                                                Action.builder()
+                                                                        .conversationText("Really? I could've swore... Sorry, my bad.")
+                                                                        .build()))
+                                                        .build()
+                                                ))
+                                        .build())
+
                         .build()
-//                NPC.builder()
-//                        .name("Switcher")
-//                        .description("Your old friend from the prison.")
-//                        .friendly(true)
-//                        .hp(100)
-//                        .mp(20)
-//                        .gold(500)
-//                        .imgRef("https://i.imgur.com/3IOuWgJ.png")
-//                        .build()
         );
     }
 
