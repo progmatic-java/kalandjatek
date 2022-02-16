@@ -55,7 +55,7 @@ public class AcademyInnit extends InitRoom {
 
     @Override
     public String getRoomDescription() {
-        return "NEMTUDOM";
+        return "Centuries of knowledge, agile methodology and wisdom are the pillars that hold the Academy together. If you want to learn how to code, you might want to stay here and study with Uncle Bob for a while.";
     }
 
     @Override

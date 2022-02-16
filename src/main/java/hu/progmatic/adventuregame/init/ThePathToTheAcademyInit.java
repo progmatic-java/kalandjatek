@@ -28,7 +28,7 @@ public class ThePathToTheAcademyInit extends InitRoom {
             .build(),
         Item.builder()
             .itemName("Empty potion bottles")
-            .description("These younglings don't care about the climate??")
+            .description("These younglings don't care about climate change??")
             .typeOfItem(ItemEnum.JUNK)
             .build()
     );
@@ -36,7 +36,7 @@ public class ThePathToTheAcademyInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "NEMTUDOM";
+    return "A long path winds ahead of you, leading up to the Academy of Magic and Programming. While the landscape is breathtakingly beautiful, make sure that you stay safe, as there may be monsters prowling nearby.";
   }
 
   @Override
