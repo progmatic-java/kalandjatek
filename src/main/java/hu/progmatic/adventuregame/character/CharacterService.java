@@ -25,16 +25,16 @@ public class CharacterService implements InitializingBean {
     private RoomService roomService;
 
 
-    public Character save(Character character) {
+    public CharacterEntity save(CharacterEntity character) {
         return repository.save(character);
     }
 
-    public Character getById(Integer id) {
+    public CharacterEntity getById(Integer id) {
         return repository.getById(id);
     }
 
     public CharacterDto getCharacterDtoById(Integer id) {
-        Character entity = repository.getById(id);
+        CharacterEntity entity = repository.getById(id);
         List<ItemDto> items = entity.getInventory().getItems().stream().map(item -> inventoryService.buildItemDto(item)).toList();
         return CharacterDto.builder()
                 .characterName(entity.getName())
@@ -56,15 +56,15 @@ public class CharacterService implements InitializingBean {
         repository.deleteById(id);
     }
 
-    public List<Character> saveAll(List<Character> list) {
+    public List<CharacterEntity> saveAll(List<CharacterEntity> list) {
         return repository.saveAllAndFlush(list);
     }
 
-    public List<Character> findAllByName(String name) {
+    public List<CharacterEntity> findAllByName(String name) {
         return repository.findAllByNameContains(name);
     }
 
-    public List<Character> findAllByRace(Race race) {
+    public List<CharacterEntity> findAllByRace(Race race) {
         return repository.findAllByRace(race);
     }
 
@@ -87,8 +87,8 @@ public class CharacterService implements InitializingBean {
         reptilian.getItems().add(rock);
 
         if (findAll().isEmpty()) {
-            List<Character> buildingCharacter = List.of(
-                    Character
+            List<CharacterEntity> buildingCharacter = List.of(
+                    CharacterEntity
                             .builder()
                             .name("Vallak")
                             .race(Race.ORC)
@@ -99,7 +99,7 @@ public class CharacterService implements InitializingBean {
                             .description(Race.ORC.description)
                             .inventory(orc)
                             .build(),
-                    Character.builder().name("Lyah")
+                    CharacterEntity.builder().name("Lyah")
                             .race(Race.ELF)
                             .hp(100)
                             .mp(200)
@@ -108,7 +108,7 @@ public class CharacterService implements InitializingBean {
                             .description(Race.ELF.description)
                             .inventory(elf)
                             .build(),
-                    Character
+                    CharacterEntity
                             .builder()
                             .name("Bence")
                             .race(Race.HUMAN)
@@ -119,7 +119,7 @@ public class CharacterService implements InitializingBean {
                             .description(Race.HUMAN.description)
                             .inventory(human)
                             .build(),
-                    Character
+                    CharacterEntity
                             .builder()
                             .name("Mark Zuckerberg")
                             .race(Race.REPTILIAN)
@@ -130,7 +130,7 @@ public class CharacterService implements InitializingBean {
                             .description(Race.REPTILIAN.description)
                             .inventory(reptilian)
                             .build());
-            List<Character> characters = saveAll(buildingCharacter);
+            List<CharacterEntity> characters = saveAll(buildingCharacter);
 
         }
     }
@@ -165,13 +165,13 @@ public class CharacterService implements InitializingBean {
         answerEvaluation.put(race, value + 1);
     }
 
-    public List<Character> findAll() {
+    public List<CharacterEntity> findAll() {
         return repository.findAll();
     }
 
-    public Character getResultCharacter(Answer answer) {
+    public CharacterEntity getResultCharacter(Answer answer) {
         Race characterRace = getResults(answer);
-        return Character.builder()
+        return CharacterEntity.builder()
                 .name(answer.getName())
                 .hp(characterRace.hp)
                 .mp(characterRace.mp)

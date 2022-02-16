@@ -42,7 +42,7 @@ public class CharacterController {
   @GetMapping("/adventuregame/characterpage/{id}")
   public String characterId(
       @PathVariable Integer id, Model model) {
-    Character chosenCharacter = characterService.getById(id);
+    CharacterEntity chosenCharacter = characterService.getById(id);
     model.addAttribute("chosenCharacter", chosenCharacter);
     model.addAttribute("newCharacter", false);
     return "/adventuregame/characterpage";
@@ -63,7 +63,7 @@ public class CharacterController {
     if (bindingResult.hasErrors()) {
       return "/adventuregame/personalitytest";
     }
-    Character resultCharacter = characterService.getResultCharacter(answer);
+    CharacterEntity resultCharacter = characterService.getResultCharacter(answer);
     characterService.save(resultCharacter);
     model.addAttribute("chosenCharacter", resultCharacter);
     model.addAttribute("retakeTest", true);
@@ -86,14 +86,14 @@ public class CharacterController {
 
   @GetMapping("/adventuregame/introduction/{id}")
   public String intro(@PathVariable Integer id, Model model) {
-    Character chosenCharacter = characterService.getById(id);
+    CharacterEntity chosenCharacter = characterService.getById(id);
     model.addAttribute("chosenCharacter", chosenCharacter);
     return "/adventuregame/introduction";
   }
 
   @ModelAttribute("chosenCharacter")
-  public Character chosenCharacter() {
-    return new Character();
+  public CharacterEntity chosenCharacter() {
+    return new CharacterEntity();
   }
 
   @ModelAttribute("startingRoom")

@@ -1,7 +1,6 @@
 package hu.progmatic.adventuregame.character;
 
 import hu.progmatic.adventuregame.inventory.Inventory;
-import hu.progmatic.adventuregame.room.Room;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +11,7 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
-public class Character {
+public class CharacterEntity {
   @Id
   @GeneratedValue(strategy = GenerationType.AUTO)
   private Integer id;

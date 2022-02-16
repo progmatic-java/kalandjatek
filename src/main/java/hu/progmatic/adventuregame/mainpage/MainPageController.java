@@ -1,6 +1,6 @@
 package hu.progmatic.adventuregame.mainpage;
 
-import hu.progmatic.adventuregame.character.Character;
+import hu.progmatic.adventuregame.character.CharacterEntity;
 import hu.progmatic.adventuregame.character.CharacterService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
@@ -32,7 +32,7 @@ public class MainPageController {
     }
 
     @ModelAttribute("dropDown")
-    public List<Character> dropDown() {
+    public List<CharacterEntity> dropDown() {
         return characterService.findAll();
     }
 }
