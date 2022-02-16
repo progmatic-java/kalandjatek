@@ -17,10 +17,37 @@ public class ForestInit extends InitRoom {
     @Override
     List<NPC> getInitNpcs() {
         return List.of(
-//                NPC.builder()
-//                        .name("Ugly Troll")
-//                        .description("As big and ugly as trolls get!")
-//                        .build(),
+                NPC.builder()
+                        .name("Ugly Troll")
+                        .description("As big and ugly as trolls get!")
+                        .imgRef("https://i.imgur.com/DAcDKOP.png")
+                        .friendly(false)
+                        .action(Action.builder()
+                                .conversationText("WAAAAAAAAA!")
+                                .childActions(List.of(
+                                        Action.builder()
+                                                .conversationText("JESUS WHAT THE HELL")
+                                                .childActions(List.of(
+                                                        Action.builder()
+                                                                .conversationText("HUNGRYYYYYY!! EAT!!")
+                                                                .build()))
+                                                .build(),
+                                        Action.builder()
+                                                .conversationText("Wow, you scared me!")
+                                                .childActions(List.of(
+                                                        Action.builder()
+                                                                .conversationText("SMALL CREATURE! IM WILL EAT YOU!")
+                                                                .build()))
+                                                .build(),
+                                        Action.builder()
+                                                .conversationText("Get away you troll! You are no match for me!")
+                                                .childActions(List.of(
+                                                        Action.builder()
+                                                                .conversationText("TASTY FLESH CREATURE!")
+                                                                .build()))
+                                                .build()))
+                                .build())
+                        .build(),
                 NPC.builder()
                         .name("X-epson")
                         .description("A being from another dimension that haunts the forest.")
