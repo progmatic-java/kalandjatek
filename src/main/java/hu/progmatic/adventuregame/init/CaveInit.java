@@ -10,7 +10,7 @@ import java.util.List;
 public class CaveInit extends InitRoom{
     @Override
     public String getName() {
-        return "The Lair of the Chicken Dragon, who was originally born a Phoenix";
+        return "The Lair of the Dragon";
     }
 
     @Override
@@ -23,6 +23,7 @@ public class CaveInit extends InitRoom{
                         .hp(500)
                         .mp(50)
                         .gold(1000)
+                        .imgRef("https://i.imgur.com/HQMd801.png")
                         .action(Action.builder()
                                 .conversationText("What are you doing here, in my lair?")
                                 .childActions(List.of(
@@ -59,7 +60,7 @@ public class CaveInit extends InitRoom{
                 Item.builder()
                         .itemName("Assortment of bones")
                         .description("What else did you expect in a dragon lair?")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .typeOfItem(ItemEnum.JUNK)
                         .build(),
                 Item.builder()
                         .itemName("Jewels")

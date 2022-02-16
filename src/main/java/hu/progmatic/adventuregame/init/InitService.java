@@ -28,13 +28,15 @@ InitService implements InitializingBean {
     private final ThePathToTheAcademyInit pathToTheAcademyInit = new ThePathToTheAcademyInit();
     private final AcademyInnit academyInnit = new AcademyInnit();
     private final GraveyardInit graveyardInit = new GraveyardInit();
+    private final MountainInnit mountainInnit = new MountainInnit();
+    private final CaveInit caveInit = new CaveInit();
 
     @Autowired
     private RoomRepository roomRepository;
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        if(!roomRepository.findAll().isEmpty()) {
+        if (!roomRepository.findAll().isEmpty()) {
             roomRepository.deleteAll();
         }
         Room inn = createRoom(innInit);
@@ -50,6 +52,8 @@ InitService implements InitializingBean {
         Room pathToAcademy = createRoom(pathToTheAcademyInit);
         Room academy = createRoom(academyInnit);
         Room graveyard = createRoom(graveyardInit);
+        Room mountain = createRoom(mountainInnit);
+        Room cave = createRoom(caveInit);
 
         createDoorBetweenRooms(inn, cellar);
         createDoorBetweenRooms(church, churchDungeons);
@@ -64,8 +68,10 @@ InitService implements InitializingBean {
         createDoorBetweenRooms(forest, forestLake);
         createDoorBetweenRooms(mainSquare, pathToAcademy);
         createDoorBetweenRooms(pathToAcademy, academy);
+        createDoorBetweenRooms(forestLake, mountain);
+        createDoorBetweenRooms(mountain, cave);
 
-        roomRepository.saveAll(List.of(inn, cellar, brothel, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake, pathToAcademy, academy, graveyard));
+        roomRepository.saveAll(List.of(inn, cellar, brothel, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake, pathToAcademy, academy, graveyard, mountain, cave));
     }
 
     private void createDoorBetweenRooms(Room room1, Room room2) {
