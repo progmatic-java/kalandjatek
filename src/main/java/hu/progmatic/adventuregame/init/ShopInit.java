@@ -20,6 +20,7 @@ public class ShopInit extends InitRoom {
         NPC.builder()
             .name("Tezco")
             .description("The owner of the shop, maybe if i'm nice to him, i can get a better deal.")
+            .imgRef("https://i.pinimg.com/originals/9f/44/28/9f442894bec6ab5311e1c00ca5735ce7.png")
             .inventory(
                 Inventory.builder()
                     .items(List.of(
