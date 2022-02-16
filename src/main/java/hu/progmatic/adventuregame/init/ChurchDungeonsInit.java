@@ -2,6 +2,7 @@ package hu.progmatic.adventuregame.init;
 
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
+import hu.progmatic.adventuregame.npc.Action;
 import hu.progmatic.adventuregame.npc.NPC;
 
 import java.util.List;
@@ -19,7 +20,16 @@ public class ChurchDungeonsInit extends InitRoom {
         NPC.builder()
             .name("Dungeon keeper")
             .description("A robust man with a ferocious aura")
+                .friendly(true)
+                .hp(1000)
+                .mp(50)
+                .gold(200)
                 .imgRef("https://i.imgur.com/zf7gYuJ.png")
+                .action(
+                        Action.builder()
+                                .conversationText("")
+                                .build()
+                )
             .build());
   }
 

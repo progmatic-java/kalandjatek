@@ -122,7 +122,7 @@ public class ChurchInit extends InitRoom {
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("Ah, that's against the rules! Unless...it'll be a secret between us")
+                                                                                        .conversationText("I beg your pardon, I have no permission to comply with your request. Unless...it stays a secret between us")
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
@@ -130,7 +130,7 @@ public class ChurchInit extends InitRoom {
                                                                                                                 .childActions(
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
-                                                                                                                                        .conversationText("Pray to Holy Joe you keep your word")
+                                                                                                                                        .conversationText("Pray to Holy Joe you keep your word. Come with me")
                                                                                                                                         .build())
                                                                                                                 )
                                                                                                                 .build()

@@ -63,6 +63,7 @@ public class MainSquareInit extends InitRoom {
                 NPC.builder()
                         .name("Admina")
                         .description("The town's prostitute")
+                        .imgRef("https://i.pinimg.com/originals/d6/53/a5/d653a5283092eccf6135ef4b36699271.png")
                         .action(
                                 Action.builder()
                                         .conversationText("If you want to have some 'fun time' with me, talk to Lady Regexxx in The Red Try and Catch.")
