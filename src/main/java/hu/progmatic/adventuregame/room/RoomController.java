@@ -37,12 +37,23 @@ public class RoomController {
       Model model
   ) {
     RoomDto currRoom = roomService.getRoomById(roomId);
-    model.addAttribute("currRoom", currRoom);
-    model.addAttribute("currRoomItems", currRoom.getItems());
-    model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
-    model.addAttribute("currNpcs", currRoom.getNpcDtoList());
-    model.addAttribute("currDoors", currRoom.getAdjacentRooms());
-    return "/adventuregame/room";
+    CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
+    setCurrRoom(model, currRoom);
+    return getCurrRoomWithCharacter(model, currRoom, currCharacter);
+  }
+
+  @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/item/{itemId}")
+  public String roomItemToPlayer(
+      @PathVariable Integer characterId,
+      @PathVariable Integer roomId,
+      @PathVariable Integer itemId,
+      Model model
+  ) {
+    characterService.moveRoomItemtoPlayer(characterId,roomId,itemId);
+    RoomDto currRoom = roomService.getRoomById(roomId);
+    CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
+    setCurrRoom(model, currRoom);
+    return getCurrRoomWithCharacter(model, currRoom, currCharacter);
   }
 
   @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}")
@@ -53,32 +64,11 @@ public class RoomController {
           Model model
   ) {
     RoomDto currRoom = roomService.getRoomById(roomId);
-    ActionCommand firstAction = npcService.getNPCDtoById(npcId).getFirstAction();
-    model.addAttribute("currRoom", currRoom);
-    model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
-    model.addAttribute("currNpc", npcService.getNPCDtoById(npcId));
-    model.addAttribute("currNpcAction", firstAction);
-    model.addAttribute("npcInterraction", true);
-    model.addAttribute("conversationOver", firstAction.getPlayerAnswers().isEmpty());
-    return "/adventuregame/room";
-  }
-
-  @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/item/{itemId}")
-  public String roomItemToPlayer(
-          @PathVariable Integer characterId,
-          @PathVariable Integer roomId,
-          @PathVariable Integer itemId,
-          Model model
-  ) {
-    characterService.moveRoomItemtoPlayer(characterId,roomId,itemId);
-    RoomDto currRoom = roomService.getRoomById(roomId);
-    model.addAttribute("currRoom", currRoom);
-    model.addAttribute("currRoomItems", currRoom.getItems());
-    model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
-    model.addAttribute("currNpcs", currRoom.getNpcDtoList());
-    model.addAttribute("currDoors", currRoom.getAdjacentRooms());
-
-    return "/adventuregame/room";
+    CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
+    NPCDto currNpc = npcService.getNPCDtoById(npcId);
+    ActionCommand currAction = currNpc.getFirstAction();
+    npcActionHandling(model, currNpc, currAction);
+    return getCurrRoomWithCharacter(model, currRoom, currCharacter);
   }
 
   @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/action/{actionId}")
@@ -90,14 +80,29 @@ public class RoomController {
           Model model
   ) {
     RoomDto currRoom = roomService.getRoomById(roomId);
-    ActionCommand nextAction = npcService.getNextAction(actionId);
+    CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
+    ActionCommand currAction = npcService.getNextAction(actionId);
+    npcActionHandling(model, npcService.getNPCDtoById(npcId), currAction);
+    return getCurrRoomWithCharacter(model, currRoom, currCharacter);
+  }
+
+  private String getCurrRoomWithCharacter(Model model, RoomDto currRoom, CharacterDto currCharacter) {
     model.addAttribute("currRoom", currRoom);
-    model.addAttribute("currPlayer", characterService.getCharacterDtoById(characterId));
-    model.addAttribute("currNpc", npcService.getNPCDtoById(npcId));
-    model.addAttribute("currNpcAction", nextAction);
-    model.addAttribute("npcInterraction", true);
-    model.addAttribute("conversationOver", nextAction.getPlayerAnswers().isEmpty());
+    model.addAttribute("currPlayer", currCharacter);
     return "/adventuregame/room";
+  }
+
+  private void npcActionHandling(Model model, NPCDto currNpc, ActionCommand currAction) {
+    model.addAttribute("currNpc", currNpc);
+    model.addAttribute("currNpcAction", currAction);
+    model.addAttribute("npcInterraction", true);
+    model.addAttribute("conversationOver", currAction.getPlayerAnswers().isEmpty());
+  }
+
+  private void setCurrRoom(Model model, RoomDto currRoom) {
+    model.addAttribute("currRoomItems", currRoom.getItems());
+    model.addAttribute("currNpcs", currRoom.getNpcDtoList());
+    model.addAttribute("currDoors", currRoom.getAdjacentRooms());
   }
 
   @ModelAttribute("startingRoom")
@@ -129,5 +134,4 @@ public class RoomController {
   public boolean conversationOver() {
     return false;
   }
-
 }
