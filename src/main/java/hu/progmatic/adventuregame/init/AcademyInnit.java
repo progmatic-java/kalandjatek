@@ -2,6 +2,7 @@ package hu.progmatic.adventuregame.init;
 
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
+import hu.progmatic.adventuregame.npc.Action;
 import hu.progmatic.adventuregame.npc.NPC;
 
 import java.util.List;
@@ -19,6 +20,14 @@ public class AcademyInnit extends InitRoom {
                 NPC.builder()
                         .name("Robert C. Martin")
                         .description("The headmaster of the Academy")
+                        .imgRef("https://i.imgur.com/LIGwuzF.png")
+                        .friendly(true)
+                        .hp(10000)
+                        .mp(10000)
+                        .gold(50000)
+                        .action(Action.builder()
+                                .conversationText("*He looks at you and shakes his head disapprovingly")
+                                .build())
                         .build()
         );
     }

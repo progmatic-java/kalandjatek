@@ -19,6 +19,7 @@ public class MainSquareInit extends InitRoom {
                 NPC.builder()
                         .name("Trace")
                         .description("A drunk guy sleeping outside of The Black Hole Inn.")
+                        .imgRef("https://i.imgur.com/42nO5xi.png")
                         .action(
                                 Action.builder()
                                         .conversationText("*Trace snoring loudly, while exhaling his nearly poisonous breath, filled with alcohol. You shake his shoulder, but it seems you can't wake him up now.*")

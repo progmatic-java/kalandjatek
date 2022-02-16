@@ -21,7 +21,7 @@ public class RoadToTheForestInit extends InitRoom {
                         .name("Returno")
                         .description("He just came out of the woods. He looks like he was hurt.")
                         .friendly(true)
-                        .imgRef("https://i.imgur.com/T9EEdxN.png")
+                        .imgRef("https://i.imgur.com/jzbByKf.png")
                         .action(
                                 Action.builder()
                                         .conversationText("You there! Can you help me?")
@@ -91,7 +91,7 @@ public class RoadToTheForestInit extends InitRoom {
                                                                                                                 .childActions(
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
-                                                                                                                                        .conversationText("I have no idea.. You know I'm a warrior and I've killed a Fos'Orem.. But this beast was completely different..")
+                                                                                                                                        .conversationText("I have no idea.. You know I'm a warrior and I've killed an O'rem.. But this beast was completely different..")
                                                                                                                                         .childActions(List.of(
                                                                                                                                                 Action.builder()
                                                                                                                                                         .conversationText("Does it have any weak points? I need to go inside the forest to defeat it..")

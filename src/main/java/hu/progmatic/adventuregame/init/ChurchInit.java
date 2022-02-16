@@ -111,7 +111,7 @@ public class ChurchInit extends InitRoom {
                         .hp(500)
                         .mp(50)
                         .gold(50)
-                        .imgRef("https://i.pinimg.com/originals/b7/69/3e/b7693e7cd1b48a090eb3708136a683a2.png")
+                        .imgRef("https://i.imgur.com/7dbqJvD.png")
                         .action(
                                 Action.builder()
                                         .conversationText("Praise be to our Lord, Holy Joe. Can I help you?")
