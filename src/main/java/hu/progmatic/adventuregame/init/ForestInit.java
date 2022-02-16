@@ -89,7 +89,7 @@ public class ForestInit extends InitRoom {
 
     @Override
     public String getRoomDescription() {
-        return "NEMTUDOM";
+        return "Thick creepers dangle from the trees and the trees create a shroud of darkness. You can feel that something is amiss... Like something is constantly watching you.";
     }
 
     @Override
