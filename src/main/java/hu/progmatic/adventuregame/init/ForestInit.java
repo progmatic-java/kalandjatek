@@ -17,15 +17,15 @@ public class ForestInit extends InitRoom {
     @Override
     List<NPC> getInitNpcs() {
         return List.of(
-                NPC.builder()
-                        .name("Ugly Troll")
-                        .description("As big and ugly as trolls get!")
-                        .build(),
+//                NPC.builder()
+//                        .name("Ugly Troll")
+//                        .description("As big and ugly as trolls get!")
+//                        .build(),
                 NPC.builder()
                         .name("X-epson")
                         .description("A being from another dimension that haunts the forest.")
                         .friendly(false)
-//                .imgRef()
+                .imgRef("https://i.imgur.com/bjiVhGr.png")
                         .mp(100)
                         .hp(60)
                         .gold(100)

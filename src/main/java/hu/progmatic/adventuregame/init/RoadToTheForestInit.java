@@ -21,7 +21,7 @@ public class RoadToTheForestInit extends InitRoom {
                         .name("Returno")
                         .description("He just came out of the woods. He looks like he was hurt.")
                         .friendly(true)
-                        .imgRef("https://w7.pngwing.com/pngs/253/208/png-transparent-dungeons-dragons-pathfinder-roleplaying-game-trickster-character-concept-art-others-weapon-art-pathfinder-roleplaying-game.png")
+                        .imgRef("https://i.imgur.com/T9EEdxN.png")
                         .action(
                                 Action.builder()
                                         .conversationText("You there! Can you help me?")

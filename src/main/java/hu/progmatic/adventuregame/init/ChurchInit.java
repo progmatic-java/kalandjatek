@@ -24,7 +24,7 @@ public class ChurchInit extends InitRoom {
                         .hp(1000)
                         .mp(1000)
                         .gold(10000)
-                        .imgRef("https://www.pngfind.com/pngs/m/438-4388908_shadowy-figure-png-png-download-d-d-high.png")
+                        .imgRef("https://i.imgur.com/grNc1xh.png")
                                         .action(
                                 Action.builder()
                                         .conversationText("Praise be to our Lord, Holy Joe. Welcome, my friend. Are you here for the common prayer?")
