@@ -118,7 +118,7 @@ public class GraveyardInit extends InitRoom {
                                         .childActions(
                                                 List.of(
                                                         Action.builder()
-                                                                .conversationText("I'm looking for the last gold dragon egg")
+                                                                .conversationText("I'm looking for the last Golden Dragon's Egg")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
