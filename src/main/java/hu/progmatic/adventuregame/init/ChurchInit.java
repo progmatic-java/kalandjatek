@@ -25,7 +25,7 @@ public class ChurchInit extends InitRoom {
                         .mp(1000)
                         .gold(10000)
                         .imgRef("https://i.imgur.com/grNc1xh.png")
-                                        .action(
+                        .action(
                                 Action.builder()
                                         .conversationText("Praise be to our Lord, Holy Joe. Welcome, my friend. Are you here for the common prayer?")
                                         .childActions(
@@ -131,6 +131,29 @@ public class ChurchInit extends InitRoom {
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
                                                                                                                                         .conversationText("Pray to Holy Joe you keep your word. Come with me")
+                                                                                                                                        .build())
+                                                                                                                )
+                                                                                                                .build()
+                                                                                                )
+                                                                                        )
+                                                                                        .build()
+                                                                        )
+                                                                )
+                                                                .build(),
+                                                        Action.builder()
+                                                                .conversationText("I want to make a confession, for I have sinned")
+                                                                .childActions(
+                                                                        List.of(
+                                                                                Action.builder()
+                                                                                        .conversationText("You've come to the right place! Let me give you a hand, my friend")
+                                                                                        .childActions(
+                                                                                                List.of(
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("That's great, thanks! Can we move to somewhere private?")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("I'll lead you to our confessional. We can have a confidential conversation there")
                                                                                                                                         .build())
                                                                                                                 )
                                                                                                                 .build()
