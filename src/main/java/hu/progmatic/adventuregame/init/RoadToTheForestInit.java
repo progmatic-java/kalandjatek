@@ -28,19 +28,19 @@ public class RoadToTheForestInit extends InitRoom {
                                         .childActions(
                                                 List.of(
                                                         Action.builder()
-                                                                .conversationText("Hello, are you okay?")
+                                                                .conversationText("Hello, are you okay? What happened to your ear?")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("I was attacked by an angry monster inside the forest... I wouldn't go there if I were you.")
+                                                                                        .conversationText("I was attacked by an angry monster inside the forest... It tore my ear off.... I wouldn't go there if I were you.")
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
-                                                                                                                .conversationText("I'm looking for the last gold dragon egg and I heard it's beyond the forest. I need to get across..")
+                                                                                                                .conversationText("I'm looking for the last Golden Dragon Egg and I heard it's beyond the forest. I need to get across..")
                                                                                                                 .childActions(
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
-                                                                                                                                        .conversationText("A gold dragon egg? I've heard about it as well. But you won't get across the forest if you can't defeat the monster.")
+                                                                                                                                        .conversationText("The Golden Dragon Egg? I've heard about it as well, but only in legends and myths. But you won't get across the forest if you can't defeat the monster...")
                                                                                                                                         .childActions(
                                                                                                                                                 List.of(
                                                                                                                                                         Action.builder()
@@ -52,7 +52,7 @@ public class RoadToTheForestInit extends InitRoom {
                                                                                                                                                                                         .childActions(List.of(
                                                                                                                                                                                                 Action.builder()
                                                                                                                                                                                                         .conversationText("Thank you sir! Make sure to drink a magic potion for your wounds!!")
-                                                                                                                                                                                                        .childActions(List.of(Action.builder().conversationText("Will do!").build()))
+                                                                                                                                                                                                        .childActions(List.of(Action.builder().conversationText("I will... But my ear probably won't grow back..").build()))
                                                                                                                                                                                                         .build()))
                                                                                                                                                                                         .build())
                                                                                                                                                                 )
@@ -68,7 +68,7 @@ public class RoadToTheForestInit extends InitRoom {
                                                                                                                 .childActions(
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
-                                                                                                                                        .conversationText("To leave..! Don't go into the forest if you want to live..")
+                                                                                                                                        .conversationText("To leave.. Don't go into the forest if you want to live..")
                                                                                                                                         .build())
                                                                                                                 )
                                                                                                                 .build()
@@ -83,7 +83,7 @@ public class RoadToTheForestInit extends InitRoom {
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("Not gravely no... But that monster in the forest attacked me.. It's definitely something cursed..")
+                                                                                        .conversationText("Not gravely no... But that monster in the forest attacked me and tore off my ear.. It's definitely something cursed..")
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()

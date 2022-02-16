@@ -10,7 +10,7 @@ import java.util.List;
 public class ForestLakeInit extends InitRoom {
   @Override
   public String getName() {
-    return "The Forest Lake\n";
+    return "The Hikari Pool Lake\n";
   }
 
   @Override
@@ -85,7 +85,7 @@ public class ForestLakeInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "The serene and gorgeous lake in the middle of the Forest of K'aam. It's a tranquil place where you can rest a little!";
+    return "The serene and gorgeous Hikari Pool Lake in the middle of the Forest of K'aam. It's a tranquil place where you can rest and rejuvenate a little!";
   }
 
   @Override
