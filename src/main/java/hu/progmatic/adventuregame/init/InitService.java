@@ -34,6 +34,9 @@ InitService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        if(!roomRepository.findAll().isEmpty()) {
+            roomRepository.deleteAll();
+        }
         Room inn = createRoom(innInit);
         Room cellar = createRoom(cellarInit);
         Room church = createRoom(churchInit);
