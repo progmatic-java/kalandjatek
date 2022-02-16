@@ -31,7 +31,7 @@ public class ChurchInit extends InitRoom {
                                         .childActions(
                                                 List.of(
                                                         Action.builder()
-                                                                .conversationText("I'm seeking the blessig of Holy Joe")
+                                                                .conversationText("I'm seeking the blessing of Holy Joe")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()

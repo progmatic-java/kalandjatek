@@ -37,7 +37,7 @@ public class ChurchDungeonsInit extends InitRoom {
             .build(),
         Item.builder()
             .itemName("Skeleton key")
-            .description("Can open skeleton door")
+            .description("Can open skeleton doors")
             .typeOfItem(ItemEnum.KEY)
             .build(),
         Item.builder()
@@ -50,7 +50,7 @@ public class ChurchDungeonsInit extends InitRoom {
 
   @Override
   public String getRoomDescription() {
-    return "NEMTUDOM";
+    return "Word has it that the Church Dungeon was built for secret rituals and torturing heretics. Anyone who has gone inside, has never been seen again..";
   }
 
   @Override
