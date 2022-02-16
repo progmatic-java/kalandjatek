@@ -19,6 +19,7 @@ public class ChurchDungeonsInit extends InitRoom {
         NPC.builder()
             .name("Dungeon keeper")
             .description("A robust man with a ferocious aura")
+                .imgRef("https://i.imgur.com/zf7gYuJ.png")
             .build());
   }
 
@@ -33,7 +34,7 @@ public class ChurchDungeonsInit extends InitRoom {
         Item.builder()
             .itemName("Sacrificial knife")
             .description("Used for rituals")
-            .typeOfItem(ItemEnum.CONSUMABLE)
+            .typeOfItem(ItemEnum.ATTACK)
             .build(),
         Item.builder()
             .itemName("Skeleton key")
