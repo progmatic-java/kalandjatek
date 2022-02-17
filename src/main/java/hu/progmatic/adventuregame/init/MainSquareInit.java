@@ -21,7 +21,7 @@ public class MainSquareInit extends InitRoom {
                         .name("Trace")
                         .description("A drunk guy sleeping outside of The Black Hole Inn.")
                         .imgRef("https://i.imgur.com/42nO5xi.png")
-                        .inventory(new Inventory())
+                        .inventory(Inventory.builder().build())
                         .action(
                                 Action.builder()
                                         .conversationText("*Trace snoring loudly, while exhaling his nearly poisonous breath, filled with alcohol. You shake his shoulder, but it seems you can't wake him up now.*")
@@ -32,7 +32,7 @@ public class MainSquareInit extends InitRoom {
                         .name("Tomcat")
                         .imgRef("https://i.imgur.com/sz1g3oR.png")
                         .description("The town's beggar and thief hunter.")
-                        .inventory(new Inventory())
+                        .inventory(Inventory.builder().build())
                         .action(
                                 Action.builder()
                                         .conversationText("Hey traveller, can you toss me some coins? I'm living on the streets and slowly starving to DEATH!")
@@ -66,7 +66,7 @@ public class MainSquareInit extends InitRoom {
                 NPC.builder()
                         .name("Admina")
                         .description("The town's prostitute")
-                        .inventory(new Inventory())
+                        .inventory(Inventory.builder().build())
                         .imgRef("https://i.pinimg.com/originals/d6/53/a5/d653a5283092eccf6135ef4b36699271.png")
                         .action(
                                 Action.builder()

@@ -24,7 +24,7 @@ public class CaveInit extends InitRoom{
                         .hp(500)
                         .mp(50)
                         .gold(1000)
-                        .inventory(new Inventory())
+                        .inventory(Inventory.builder().build())
                         .imgRef("https://i.imgur.com/HQMd801.png")
                         .action(Action.builder()
                                 .conversationText("What are you doing here, in my lair?")
