@@ -22,6 +22,7 @@ public class NPCDto implements Serializable {
     private Integer mp;
     private Integer gold;
     private String imgRef;
+    private Integer inventoryId;
     private List<ItemDto> items;
     private ActionCommand firstAction;
 }

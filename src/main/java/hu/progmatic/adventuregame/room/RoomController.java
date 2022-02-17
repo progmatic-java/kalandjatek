@@ -11,6 +11,10 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
+import org.springframework.web.bind.annotation.PostMapping;
+
+import java.util.ArrayList;
+import java.util.List;
 
 @Controller
 public class RoomController {
@@ -57,10 +61,10 @@ public class RoomController {
 
   @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}")
   public String talkWithNpc(
-          @PathVariable Integer characterId,
-          @PathVariable Integer roomId,
-          @PathVariable Integer npcId,
-          Model model
+      @PathVariable Integer characterId,
+      @PathVariable Integer roomId,
+      @PathVariable Integer npcId,
+      Model model
   ) {
     RoomDto currRoom = roomService.getRoomById(roomId);
     CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
@@ -72,11 +76,11 @@ public class RoomController {
 
   @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/action/{actionId}")
   public String nextActionWithNpc(
-          @PathVariable Integer characterId,
-          @PathVariable Integer roomId,
-          @PathVariable Integer npcId,
-          @PathVariable Integer actionId,
-          Model model
+      @PathVariable Integer characterId,
+      @PathVariable Integer roomId,
+      @PathVariable Integer npcId,
+      @PathVariable Integer actionId,
+      Model model
   ) {
     RoomDto currRoom = roomService.getRoomById(roomId);
     CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
