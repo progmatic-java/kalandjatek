@@ -22,7 +22,7 @@ public class AcademyInnit extends InitRoom {
                         .name("Robert C. Martin")
                         .description("The headmaster of the Academy")
                         .imgRef("https://i.imgur.com/LIGwuzF.png")
-                        .friendly(true)
+                        .friendly(false)
                         .hp(10000)
                         .mp(10000)
                         .gold(50000)
@@ -35,6 +35,51 @@ public class AcademyInnit extends InitRoom {
                                                 .childActions(List.of(
                                                         Action.builder()
                                                                 .conversationText("The what? I don't know anything about that. Now leave.")
+                                                                .childActions(List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("The good people form the church said it's here somewhere.")
+                                                                                .childActions(List.of(
+                                                                                        Action.builder()
+                                                                                                .conversationText("Ohm... well..I don't know what you're talking about.")
+                                                                                                .childActions(List.of(
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("You seem flustered by my question.")
+                                                                                                                .childActions(List.of(
+                                                                                                                        Action.builder()
+                                                                                                                                .conversationText("Leave or I'll call the guards!")
+                                                                                                                                .build()))
+                                                                                                                .build(),
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("Okay, bye.")
+                                                                                                                .childActions(List.of(
+                                                                                                                        Action.builder()
+                                                                                                                                .conversationText("Leave now.")
+                                                                                                                                .build()))
+                                                                                                                .build()))
+                                                                                                .build()))
+                                                                                .build(),
+                                                                        Action.builder()
+                                                                                .conversationText("Then what is that key on the table?")
+                                                                                .childActions(List.of(
+                                                                                        Action.builder()
+                                                                                                .conversationText("Ohm... well..I don't know what you're talking about.")
+                                                                                                .childActions(List.of(
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("That key right there!")
+                                                                                                                .childActions(List.of(
+                                                                                                                        Action.builder()
+                                                                                                                                .conversationText("Leave or I'll call the guards!")
+                                                                                                                                .build()))
+                                                                                                                .build(),
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("Okay, bye.")
+                                                                                                                .childActions(List.of(
+                                                                                                                        Action.builder()
+                                                                                                                                .conversationText("Leave now.")
+                                                                                                                                .build()))
+                                                                                                                .build()))
+                                                                                                .build()))
+                                                                                .build()))
                                                                 .build()))
                                                 .build(),
                                         Action.builder()
@@ -49,7 +94,7 @@ public class AcademyInnit extends InitRoom {
                                                 .conversationText("Do you have the Clean Code book?")
                                                 .childActions(List.of(
                                                         Action.builder()
-                                                                .conversationText("Yes, it's right there on the self...Can you even read anyways?")
+                                                                .conversationText("Yes, it's right there on the self...Now be quiet, the people here has to learn.")
                                                                 .build()
                                                 ))
                                                 .build()))
