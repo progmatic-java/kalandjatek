@@ -35,7 +35,7 @@ public class ChurchInit extends InitRoom {
                         .build(),
                 Item.builder()
                         .itemName("Relic")
-                        .typeOfItem(ItemEnum.JUNK)
+                        .typeOfItem(ItemEnum.VALUABLE)
                         .description("It is said to be a handkerchief Holy Joe used to dry his tears with")
                         .inventory(lombok)
                         .value(150)
@@ -192,6 +192,30 @@ public class ChurchInit extends InitRoom {
                                                                                                                                 Action.builder()
                                                                                                                                         .conversationText("I'll lead you to our confessional. We can have a confidential conversation there")
                                                                                                                                         .build())
+                                                                                                                )
+                                                                                                                .build()
+                                                                                                )
+                                                                                        )
+                                                                                        .build()
+                                                                        )
+                                                                )
+                                                                .build(),
+                                                        Action.builder()
+                                                                .conversationText("I'm looking for the way that leads through the Forest")
+                                                                .childActions(
+                                                                        List.of(
+                                                                                Action.builder()
+                                                                                        .conversationText("You're in luck, my friend! I have a map that can help you on this arduous journey!")
+                                                                                        .childActions(
+                                                                                                List.of(
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("Thanks! Here's some gold for your kindness")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("Holy Joe bless your way, my friend")
+                                                                                                                                        .build())
+
                                                                                                                 )
                                                                                                                 .build()
                                                                                                 )

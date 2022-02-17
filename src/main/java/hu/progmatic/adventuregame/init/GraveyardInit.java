@@ -17,6 +17,30 @@ public class GraveyardInit extends InitRoom {
 
     @Override
     List<NPC> getInitNpcs() {
+        Inventory witchKing = new Inventory();
+        witchKing.setItems(List.of(
+                Item.builder()
+                        .itemName("Black magic spells")
+                        .typeOfItem(ItemEnum.ATTACK)
+                        .value(80)
+                        .description("Powerful spells that help you achieve your goals")
+                        .inventory(witchKing)
+                        .build(),
+                Item.builder()
+                        .itemName("Sacrificed souls")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .description("The Skeleton Dragon loves chowing on them")
+                        .inventory(witchKing)
+                        .value(200)
+                        .build(),
+                Item.builder()
+                        .itemName("Scythe of the Old One")
+                        .typeOfItem(ItemEnum.ATTACK)
+                        .description("A powerful weapon that executes decapitation with a clean-cut")
+                        .inventory(witchKing)
+                        .value(100)
+                        .build()));
+
         return List.of(
                 NPC.builder()
                         .name("Witch King")
@@ -25,7 +49,7 @@ public class GraveyardInit extends InitRoom {
                         .hp(8000)
                         .mp(10000)
                         .gold(100)
-                        .inventory(new Inventory())
+                        .inventory(witchKing)
                         .imgRef("https://aow.triumph.net/wp-content/uploads/2015/04/Website_Background_Necromancer_Arvik2_Tiny.png")
                         .action(
                                 Action.builder()
@@ -113,6 +137,7 @@ public class GraveyardInit extends InitRoom {
                         .hp(10000)
                         .mp(10000)
                         .gold(10000)
+                        .inventory(new Inventory())
                         .imgRef("https://www.pikpng.com/pngl/b/407-4070001_final-fantasy-xiv-dragon-clipart.png")
                         .action(
                                 Action.builder()
