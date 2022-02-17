@@ -77,6 +77,43 @@ public class BrothelInit extends InitRoom {
                                 )
                                 .build()
                         )
+                        .build(),
+                NPC.builder()
+                        .name("Mr Assert")
+                        .description("A suave man, who is well acquainted with Lady Regexxx.")
+                        .friendly(true)
+                        .hp(200)
+                        .mp(300)
+                        .gold(300)
+                        .inventory(new Inventory())
+                        .imgRef("https://i.pinimg.com/originals/c6/52/15/c65215d53a814f0a39afa77e2696e942.png")
+                        .action(Action.builder()
+                                .conversationText("Oh, are you in search of the Red Try and Catch's services?")
+                                .childActions(
+                                        List.of(
+                                                Action.builder()
+                                                        .conversationText("Umm...?! *panics* Sorry, bye!")
+                                                        .childActions(
+                                                                List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("What a strange person...")
+                                                                                .build()
+                                                                )
+                                                        )
+                                                        .build(),
+                                                Action.builder()
+                                                        .conversationText("Hello. I'm looking for a bit of fun.")
+                                                        .childActions(
+                                                                List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("Well, you're in the palace of pleasure! Talk to Lady Regex about it...")
+                                                                                .build()
+                                                                )
+                                                        )
+                                                        .build()                                        )
+                                )
+                                .build()
+                        )
                         .build()
         );
     }
