@@ -12,32 +12,32 @@ import java.util.List;
 @Getter
 @Setter
 public class InnInit extends InitRoom {
-    @Override
-    public String getName() {
-        return "The Black Hole Inn";
-    }
+  @Override
+  public String getName() {
+    return "The Black Hole Inn";
+  }
 
-    List<NPC> getInitNpcs() {
-        Inventory burrows = new Inventory();
-        burrows.setItems(List.of(
-                Item.builder()
-                        .itemName("Beer")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
-                        .description("A little lukewarm and tastes like horse piss but it's fine.")
-                        .inventory(burrows)
-                        .build(),
-                Item.builder()
-                        .itemName("Wine")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
-                        .description("Is this from a tablet?")
-                        .inventory(burrows)
-                        .build(),
-                Item.builder()
-                        .itemName("Cracker")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
-                        .description("Mmmm sooo tastyyy and crispyyy.")
-                        .inventory(burrows)
-                        .build()));
+  List<NPC> getInitNpcs() {
+    Inventory burrows = new Inventory();
+    burrows.setItems(List.of(
+        Item.builder()
+            .itemName("Beer")
+            .typeOfItem(ItemEnum.CONSUMABLE)
+            .description("A little lukewarm and tastes like horse piss but it's fine.")
+            .inventory(burrows)
+            .build(),
+        Item.builder()
+            .itemName("Wine")
+            .typeOfItem(ItemEnum.CONSUMABLE)
+            .description("Is this from a tablet?")
+            .inventory(burrows)
+            .build(),
+        Item.builder()
+            .itemName("Cracker")
+            .typeOfItem(ItemEnum.CONSUMABLE)
+            .description("Mmmm sooo tastyyy and crispyyy.")
+            .inventory(burrows)
+            .build()));
 
 
         return List.of(
@@ -232,42 +232,42 @@ public class InnInit extends InitRoom {
                                         ))
                                         .build())
 
-                        .build()
-        );
-    }
+            .build()
+    );
+  }
 
-    List<Item> getInitItems() {
-        return List.of(
-                Item.builder()
-                        .itemName("Beer")
-                        .description("A cold drink from Go'odor")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
-                        .build(),
-                Item.builder()
-                        .itemName("Knife")
-                        .description("Good for slicing bread")
-                        .typeOfItem(ItemEnum.ATTACK)
-                        .build(),
-                Item.builder()
-                        .itemName("Coins")
-                        .description("You should take it")
-                        .typeOfItem(ItemEnum.VALUABLE)
-                        .build()
-        );
-    }
+  List<Item> getInitItems() {
+    return List.of(
+        Item.builder()
+            .itemName("Beer")
+            .description("A cold drink from Go'odor")
+            .typeOfItem(ItemEnum.CONSUMABLE)
+            .build(),
+        Item.builder()
+            .itemName("Knife")
+            .description("Good for slicing bread")
+            .typeOfItem(ItemEnum.ATTACK)
+            .build(),
+        Item.builder()
+            .itemName("Coins")
+            .description("You should take it")
+            .typeOfItem(ItemEnum.VALUABLE)
+            .build()
+    );
+  }
 
-    @Override
-    public String getRoomDescription() {
-        return "The famous inn of Thorncall, where every tired traveller can replenish themselves at. Even though the Black Hole Inn is a smokey space where prostitutes and thieves love to gather, it is also a friendly and warm tavern where you can refresh yourself with a pint of beer and a piece of fine bread.";
-    }
+  @Override
+  public String getRoomDescription() {
+    return "The famous inn of Thorncall, where every tired traveller can replenish themselves at. Even though the Black Hole Inn is a smokey space where prostitutes and thieves love to gather, it is also a friendly and warm tavern where you can refresh yourself with a pint of beer and a piece of fine bread.";
+  }
 
-    @Override
-    public String getRoomImgRef() {
-        return "https://wallpaperaccess.com/full/6079735.png";
-    }
+  @Override
+  public String getRoomImgRef() {
+    return "https://wallpaperaccess.com/full/6079735.png";
+  }
 
-    @Override
-    public String getRoomAudio() {
-        return "music/Tavern.mp3";
-    }
+  @Override
+  public String getRoomAudio() {
+    return "music/Tavern.mp3";
+  }
 }

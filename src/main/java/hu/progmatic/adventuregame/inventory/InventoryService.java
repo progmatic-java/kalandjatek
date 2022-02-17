@@ -8,7 +8,7 @@ import java.util.List;
 
 @Service
 @Transactional
-public class InventoryService{
+public class InventoryService {
 
   @Autowired
   private InventoryRepository inventoryRepository; //parent
@@ -70,6 +70,10 @@ public class InventoryService{
     return buildInventoryDto(inventoryRepository.getById(id));
   }
 
+  public Inventory getInventoryEntityById(Integer id) {
+    return inventoryRepository.getById(id);
+  }
+
   public ItemDto getItemDtoById(Integer id) {
     return buildItemDto(itemRepository.getById(id));
   }
@@ -81,7 +85,7 @@ public class InventoryService{
     item.setInventory(null);
   }
 
-  public Item getItemEntityById(Integer id){
+  public Item getItemEntityById(Integer id) {
     return itemRepository.getById(id);
   }
 

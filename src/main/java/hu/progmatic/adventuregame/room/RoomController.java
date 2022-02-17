@@ -49,7 +49,6 @@ public class RoomController {
       @PathVariable Integer itemId,
       Model model
   ) {
-    characterService.moveRoomItemtoPlayer(characterId,roomId,itemId);
     RoomDto currRoom = roomService.getRoomById(roomId);
     CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
     setCurrRoom(model, currRoom);
