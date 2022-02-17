@@ -27,7 +27,7 @@ public class ForestInit extends InitRoom {
                                 .conversationText("WAAAAAAAAA!")
                                 .childActions(List.of(
                                         Action.builder()
-                                                .conversationText("JESUS WHAT THE HELL")
+                                                .conversationText("HOLY JOE, WHAT THE HELL!")
                                                 .childActions(List.of(
                                                         Action.builder()
                                                                 .conversationText("HUNGRYYYYYY!! EAT!!")

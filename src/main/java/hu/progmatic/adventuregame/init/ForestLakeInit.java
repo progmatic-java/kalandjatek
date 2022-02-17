@@ -30,7 +30,7 @@ public class ForestLakeInit extends InitRoom {
                                 .conversationText("Hehehehe! Hello there, gorgeous!")
                                 .childActions(List.of(
                                         Action.builder()
-                                                .conversationText("Hello! Are you the fairy of the Lake?")
+                                                .conversationText("Hello! Are you the fairy of the Hikari Pool Lake?")
                                                 .childActions(
                                                         List.of(
                                                                 Action.builder()
@@ -41,7 +41,7 @@ public class ForestLakeInit extends InitRoom {
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
-                                                                                                                .conversationText("You won't find it here..! It's beyond the forest.. That's all I can tell you!")
+                                                                                                                .conversationText("You won't find it here..! It's beyond the lake.. You have to defeat the cursed monster to get there...")
                                                                                                                 .build())
                                                                                         )
                                                                                         .build(),

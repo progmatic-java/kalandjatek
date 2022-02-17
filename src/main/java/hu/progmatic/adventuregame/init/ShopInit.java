@@ -49,7 +49,7 @@ public class ShopInit extends InitRoom {
                                 .build(),
                         Item.builder()
                                 .itemName("Energy potion")
-                                .description("Give you energy to study all night")
+                                .description("Gives you energy to study all night")
                                 .typeOfItem(ItemEnum.CONSUMABLE)
                                 .value(60)
                                 .inventory(tezco)

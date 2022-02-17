@@ -16,6 +16,30 @@ public class BrothelInit extends InitRoom {
 
     @Override
     List<NPC> getInitNpcs() {
+        Inventory madam = new Inventory();
+        madam.setItems(List.of(
+                Item.builder()
+                        .itemName("Love Potion")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .value(10)
+                        .description("This will get you ready for some sweet loving")
+                        .inventory(madam)
+                        .build(),
+                Item.builder()
+                        .itemName("Extra Services")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .value(50)
+                        .description("Wow... So expensive.. Is it worth it?")
+                        .inventory(madam)
+                        .build(),
+                Item.builder()
+                        .itemName("Protection")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .description("Protection from what?")
+                        .inventory(madam)
+                        .value(10)
+                        .build()));
+
         return List.of(
                 NPC.builder()
                         .name("Lady Regexxx")
@@ -24,7 +48,7 @@ public class BrothelInit extends InitRoom {
                         .hp(200)
                         .mp(300)
                         .gold(250)
-                        .inventory(new Inventory())
+                        .inventory(madam)
                         .imgRef("https://i.pinimg.com/originals/c6/52/15/c65215d53a814f0a39afa77e2696e942.png")
                         .action(Action.builder()
                                 .conversationText("Hello. I'm Lady Regexxx, the madam of the Red Try and Catch. What can I do for you?")
