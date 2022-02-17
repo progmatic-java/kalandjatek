@@ -180,7 +180,7 @@
             position: center;
         }
 
-        .mainmenubutton{
+        .mainmenubutton {
             position: marker;
             text-align: left;
         }
@@ -230,7 +230,8 @@
                               method="get">
                             <input data-bs-toggle="tooltip" data-bs-placement="right"
                                    th:title="${'Description: ' + npcItem.getDescription()  +  ' (' + npcItem.getTypeOfItem() + ')'}"
-                                   type="submit" class="btn btn-dark" th:value="${npcItem.getItemName()}"/>
+                                   type="submit" class="btn btn-dark"
+                                   th:value="${npcItem.getItemName()} + ' (' + ${npcItem.getValue()} + ' gold)' "/>
                         </form>
                     </div>
                 </div>

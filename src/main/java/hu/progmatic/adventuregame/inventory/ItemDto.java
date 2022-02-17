@@ -12,6 +12,7 @@ import lombok.NoArgsConstructor;
 public class ItemDto {
   private Integer id;
   private String itemName;
+  private Integer value;
   private String description;
   private ItemEnum typeOfItem;
   private Integer inventoryId;

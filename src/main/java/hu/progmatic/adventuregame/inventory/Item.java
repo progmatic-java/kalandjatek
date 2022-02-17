@@ -16,6 +16,8 @@ public class Item {
     private Integer id;
     private String itemName;
     private String description;
+    @Builder.Default
+    private Integer value = 0;
     @Enumerated(EnumType.STRING)
     private ItemEnum typeOfItem;
     @ManyToOne
