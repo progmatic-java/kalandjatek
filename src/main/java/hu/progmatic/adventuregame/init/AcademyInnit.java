@@ -17,6 +17,31 @@ public class AcademyInnit extends InitRoom {
 
     @Override
     List<NPC> getInitNpcs() {
+
+        Inventory robert = new Inventory();
+        robert.setItems(List.of(
+                Item.builder()
+                        .itemName("Clean Code")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .value(100)
+                        .description("The most valuable thing in all of Progmatique.")
+                        .inventory(robert)
+                        .build(),
+                Item.builder()
+                        .itemName("Clean Code")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .value(100)
+                        .description("The most valuable thing in all of Progmatique.")
+                        .inventory(robert)
+                        .build(),
+                Item.builder()
+                        .itemName("Clean Code")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .value(100)
+                        .description("The most valuable thing in all of Progmatique.")
+                        .inventory(robert)
+                        .build()));
+
         return List.of(
                 NPC.builder()
                         .name("Robert C. Martin")
@@ -94,7 +119,7 @@ public class AcademyInnit extends InitRoom {
                                                 .conversationText("Do you have the Clean Code book?")
                                                 .childActions(List.of(
                                                         Action.builder()
-                                                                .conversationText("Yes, it's right there on the self...Now be quiet, the people here has to learn.")
+                                                                .conversationText("Yes of course, I have multiple with me that you can buy...One of my finest works.")
                                                                 .build()
                                                 ))
                                                 .build()))
@@ -107,9 +132,9 @@ public class AcademyInnit extends InitRoom {
     List<Item> getInitItems() {
         return List.of(
                 Item.builder()
-                        .itemName("Clean Code")
-                        .description("The most valuable thing in all of K'aam.")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .itemName("Candles")
+                        .description("Candle light is always so relaxing.")
+                        .typeOfItem(ItemEnum.JUNK)
                         .build(),
                 Item.builder()
                         .itemName("Old scrolls")
