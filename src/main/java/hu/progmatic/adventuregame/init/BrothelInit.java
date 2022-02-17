@@ -106,7 +106,7 @@ public class BrothelInit extends InitRoom {
                                                         .childActions(
                                                                 List.of(
                                                                         Action.builder()
-                                                                                .conversationText("Well, you're in the palace of pleasure! Talk to Lady Regex about it...")
+                                                                                .conversationText("Well, you're in the palace of pleasure! Talk to Lady Regexxx about it...")
                                                                                 .build()
                                                                 )
                                                         )
