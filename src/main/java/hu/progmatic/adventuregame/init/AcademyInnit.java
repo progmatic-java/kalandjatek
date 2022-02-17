@@ -51,7 +51,7 @@ public class AcademyInnit extends InitRoom {
                         .hp(10000)
                         .mp(10000)
                         .gold(50000)
-                        .inventory(new Inventory())
+                        .inventory(robert)
                         .action(Action.builder()
                                 .conversationText("*He looks at you and shakes his head disapprovingly")
                                 .childActions(List.of(
