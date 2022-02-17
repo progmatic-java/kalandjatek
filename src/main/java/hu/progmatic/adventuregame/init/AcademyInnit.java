@@ -27,6 +27,30 @@ public class AcademyInnit extends InitRoom {
                         .gold(50000)
                         .action(Action.builder()
                                 .conversationText("*He looks at you and shakes his head disapprovingly")
+                                .childActions(List.of(
+                                        Action.builder()
+                                                .conversationText("Sorry to bother you Sir, can you help me find the last golden dragon's egg?")
+                                                .childActions(List.of(
+                                                        Action.builder()
+                                                                .conversationText("The what? I don't know anything about that. Now leave.")
+                                                                .build()))
+                                                .build(),
+                                        Action.builder()
+                                                .conversationText("I came here to search for the last golden dragon's egg.")
+                                                .childActions(List.of(
+                                                        Action.builder()
+                                                                .conversationText("You came to the wrong place. Go back where you came from.")
+                                                                .build()
+                                                ))
+                                                .build(),
+                                        Action.builder()
+                                                .conversationText("Do you have the Clean Code book?")
+                                                .childActions(List.of(
+                                                        Action.builder()
+                                                                .conversationText("Yes, it's right there on the self...Can you even read anyways?")
+                                                                .build()
+                                                ))
+                                                .build()))
                                 .build())
                         .build()
         );
