@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -24,6 +25,7 @@ public class GraveyardInit extends InitRoom {
                         .hp(8000)
                         .mp(10000)
                         .gold(100)
+                        .inventory(new Inventory())
                         .imgRef("https://aow.triumph.net/wp-content/uploads/2015/04/Website_Background_Necromancer_Arvik2_Tiny.png")
                         .action(
                                 Action.builder()

@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -23,6 +24,7 @@ public class MountainInnit extends InitRoom {
                         .hp(150)
                         .gold(150)
                         .friendly(true)
+                        .inventory(new Inventory())
                         .description("He looks like a nice guy.")
                         .imgRef("https://i.imgur.com/W2UARUn.png")
                         .action(Action.builder()
@@ -87,6 +89,7 @@ public class MountainInnit extends InitRoom {
                         .hp(50)
                         .gold(50)
                         .friendly(true)
+                        .inventory(new Inventory())
                         .imgRef("https://i.imgur.com/dh8PT14.png")
                         .description("What is she doing here? She doesn't look like someone who belongs here.")
                         .action(Action.builder()
@@ -115,6 +118,7 @@ public class MountainInnit extends InitRoom {
                         .hp(100)
                         .gold(50)
                         .friendly(false)
+                        .inventory(new Inventory())
                         .imgRef("https://i.imgur.com/YgAWr7l.png")
                         .description("He's scary, I hope he leaves me alone.")
                         .action(Action.builder()

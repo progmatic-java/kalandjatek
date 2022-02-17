@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -24,6 +25,7 @@ public class ChurchInit extends InitRoom {
                         .hp(1000)
                         .mp(1000)
                         .gold(10000)
+                        .inventory(new Inventory())
                         .imgRef("https://i.imgur.com/grNc1xh.png")
                         .action(
                                 Action.builder()
@@ -111,6 +113,7 @@ public class ChurchInit extends InitRoom {
                         .hp(500)
                         .mp(50)
                         .gold(50)
+                        .inventory(new Inventory())
                         .imgRef("https://i.imgur.com/7dbqJvD.png")
                         .action(
                                 Action.builder()

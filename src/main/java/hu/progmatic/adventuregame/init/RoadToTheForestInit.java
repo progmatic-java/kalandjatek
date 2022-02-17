@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -22,6 +23,7 @@ public class RoadToTheForestInit extends InitRoom {
                         .description("He just came out of the woods. He looks like he was hurt.")
                         .friendly(true)
                         .imgRef("https://i.imgur.com/jzbByKf.png")
+                        .inventory(new Inventory())
                         .action(
                                 Action.builder()
                                         .conversationText("You there! Can you help me?")

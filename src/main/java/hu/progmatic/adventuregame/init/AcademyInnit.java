@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -25,6 +26,7 @@ public class AcademyInnit extends InitRoom {
                         .hp(10000)
                         .mp(10000)
                         .gold(50000)
+                        .inventory(new Inventory())
                         .action(Action.builder()
                                 .conversationText("*He looks at you and shakes his head disapprovingly")
                                 .childActions(List.of(

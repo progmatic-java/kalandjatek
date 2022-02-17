@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -23,6 +24,7 @@ public class CaveInit extends InitRoom{
                         .hp(500)
                         .mp(50)
                         .gold(1000)
+                        .inventory(new Inventory())
                         .imgRef("https://i.imgur.com/HQMd801.png")
                         .action(Action.builder()
                                 .conversationText("What are you doing here, in my lair?")

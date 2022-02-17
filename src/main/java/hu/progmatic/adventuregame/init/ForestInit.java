@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -56,6 +57,7 @@ public class ForestInit extends InitRoom {
                         .mp(100)
                         .hp(60)
                         .gold(100)
+                        .inventory(new Inventory())
                         .action(
                                 Action.builder()
                                         .conversationText("Grrrrrrrrrrrrrr. I am X-epson! I will eat you!!")

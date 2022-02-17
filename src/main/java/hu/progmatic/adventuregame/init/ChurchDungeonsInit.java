@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -25,6 +26,7 @@ public class ChurchDungeonsInit extends InitRoom {
                         .mp(50)
                         .hp(200)
                         .gold(100)
+                        .inventory(new Inventory())
                         .action(Action.builder()
                                 .conversationText("What are you doing here?! This area is permitted!")
                                 .childActions(List.of(

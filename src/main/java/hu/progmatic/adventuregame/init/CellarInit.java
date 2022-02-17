@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -21,6 +22,7 @@ public class CellarInit extends InitRoom {
                         .description("Precious pet of Burrows.He doesn't seem friendly.")
                         .imgRef("https://i.imgur.com/s4KyB2S.png")
                         .friendly(false)
+                        .inventory(new Inventory())
                         .action(Action.builder()
                                 .conversationText("*Agressive growling")
                                 .childActions(List.of(

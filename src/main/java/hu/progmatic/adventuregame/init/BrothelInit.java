@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -23,6 +24,7 @@ public class BrothelInit extends InitRoom {
                         .hp(200)
                         .mp(300)
                         .gold(250)
+                        .inventory(new Inventory())
                         .imgRef("https://i.pinimg.com/originals/c6/52/15/c65215d53a814f0a39afa77e2696e942.png")
                         .action(Action.builder()
                                 .conversationText("Hello. I'm Lady Regexxx, the madam of the Red Try and Catch. What can I do for you?")
