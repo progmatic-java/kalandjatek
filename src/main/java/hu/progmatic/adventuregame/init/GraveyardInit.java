@@ -80,19 +80,19 @@ public class GraveyardInit extends InitRoom {
                                                                 )
                                                                 .build(),
                                                         Action.builder()
-                                                                .conversationText("I'm sorry to disturb you but I need your help")
+                                                                .conversationText("I need to speak with the Skeleton Dragon, help me find it!")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("My help won't come cheap. What can you offer?")
+                                                                                        .conversationText("My help won't come cheap. You have to lure out the dragon, and for that, you'll need the souls of the sacrificed")
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
-                                                                                                                .conversationText("I'll give you half the loot I get on my quest!")
+                                                                                                                .conversationText("I'll give you half the loot I get on my quest as payment!")
                                                                                                                 .childActions(
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
-                                                                                                                                        .conversationText("Hmmm, I'll think about it. Come back later to discuss the details")
+                                                                                                                                        .conversationText("Hmmm, alright. I'm in a good mood, so let's get on with it")
                                                                                                                                         .build())
                                                                                                                 )
                                                                                                                 .build()
@@ -145,21 +145,32 @@ public class GraveyardInit extends InitRoom {
                                         .childActions(
                                                 List.of(
                                                         Action.builder()
-                                                                .conversationText("I'm looking for the last Golden Dragon's Egg")
+                                                                .conversationText("I'm looking for the last Golden Dragon Egg")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("Beyond this gate, only death awaits you. Do you want to proceed?")
+                                                                                        .conversationText("Only those can find the Golden Dragon Egg who prove their worth by defeating X-epson")
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
-                                                                                                                .conversationText("I do. I got no other choice")
+                                                                                                                .conversationText("And where do I find this 'X-epson'?")
                                                                                                                 .childActions(
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
-                                                                                                                                        .conversationText("You have been warned, stranger. Your fate is in your hands now")
-                                                                                                                                        .build())
-                                                                                                                )
+                                                                                                                                        .conversationText("That monster is said to be lurking in the shadows, deep within the Forest")
+                                                                                                                                        .build()))
+
+//                                                                                        .conversationText("Beyond this gate, only death awaits you. Do you want to proceed?")
+//                                                                                        .childActions(
+//                                                                                                List.of(
+//                                                                                                        Action.builder()
+//                                                                                                                .conversationText("I do. I got no other choice")
+//                                                                                                                .childActions(
+//                                                                                                                        List.of(
+//                                                                                                                                Action.builder()
+//                                                                                                                                        .conversationText("You have been warned, stranger. Your fate is in your hands now")
+//                                                                                                                                        .build())
+//                                                                                                                )
                                                                                                                 .build()
                                                                                                 )
                                                                                         )

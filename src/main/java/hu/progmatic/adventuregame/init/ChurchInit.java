@@ -44,9 +44,9 @@ public class ChurchInit extends InitRoom {
         Inventory thyme = new Inventory();
         thyme.setItems(List.of(
                 Item.builder()
-                        .itemName("Map to the Forest of K'aam")
+                        .itemName("Map to the Academy of Magic and Programming")
                         .typeOfItem(ItemEnum.JUNK)
-                        .description("With this map you won't lose your way in the forest")
+                        .description("With this map you won't lose your way")
                         .inventory(thyme)
                         .value(20)
                         .build()));
@@ -201,7 +201,7 @@ public class ChurchInit extends InitRoom {
                                                                 )
                                                                 .build(),
                                                         Action.builder()
-                                                                .conversationText("I'm looking for the way that leads through the Forest")
+                                                                .conversationText("I'm looking for the way to the Academy")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
