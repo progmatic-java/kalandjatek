@@ -25,7 +25,7 @@ public class CaveInit extends InitRoom{
                         .mp(50)
                         .gold(1000)
                         .inventory(Inventory.builder().build())
-                        .imgRef("https://i.imgur.com/HQMd801.png")
+                        .imgRef("https://i.imgur.com/ZZsNPwW.png")
                         .action(Action.builder()
                                 .conversationText("What are you doing here, in my lair?")
                                 .childActions(List.of(
@@ -67,7 +67,7 @@ public class CaveInit extends InitRoom{
                 Item.builder()
                         .itemName("Jewels")
                         .description("The dragon seems to have a whole collection of jewels and gold.")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .typeOfItem(ItemEnum.VALUABLE)
                         .build()
         );
     }

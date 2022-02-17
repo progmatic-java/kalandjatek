@@ -86,7 +86,7 @@ public class BrothelInit extends InitRoom {
                         .mp(300)
                         .gold(300)
                         .inventory(new Inventory())
-                        .imgRef("https://i.pinimg.com/originals/c6/52/15/c65215d53a814f0a39afa77e2696e942.png")
+                        .imgRef("https://i.imgur.com/KTWYuQh.png")
                         .action(Action.builder()
                                 .conversationText("Oh, are you in search of the Red Try and Catch's services?")
                                 .childActions(
