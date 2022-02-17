@@ -205,7 +205,7 @@
     </div>
 
     <div class="ROOMITEMS">
-        <div class="roomItemInfo">
+        <div th:unless="${npcInterraction}" class="roomItemInfo">
             <div class="dropdown">
                 <button class="dropbtn">Room Items</button>
                 <div class="dropdown-content">
@@ -215,6 +215,22 @@
                             <input data-bs-toggle="tooltip" data-bs-placement="right"
                                    th:title="${'Description: ' + roomItems.getDescription()  +  ' (' + roomItems.getTypeOfItem() + ')'}"
                                    type="submit" class="btn btn-dark" th:value="${roomItems.getItemName()}"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:if="${npcInterraction}" class="npcItemInfo">
+            <div class="dropdown">
+                <button class="dropbtn">NPC Items</button>
+                <div class="dropdown-content">
+                    <div th:each="npcItem : ${currNpc.getItems()}">
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/action/{actionId}/item/{itemId}'
+                        (characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()},actionId=${currNpcAction.getCurrActionId()},itemId=${npcItem.getId()})}"
+                              method="get">
+                            <input data-bs-toggle="tooltip" data-bs-placement="right"
+                                   th:title="${'Description: ' + npcItem.getDescription()  +  ' (' + npcItem.getTypeOfItem() + ')'}"
+                                   type="submit" class="btn btn-dark" th:value="${npcItem.getItemName()}"/>
                         </form>
                     </div>
                 </div>

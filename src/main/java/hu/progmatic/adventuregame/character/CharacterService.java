@@ -18,7 +18,7 @@ import java.util.Map;
 public class CharacterService implements InitializingBean {
 
   @Autowired
-  private CharacterRepository repository;
+  private CharacterRepository characterRepository;
   @Autowired
   private InventoryService inventoryService;
   @Autowired
@@ -26,15 +26,15 @@ public class CharacterService implements InitializingBean {
 
 
   public CharacterEntity save(CharacterEntity character) {
-    return repository.save(character);
+    return characterRepository.save(character);
   }
 
   public CharacterEntity getById(Integer id) {
-    return repository.getById(id);
+    return characterRepository.getById(id);
   }
 
   public CharacterDto getCharacterDtoById(Integer id) {
-    CharacterEntity entity = repository.getById(id);
+    CharacterEntity entity = characterRepository.getById(id);
     List<ItemDto> items = entity.getInventory().getItems().stream().map(item -> inventoryService.buildItemDto(item)).toList();
     return CharacterDto.builder()
         .characterName(entity.getName())
@@ -53,19 +53,19 @@ public class CharacterService implements InitializingBean {
 
   @RolesAllowed(UserType.Roles.USER_WRITE_ROLE)
   public void delete(Integer id) {
-    repository.deleteById(id);
+    characterRepository.deleteById(id);
   }
 
   public List<CharacterEntity> saveAll(List<CharacterEntity> list) {
-    return repository.saveAllAndFlush(list);
+    return characterRepository.saveAllAndFlush(list);
   }
 
   public List<CharacterEntity> findAllByName(String name) {
-    return repository.findAllByNameContains(name);
+    return characterRepository.findAllByNameContains(name);
   }
 
   public List<CharacterEntity> findAllByRace(Race race) {
-    return repository.findAllByRace(race);
+    return characterRepository.findAllByRace(race);
   }
 
 
@@ -166,7 +166,7 @@ public class CharacterService implements InitializingBean {
   }
 
   public List<CharacterEntity> findAll() {
-    return repository.findAll();
+    return characterRepository.findAll();
   }
 
   public CharacterEntity getResultCharacter(Answer answer) {
@@ -192,13 +192,16 @@ public class CharacterService implements InitializingBean {
   }
 
   public Integer getIdByName(String name) {
-    return repository.getCharacterByName(name).orElseThrow().getId();
+    return characterRepository.getCharacterByName(name).orElseThrow().getId();
   }
 
-  public void moveRoomItemtoPlayer(Integer characterId, Integer roomId, Integer itemId) {
-    Item roomItem = inventoryService.getItemEntityById(itemId);
-    roomService.getRoomEntityById(roomId).getInventory().getItems().remove(roomItem);
-    repository.getById(characterId).getInventory().getItems().add(roomItem);
-    roomItem.setInventory(repository.getById(characterId).getInventory());
+  public void moveItemtoPlayer(Integer characterId, Integer inventoryId, Integer itemId) {
+    Item item = inventoryService.getItemEntityById(itemId);
+    Inventory inventory = inventoryService.getInventoryEntityById(inventoryId);
+    CharacterEntity character = characterRepository.getById(characterId);
+
+    inventory.getItems().remove(item);
+    character.getInventory().getItems().add(item);
+    item.setInventory(character.getInventory());
   }
 }

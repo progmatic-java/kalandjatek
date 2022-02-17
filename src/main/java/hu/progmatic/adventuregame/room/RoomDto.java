@@ -23,4 +23,5 @@ public class RoomDto {
     private List<ItemDto> items;
     private Map<String, Integer> adjacentRooms;
     private List<NPCDto> npcDtoList;
+    private Integer inventoryId;
 }

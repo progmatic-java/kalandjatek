@@ -12,6 +12,7 @@ import java.util.Map;
 @NoArgsConstructor
 @Builder
 public class ActionCommand {
+    private Integer currActionId;
     private String npcText;
     private Map<String, Integer> playerAnswers;
 }
