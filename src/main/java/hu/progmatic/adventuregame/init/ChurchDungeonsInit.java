@@ -17,6 +17,16 @@ public class ChurchDungeonsInit extends InitRoom {
 
     @Override
     List<NPC> getInitNpcs() {
+        Inventory dungeonKeeper = new Inventory();
+        dungeonKeeper.setItems(List.of(
+                Item.builder()
+                        .itemName("Skeleton key")
+                        .typeOfItem(ItemEnum.KEY)
+                        .description("Can open skeleton doors, e.g. in the Cemetery")
+                        .inventory(dungeonKeeper)
+                        .value(49)
+                        .build()));
+
         return List.of(
                 NPC.builder()
                         .name("Dungeon keeper")
@@ -26,7 +36,7 @@ public class ChurchDungeonsInit extends InitRoom {
                         .mp(50)
                         .hp(200)
                         .gold(100)
-                        .inventory(new Inventory())
+                        .inventory(dungeonKeeper)
                         .action(Action.builder()
                                 .conversationText("What are you doing here?! This area is permitted!")
                                 .childActions(List.of(
@@ -61,11 +71,6 @@ public class ChurchDungeonsInit extends InitRoom {
                         .itemName("Sacrificial knife")
                         .description("Used for rituals")
                         .typeOfItem(ItemEnum.ATTACK)
-                        .build(),
-                Item.builder()
-                        .itemName("Skeleton key")
-                        .description("Can open skeleton doors")
-                        .typeOfItem(ItemEnum.KEY)
                         .build(),
                 Item.builder()
                         .itemName("Torch")
