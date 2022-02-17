@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.adventuregame.inventory.ItemEnum;
 import hu.progmatic.adventuregame.npc.Action;
@@ -17,6 +18,28 @@ public class InnInit extends InitRoom {
     }
 
     List<NPC> getInitNpcs() {
+        Inventory burrows = new Inventory();
+        burrows.setItems(List.of(
+                Item.builder()
+                        .itemName("Beer")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .description("A little lukewarm and tastes like horse piss but it's fine.")
+                        .inventory(burrows)
+                        .build(),
+                Item.builder()
+                        .itemName("Wine")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .description("Is this from a tablet?")
+                        .inventory(burrows)
+                        .build(),
+                Item.builder()
+                        .itemName("Cracker")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .description("Mmmm sooo tastyyy and crispyyy.")
+                        .inventory(burrows)
+                        .build()));
+
+
         return List.of(
                 NPC.builder()
                         .name("Burrows")
@@ -25,6 +48,7 @@ public class InnInit extends InitRoom {
                         .hp(50)
                         .mp(50)
                         .gold(1000)
+                        .inventory(burrows)
                         .imgRef("https://i.imgur.com/v436jHn.png")
                         .action(
                                 Action.builder()
