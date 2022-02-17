@@ -66,11 +66,11 @@ public class InventoryService{
     inventory.getItems().add(item);
   }
 
-  public InvetoryDto getInventoryById(Integer id) {
+  public InvetoryDto getInventoryDtoById(Integer id) {
     return buildInventoryDto(inventoryRepository.getById(id));
   }
 
-  public ItemDto getItemById(Integer id) {
+  public ItemDto getItemDtoById(Integer id) {
     return buildItemDto(itemRepository.getById(id));
   }
 

@@ -74,7 +74,7 @@ class InventoryServiceTest {
     @Test
     void getItemById() {
         Item item = inventoryService.createItem(Item.builder().itemName("Potion").build());
-        ItemDto dto = inventoryService.getItemById(item.getId());
+        ItemDto dto = inventoryService.getItemDtoById(item.getId());
         assertEquals("Potion", dto.getItemName());
         assertNotNull(dto.getId());
     }
@@ -128,7 +128,7 @@ class InventoryServiceTest {
         void addItemToInventory() {
             Item sword = itemList.stream().filter(item -> item.getItemName().equals("Sword")).findAny().orElseThrow();
             inventoryService.addItemToInventory(inventory.getId(), sword.getId());
-            InvetoryDto dto = inventoryService.getInventoryById(inventory.getId());
+            InvetoryDto dto = inventoryService.getInventoryDtoById(inventory.getId());
             assertThat(dto.getItems())
                 .hasSize(1)
                 .extracting(ItemDto::getItemName)
@@ -139,14 +139,14 @@ class InventoryServiceTest {
         void deleteItemFromInventory() {
             Item beer = itemList.stream().filter(item -> item.getItemName().equals("Beer")).findAny().orElseThrow();
             inventoryService.addItemToInventory(inventory.getId(), beer.getId());
-            InvetoryDto dto = inventoryService.getInventoryById(inventory.getId());
+            InvetoryDto dto = inventoryService.getInventoryDtoById(inventory.getId());
             assertThat(dto.getItems())
                 .hasSize(1)
                 .extracting(ItemDto::getItemName)
                 .containsExactlyInAnyOrder("Beer");
 
             inventoryService.deleteItemFromInvetory(inventory.getId(), beer.getId());
-            dto = inventoryService.getInventoryById(inventory.getId());
+            dto = inventoryService.getInventoryDtoById(inventory.getId());
             assertThat(dto.getItems())
                 .hasSize(0);
         }
