@@ -17,6 +17,40 @@ public class ChurchInit extends InitRoom {
 
     @Override
     List<NPC> getInitNpcs() {
+        Inventory lombok = new Inventory();
+        lombok.setItems(List.of(
+                Item.builder()
+                        .itemName("Prayer book")
+                        .typeOfItem(ItemEnum.ATTACK)
+                        .value(30)
+                        .description("A book containing prayers used in worship of Holy Joe")
+                        .inventory(lombok)
+                        .build(),
+                Item.builder()
+                        .itemName("The Blessing of Holy Joe")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .description("Receiving this blessing will grant you the ability to see through deceptions")
+                        .inventory(lombok)
+                        .value(1000)
+                        .build(),
+                Item.builder()
+                        .itemName("Relic")
+                        .typeOfItem(ItemEnum.JUNK)
+                        .description("It is said to be a handkerchief Holy Joe used to dry his tears with")
+                        .inventory(lombok)
+                        .value(150)
+                        .build()));
+
+        Inventory thyme = new Inventory();
+        thyme.setItems(List.of(
+                Item.builder()
+                        .itemName("Map to the Forest of K'aam")
+                        .typeOfItem(ItemEnum.JUNK)
+                        .description("With this map you won't lose your way in the forest")
+                        .inventory(thyme)
+                        .value(20)
+                        .build()));
+
         return List.of(
                 NPC.builder()
                         .name("Padre Lombok")
@@ -25,7 +59,7 @@ public class ChurchInit extends InitRoom {
                         .hp(1000)
                         .mp(1000)
                         .gold(10000)
-                        .inventory(new Inventory())
+                        .inventory(lombok)
                         .imgRef("https://i.imgur.com/grNc1xh.png")
                         .action(
                                 Action.builder()
@@ -113,7 +147,7 @@ public class ChurchInit extends InitRoom {
                         .hp(500)
                         .mp(50)
                         .gold(50)
-                        .inventory(new Inventory())
+                        .inventory(thyme)
                         .imgRef("https://i.imgur.com/7dbqJvD.png")
                         .action(
                                 Action.builder()
