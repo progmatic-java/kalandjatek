@@ -16,43 +16,61 @@ public class ShopInit extends InitRoom {
 
     @Override
     List<NPC> getInitNpcs() {
+        Inventory tezco = Inventory.builder().build();
+        tezco.setItems(
+                List.of(
+                        Item.builder()
+                                .itemName("Bread")
+                                .description("It's like a beer, but solid and les fun")
+                                .typeOfItem(ItemEnum.CONSUMABLE)
+                                .value(20)
+                                .inventory(tezco)
+                                .build(),
+                        Item.builder()
+                                .itemName("Sword")
+                                .description("He attack")
+                                .typeOfItem(ItemEnum.ATTACK)
+                                .value(50)
+                                .inventory(tezco)
+                                .build(),
+                        Item.builder()
+                                .itemName("Mace")
+                                .description("So big")
+                                .typeOfItem(ItemEnum.ATTACK)
+                                .value(60)
+                                .inventory(tezco)
+                                .build(),
+                        Item.builder()
+                                .itemName("Shield")
+                                .description("He protect")
+                                .typeOfItem(ItemEnum.SHIELD)
+                                .value(100)
+                                .inventory(tezco)
+                                .build(),
+                        Item.builder()
+                                .itemName("Energy potion")
+                                .description("Give you energy to study all night")
+                                .typeOfItem(ItemEnum.CONSUMABLE)
+                                .value(60)
+                                .inventory(tezco)
+                                .build(),
+                        Item.builder()
+                                .itemName("Chili con carne")
+                                .description("A hearty meal")
+                                .typeOfItem(ItemEnum.CONSUMABLE)
+                                .value(80)
+                                .inventory(tezco)
+                                .build()
+                )
+        );
+
         return List.of(
                 NPC.builder()
                         .name("Tezco")
                         .description("The owner of the shop, maybe if i'm nice to him, i can get a better deal.")
                         .inventory(new Inventory())
                         .imgRef("https://i.pinimg.com/originals/9f/44/28/9f442894bec6ab5311e1c00ca5735ce7.png")
-                        .inventory(
-                                Inventory.builder()
-                                        .items(List.of(
-                                                        Item.builder()
-                                                                .itemName("Bread")
-                                                                .typeOfItem(ItemEnum.CONSUMABLE)
-                                                                .build(),
-                                                        Item.builder()
-                                                                .itemName("Sword")
-                                                                .typeOfItem(ItemEnum.ATTACK)
-                                                                .build(),
-                                                        Item.builder()
-                                                                .itemName("Mace")
-                                                                .typeOfItem(ItemEnum.ATTACK)
-                                                                .build(),
-                                                        Item.builder()
-                                                                .itemName("Shield")
-                                                                .typeOfItem(ItemEnum.SHIELD)
-                                                                .build(),
-                                                        Item.builder()
-                                                                .itemName("Energy potion")
-                                                                .typeOfItem(ItemEnum.CONSUMABLE)
-                                                                .build(),
-                                                        Item.builder()
-                                                                .itemName("Chili con carne")
-                                                                .typeOfItem(ItemEnum.CONSUMABLE)
-                                                                .build()
-                                                )
-                                        )
-                                        .build()
-                        )
+                        .inventory(tezco)
                         .action(Action.builder()
                                 .conversationText("Welcome to Tezco's shop! My name is Tezco and I'm the humble owner of this store. Please take a look around a let me know if something catches your eyes.")
                                 .childActions(
