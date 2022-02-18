@@ -31,7 +31,7 @@ public class CaveInit extends InitRoom {
                 NPC.builder()
                         .name("The Chicken Dragon")
                         .description("A Chicken Dragon, who was originally born a Phoenix")
-                        .friendly(true)
+                        .friendly(false)
                         .hp(500)
                         .mp(50)
                         .gold(1000)
@@ -44,21 +44,75 @@ public class CaveInit extends InitRoom {
                                                 .conversationText("I have come here for the Golden Dragon Egg!")
                                                 .childActions(List.of(
                                                         Action.builder()
-                                                                .conversationText("Bwak bwak bwak")
+                                                                .conversationText("No way I'm gonna give it to you! You have to get it out of my cold, dead...wings!")
+                                                                .childActions(List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("Yeah, no. I rather leave, I'm tired. I don't even want your egg.")
+                                                                                .childActions(List.of(
+                                                                                        Action.builder()
+                                                                                                .conversationText("Go and don't come back!")
+                                                                                                .build()))
+                                                                                .build(),
+                                                                        Action.builder()
+                                                                                .conversationText("So it shall be...")
+                                                                                .childActions(List.of(
+                                                                                        Action.builder()
+                                                                                                .conversationText("You're making the biggest mistake of your life!")
+                                                                                                .build()))
+                                                                                .build()))
                                                                 .build()))
                                                 .build(),
                                         Action.builder()
                                                 .conversationText("Holy Joe, A CHICKEN DRAGON??!!")
                                                 .childActions(List.of(
                                                         Action.builder()
-                                                                .conversationText("Bwak bwak bwak")
+                                                                .conversationText("Don't laugh at me! I was born a Phoenix, I don't know what happened!")
+                                                                .childActions(List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("Soooo... are you a chicken or a dragon?")
+                                                                                .childActions(List.of(
+                                                                                        Action.builder()
+                                                                                                .conversationText("I'm actually both... and neither...but I was born a Phoenix. What do you want from me?")
+                                                                                                .childActions(List.of(
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("I have come here for the Golden Dragon Egg!")
+                                                                                                                .childActions(List.of(
+                                                                                                                        Action.builder()
+                                                                                                                                .conversationText("No way I'm gonna give it to you! You have to get it out of my cold, dead...wings!")
+                                                                                                                                .childActions(List.of(
+                                                                                                                                        Action.builder()
+                                                                                                                                                .conversationText("Yeah, no. I rather leave, I'm tired. I don't even want your egg.")
+                                                                                                                                                .childActions(List.of(
+                                                                                                                                                        Action.builder()
+                                                                                                                                                                .conversationText("Go and don't come back!")
+                                                                                                                                                                .build()))
+                                                                                                                                                .build(),
+                                                                                                                                        Action.builder()
+                                                                                                                                                .conversationText("So it shall be...")
+                                                                                                                                                .childActions(List.of(
+                                                                                                                                                        Action.builder()
+                                                                                                                                                                .conversationText("You're making the biggest mistake of your life!")
+                                                                                                                                                                .build()))
+                                                                                                                                                .build()))
+                                                                                                                                .build()))
+                                                                                                                .build()
+                                                                                                ))
+                                                                                                .build()))
+                                                                                .build(),
+                                                                        Action.builder()
+                                                                                .conversationText("I'm not laughing!...BWHAHAHAHA")
+                                                                                .childActions(List.of(
+                                                                                        Action.builder()
+                                                                                                .conversationText("I will kill you!")
+                                                                                                .build()))
+                                                                                .build()))
                                                                 .build()))
                                                 .build(),
                                         Action.builder()
                                                 .conversationText("Do you want to dance?!")
                                                 .childActions(List.of(
                                                         Action.builder()
-                                                                .conversationText("No.")
+                                                                .conversationText("No. Just leave me alone!")
                                                                 .build()))
                                                 .build()))
                                 .build())
