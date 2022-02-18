@@ -8,7 +8,7 @@ import hu.progmatic.adventuregame.npc.NPC;
 
 import java.util.List;
 
-public class CaveInit extends InitRoom{
+public class CaveInit extends InitRoom {
     @Override
     public String getName() {
         return "The Lair of the Dragon";
@@ -16,6 +16,17 @@ public class CaveInit extends InitRoom{
 
     @Override
     List<NPC> getInitNpcs() {
+
+        Inventory phoneix = new Inventory();
+        phoneix.setItems(List.of(
+                Item.builder()
+                        .itemName("The Golden Dragon Egg")
+                        .description("Wow! I can't believe it's mine!")
+                        .typeOfItem(ItemEnum.VALUABLE)
+                        .inventory(phoneix)
+                        .value(1000000)
+                        .build()));
+
         return List.of(
                 NPC.builder()
                         .name("The Chicken Dragon")
@@ -24,7 +35,7 @@ public class CaveInit extends InitRoom{
                         .hp(500)
                         .mp(50)
                         .gold(1000)
-                        .inventory(Inventory.builder().build())
+                        .inventory(phoneix)
                         .imgRef("https://i.imgur.com/ZZsNPwW.png")
                         .action(Action.builder()
                                 .conversationText("What are you doing here, in my lair?")

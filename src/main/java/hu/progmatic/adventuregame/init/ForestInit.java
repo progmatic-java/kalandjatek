@@ -17,6 +17,17 @@ public class ForestInit extends InitRoom {
 
     @Override
     List<NPC> getInitNpcs() {
+
+        Inventory xepsion = new Inventory();
+        xepsion.setItems(List.of(
+                Item.builder()
+                        .itemName("The Ring of X-epson")
+                        .description("X-epson's magic is protecting me in battles!")
+                        .typeOfItem(ItemEnum.SHIELD)
+                        .inventory(xepsion)
+                        .value(0)
+                        .build()));
+
         return List.of(
                 NPC.builder()
                         .name("Ugly Troll")
@@ -58,7 +69,7 @@ public class ForestInit extends InitRoom {
                         .mp(100)
                         .hp(60)
                         .gold(100)
-                        .inventory(new Inventory())
+                        .inventory(xepsion)
                         .action(
                                 Action.builder()
                                         .conversationText("Grrrrrrrrrrrrrr. I am X-epson! I will eat you!!")
@@ -103,11 +114,6 @@ public class ForestInit extends InitRoom {
                         .itemName("Poisonous berries")
                         .description("I should not eat this, but it tastes so good.")
                         .typeOfItem(ItemEnum.CONSUMABLE)
-                        .build(),
-                Item.builder()
-                        .itemName("The Ring of X-epson")
-                        .description("X-epson's magic is protecting me in battles!")
-                        .typeOfItem(ItemEnum.SHIELD)
                         .build(),
                 Item.builder()
                         .itemName("Returno's left ear")
