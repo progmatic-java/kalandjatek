@@ -66,11 +66,11 @@ public class InnInit extends InitRoom {
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
-                                                                                                                .conversationText("I'm actually in search for the last gold dragon egg and I heard it's here somewhere in Thorncall. Is it true?")
+                                                                                                                .conversationText("I'm actually in search for the last Golden Dragon Egg and I heard it's here somewhere in Thorncall. Is it true?")
                                                                                                                 .childActions(
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
-                                                                                                                                        .conversationText("A gold dragon egg? That's a bedtime story that parents tell their kids to help them sleep. Don't tell me you believe in that.")
+                                                                                                                                        .conversationText("The Golden Dragon egg? That's a bedtime story that parents tell their kids to help them sleep. Don't tell me you believe in that.")
                                                                                                                                         .childActions(
                                                                                                                                                 List.of(
                                                                                                                                                         Action.builder()
@@ -112,11 +112,11 @@ public class InnInit extends InitRoom {
                                                                 )
                                                                 .build(),
                                                         Action.builder()
-                                                                .conversationText("Hey, I'm actually in search for the last gold dragon egg and I heard it's here somewhere in Thorncall. Is it true?")
+                                                                .conversationText("Hey, I'm actually in search for the last Golden Dragon Egg and I heard it's here somewhere in Thorncall. Is it true?")
                                                                 .childActions(
                                                                         List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("A gold dragon egg? That's a bedtime story that parents tell their kids to help them sleep. Don't tell me you believe in that.")
+                                                                                        .conversationText("The Golden Dragon Egg? That's a bedtime story that parents tell their kids to help them sleep. Don't tell me you believe in that.")
                                                                                         .childActions(
                                                                                                 List.of(
                                                                                                         Action.builder()
@@ -217,7 +217,7 @@ public class InnInit extends InitRoom {
                                                                         .conversationText("Yes, my friend! How are you? So good to see you!")
                                                                         .childActions(List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("I'm good! Can you help me? I'm here to search for the last golden dragon egg and I heard it's here somewhere in Thorncall.")
+                                                                                        .conversationText("I'm good! Can you help me? I'm here to search for the last Golden Dragon Egg and I heard it's here somewhere in Thorncall.")
                                                                                         .childActions(List.of(
                                                                                                 Action.builder()
                                                                                                         .conversationText("Sorry I haven't heard about it.")

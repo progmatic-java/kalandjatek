@@ -110,10 +110,16 @@ public class BrothelInit extends InitRoom {
                                                                                 .build()
                                                                 )
                                                         )
-                                                        .build()                                        )
-                                )
-                                .build()
-                        )
+                                                        .build(),
+                                                Action.builder()
+                                                        .conversationText("Hi, I'm actually wondering whether you know anything about the Last Golden Dragon Egg?")
+                                                        .childActions(
+                                                                List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("Nope, sorry... But if you're interested in any of the Red Try and Catch's services, have a chat with Lady Regexxx")
+                                                                                .build()))
+                                                        .build()))
+                                .build())
                         .build()
         );
     }
