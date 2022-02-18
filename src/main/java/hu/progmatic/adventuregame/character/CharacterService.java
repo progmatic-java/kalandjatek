@@ -1,7 +1,6 @@
 package hu.progmatic.adventuregame.character;
 
 import hu.progmatic.adventuregame.inventory.*;
-import hu.progmatic.adventuregame.room.RoomService;
 import hu.progmatic.felhasznalo.UserType;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
