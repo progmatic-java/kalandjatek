@@ -82,11 +82,46 @@ public class ChurchInit extends InitRoom {
                                                                                                                                         .conversationText("You must prove your resolution first. Bring me 1000 gold and we may talk again")
                                                                                                                                         .build())
                                                                                                                 )
-                                                                                                                .build()
+                                                                                                                                .build(),
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("Let me prove how devoted I am")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("I appreciate your determination. However, to prove yourself to be worthy, I must make you go through some tribulations")
+                                                                                                                                        .childActions(
+                                                                                                                                                List.of(
+                                                                                                                                                        Action.builder()
+                                                                                                                                                                .conversationText("I'm ready, Padre. Let's start immediately!")
+                                                                                                                                                                .childActions(
+                                                                                                                                                                        List.of(
+                                                                                                                                                                                Action.builder()
+                                                                                                                                                                                        .conversationText("Very well, my friend. For your first trial, you'll kneel in front of the statue of the almighty Holy Joe. As cold as the stone may be and as much as your knees might hurt from the hard floor, you must stay there as long as I deem it necessary")
+                                                                                                                                                                                        .build())
+                                                                                                                                                                )
+                                                                                                                                                                .build(),
+                                                                                                                                                        Action.builder()
+                                                                                                                                                                .conversationText("Tribulations? I don't think I'm ready for such sacred rituals...")
+                                                                                                                                                                .childActions(
+                                                                                                                                                                        List.of(
+                                                                                                                                                                                Action.builder()
+                                                                                                                                                                                        .conversationText("Oh, is that so? I shall make you demonstrate your faith in an underhanded way then. Come with me, my friend")
+                                                                                                                                                                                        .build())
+                                                                                                                                                                )
+                                                                                                                                                                .build()
+                                                                                                                                                        )
+
+                                                                                                                                        )
+                                                                                                                                        .build()
+                                                                                                                                )
+
+                                                                                                                        )
+                                                                                                                        .build()
                                                                                                 )
+
                                                                                         )
                                                                                         .build()
-                                                                        )
+                                                                                )
                                                                 )
                                                                 .build(),
                                                         Action.builder()
@@ -103,7 +138,8 @@ public class ChurchInit extends InitRoom {
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
                                                                                                                                         .conversationText("You're a sly one, aren't you? ...Follow me")
-                                                                                                                                        .build())
+                                                                                                                                        .build()
+                                                                                                                        )
                                                                                                                 )
                                                                                                                 .build()
                                                                                                 )
@@ -135,7 +171,7 @@ public class ChurchInit extends InitRoom {
                                                                         )
                                                                 )
                                                                 .build()
-                                                )
+                                                        )
                                         )
                                         .build()
                         )
@@ -229,6 +265,7 @@ public class ChurchInit extends InitRoom {
                                         .build()
                         )
                         .build()
+
         );
     }
 
