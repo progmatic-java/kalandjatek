@@ -33,10 +33,6 @@ public class InventoryService {
         return itemRepository.save(newItem);
     }
 
-    public List<Item> getItemsByInventoryId(Integer inventoryId) {
-        return inventoryRepository.getById(inventoryId).getItems().stream().toList();
-    }
-
     public void deleteInventory(Integer inventoryId) {
         inventoryRepository.deleteById(inventoryId);
     }
