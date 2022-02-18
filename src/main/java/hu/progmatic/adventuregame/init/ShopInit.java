@@ -83,6 +83,15 @@ public class ShopInit extends InitRoom {
                                                                                 .build()
                                                                 )
                                                         )
+                                                        .build(),
+                                                Action.builder()
+                                                        .conversationText("Do you know anything about a golden dragon egg?")
+                                                        .childActions(List.of(
+                                                                        Action.builder()
+                                                                                .conversationText("No sorry, I'm new to the town.")
+                                                                                .build()
+                                                                )
+                                                        )
                                                         .build()
                                         )
                                 )

@@ -24,7 +24,6 @@ public class CaveInit extends InitRoom {
                         .description("Wow! I can't believe it's mine!")
                         .typeOfItem(ItemEnum.VALUABLE)
                         .inventory(phoneix)
-                        .value(1000000)
                         .build()));
 
         return List.of(

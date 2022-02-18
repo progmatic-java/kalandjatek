@@ -157,14 +157,14 @@ public class InnInit extends InitRoom {
                                                                                                                                                 .conversationText("Yes, something lurks there... Something very dangerous. People call it X-epsion. Even it's name is scary.")
                                                                                                                                                 .childActions(List.of(
                                                                                                                                                         Action.builder()
-                                                                                                                                                                .conversationText("Wow, yeah no sorry, I dont want to risk my life.")
+                                                                                                                                                                .conversationText("Wow, yeah no sorry, I don't want to risk my life.")
                                                                                                                                                                 .childActions(List.of(
                                                                                                                                                                         Action.builder()
                                                                                                                                                                                 .conversationText("I get it, if you change your mind, you know where to find me.")
                                                                                                                                                                                 .build()))
                                                                                                                                                                 .build(),
                                                                                                                                                         Action.builder()
-                                                                                                                                                                .conversationText("Sounds scary, I'm in!")
+                                                                                                                                                                .conversationText("Sounds scary... I'm in!")
                                                                                                                                                                 .childActions(List.of(
                                                                                                                                                                         Action.builder()
                                                                                                                                                                                 .conversationText("Great! Please bring it back to me. I will give you a lot of coins and free beers for life!")
@@ -220,7 +220,7 @@ public class InnInit extends InitRoom {
                                                                                         .conversationText("I'm good! Can you help me? I'm here to search for the last Golden Dragon Egg and I heard it's here somewhere in Thorncall.")
                                                                                         .childActions(List.of(
                                                                                                 Action.builder()
-                                                                                                        .conversationText("Sorry I haven't heard about it.")
+                                                                                                        .conversationText("Sorry I haven't heard about it. Maybe ask Burrows, he knows about everything.")
                                                                                                         .build()))
                                                                                         .build()))
                                                                         .build()))
