@@ -45,7 +45,7 @@ public class ChurchInit extends InitRoom {
         thyme.setItems(List.of(
                 Item.builder()
                         .itemName("Map to the Academy of Magic and Programming")
-                        .typeOfItem(ItemEnum.JUNK)
+                        .typeOfItem(ItemEnum.KEY)
                         .description("With this map you won't lose your way")
                         .inventory(thyme)
                         .value(20)

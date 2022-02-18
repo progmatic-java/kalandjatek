@@ -115,7 +115,16 @@ public class GraveyardInit extends InitRoom {
                                                                                                                 .childActions(
                                                                                                                         List.of(
                                                                                                                                 Action.builder()
-                                                                                                                                        .conversationText("Good, you won't regret your decision, child. I shall get in contact with you soon. Now leave")
+                                                                                                                                        .conversationText("Great! You won't regret your decision, child. I shall get in contact with you soon. Now get out of my sight")
+                                                                                                                                        .build())
+                                                                                                                )
+                                                                                                                .build(),
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("WTH?! I don't want to sacrifice my soul! ")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("I see. Where are you going? There's no use running away, your soul will be mine sooner or later anyway!")
                                                                                                                                         .build())
                                                                                                                 )
                                                                                                                 .build()
@@ -159,18 +168,39 @@ public class GraveyardInit extends InitRoom {
                                                                                                                                 Action.builder()
                                                                                                                                         .conversationText("That monster is said to be lurking in the shadows, deep within the Forest")
                                                                                                                                         .build()))
+                                                                                                                .build()
+                                                                                                )
+                                                                                        )
+                                                                                        .build()
+                                                                        )
+                                                                )
+                                                                .build(),
+                                                        Action.builder()
+                                                                .conversationText("That's fine, I'm prepared to face any challenge!")
+                                                                .childActions(
+                                                                        List.of(
+                                                                                Action.builder()
+                                                                                        .conversationText("Beyond this gate, only death awaits you. Do you really want to proceed?")
+                                                                                        .childActions(
+                                                                                                List.of(
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("I do")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("You have been warned, stranger. Your fate is in your hands now")
+                                                                                                                                        .build())
+                                                                                                                )
+                                                                                                                .build(),
+                                                                                                        Action.builder()
+                                                                                                                .conversationText("Umm..I changed my mind")
+                                                                                                                .childActions(
+                                                                                                                        List.of(
+                                                                                                                                Action.builder()
+                                                                                                                                        .conversationText("Good, now leave. Don't waste my time any more")
+                                                                                                                                        .build())
 
-//                                                                                        .conversationText("Beyond this gate, only death awaits you. Do you want to proceed?")
-//                                                                                        .childActions(
-//                                                                                                List.of(
-//                                                                                                        Action.builder()
-//                                                                                                                .conversationText("I do. I got no other choice")
-//                                                                                                                .childActions(
-//                                                                                                                        List.of(
-//                                                                                                                                Action.builder()
-//                                                                                                                                        .conversationText("You have been warned, stranger. Your fate is in your hands now")
-//                                                                                                                                        .build())
-//                                                                                                                )
+                                                                                                                )
                                                                                                                 .build()
                                                                                                 )
                                                                                         )
