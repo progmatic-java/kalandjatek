@@ -21,8 +21,6 @@ public class CharacterService implements InitializingBean {
     private CharacterRepository characterRepository;
     @Autowired
     private InventoryService inventoryService;
-    @Autowired
-    private RoomService roomService;
 
 
     public CharacterEntity save(CharacterEntity character) {

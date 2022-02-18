@@ -21,8 +21,6 @@ public class RoomService {
   @Autowired
   private RoomRepository roomRepository;
   @Autowired
-  private DoorRepository doorRepository;
-  @Autowired
   private InventoryService inventoryService;
   @Autowired
   private NPCService NPCService;
@@ -68,17 +66,6 @@ public class RoomService {
 
   public List<Room> saveAllRoom(List<Room> rooms) {
     return roomRepository.saveAll(rooms);
-  }
-
-  public Door saveDoor(Room room1, Room room2) {
-    Door newDoor = doorRepository.save(Door.builder()
-        .room1(room1)
-        .room2(room2)
-        .build()
-    );
-    room1.getDoors1().add(newDoor);
-    room1.getDoors2().add(newDoor);
-    return newDoor;
   }
 
   public Map<String, Integer> getAdjacentRooms(Room room) {
