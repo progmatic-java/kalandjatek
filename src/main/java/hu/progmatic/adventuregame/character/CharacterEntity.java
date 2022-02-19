@@ -33,6 +33,6 @@ public class CharacterEntity {
   Inventory inventory;
   @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn
-  Inventory currentInventory;
+  Inventory activeInventory;
 
 }
