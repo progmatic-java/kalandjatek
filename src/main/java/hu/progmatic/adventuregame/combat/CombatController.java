@@ -30,20 +30,22 @@ public class CombatController {
         return "/adventuregame/combat";
     }
 
-//    @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/item/{itemId}")
-//    public String characterItemToActionItem(
-//            @PathVariable Integer characterId,
-//            @PathVariable Integer roomId,
-//            @PathVariable Integer itemId,
-//            Model model
-//    ) {
-//        RoomDto currRoom = roomService.getRoomById(roomId);
-//        characterService.moveItemtoPlayer(characterId, currRoom.getInventoryId(), itemId);
-//        CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
-//        currRoom = roomService.getRoomById(roomId);
-//        setCurrRoom(model, currRoom);
-//        return getCurrRoomWithCharacter(model, currRoom, currCharacter);
-//    }
+    @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/changecombatitem/{itemId}")
+    public String characterItemToActionItem(
+            @PathVariable Integer characterId,
+            @PathVariable Integer roomId,
+            @PathVariable Integer itemId,
+            @PathVariable Integer npcId,
+            Model model
+    ) {
+        RoomDto currRoom = roomService.getRoomById(roomId);
+        characterService.moveItemtoPlayer(characterId, currRoom.getInventoryId(), itemId);
+        CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
+        currRoom = roomService.getRoomById(roomId);
+        NPCDto currNpc = npcService.getNPCDtoById(npcId);
+        setCurrRoom(model, currRoom);
+        return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
+    }
 
     @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/combatstart")
     public String combatStart(
@@ -55,7 +57,7 @@ public class CombatController {
         RoomDto currRoom = roomService.getRoomById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
-        return setCurrCombatRound(model, currRoom, currCharacter,currNpc);
+        return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
     }
 
     private String setCurrCombatRound(Model model, RoomDto currRoom, CharacterDto currCharacter, NPCDto currNpc) {
@@ -63,5 +65,11 @@ public class CombatController {
         model.addAttribute("currPlayer", currCharacter);
         model.addAttribute("currNpc", currNpc);
         return "/adventuregame/combat";
+    }
+
+    private void setCurrRoom(Model model, RoomDto currRoom) {
+        model.addAttribute("currRoomItems", currRoom.getItems());
+        model.addAttribute("currNpcs", currRoom.getNpcDtoList());
+        model.addAttribute("currDoors", currRoom.getAdjacentRooms());
     }
 }
