@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml" xmlns:th="https://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <!-- Required meta tags -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Bootstrap CSS -->
+
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Anton&display=swap');
+        @import url('https://fonts.googleapis.com/css?family=MedievalSharp');
+
+        html,
+        body {
+            height: 100%;
+            width: 100%;
+        }
+
+        body {
+            color: whitesmoke;
+            font-family: MedievalSharp, serif;
+            font-size: 15px;
+            font-weight: 500;
+            background-size: 100% 100%;
+            background-color: gray;
+        }
+
+        .ROOMNAME {
+            color: whitesmoke;
+            font-family: MedievalSharp, serif;
+            font-weight: 400;
+            font-size: 50px;
+            text-align: center;
+            text-shadow: -2px -2px 0 #000,
+            1px -1px 0 #000,
+            -2px 2px 0 #000,
+            1px 1px 0 #000;
+        }
+
+        .dropbtn {
+            background-color: black;
+            color: white;
+            padding: 16px;
+            font-size: 16px;
+            border: none;
+            position: center;
+            text-align: center;
+
+        }
+
+        .dropdown {
+            font-style: italic;
+            font-family: MedievalSharp, serif;
+            font-weight: 700;
+            font-size: 40px;
+            padding: 25px 25px;
+
+            display: inline-block;
+        }
+
+        .itemsbutton {
+            float: bottom;
+            text-align: center;
+            right: 90%;
+            position: absolute;
+            bottom: 90%;
+        }
+
+        .nextarea {
+            float: bottom;
+            text-align: center;
+            left: 80%;
+            position: absolute;
+            bottom: 85%;
+        }
+
+        .dropdown-content {
+            display: none;
+            position: absolute;
+            background-color: black;
+            min-width: 160px;
+            box-shadow: 0 8px 16px 0 rgba(0, 0, 0, 0.2);
+            z-index: 1;
+            text-align: center;
+        }
+
+        .dropdown-content a {
+            color: white;
+            padding: 12px 16px;
+            text-decoration: none;
+            display: block;
+            text-align: center;
+        }
+
+
+        .dropdown-content a:hover {
+            background-color: black;
+            text-align: center;
+        }
+
+        .dropdown:hover .dropdown-content {
+            display: block;
+            text-align: center;
+        }
+
+        .dropdown:hover .dropbtn {
+            background-color: black;
+            text-align: center;
+        }
+
+        .container {
+            display: grid;
+            grid-template-columns: 33% 33% 33%;
+            grid-template-rows: 33% 33% 33%;
+            gap: 0 0;
+            height: 100%;
+            width: 100%;
+            grid-auto-flow: row;
+            grid-template-areas:
+    "ROOMITEMS . NEXTAREA"
+    "NPCs NPCPIC CHARACTERINFO"
+    "INTERACTIONTEXT INTERACTIONTEXT INTERACTIONTEXT";
+            row-gap: 15px;
+        }
+
+        .ROOMITEMS {
+            grid-area: ROOMITEMS;
+        }
+
+        .NPCPIC {
+            grid-area: NPCPIC;
+            z-index: -1;
+        }
+
+
+        .NPCs {
+            grid-area: NPCs;
+        }
+
+        .NEXTAREA {
+            grid-area: NEXTAREA;
+        }
+
+        .CHARACTERINFO {
+            grid-area: CHARACTERINFO;
+            background-color: rgba(0, 0, 0, 0.5);
+            justify-self: start;
+            text-shadow: -2px -2px 0 #000,
+            1px -1px 0 #000,
+            -2px 2px 0 #000,
+            1px 1px 0 #000;
+        }
+
+        .INTERACTIONTEXT {
+            grid-area: INTERACTIONTEXT;
+            background-color: rgba(0, 0, 0, 0.5);
+            text-align: center;
+            text-shadow: -2px -2px 0 #000,
+            1px -1px 0 #000,
+            -2px 2px 0 #000,
+            1px 1px 0 #000;
+        }
+
+        .INFOTEXT {
+            font-size: 20px;
+            text-align: right;
+            display: flex;
+            justify-content: space-between;
+        }
+
+        .itemsbutton {
+            text-align: right;
+
+        }
+
+        img {
+            height: 100%;
+            width: 100%;
+            justify-self: center;
+            position: center;
+        }
+
+        .mainmenubutton {
+            position: marker;
+            text-align: left;
+        }
+
+    </style>
+
+    <title>Combat</title>
+
+</head>
+
+<body th:style="'background-image:url(' + ${currRoom.getRoomImgRef()} + '); background-repeat: no-repeat, repeat; background-size: cover;'">
+<div class="container">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"
+            integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p"
+            crossorigin="anonymous"></script>
+
+    <audio th:audio="'background-soundscape: ' + ${currRoom.getRoomAudio()} + ''">
+        <p>If you are reading this, it is because your browser does not support the audio element.</p>
+    </audio>
+    <div class="ROOMNAME">
+        <h1 th:text="${currRoom.getRoomName()}">Room Name</h1>
+    </div>
+
+    <div class="ROOMITEMS">
+        <div th:unless="${npcInterraction}" class="roomItemInfo">
+            <div class="dropdown">
+                <button class="dropbtn">Room Items</button>
+                <div class="dropdown-content">
+                    <div th:each="roomItems : ${currRoom.getItems()}">
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/item/{itemId}'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()},itemId=${roomItems.getId()})}"
+                              method="get">
+                            <input data-bs-toggle="tooltip" data-bs-placement="right"
+                                   th:title="${'Description: ' + roomItems.getDescription()  +  ' (' + roomItems.getTypeOfItem() + ')'}"
+                                   type="submit" class="btn btn-dark" th:value="${roomItems.getItemName()}"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div th:if="${npcInterraction}" class="npcItemInfo">
+            <div class="dropdown">
+                <button class="dropbtn">NPC Items</button>
+                <div class="dropdown-content">
+                    <div th:each="npcItem : ${currNpc.getItems()}">
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/action/{actionId}/item/{itemId}'
+                        (characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()},actionId=${currNpcAction.getCurrActionId()},itemId=${npcItem.getId()})}"
+                              method="get">
+                            <input data-bs-toggle="tooltip" data-bs-placement="right"
+                                   th:title="${'Description: ' + npcItem.getDescription()  +  ' (' + npcItem.getTypeOfItem() + ')'}"
+                                   type="submit" class="btn btn-dark"
+                                   th:value="${npcItem.getItemName()} + ' (' + ${npcItem.getValue()} + ' gold)' "/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="CHARACTERINFO">
+        <h2 th:text="${'Character Name: ' + currPlayer.getCharacterName() + ' (' + currPlayer.getRace() + ')'}">
+            Character
+            Name</h2>
+        <div class="characterinfo">
+            <div class="dropdown">
+                <button class="dropbtn">Character Items</button>
+                <div class="dropdown-content">
+                    <div th:each="characterItems : ${currPlayer.getOtherItems()}">
+                        <!--                        <form th:action="@{'/adventuregame/characterpage/{characterId}/item/{itemId}'(characterId=${currPlayer.getId()},itemId=${characterItems.getId()})}"-->
+                        <!--                              method="get">-->
+                        <input data-bs-toggle="tooltip" data-bs-placement="right"
+                               th:title="${'Description: ' + characterItems.getDescription()  +  ' (' + characterItems.getTypeOfItem() + ')'}"
+                               type="submit" class="btn btn-dark" th:value="${characterItems.getItemName()}"/>
+                        <!--                        </form>-->
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="INFOTEXT">
+            <p th:text="${'Hp: ' + currPlayer.getHp()}">Hp:</p>
+            <p th:text="${'Mp: ' + currPlayer.getMp()}">Mp:</p>
+            <p th:text="${'Gold: ' + currPlayer.getGold()}">Gold:</p>
+
+        </div>
+
+
+    </div>
+    <br>
+    <div class="NPCs">
+        <div class="NpcInfo">
+            <div class="dropdown">
+                <button class="dropbtn">NPCs in Room</button>
+                <div class="dropdown-content">
+                    <div th:each="npcInRoom : ${currRoom.getNpcDtoList()}">
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${npcInRoom.getId()})}"
+                              method="get">
+                            <input data-bs-toggle="tooltip" data-bs-placement="right"
+                                   th:title="${'Description: ' + npcInRoom.getDescription()  +  ' (friendly: ' + npcInRoom.getFriendly() + ')'}"
+                                   type="submit" class="btn btn-dark" th:value="${npcInRoom.getName()}"/>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <!--<h3>Next rooms:</h3>-->
+    <!--<ul>-->
+    <!--    <div th:each="nextRoom : ${currDoors}">-->
+    <!--        <li th:text="${nextRoom}">Next Room</li>-->
+    <!--    </div>-->
+    <!--</ul>-->
+    <div class="NEXTAREA">
+        <div th:unless="${npcInterraction}" class="nextarea">
+            <div class="dropdown">
+                <button class="dropbtn">Adjacent areas</button>
+                <div class="dropdown-content">
+                    <div th:each="nextRoom : ${currDoors.entrySet()}">
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${currPlayer.getId()},roomId=${nextRoom.getValue()})}"
+                              method="get">
+                            <input type="submit" class="btn btn-dark" th:value="${nextRoom.getKey()}"/>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <br>
+    <div class="mainmenubutton">
+        <form th:action="@{/adventuregame/mainpage}" method="get">
+            <input type="submit" class="btn btn-dark" style="background-color: green" value="Main menu"/>
+        </form>
+    </div>
+
+
+    <div class="INTERACTIONTEXT">
+        <div th:if="${npcInterraction}">
+            <h2 th:text="${currNpc.getName()} + ': ' + ${currNpcAction.getNpcText()}">
+                NPC interact: </h2>
+            <div th:each="action : ${currNpcAction.getPlayerAnswers().entrySet()}">
+                <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/action/{actionId}'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()}, actionId=${action.getValue()})}"
+                      method="get">
+                    <input type="submit" class="btn btn-dark" th:value="${action.getKey()}"/>
+                </form>
+            </div>
+            <form th:if="${conversationOver}"
+                  th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()})}"
+                  method="get">
+                <input type="submit" class="btn btn-dark" value="Leave"/>
+            </form>
+        </div>
+
+        <h2 th:unless="${npcInterraction}" th:text="${currRoom.getRoomDescription()}">
+            Room Description: </h2>
+    </div>
+
+    <div class="NPCPIC">
+        <div th:if="${npcInterraction}">
+            <img th:src="@{${currNpc.getImgRef}}" style="float:right">
+        </div>
+    </div>
+</div>
+
+</body>
+
+</html>
