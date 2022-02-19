@@ -55,12 +55,13 @@ public class CombatController {
         RoomDto currRoom = roomService.getRoomById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
-        return getCurrRoomWithCharacter(model, currRoom, currCharacter);
+        return setCurrCombatRound(model, currRoom, currCharacter,currNpc);
     }
 
-    private String getCurrRoomWithCharacter(Model model, RoomDto currRoom, CharacterDto currCharacter) {
+    private String setCurrCombatRound(Model model, RoomDto currRoom, CharacterDto currCharacter, NPCDto currNpc) {
         model.addAttribute("currRoom", currRoom);
         model.addAttribute("currPlayer", currCharacter);
+        model.addAttribute("currNpc", currNpc);
         return "/adventuregame/combat";
     }
 }
