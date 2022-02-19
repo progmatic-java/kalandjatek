@@ -20,6 +20,7 @@ public class Item {
     private Integer mp;
     private Integer attack;
     private Integer defence;
+    private Integer damage;
     @Builder.Default
     private Integer value = 0;
     @Enumerated(EnumType.STRING)
