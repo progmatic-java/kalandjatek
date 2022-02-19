@@ -16,6 +16,10 @@ public class Item {
     private Integer id;
     private String itemName;
     private String description;
+    private Integer hp;
+    private Integer mp;
+    private Integer attack;
+    private Integer defence;
     @Builder.Default
     private Integer value = 0;
     @Enumerated(EnumType.STRING)
