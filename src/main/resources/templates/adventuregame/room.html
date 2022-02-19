@@ -251,7 +251,7 @@
             <div class="dropdown">
                 <button class="dropbtn">Character Items</button>
                 <div class="dropdown-content">
-                    <div th:each="characterItems : ${currPlayer.getItems()}">
+                    <div th:each="characterItems : ${currPlayer.getOtherItems()}">
                         <!--                        <form th:action="@{'/adventuregame/characterpage/{characterId}/item/{itemId}'(characterId=${currPlayer.getId()},itemId=${characterItems.getId()})}"-->
                         <!--                              method="get">-->
                         <input data-bs-toggle="tooltip" data-bs-placement="right"

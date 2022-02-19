@@ -44,7 +44,7 @@ public class CharacterService implements InitializingBean {
                 .gold(entity.getGold())
                 .imgRef(entity.getImgRef())
                 .answer(entity.getAnswer())
-                .items(items)
+                .otherItems(items)
                 .activeItems(activeItems)
                 .build();
     }
