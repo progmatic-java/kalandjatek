@@ -185,6 +185,8 @@ public class CharacterService implements InitializingBean {
                 .imgRef(characterRace.img)
                 .description(characterRace.description)
                 .inventory(charInv)
+                .attack(characterRace.attack)
+                .defence(characterRace.defence)
                 .race(characterRace)
                 .answer(answer)
                 .build();
