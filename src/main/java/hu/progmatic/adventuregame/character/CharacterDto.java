@@ -26,4 +26,5 @@ public class CharacterDto implements Serializable {
     private  String imgRef;
     private  Answer answer;
     private List<ItemDto> items;
+    private List<ItemDto> activeItems;
 }
