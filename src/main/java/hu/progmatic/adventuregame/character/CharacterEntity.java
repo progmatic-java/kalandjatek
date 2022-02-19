@@ -22,6 +22,8 @@ public class CharacterEntity {
   private Integer hp;
   private Integer mp;
   private Integer gold;
+  private Integer attack;
+  private Integer defence;
   private String imgRef;
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn

@@ -21,6 +21,8 @@ public class CharacterDto implements Serializable {
     private Integer hp;
     private Integer mp;
     private Integer gold;
+    private Integer attack;
+    private Integer defence;
     private  String imgRef;
     private  Answer answer;
     private List<ItemDto> items;
