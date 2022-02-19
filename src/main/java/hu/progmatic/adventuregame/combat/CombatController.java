@@ -45,8 +45,8 @@ public class CombatController {
 //        return getCurrRoomWithCharacter(model, currRoom, currCharacter);
 //    }
 
-    @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/combat")
-    public String combatNpc(
+    @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/combatstart")
+    public String combatStart(
             @PathVariable Integer characterId,
             @PathVariable Integer roomId,
             @PathVariable Integer npcId,
