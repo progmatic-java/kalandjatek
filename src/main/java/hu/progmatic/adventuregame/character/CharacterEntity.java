@@ -31,5 +31,8 @@ public class CharacterEntity {
   @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
   @JoinColumn
   Inventory inventory;
+  @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+  @JoinColumn
+  Inventory currentInventory;
 
 }
