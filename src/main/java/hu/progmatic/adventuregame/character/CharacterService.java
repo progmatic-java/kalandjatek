@@ -33,6 +33,7 @@ public class CharacterService implements InitializingBean {
     public CharacterDto getCharacterDtoById(Integer id) {
         CharacterEntity entity = characterRepository.getById(id);
         List<ItemDto> items = entity.getInventory().getItems().stream().map(item -> inventoryService.buildItemDto(item)).toList();
+        List<ItemDto> activeItems = entity.getActiveInventory().getItems().stream().map(activeItem -> inventoryService.buildItemDto(activeItem)).toList();
         return CharacterDto.builder()
                 .characterName(entity.getName())
                 .id(entity.getId())
@@ -44,6 +45,7 @@ public class CharacterService implements InitializingBean {
                 .imgRef(entity.getImgRef())
                 .answer(entity.getAnswer())
                 .items(items)
+                .activeItems(activeItems)
                 .build();
     }
 
