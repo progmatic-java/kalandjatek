@@ -33,6 +33,7 @@ public class CharacterService implements InitializingBean {
     public CharacterDto getCharacterDtoById(Integer id) {
         CharacterEntity entity = characterRepository.getById(id);
         List<ItemDto> combatItems = entity.getInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK) || item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).toList();
+        List<ItemDto> otherItems = entity.getInventory().getItems().stream().filter(item -> !(item.getTypeOfItem().equals(ItemEnum.ATTACK) || item.getTypeOfItem().equals(ItemEnum.SHIELD))).map(item -> inventoryService.buildItemDto(item)).toList();
         List<ItemDto> activeItems = entity.getActiveInventory().getItems().stream().map(activeItem -> inventoryService.buildItemDto(activeItem)).toList();
         return CharacterDto.builder()
                 .characterName(entity.getName())
@@ -46,6 +47,7 @@ public class CharacterService implements InitializingBean {
                 .answer(entity.getAnswer())
                 .combatItems(combatItems)
                 .activeItems(activeItems)
+                .otherItems(otherItems)
                 .build();
     }
 
