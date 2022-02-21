@@ -141,16 +141,19 @@ public class AcademyInnit extends InitRoom {
                         .itemName("Candles")
                         .description("Candle light is always so relaxing.")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Old scrolls")
                         .description("They are too old, I can't even read them.")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("The key to Holy Joe's Tomb")
                         .description("What is this doing here? I better take it with me")
                         .typeOfItem(ItemEnum.KEY)
+                        .value(0)
                         .build()
         );
     }

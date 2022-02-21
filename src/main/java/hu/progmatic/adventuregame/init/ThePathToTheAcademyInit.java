@@ -25,16 +25,19 @@ public class ThePathToTheAcademyInit extends InitRoom {
                         .itemName("Ripped books")
                         .description("Someone got expelled...")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Empty potion bottles")
                         .description("These younglings don't care about climate change??")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Coins")
                         .description("Someone drop these, now they are mine!")
                         .typeOfItem(ItemEnum.VALUABLE)
+                        .value(0)
                         .build()
         );
     }

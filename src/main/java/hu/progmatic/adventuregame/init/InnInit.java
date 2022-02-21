@@ -248,6 +248,7 @@ public class InnInit extends InitRoom {
                         .itemName("Beer")
                         .description("A cold drink from Go'odor")
                         .hp(10)
+                        .value(0)
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .build(),
                 Item.builder()
@@ -255,11 +256,13 @@ public class InnInit extends InitRoom {
                         .description("Good for slicing bread")
                         .attack(3)
                         .damage(2)
+                        .value(0)
                         .typeOfItem(ItemEnum.ATTACK)
                         .build(),
                 Item.builder()
                         .itemName("Coins")
                         .description("You should take it")
+                        .value(0)
                         .typeOfItem(ItemEnum.VALUABLE)
                         .build()
         );
