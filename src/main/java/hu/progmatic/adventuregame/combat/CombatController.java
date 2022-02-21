@@ -2,7 +2,6 @@ package hu.progmatic.adventuregame.combat;
 
 import hu.progmatic.adventuregame.character.CharacterDto;
 import hu.progmatic.adventuregame.character.CharacterService;
-import hu.progmatic.adventuregame.npc.ActionCommand;
 import hu.progmatic.adventuregame.npc.NPCDto;
 import hu.progmatic.adventuregame.npc.NPCService;
 import hu.progmatic.adventuregame.room.RoomDto;
