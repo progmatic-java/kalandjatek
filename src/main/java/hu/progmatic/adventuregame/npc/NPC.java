@@ -27,10 +27,10 @@ public class NPC {
     private Integer attack;
     private Integer damage;
     private Integer defence;
-    @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     private Inventory inventory;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne()
     Room npcRoom;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn

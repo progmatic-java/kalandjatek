@@ -270,12 +270,12 @@
               method="get">
             <input data-bs-toggle="tooltip" data-bs-placement="right" type="submit" class="btn btn-dark" value="Attack!"/>
         </form>
-        <form th:if="${playerDead}" th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/combatround'
-                        (characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()})}"
+        <form th:if="${playerDead}" th:action="@{'/adventuregame/playerdead/{characterId}'
+                        (characterId=${currPlayer.getId()})}"
               method="get">
             <input data-bs-toggle="tooltip" data-bs-placement="right" type="submit" class="btn btn-dark" value="Back to main menu"/>
         </form>
-        <form th:if="${npcDead}" th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/combatround'
+        <form th:if="${npcDead}" th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/npcdead'
                         (characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()})}"
               method="get">
             <input data-bs-toggle="tooltip" data-bs-placement="right" type="submit" class="btn btn-dark" value="Back to room"/>

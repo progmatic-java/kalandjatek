@@ -21,6 +21,7 @@ public class MainSquareInit extends InitRoom {
                         .name("Trace")
                         .description("A drunk guy sleeping outside of The Black Hole Inn.")
                         .imgRef("https://i.imgur.com/42nO5xi.png")
+                        .friendly(true)
                         .inventory(Inventory.builder().build())
                         .action(
                                 Action.builder()
@@ -32,6 +33,7 @@ public class MainSquareInit extends InitRoom {
                         .name("Tomcat")
                         .imgRef("https://i.imgur.com/sz1g3oR.png")
                         .description("The town's beggar and thief hunter.")
+                        .friendly(true)
                         .inventory(Inventory.builder().build())
                         .action(
                                 Action.builder()
@@ -66,6 +68,7 @@ public class MainSquareInit extends InitRoom {
                 NPC.builder()
                         .name("Admina")
                         .description("The town's prostitute")
+                        .friendly(true)
                         .inventory(Inventory.builder().build())
                         .imgRef("https://i.pinimg.com/originals/d6/53/a5/d653a5283092eccf6135ef4b36699271.png")
                         .action(

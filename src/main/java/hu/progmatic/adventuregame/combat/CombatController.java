@@ -79,6 +79,24 @@ public class CombatController {
         return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
     }
 
+    @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/npcdead")
+    public String combatEndNpcDead(
+            @PathVariable Integer characterId,
+            @PathVariable Integer roomId,
+            @PathVariable Integer npcId
+    ) {
+        npcService.delete(npcId);
+        return "redirect:/adventuregame/characterpage/" + characterId + "/room/" + roomId;
+    }
+
+    @GetMapping("/adventuregame/playerdead/{characterId}")
+    public String combatEndPlayerDead(
+            @PathVariable Integer characterId
+    ) {
+        characterService.delete(characterId);
+        return "redirect:/adventuregame/mainpage";
+    }
+
     private String setCurrCombatRound(Model model, RoomDto currRoom, CharacterDto currCharacter, NPCDto currNpc) {
         model.addAttribute("currRoom", currRoom);
         model.addAttribute("currPlayer", currCharacter);
