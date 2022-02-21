@@ -23,6 +23,8 @@ public class CellarInit extends InitRoom {
                         .imgRef("https://i.imgur.com/s4KyB2S.png")
                         .friendly(false)
                         .inventory(new Inventory())
+                        .attack(4)
+                        .defence(3)
                         .action(Action.builder()
                                 .conversationText("*Agressive growling")
                                 .childActions(List.of(

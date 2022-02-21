@@ -16,7 +16,7 @@ public class NPC {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column(unique=true)
+    @Column(unique = true)
     private String name;
     private String description;
     private Boolean friendly;
@@ -24,6 +24,8 @@ public class NPC {
     private Integer mp;
     private Integer gold;
     private String imgRef;
+    private Integer attack;
+    private Integer defence;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn
     private Inventory inventory;
