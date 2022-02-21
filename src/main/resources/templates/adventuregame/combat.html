@@ -129,6 +129,11 @@
 
         .NPC {
             grid-area: NPC;
+            text-shadow: -2px -2px 0 #000,
+            1px -1px 0 #000,
+            -2px 2px 0 #000,
+            1px 1px 0 #000;
+            background-color: rgba(0, 0, 0, 0.5);
         }
 
 
@@ -167,6 +172,13 @@
             1px -1px 0 #000,
             -2px 2px 0 #000,
             1px 1px 0 #000;
+        }
+
+        .INFOTEXT, .NPCTEXT {
+            font-size: 20px;
+            text-align: right;
+            display: flex;
+            justify-content: space-between;
         }
 
 
@@ -218,7 +230,7 @@
             <p th:text="${'Hp: ' + currPlayer.getHp()}">Hp:</p>
             <p th:text="${'Mp: ' + currPlayer.getMp()}">Mp:</p>
             <p th:text="${'Attack: ' + currPlayer.getAttack()}">Attack:</p>
-            <p th:text="${'Defense: ' + currPlayer.getDefense()}">Defense:</p>
+            <p th:text="${'Defence: ' + currPlayer.getDefence()}">Defence:</p>
         </div>
     </div>
 
