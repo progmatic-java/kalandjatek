@@ -19,8 +19,10 @@ public class CharacterEntity {
     @Enumerated(EnumType.STRING)
     Race race;
     private String description;
-    private Integer hp;
-    private Integer mp;
+    private Integer maxHp;
+    private Integer maxMp;
+    private Integer currMp;
+    private Integer currHp;
     private Integer gold;
     private Integer attack;
     private Integer defence;

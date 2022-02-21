@@ -63,6 +63,20 @@ public class CombatController {
         return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
     }
 
+    @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/combatround")
+    public String combatRound(
+            @PathVariable Integer characterId,
+            @PathVariable Integer roomId,
+            @PathVariable Integer npcId,
+            Model model
+    ) {
+        RoomDto currRoom = roomService.getRoomById(roomId);
+        combatService.fightRound(characterId, npcId);
+        CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
+        NPCDto currNpc = npcService.getNPCDtoById(npcId);
+        return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
+    }
+
     private String setCurrCombatRound(Model model, RoomDto currRoom, CharacterDto currCharacter, NPCDto currNpc) {
         model.addAttribute("currRoom", currRoom);
         model.addAttribute("currPlayer", currCharacter);

@@ -14,20 +14,22 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 public class CharacterDto implements Serializable {
-  private Integer id;
-  private String characterName;
-  private Race race;
-  private String description;
-  private Integer hp;
-  private Integer mp;
-  private Integer gold;
-  private Integer attack;
-  private Integer defence;
-  private String imgRef;
-  private Answer answer;
-  private List<ItemDto> allItems;
-  private List<ItemDto> consumableItems;
-  private List<ItemDto> combatItems;
-  private ItemDto activeWeapon;
-  private ItemDto activeShield;
+    private Integer id;
+    private String characterName;
+    private Race race;
+    private String description;
+    private Integer maxHp;
+    private Integer currHp;
+    private Integer maxMp;
+    private Integer currMp;
+    private Integer gold;
+    private Integer attack;
+    private Integer defence;
+    private String imgRef;
+    private Answer answer;
+    private List<ItemDto> allItems;
+    private List<ItemDto> consumableItems;
+    private List<ItemDto> combatItems;
+    private ItemDto activeWeapon;
+    private ItemDto activeShield;
 }
