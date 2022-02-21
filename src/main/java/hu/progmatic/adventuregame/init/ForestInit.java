@@ -65,9 +65,11 @@ public class ForestInit extends InitRoom {
                         .name("X-epson")
                         .description("A being from another dimension that haunts the forest.")
                         .friendly(false)
+                        .attack(5)
+                        .defence(7)
                 .imgRef("https://i.imgur.com/bjiVhGr.png")
-                        .mp(100)
-                        .hp(60)
+                        .mp(20)
+                        .hp(40)
                         .gold(100)
                         .inventory(xepsion)
                         .action(
