@@ -149,11 +149,16 @@ public class RoadToTheForestInit extends InitRoom {
                         .itemName("Pebble")
                         .description("It's not much but at least it can do a bit of damage")
                         .typeOfItem(ItemEnum.ATTACK)
+                        .attack(1)
+                        .damage(1)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Magic Mushroom")
                         .description("I feel funny when I eat this")
                         .typeOfItem(ItemEnum.CONSUMABLE)
+                        .hp(10)
+                        .value(0)
                         .build()
         );
     }

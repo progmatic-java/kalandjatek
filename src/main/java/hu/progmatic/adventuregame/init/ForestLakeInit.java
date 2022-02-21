@@ -71,11 +71,15 @@ public class ForestLakeInit extends InitRoom {
                         .itemName("Fairy Shield")
                         .description("A magical shield that is useful against dark powers!")
                         .typeOfItem(ItemEnum.SHIELD)
+                        .defence(10)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Fairy Panties")
                         .description("Hmmm... What's that doing floating in the water?")
                         .typeOfItem(ItemEnum.SHIELD)
+                        .defence(40)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Rotten fish")

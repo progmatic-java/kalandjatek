@@ -128,9 +128,10 @@ public class BrothelInit extends InitRoom {
     List<Item> getInitItems() {
         return List.of(
                 Item.builder()
-                        .itemName("Mysterious Perfume")
-                        .description("Gives you the ability to shapeshift. I wonder what it's doing in a brothel..?")
+                        .itemName("Mysterious Potion")
+                        .description("Gives you extra energy. I wonder what it's doing in a brothel..?")
                         .typeOfItem(ItemEnum.CONSUMABLE)
+                        .hp(20)
                         .build(),
                 Item.builder()
                         .itemName("A Pack of Tarot Cards")

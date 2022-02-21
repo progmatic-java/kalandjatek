@@ -24,6 +24,7 @@ public class ForestInit extends InitRoom {
                         .itemName("The Ring of X-epson")
                         .description("X-epson's magic is protecting me in battles!")
                         .typeOfItem(ItemEnum.SHIELD)
+                        .defence(6)
                         .inventory(xepsion)
                         .value(0)
                         .build()));
@@ -116,6 +117,7 @@ public class ForestInit extends InitRoom {
                         .itemName("Poisonous berries")
                         .description("I should not eat this, but it tastes so good.")
                         .typeOfItem(ItemEnum.CONSUMABLE)
+                        .hp(0)
                         .build(),
                 Item.builder()
                         .itemName("Returno's left ear")
