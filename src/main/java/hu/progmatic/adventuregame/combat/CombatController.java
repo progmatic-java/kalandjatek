@@ -26,6 +26,10 @@ public class CombatController {
     @Autowired
     private NPCService npcService;
 
+    @Autowired
+    private CombatService combatService;
+
+
     @GetMapping("/adventuregame/combat")
     public String combat() {
         return "/adventuregame/combat";
@@ -40,11 +44,9 @@ public class CombatController {
             Model model
     ) {
         RoomDto currRoom = roomService.getRoomById(roomId);
-        characterService.moveItemtoPlayer(characterId, currRoom.getInventoryId(), itemId);
+        combatService.swapActiveItem(characterId, itemId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
-        currRoom = roomService.getRoomById(roomId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
-        setCurrRoom(model, currRoom);
         return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
     }
 
@@ -65,12 +67,18 @@ public class CombatController {
         model.addAttribute("currRoom", currRoom);
         model.addAttribute("currPlayer", currCharacter);
         model.addAttribute("currNpc", currNpc);
+        model.addAttribute("activeDefence", currCharacter.getActiveShield());
+        model.addAttribute("activeAttack", currCharacter.getActiveWeapon());
         return "/adventuregame/combat";
     }
 
-    private void setCurrRoom(Model model, RoomDto currRoom) {
-        model.addAttribute("currRoomItems", currRoom.getItems());
-        model.addAttribute("currNpcs", currRoom.getNpcDtoList());
-        model.addAttribute("currDoors", currRoom.getAdjacentRooms());
+    @ModelAttribute("activeDefence")
+    public ItemDto activeDefence() {
+        return new ItemDto();
+    }
+
+    @ModelAttribute("activeAttack")
+    public ItemDto activeAttack() {
+        return new ItemDto();
     }
 }

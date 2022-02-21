@@ -11,10 +11,6 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.PostMapping;
-
-import java.util.ArrayList;
-import java.util.List;
 
 @Controller
 public class RoomController {
@@ -130,6 +126,7 @@ public class RoomController {
         model.addAttribute("currNpc", currNpc);
         model.addAttribute("currNpcAction", currAction);
         model.addAttribute("npcInterraction", true);
+        model.addAttribute("friendlyNpc", currNpc.isFriendly());
         model.addAttribute("conversationOver", currAction.getPlayerAnswers().isEmpty());
     }
 
@@ -166,6 +163,11 @@ public class RoomController {
 
     @ModelAttribute("conversationOver")
     public boolean conversationOver() {
+        return false;
+    }
+
+    @ModelAttribute("friendlyNpc")
+    public boolean friendlyNpc() {
         return false;
     }
 }

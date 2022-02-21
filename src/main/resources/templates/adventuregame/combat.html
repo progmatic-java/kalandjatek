@@ -121,7 +121,7 @@
             width: 100%;
             grid-auto-flow: row;
             grid-template-areas:
-    ". NPCVSCHAR ."
+    "NPC NPCVSCHAR CHARACTERINFO"
     "NPC . CHARACTERINFO"
     "COMBATLOG COMBATLOG COMBATLOG";
             row-gap: 15px;
@@ -196,15 +196,19 @@
             crossorigin="anonymous"></script>
 
     <div class="NPCVSCHAR">
-        <h1 th:text="${currNpc.getName()} + 'vs' + ${currPlayer.getName()}">NPC vs Character</h1>
+        <h1 th:text="${currNpc.getName()} + ' vs ' + ${currPlayer.getCharacterName()}">NPC vs Character</h1>
     </div>
 
 
     <div class="NPC">
-        <p th:text="${'Hp: ' + currNpc.getHp()}">Hp:</p>
-        <p th:text="${'Mp: ' + currNpc.getMp()}">Mp:</p>
-        <p th:text="${'Attack: ' + currNpc.getAttack()}">Attack:</p>
-        <p th:text="${'Defense: ' + currNpc.getDefense()}">Defense:</p>
+        <h2 th:text="${'Enemy Name: ' + currNpc.getName()}">
+            Enemy Name</h2>
+        <div class="NPCTEXT">
+            <p th:text="${'Hp: ' + currNpc.getHp()}">Hp:</p>
+            <p th:text="${'Mp: ' + currNpc.getMp()}">Mp:</p>
+            <p th:text="${'Attack: ' + currNpc.getAttack()}">Attack:</p>
+            <p th:text="${'Defence: ' + currNpc.getDefence()}">Defence:</p>
+        </div>
     </div>
 
     <div class="CHARACTERINFO">
@@ -212,14 +216,31 @@
             Character Name</h2>
         <div class="characterinfo">
             <div class="dropdown">
-                <button class="dropbtn">Character Items</button>
+                <button class="dropbtn">Combat Items</button>
                 <div class="dropdown-content">
-                    <div th:each="characterItems : ${currPlayer.getOtherItems()}">
+                    <div th:each="combatItem : ${currPlayer.getCombatItems()}">
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/changecombatitem/{itemId}'
+                        (characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()},itemId=${combatItem.getId()})}"
+                              method="get">
+                            <input data-bs-toggle="tooltip" data-bs-placement="right"
+                                   th:title="${'Description: ' + combatItem.getDescription()  +  ' (' + combatItem.getTypeOfItem() + ')'}"
+                                   type="submit" class="btn btn-dark" th:value="${combatItem.getItemName()}"/>
+                        </form>
+
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="characterinfo">
+            <div class="dropdown">
+                <button class="dropbtn">Consumable Items</button>
+                <div class="dropdown-content">
+                    <div th:each="consumableItem : ${currPlayer.getConsumableItems()}">
                         <!--                        <form th:action="@{'/adventuregame/characterpage/{characterId}/item/{itemId}'(characterId=${currPlayer.getId()},itemId=${characterItems.getId()})}"-->
                         <!--                              method="get">-->
                         <input data-bs-toggle="tooltip" data-bs-placement="right"
-                               th:title="${'Description: ' + characterItems.getDescription()  +  ' (' + characterItems.getTypeOfItem() + ')'}"
-                               type="submit" class="btn btn-dark" th:value="${characterItems.getItemName()}"/>
+                               th:title="${'Description: ' + consumableItem.getDescription()  +  ' (' + consumableItem.getTypeOfItem() + ')'}"
+                               type="submit" class="btn btn-dark" th:value="${consumableItem.getItemName()}"/>
                         <!--                        </form>-->
 
                     </div>
@@ -232,10 +253,14 @@
             <p th:text="${'Attack: ' + currPlayer.getAttack()}">Attack:</p>
             <p th:text="${'Defence: ' + currPlayer.getDefence()}">Defence:</p>
         </div>
+        <div class="INFOTEXT">
+            <p th:text="${'Weapon: ' + activeAttack.getItemName() + ' attack: +' + activeAttack.getAttack() + ' damage: ' + activeAttack.getDamage()}">Weapon:</p>
+            <p th:text="${'Shield: ' + activeDefence.getItemName() + ' shield: +' + activeDefence.getShield()}">Shield:</p>
+        </div>
     </div>
 
     <div class="COMBATLOG">
-        HELLO
+        GRRRRR
     </div>
 
 </div>

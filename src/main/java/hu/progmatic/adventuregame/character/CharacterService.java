@@ -30,26 +30,27 @@ public class CharacterService implements InitializingBean {
     return characterRepository.getById(id);
   }
 
-    public CharacterDto getCharacterDtoById(Integer id) {
-        CharacterEntity entity = characterRepository.getById(id);
-        List<ItemDto> combatItems = entity.getInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK) || item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).toList();
-        List<ItemDto> otherItems = entity.getInventory().getItems().stream().filter(item -> !(item.getTypeOfItem().equals(ItemEnum.ATTACK) || item.getTypeOfItem().equals(ItemEnum.SHIELD))).map(item -> inventoryService.buildItemDto(item)).toList();
-        List<ItemDto> activeItems = entity.getActiveInventory().getItems().stream().map(activeItem -> inventoryService.buildItemDto(activeItem)).toList();
-        return CharacterDto.builder()
-                .characterName(entity.getName())
-                .id(entity.getId())
-                .race(entity.getRace())
-                .description(entity.getDescription())
-                .hp(entity.getHp())
-                .mp(entity.getMp())
-                .gold(entity.getGold())
-                .imgRef(entity.getImgRef())
-                .answer(entity.getAnswer())
-                .combatItems(combatItems)
-                .activeItems(activeItems)
-                .otherItems(otherItems)
-                .build();
-    }
+  public CharacterDto getCharacterDtoById(Integer id) {
+    CharacterEntity entity = characterRepository.getById(id);
+    List<ItemDto> combatItems = entity.getInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK) || item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).toList();
+    List<ItemDto> consumableItems = entity.getInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.CONSUMABLE)).map(item -> inventoryService.buildItemDto(item)).toList();List<ItemDto> allItems = entity.getInventory().getItems().stream().map(item -> inventoryService.buildItemDto(item)).toList();
+    return CharacterDto.builder()
+        .characterName(entity.getName())
+        .id(entity.getId())
+        .race(entity.getRace())
+        .description(entity.getDescription())
+        .hp(entity.getHp())
+        .mp(entity.getMp())
+        .gold(entity.getGold())
+        .imgRef(entity.getImgRef())
+        .answer(entity.getAnswer())
+        .allItems(allItems)
+        .combatItems(combatItems)
+        .consumableItems(consumableItems)
+        .activeWeapon(entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow())
+        .activeShield(entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow())
+        .build();
+  }
 
 
   @RolesAllowed(UserType.Roles.USER_WRITE_ROLE)

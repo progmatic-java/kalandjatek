@@ -224,7 +224,7 @@
                 </div>
             </div>
         </div>
-        <div th:if="${npcInterraction}" class="npcItemInfo">
+        <div th:if="${npcInterraction and friendlyNpc}" class="npcItemInfo">
             <div class="dropdown">
                 <button class="dropbtn">NPC Items</button>
                 <div class="dropdown-content">
@@ -251,7 +251,7 @@
             <div class="dropdown">
                 <button class="dropbtn">Character Items</button>
                 <div class="dropdown-content">
-                    <div th:each="characterItems : ${currPlayer.getOtherItems()}">
+                    <div th:each="characterItems : ${currPlayer.getAllItems()}">
                         <!--                        <form th:action="@{'/adventuregame/characterpage/{characterId}/item/{itemId}'(characterId=${currPlayer.getId()},itemId=${characterItems.getId()})}"-->
                         <!--                              method="get">-->
                         <input data-bs-toggle="tooltip" data-bs-placement="right"
@@ -274,7 +274,7 @@
     </div>
     <br>
     <div class="NPCs">
-        <div class="NpcInfo">
+        <div th:unless="${npcInterraction}" class="NpcInfo">
             <div class="dropdown">
                 <button class="dropbtn">NPCs in Room</button>
                 <div class="dropdown-content">
@@ -282,7 +282,7 @@
                         <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${npcInRoom.getId()})}"
                               method="get">
                             <input data-bs-toggle="tooltip" data-bs-placement="right"
-                                   th:title="${'Description: ' + npcInRoom.getDescription()  +  ' (friendly: ' + npcInRoom.getFriendly() + ')'}"
+                                   th:title="${'Description: ' + npcInRoom.getDescription()  +  ' (friendly: ' + npcInRoom.isFriendly() + ')'}"
                                    type="submit" class="btn btn-dark" th:value="${npcInRoom.getName()}"/>
                         </form>
 
@@ -331,10 +331,15 @@
                     <input type="submit" class="btn btn-dark" th:value="${action.getKey()}"/>
                 </form>
             </div>
-            <form th:if="${conversationOver}"
+            <form th:if="${conversationOver and friendlyNpc}"
                   th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()})}"
                   method="get">
                 <input type="submit" class="btn btn-dark" value="Leave"/>
+            </form>
+            <form th:if="${conversationOver}" th:unless="${friendlyNpc}"
+                  th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/combatstart'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()})}"
+                  method="get">
+                <input type="submit" class="btn btn-dark" value="Fight!"/>
             </form>
         </div>
 

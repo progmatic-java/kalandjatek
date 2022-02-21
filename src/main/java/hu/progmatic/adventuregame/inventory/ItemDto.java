@@ -16,4 +16,9 @@ public class ItemDto {
   private String description;
   private ItemEnum typeOfItem;
   private Integer inventoryId;
+  private Integer hp;
+  private Integer mp;
+  private Integer attack;
+  private Integer shield;
+  private Integer damage;
 }

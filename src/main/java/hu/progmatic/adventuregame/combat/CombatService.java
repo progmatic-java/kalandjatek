@@ -18,13 +18,19 @@ public class CombatService {
     public void swapActiveItem(Integer characterId, Integer itemId) {
         CharacterEntity character = characterRepository.getById(characterId);
         Item item = character.getInventory().getItems().stream().filter(item1 -> item1.getId().equals(itemId)).findAny().orElseThrow();
-        Item activeItem = character.getActiveInventory().getItems().stream().filter(item1 -> item1.getTypeOfItem().equals(item.getTypeOfItem())).findAny().orElseThrow();
-        character.getInventory().getItems().remove(item);
-        character.getActiveInventory().getItems().remove(activeItem);
-        character.getInventory().getItems().add(activeItem);
-        character.getActiveInventory().getItems().add(item);
-        item.setInventory(character.getActiveInventory());
-        activeItem.setInventory(character.getInventory());
+        if (character.getActiveInventory().getItems().isEmpty()){
+            character.getInventory().getItems().remove(item);
+            character.getActiveInventory().getItems().add(item);
+            item.setInventory(character.getActiveInventory());
+        } else {
+            Item activeItem = character.getActiveInventory().getItems().stream().filter(item1 -> item1.getTypeOfItem().equals(item.getTypeOfItem())).findAny().orElseThrow();
+            character.getInventory().getItems().remove(item);
+            character.getActiveInventory().getItems().remove(activeItem);
+            character.getInventory().getItems().add(activeItem);
+            character.getActiveInventory().getItems().add(item);
+            item.setInventory(character.getActiveInventory());
+            activeItem.setInventory(character.getInventory());
+        }
     }
 
 }

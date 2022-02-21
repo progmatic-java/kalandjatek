@@ -17,7 +17,7 @@ public class NPCDto implements Serializable {
     private Integer id;
     private String name;
     private String description;
-    private Boolean friendly;
+    private boolean friendly;
     private Integer hp;
     private Integer mp;
     private Integer gold;
