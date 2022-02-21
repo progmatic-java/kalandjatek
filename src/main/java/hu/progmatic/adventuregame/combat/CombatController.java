@@ -2,6 +2,7 @@ package hu.progmatic.adventuregame.combat;
 
 import hu.progmatic.adventuregame.character.CharacterDto;
 import hu.progmatic.adventuregame.character.CharacterService;
+import hu.progmatic.adventuregame.inventory.ItemDto;
 import hu.progmatic.adventuregame.npc.NPCDto;
 import hu.progmatic.adventuregame.npc.NPCService;
 import hu.progmatic.adventuregame.room.RoomDto;
@@ -10,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PathVariable;
 
 @Controller

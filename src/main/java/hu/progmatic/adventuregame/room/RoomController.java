@@ -2,7 +2,6 @@ package hu.progmatic.adventuregame.room;
 
 import hu.progmatic.adventuregame.character.CharacterDto;
 import hu.progmatic.adventuregame.character.CharacterService;
-import hu.progmatic.adventuregame.inventory.ItemDto;
 import hu.progmatic.adventuregame.npc.ActionCommand;
 import hu.progmatic.adventuregame.npc.NPCDto;
 import hu.progmatic.adventuregame.npc.NPCService;
@@ -55,7 +54,7 @@ public class RoomController {
             Model model
     ) {
         RoomDto currRoom = roomService.getRoomById(roomId);
-        characterService.moveItemtoPlayer(characterId, currRoom.getInventoryId(), itemId);
+        characterService.moveItemToPlayer(characterId, currRoom.getInventoryId(), itemId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         currRoom = roomService.getRoomById(roomId);
         setCurrRoom(model, currRoom);
@@ -116,7 +115,7 @@ public class RoomController {
             @PathVariable Integer itemId
     ) {
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
-        characterService.moveItemtoPlayer(characterId, currNpc.getInventoryId(), itemId);
+        characterService.moveItemToPlayer(characterId, currNpc.getInventoryId(), itemId);
         return "redirect:/adventuregame/characterpage/" + characterId + "/room/" + roomId + "/npc/" + npcId + "/Action/" + actionId;
     }
 
