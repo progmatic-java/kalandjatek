@@ -1,12 +1,8 @@
 package hu.progmatic.adventuregame.combat;
 
-import hu.progmatic.adventuregame.character.CharacterDto;
 import hu.progmatic.adventuregame.character.CharacterEntity;
 import hu.progmatic.adventuregame.character.CharacterRepository;
-import hu.progmatic.adventuregame.inventory.Inventory;
-import hu.progmatic.adventuregame.inventory.InventoryService;
 import hu.progmatic.adventuregame.inventory.Item;
-import hu.progmatic.adventuregame.inventory.ItemEnum;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
