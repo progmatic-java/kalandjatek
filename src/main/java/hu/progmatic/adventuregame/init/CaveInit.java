@@ -23,6 +23,7 @@ public class CaveInit extends InitRoom {
                         .itemName("The Golden Dragon Egg")
                         .description("Wow! I can't believe it's mine!")
                         .typeOfItem(ItemEnum.VALUABLE)
+                        .value(0)
                         .inventory(phoneix)
                         .build()));
 
