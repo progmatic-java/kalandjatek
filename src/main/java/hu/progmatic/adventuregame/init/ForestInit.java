@@ -118,11 +118,13 @@ public class ForestInit extends InitRoom {
                         .description("I should not eat this, but it tastes so good.")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .hp(0)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Returno's left ear")
                         .description("Ew!")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build()
         );
     }

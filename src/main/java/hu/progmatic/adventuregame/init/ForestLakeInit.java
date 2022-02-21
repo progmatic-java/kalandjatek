@@ -85,6 +85,7 @@ public class ForestLakeInit extends InitRoom {
                         .itemName("Rotten fish")
                         .description("They exude a disgusting stench!!")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build()
         );
     }
