@@ -25,6 +25,7 @@ public class AcademyInnit extends InitRoom {
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(100)
                         .mp(50)
+                        .damage(6)
                         .description("The most valuable thing in all of Progmatique.")
                         .inventory(robert)
                         .build(),
@@ -33,6 +34,7 @@ public class AcademyInnit extends InitRoom {
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(100)
                         .mp(50)
+                        .damage(6)
                         .description("The most valuable thing in all of Progmatique.")
                         .inventory(robert)
                         .build(),
@@ -41,6 +43,7 @@ public class AcademyInnit extends InitRoom {
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(100)
                         .mp(50)
+                        .damage(6)
                         .description("The most valuable thing in all of Progmatique.")
                         .inventory(robert)
                         .build()));
