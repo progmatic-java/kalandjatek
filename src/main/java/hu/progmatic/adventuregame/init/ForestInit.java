@@ -33,7 +33,7 @@ public class ForestInit extends InitRoom {
                         .name("Ugly Troll")
                         .description("As big and ugly as trolls get!")
                         .imgRef("https://i.imgur.com/DAcDKOP.png")
-                        .friendly(false)
+                        .friendly(true)
                         .inventory(new Inventory())
                         .action(Action.builder()
                                 .conversationText("WAAAAAAAAA!")
