@@ -46,6 +46,7 @@ public class NPCService {
                 .imgRef(entity.getImgRef())
                 .attack(entity.getAttack())
                 .defence(entity.getDefence())
+                .damage(entity.getDamage())
                 .inventoryId(entity.getInventory().getId())
                 .items(entity.getInventory().getItems().stream()
                         .map(item -> inventoryService.buildItemDto(item))

@@ -23,6 +23,7 @@ public class NPCDto implements Serializable {
     private Integer gold;
     private Integer attack;
     private Integer defence;
+    private Integer damage;
     private String imgRef;
     private Integer inventoryId;
     private List<ItemDto> items;

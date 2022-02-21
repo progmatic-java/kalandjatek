@@ -25,6 +25,7 @@ public class NPC {
     private Integer gold;
     private String imgRef;
     private Integer attack;
+    private Integer damage;
     private Integer defence;
     @OneToOne(cascade = CascadeType.ALL, orphanRemoval = true)
     @JoinColumn
