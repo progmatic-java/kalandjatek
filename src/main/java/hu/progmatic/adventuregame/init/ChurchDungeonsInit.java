@@ -69,16 +69,23 @@ public class ChurchDungeonsInit extends InitRoom {
                         .itemName("Dead body of a heretic")
                         .description("Has a stench of rotting flesh")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Sacrificial knife")
                         .description("Used for rituals")
                         .typeOfItem(ItemEnum.ATTACK)
+                        .attack(6)
+                        .damage(15)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Torch")
                         .description("Might be useful")
                         .typeOfItem(ItemEnum.ATTACK)
+                        .attack(5)
+                        .damage(30)
+                        .value(0)
                         .build()
         );
     }
