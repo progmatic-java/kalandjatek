@@ -74,6 +74,8 @@ public class CombatController {
         combatService.fightRound(characterId, npcId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
+        model.addAttribute("npcDead", combatService.isNpcDead(npcId));
+        model.addAttribute("playerDead", combatService.isPlayerDead(characterId));
         return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
     }
 

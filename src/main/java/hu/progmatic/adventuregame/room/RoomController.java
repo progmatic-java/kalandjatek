@@ -38,6 +38,10 @@ public class RoomController {
     ) {
         RoomDto currRoom = roomService.getRoomById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
+        if (roomService.roomHasEnemy(roomId)) {
+            Integer enemyId = roomService.getEnemyId(roomId);
+            return "redirect:/adventuregame/characterpage/" + characterId + "/room/" + roomId + "/npc/" + enemyId;
+        }
         setCurrRoom(model, currRoom);
         return getCurrRoomWithCharacter(model, currRoom, currCharacter);
     }

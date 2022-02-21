@@ -67,17 +67,25 @@ public class CombatService {
 
     private void playerAttack(CharacterEntity character, NPC npc) {
         Integer playerAttack = character.getAttack();
-
         Item weapon = character.getActiveInventory().getItems().stream()
                 .filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK))
                 .findFirst()
                 .orElseThrow();
-
         playerAttack += weapon.getAttack();
         Random random = new Random();
         Integer attackRoll = random.nextInt(10) + 1;
         if ((playerAttack + attackRoll) > npc.getDefence()) {
             npc.setHp(npc.getHp() - weapon.getDamage());
         }
+    }
+
+    public boolean isNpcDead(Integer npcId) {
+        NPC npc = NPCRepository.getById(npcId);
+        return npc.getHp() < 1;
+    }
+
+    public boolean isPlayerDead(Integer characterId) {
+        CharacterEntity character = characterRepository.getById(characterId);
+        return character.getCurrHp() < 1;
     }
 }

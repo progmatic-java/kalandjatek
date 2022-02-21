@@ -35,6 +35,8 @@ public class CharacterService implements InitializingBean {
         List<ItemDto> combatItems = entity.getInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK) || item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).toList();
         List<ItemDto> consumableItems = entity.getInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.CONSUMABLE)).map(item -> inventoryService.buildItemDto(item)).toList();
         List<ItemDto> allItems = entity.getInventory().getItems().stream().map(item -> inventoryService.buildItemDto(item)).toList();
+        ItemDto activeWeapon = entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow();
+        ItemDto activeShield = entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow();
         return CharacterDto.builder()
                 .characterName(entity.getName())
                 .id(entity.getId())
@@ -50,8 +52,8 @@ public class CharacterService implements InitializingBean {
                 .consumableItems(consumableItems)
                 .currHp(entity.getCurrHp())
                 .currMp(entity.getCurrMp())
-                .activeWeapon(entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow())
-                .activeShield(entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow())
+                .activeWeapon(activeWeapon)
+                .activeShield(activeShield)
                 .build();
     }
 
@@ -223,18 +225,17 @@ public class CharacterService implements InitializingBean {
         return characterRepository.getCharacterByName(name).orElseThrow().getId();
     }
 
-    public boolean moveItemToPlayer(Integer characterId, Integer inventoryId, Integer itemId) {
+    public void moveItemToPlayer(Integer characterId, Integer inventoryId, Integer itemId) {
         Item item = inventoryService.getItemEntityById(itemId);
         Inventory inventory = inventoryService.getInventoryEntityById(inventoryId);
         CharacterEntity character = characterRepository.getById(characterId);
 
         if (item.getValue() > character.getGold()) {
-            return false;
+            return;
         }
         inventory.getItems().remove(item);
         character.getInventory().getItems().add(item);
         item.setInventory(character.getInventory());
         character.setGold(character.getGold() - item.getValue());
-        return true;
     }
 }

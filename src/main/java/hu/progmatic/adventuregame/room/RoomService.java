@@ -100,4 +100,14 @@ public class RoomService {
   public Room getRoomEntityById(Integer id) {
     return roomRepository.getById(id);
   }
+
+  public boolean roomHasEnemy(Integer roomId) {
+    Room room = roomRepository.getById(roomId);
+    return room.getNpcEntities().stream().anyMatch(npcDto -> !npcDto.isFriendly());
+  }
+
+  public Integer getEnemyId(Integer roomId) {
+    Room room = roomRepository.getById(roomId);
+    return room.getNpcEntities().stream().filter(npc -> !npc.isFriendly()).findAny().orElseThrow().getId();
+  }
 }
