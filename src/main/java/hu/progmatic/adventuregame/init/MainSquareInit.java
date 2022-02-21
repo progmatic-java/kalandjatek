@@ -81,24 +81,24 @@ public class MainSquareInit extends InitRoom {
     List<Item> getInitItems() {
         return List.of(
                 Item.builder()
-                        .itemName("Coins")
-                        .description("Sooo shinyyyy")
-                        .typeOfItem(ItemEnum.VALUABLE)
-                        .build(),
-                Item.builder()
                         .itemName("Stale bread")
                         .description("I want a sandwich so bad.")
                         .typeOfItem(ItemEnum.CONSUMABLE)
+                        .value(0)
+                        .hp(5)
                         .build(),
                 Item.builder()
                         .itemName("Bucket")
                         .description("It has a hole in it.")
                         .typeOfItem(ItemEnum.SHIELD)
+                        .defence(1)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Suspicious letter")
                         .description("It says BEWARE OF THE FORREST")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build()
         );
     }

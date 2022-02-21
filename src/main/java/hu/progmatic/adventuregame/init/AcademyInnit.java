@@ -24,6 +24,8 @@ public class AcademyInnit extends InitRoom {
                         .itemName("Clean Code")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(100)
+                        .mp(50)
+                        .damage(6)
                         .description("The most valuable thing in all of Progmatique.")
                         .inventory(robert)
                         .build(),
@@ -31,6 +33,8 @@ public class AcademyInnit extends InitRoom {
                         .itemName("Clean Code")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(100)
+                        .mp(50)
+                        .damage(6)
                         .description("The most valuable thing in all of Progmatique.")
                         .inventory(robert)
                         .build(),
@@ -38,6 +42,8 @@ public class AcademyInnit extends InitRoom {
                         .itemName("Clean Code")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(100)
+                        .mp(50)
+                        .damage(6)
                         .description("The most valuable thing in all of Progmatique.")
                         .inventory(robert)
                         .build()));
@@ -47,7 +53,7 @@ public class AcademyInnit extends InitRoom {
                         .name("Robert C. Martin")
                         .description("The headmaster of the Academy")
                         .imgRef("https://i.imgur.com/LIGwuzF.png")
-                        .friendly(false)
+                        .friendly(true)
                         .hp(10000)
                         .mp(10000)
                         .gold(50000)
@@ -135,16 +141,19 @@ public class AcademyInnit extends InitRoom {
                         .itemName("Candles")
                         .description("Candle light is always so relaxing.")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Old scrolls")
                         .description("They are too old, I can't even read them.")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("The key to Holy Joe's Tomb")
                         .description("What is this doing here? I better take it with me")
                         .typeOfItem(ItemEnum.KEY)
+                        .value(0)
                         .build()
         );
     }

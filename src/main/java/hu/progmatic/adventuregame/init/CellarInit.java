@@ -63,16 +63,21 @@ public class CellarInit extends InitRoom {
                 Item.builder()
                         .itemName("Imported Beer")
                         .description("It's a holy drink from Ko'olossy")
+                        .hp(10)
+                        .value(0)
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .build(),
                 Item.builder()
                         .itemName("Fine Wine")
                         .description("It has a lot of antioxidants")
+                        .hp(15)
+                        .value(0)
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .build(),
                 Item.builder()
                         .itemName("Dead body")
                         .description("Dog food")
+                        .value(0)
                         .typeOfItem(ItemEnum.JUNK)
                         .build()
         );

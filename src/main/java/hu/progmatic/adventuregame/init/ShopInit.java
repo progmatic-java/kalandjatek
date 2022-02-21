@@ -24,6 +24,7 @@ public class ShopInit extends InitRoom {
                                 .description("It's like a beer, but solid and les fun")
                                 .typeOfItem(ItemEnum.CONSUMABLE)
                                 .value(20)
+                                .hp(20)
                                 .inventory(tezco)
                                 .build(),
                         Item.builder()
@@ -31,6 +32,8 @@ public class ShopInit extends InitRoom {
                                 .description("He attack")
                                 .typeOfItem(ItemEnum.ATTACK)
                                 .value(50)
+                                .attack(5)
+                                .damage(10)
                                 .inventory(tezco)
                                 .build(),
                         Item.builder()
@@ -38,6 +41,8 @@ public class ShopInit extends InitRoom {
                                 .description("So big")
                                 .typeOfItem(ItemEnum.ATTACK)
                                 .value(60)
+                                .attack(3)
+                                .damage(20)
                                 .inventory(tezco)
                                 .build(),
                         Item.builder()
@@ -45,6 +50,7 @@ public class ShopInit extends InitRoom {
                                 .description("He protect")
                                 .typeOfItem(ItemEnum.SHIELD)
                                 .value(100)
+                                .defence(5)
                                 .inventory(tezco)
                                 .build(),
                         Item.builder()
@@ -52,12 +58,14 @@ public class ShopInit extends InitRoom {
                                 .description("Gives you energy to study all night")
                                 .typeOfItem(ItemEnum.CONSUMABLE)
                                 .value(60)
+                                .hp(80)
                                 .inventory(tezco)
                                 .build(),
                         Item.builder()
                                 .itemName("Chili con carne")
                                 .description("A hearty meal")
                                 .typeOfItem(ItemEnum.CONSUMABLE)
+                                .hp(100)
                                 .value(80)
                                 .inventory(tezco)
                                 .build()
@@ -106,10 +114,14 @@ public class ShopInit extends InitRoom {
                 Item.builder()
                         .itemName("Candle")
                         .typeOfItem(ItemEnum.JUNK)
+                        .description("Good for lighting up small rooms.")
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Empty bottle")
                         .typeOfItem(ItemEnum.JUNK)
+                        .description("Once it was filled with booze.")
+                        .value(0)
                         .build()
         );
     }

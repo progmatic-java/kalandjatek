@@ -22,12 +22,13 @@ public class BrothelInit extends InitRoom {
                         .itemName("Love Potion")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(10)
+                        .hp(10)
                         .description("This will get you ready for some sweet loving")
                         .inventory(madam)
                         .build(),
                 Item.builder()
                         .itemName("Extra Services")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .typeOfItem(ItemEnum.JUNK)
                         .value(50)
                         .description("Wow... So expensive.. Is it worth it?")
                         .inventory(madam)
@@ -37,6 +38,7 @@ public class BrothelInit extends InitRoom {
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .description("Protection from what?")
                         .inventory(madam)
+                        .hp(10)
                         .value(10)
                         .build()));
 
@@ -128,14 +130,17 @@ public class BrothelInit extends InitRoom {
     List<Item> getInitItems() {
         return List.of(
                 Item.builder()
-                        .itemName("Mysterious Perfume")
-                        .description("Gives you the ability to shapeshift. I wonder what it's doing in a brothel..?")
+                        .itemName("Mysterious Potion")
+                        .description("Gives you extra energy. I wonder what it's doing in a brothel..?")
                         .typeOfItem(ItemEnum.CONSUMABLE)
+                        .hp(20)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("A Pack of Tarot Cards")
                         .description("Would you like to know your fortune?")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build()
         );
     }
