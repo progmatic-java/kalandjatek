@@ -23,12 +23,14 @@ public class GraveyardInit extends InitRoom {
                         .itemName("Black magic spells")
                         .typeOfItem(ItemEnum.ATTACK)
                         .value(80)
+                        .mp(35)
+                        .damage(40)
                         .description("Powerful spells that help you achieve your goals")
                         .inventory(witchKing)
                         .build(),
                 Item.builder()
                         .itemName("Sacrificed souls")
-                        .typeOfItem(ItemEnum.CONSUMABLE)
+                        .typeOfItem(ItemEnum.JUNK)
                         .description("The Skeleton Dragon loves chowing on them")
                         .inventory(witchKing)
                         .value(200)
@@ -39,13 +41,15 @@ public class GraveyardInit extends InitRoom {
                         .description("A powerful weapon that executes decapitation with a clean-cut")
                         .inventory(witchKing)
                         .value(100)
+                        .attack(8)
+                        .damage(20)
                         .build()));
 
         return List.of(
                 NPC.builder()
                         .name("Witch King")
                         .description("Grandmaster of necromancy")
-                        .friendly(false)
+                        .friendly(true)
                         .hp(8000)
                         .mp(10000)
                         .gold(100)
@@ -224,21 +228,25 @@ public class GraveyardInit extends InitRoom {
                         .itemName("Pomegranates")
                         .description("Blood-red delicacy from the Underworld")
                         .typeOfItem(ItemEnum.CONSUMABLE)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Bones")
                         .description("Why are they scattered outside of the graves?")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Stake")
                         .description("You better take it with you")
                         .typeOfItem(ItemEnum.ATTACK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Wilted Lilies")
                         .description("In memory of the deceased")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build()
         );
     }

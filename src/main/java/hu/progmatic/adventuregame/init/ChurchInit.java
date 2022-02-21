@@ -20,9 +20,11 @@ public class ChurchInit extends InitRoom {
         Inventory lombok = new Inventory();
         lombok.setItems(List.of(
                 Item.builder()
-                        .itemName("Prayer book")
-                        .typeOfItem(ItemEnum.ATTACK)
+                        .itemName("Scroll of Prayer")
+                        .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(30)
+                        .mp(30)
+                        .damage(35)
                         .description("A book containing prayers used in worship of Holy Joe")
                         .inventory(lombok)
                         .build(),
@@ -31,6 +33,8 @@ public class ChurchInit extends InitRoom {
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .description("Receiving this blessing will grant you the ability to see through deceptions")
                         .inventory(lombok)
+                        .mp(50)
+                        .damage(50)
                         .value(1000)
                         .build(),
                 Item.builder()
@@ -276,21 +280,25 @@ public class ChurchInit extends InitRoom {
                         .itemName("Holy water")
                         .description("Purifies you inside and out")
                         .typeOfItem(ItemEnum.CONSUMABLE)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("The Holy Sword of Ma'dog")
                         .description("A relic of the almighty Holy Joe")
                         .typeOfItem(ItemEnum.ATTACK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Candles")
                         .description("They light your path and max your wax")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Magic Scroll")
                         .description("Source of ancient knowledge")
                         .typeOfItem(ItemEnum.CONSUMABLE)
+                        .value(0)
                         .build()
         );
     }
