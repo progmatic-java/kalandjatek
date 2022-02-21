@@ -24,6 +24,7 @@ public class InnInit extends InitRoom {
                         .itemName("Beer")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(10)
+                        .hp(10)
                         .description("A little lukewarm and tastes like horse piss but it's fine.")
                         .inventory(burrows)
                         .build(),
@@ -33,6 +34,7 @@ public class InnInit extends InitRoom {
                         .description("Is this from a tablet?")
                         .inventory(burrows)
                         .value(15)
+                        .hp(15)
                         .build(),
                 Item.builder()
                         .itemName("Cracker")
@@ -40,6 +42,7 @@ public class InnInit extends InitRoom {
                         .description("Mmmm sooo tastyyy and crispyyy.")
                         .inventory(burrows)
                         .value(5)
+                        .hp(5)
                         .build()));
 
         return List.of(
@@ -244,11 +247,14 @@ public class InnInit extends InitRoom {
                 Item.builder()
                         .itemName("Beer")
                         .description("A cold drink from Go'odor")
+                        .hp(10)
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .build(),
                 Item.builder()
                         .itemName("Knife")
                         .description("Good for slicing bread")
+                        .attack(3)
+                        .damage(2)
                         .typeOfItem(ItemEnum.ATTACK)
                         .build(),
                 Item.builder()

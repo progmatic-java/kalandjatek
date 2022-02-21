@@ -24,6 +24,7 @@ public class AcademyInnit extends InitRoom {
                         .itemName("Clean Code")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(100)
+                        .mp(50)
                         .description("The most valuable thing in all of Progmatique.")
                         .inventory(robert)
                         .build(),
@@ -31,6 +32,7 @@ public class AcademyInnit extends InitRoom {
                         .itemName("Clean Code")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(100)
+                        .mp(50)
                         .description("The most valuable thing in all of Progmatique.")
                         .inventory(robert)
                         .build(),
@@ -38,6 +40,7 @@ public class AcademyInnit extends InitRoom {
                         .itemName("Clean Code")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(100)
+                        .mp(50)
                         .description("The most valuable thing in all of Progmatique.")
                         .inventory(robert)
                         .build()));
@@ -47,7 +50,7 @@ public class AcademyInnit extends InitRoom {
                         .name("Robert C. Martin")
                         .description("The headmaster of the Academy")
                         .imgRef("https://i.imgur.com/LIGwuzF.png")
-                        .friendly(false)
+                        .friendly(true)
                         .hp(10000)
                         .mp(10000)
                         .gold(50000)
