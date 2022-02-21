@@ -97,4 +97,14 @@ public class CombatController {
     public ItemDto activeAttack() {
         return new ItemDto();
     }
+
+    @ModelAttribute("npcDead")
+    public boolean npcDead(){
+        return false;
+    }
+
+    @ModelAttribute("playerDead")
+    public boolean playerDead(){
+        return false;
+    }
 }
