@@ -187,16 +187,19 @@ public class MountainInnit extends InitRoom {
                         .itemName("Golden dragon scale")
                         .description("Is this really true? The dragon is here?")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Bones")
                         .description("A lot of people died here.")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Broken watch")
                         .description("Isn't this Robert C. Martin's?? What was he doing here?")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build()
         );
     }

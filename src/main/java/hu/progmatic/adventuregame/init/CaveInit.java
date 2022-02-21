@@ -129,11 +129,13 @@ public class CaveInit extends InitRoom {
                         .itemName("Assortment of bones")
                         .description("What else did you expect in a dragon lair?")
                         .typeOfItem(ItemEnum.JUNK)
+                        .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Jewels")
                         .description("The dragon seems to have a whole collection of jewels and gold.")
                         .typeOfItem(ItemEnum.VALUABLE)
+                        .value(0)
                         .build()
         );
     }
