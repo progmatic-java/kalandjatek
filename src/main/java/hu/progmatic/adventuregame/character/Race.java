@@ -32,7 +32,7 @@ public enum Race {
                     Item.builder().itemName("Liver pâté").typeOfItem(ItemEnum.CONSUMABLE).description("So ... Disgusting!!!!").hp(1).build(),
                     Item.builder().itemName("Scroll of Lightning").typeOfItem(ItemEnum.CONSUMABLE).description("Thunder and Lightning!").mp(20).damage(20).build()
             )
-            , ""),
+            , "https://i.imgur.com/GeilnJE.png"),
     ELF("https://i.imgur.com/13NVorA.png",
             "You are an Elf! You are a magical and mysterious being of human stature who are friendly with nature and animals... also you're pretty hot.",
             100, 200, 200, 8, 20,
@@ -45,7 +45,7 @@ public enum Race {
                     Item.builder().itemName("Elixir of Immortality").typeOfItem(ItemEnum.CONSUMABLE).description("Strengthens your vitality!").mp(30).damage(30).build(),
                     Item.builder().itemName("Scroll of Thousand Calamities").typeOfItem(ItemEnum.CONSUMABLE).description("Unleashes chaotic forces!").mp(40).damage(40).build()
             )
-            , ""),
+            , "https://i.imgur.com/bB49TdZ.png"),
     REPTILIAN("https://i.imgur.com/0f45Fce.png",
             "You are a Reptilian Humanoid! You are a brave, yet ssssly fighter! If you were a Hogwarts House, you would be Slytherin.",
             150, 150, 200, 12, 13,
@@ -58,7 +58,7 @@ public enum Race {
                     Item.builder().itemName("Acid Spit").typeOfItem(ItemEnum.CONSUMABLE).description("So dangerous.").mp(20).damage(20).build(),
                     Item.builder().itemName("Hardened Skin").typeOfItem(ItemEnum.SHIELD).description("I wonder whose this was?").defence(3).build()
             )
-            , "");
+            , "https://i.imgur.com/dDierSp.png");
 
     final String img;
     final String description;
