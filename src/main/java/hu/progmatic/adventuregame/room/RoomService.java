@@ -103,11 +103,11 @@ public class RoomService {
 
   public boolean roomHasEnemy(Integer roomId) {
     Room room = roomRepository.getById(roomId);
-    return room.getNpcEntities().stream().anyMatch(npcDto -> !npcDto.isFriendly());
+    return room.getNpcEntities().stream().anyMatch(npcDto -> !npcDto.getFriendly());
   }
 
   public Integer getEnemyId(Integer roomId) {
     Room room = roomRepository.getById(roomId);
-    return room.getNpcEntities().stream().filter(npc -> !npc.isFriendly()).findAny().orElseThrow().getId();
+    return room.getNpcEntities().stream().filter(npc -> !npc.getFriendly()).findAny().orElseThrow().getId();
   }
 }

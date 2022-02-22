@@ -39,7 +39,7 @@ public class NPCService {
                 .name(entity.getName())
                 .id(entity.getId())
                 .description(entity.getDescription())
-                .friendly(entity.isFriendly())
+                .friendly(entity.getFriendly())
                 .hp(entity.getHp())
                 .mp(entity.getMp())
                 .gold(entity.getGold())

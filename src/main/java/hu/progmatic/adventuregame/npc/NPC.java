@@ -19,7 +19,7 @@ public class NPC {
     @Column(unique = true)
     private String name;
     private String description;
-    private boolean friendly;
+    private Boolean friendly;
     private Integer hp;
     private Integer mp;
     private Integer gold;
