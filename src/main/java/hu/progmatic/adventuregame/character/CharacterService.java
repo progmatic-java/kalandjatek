@@ -206,14 +206,11 @@ public class CharacterService implements InitializingBean {
     }
 
     public CharacterEntity getResultCharacter(Answer answer) {
-        Inventory charInv = Inventory.builder().build();
-        List<Item> startingItems = List.of(
-                Item.builder().itemName("Sword").typeOfItem(ItemEnum.ATTACK).description("He attack.").inventory(charInv).build(),
-                Item.builder().itemName("Shield").typeOfItem(ItemEnum.SHIELD).description("He protect.").inventory(charInv).build(),
-                Item.builder().itemName("Potion").typeOfItem(ItemEnum.CONSUMABLE).description("He heals.").inventory(charInv).build()
-        );
-        charInv.setItems(startingItems);
         Race characterRace = getResults(answer);
+        Inventory charInv = Inventory.builder().items(characterRace.invItems).build();
+        Inventory activeInv = Inventory.builder().items(characterRace.activeItems).build();
+        fillItemInv(charInv, characterRace.invItems);
+        fillItemInv(activeInv, characterRace.activeItems);
         return CharacterEntity.builder()
                 .name(answer.getName())
                 .maxHp(characterRace.hp)
@@ -225,11 +222,18 @@ public class CharacterService implements InitializingBean {
                 .indexImg(characterRace.indexImg)
                 .description(characterRace.description)
                 .inventory(charInv)
+                .activeInventory(activeInv)
                 .attack(characterRace.attack)
                 .defence(characterRace.defence)
                 .race(characterRace)
                 .answer(answer)
                 .build();
+    }
+
+    private void fillItemInv(Inventory inventory, List<Item> itemList) {
+        for (Item item : itemList) {
+            item.setInventory(inventory);
+        }
     }
 
     public Integer getIdByName(String name) {
