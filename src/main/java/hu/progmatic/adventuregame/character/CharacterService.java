@@ -38,6 +38,7 @@ public class CharacterService implements InitializingBean {
         ItemDto activeWeapon = entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow();
         ItemDto activeShield = entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow();
         return CharacterDto.builder()
+                .indexImg(entity.getIndexImg())
                 .characterName(entity.getName())
                 .id(entity.getId())
                 .race(entity.getRace())
@@ -117,6 +118,7 @@ public class CharacterService implements InitializingBean {
                             .currHp(200)
                             .currMp(50)
                             .imgRef("https://i.imgur.com/lXcw2hg.png")
+                            .indexImg("https://i.imgur.com/jZpzqld.png")
                             .description(Race.ORC.description)
                             .inventory(orcPass)
                             .activeInventory(orc)
@@ -220,6 +222,7 @@ public class CharacterService implements InitializingBean {
                 .currHp(characterRace.hp)
                 .gold(characterRace.gold)
                 .imgRef(characterRace.img)
+                .indexImg(characterRace.indexImg)
                 .description(characterRace.description)
                 .inventory(charInv)
                 .attack(characterRace.attack)

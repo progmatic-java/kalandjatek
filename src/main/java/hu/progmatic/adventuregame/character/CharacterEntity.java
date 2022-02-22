@@ -27,6 +27,8 @@ public class CharacterEntity {
     private Integer attack;
     private Integer defence;
     private String imgRef;
+    private String indexImg;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     Answer answer;

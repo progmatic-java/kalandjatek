@@ -121,8 +121,8 @@
             width: 100%;
             grid-auto-flow: row;
             grid-template-areas:
-    "NPC NPCVSCHAR CHARACTERINFO"
     "NPC . CHARACTERINFO"
+    "NPC NPCVSCHAR CHARACTERINFO"
     "COMBATLOG COMBATLOG COMBATLOG";
             row-gap: 15px;
         }
@@ -158,13 +158,6 @@
         }
 
 
-        img {
-            height: 100%;
-            width: 100%;
-            justify-self: center;
-            position: center;
-        }
-
         .NPCVSCHAR {
             grid-area: NPCVSCHAR;
             color: whitesmoke;
@@ -185,6 +178,18 @@
             justify-content: space-between;
         }
 
+        .npcpic {
+            height: 80%;
+            width: 100%;
+            justify-self: center;
+            position: center;
+        }
+
+        .charPic {
+            height: 15%;
+            width: 19%;
+            position: center;
+        }
 
     </style>
 
@@ -213,11 +218,18 @@
             <p th:text="${'Attack: ' + currNpc.getAttack()}">Attack:</p>
             <p th:text="${'Defence: ' + currNpc.getDefence()}">Defence:</p>
         </div>
+
+        <img class="npcpic" th:src="@{${currNpc.getImgRef()}}">
+
+
     </div>
 
     <div class="CHARACTERINFO">
         <h2 th:text="${'Character Name: ' + currPlayer.getCharacterName() + ' (' + currPlayer.getRace() + ')'}">
             Character Name</h2>
+
+        <img class="charPic" th:src="@{${currPlayer.getIndexImg()}}">
+
         <div class="characterinfo">
             <div class="dropdown">
                 <button class="dropbtn">Combat Items</button>
@@ -230,7 +242,6 @@
                                    th:title="${'Description: ' + combatItem.getDescription()  +  ' (' + combatItem.getTypeOfItem() + ')'}"
                                    type="submit" class="btn btn-dark" th:value="${combatItem.getItemName()}"/>
                         </form>
-
                     </div>
                 </div>
             </div>
