@@ -62,16 +62,16 @@ public class AcademyInnit extends InitRoom {
                                 .conversationText("*He looks at you and shakes his head disapprovingly")
                                 .childActions(List.of(
                                         Action.builder()
-                                                .conversationText("Sorry to bother you Sir, can you help me find the last golden dragon's egg?")
+                                                .conversationText("Sorry to bother you Sir, can you help me find the last Golden Dragon's Egg?")
                                                 .childActions(List.of(
                                                         Action.builder()
                                                                 .conversationText("The what? I don't know anything about that. Now leave.")
                                                                 .childActions(List.of(
                                                                         Action.builder()
-                                                                                .conversationText("The good people form the church said it's here somewhere.")
+                                                                                .conversationText("The good people from the church said that it's here somewhere.")
                                                                                 .childActions(List.of(
                                                                                         Action.builder()
-                                                                                                .conversationText("Ohm... well..I don't know what you're talking about.")
+                                                                                                .conversationText("Ummm... Well.. I don't know what you're talking about.")
                                                                                                 .childActions(List.of(
                                                                                                         Action.builder()
                                                                                                                 .conversationText("You seem flustered by my question.")
@@ -93,7 +93,7 @@ public class AcademyInnit extends InitRoom {
                                                                                 .conversationText("Then what is that key on the table?")
                                                                                 .childActions(List.of(
                                                                                         Action.builder()
-                                                                                                .conversationText("Ohm... well..I don't know what you're talking about.")
+                                                                                                .conversationText("Umm... Well.. I don't know what you're talking about.")
                                                                                                 .childActions(List.of(
                                                                                                         Action.builder()
                                                                                                                 .conversationText("That key right there!")
@@ -114,10 +114,10 @@ public class AcademyInnit extends InitRoom {
                                                                 .build()))
                                                 .build(),
                                         Action.builder()
-                                                .conversationText("I came here to search for the last golden dragon's egg.")
+                                                .conversationText("I came here to search for the last Golden Dragon's Egg.")
                                                 .childActions(List.of(
                                                         Action.builder()
-                                                                .conversationText("You came to the wrong place. Go back where you came from.")
+                                                                .conversationText("You came to the wrong place. Go back to where you came from.")
                                                                 .build()
                                                 ))
                                                 .build(),
@@ -125,7 +125,7 @@ public class AcademyInnit extends InitRoom {
                                                 .conversationText("Do you have the Clean Code book?")
                                                 .childActions(List.of(
                                                         Action.builder()
-                                                                .conversationText("Yes of course, I have multiple with me that you can buy...One of my finest works.")
+                                                                .conversationText("Yes of course, I have multiple editions with me that you can buy... It's one of my finest works.")
                                                                 .build()
                                                 ))
                                                 .build()))

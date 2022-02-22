@@ -28,7 +28,7 @@ public class MountainInnit extends InitRoom {
                         .description("He looks like a nice guy.")
                         .imgRef("https://i.imgur.com/W2UARUn.png")
                         .action(Action.builder()
-                                .conversationText("Are you here for the dragon egg too Traveller?")
+                                .conversationText("Are you here for the dragon egg too, Traveller?")
                                 .childActions(List.of(
                                         Action.builder()
                                                 .conversationText("Yes")
@@ -39,14 +39,14 @@ public class MountainInnit extends InitRoom {
                                                                         .conversationText("Okay sure!")
                                                                         .childActions(List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("Great! I will forever by in your favor. Lets find it together!")
+                                                                                        .conversationText("Great! I will forever be in your favor. Lets find it together!")
                                                                                         .build()))
                                                                         .build(),
                                                                 Action.builder()
                                                                         .conversationText("No way, that egg is mine!")
                                                                         .childActions(List.of(
                                                                                 Action.builder()
-                                                                                        .conversationText("I get it. But I will not give up. May the best man get the egg!")
+                                                                                        .conversationText("I get it. But I will not give up. May the best man find the egg!")
                                                                                         .build()))
                                                                         .build()))
                                                         .build()))
@@ -61,14 +61,14 @@ public class MountainInnit extends InitRoom {
                                                                                 .conversationText("None of your business.")
                                                                                 .childActions(List.of(
                                                                                         Action.builder()
-                                                                                                .conversationText("No need to be rude my friend. Our time on earth is too short, don't spew negativity. Take care. ")
+                                                                                                .conversationText("No need to be rude, my friend. Our time on earth is too short, don't spew negativity. Take care. ")
                                                                                                 .build()))
                                                                                 .build(),
                                                                         Action.builder()
-                                                                                .conversationText("I came here to enjoy the view.")
+                                                                                .conversationText("I just came here to enjoy the view.")
                                                                                 .childActions(List.of(
                                                                                         Action.builder()
-                                                                                                .conversationText("I love your word view, we should have a beer when I finnish my quest. Take care my friend.")
+                                                                                                .conversationText("I love your perspective of the world, we should have a beer when I finish my quest. Take care, my friend.")
                                                                                                 .build()))
                                                                                 .build()))
                                                                 .build()))
