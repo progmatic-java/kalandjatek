@@ -44,9 +44,27 @@ public class CombatController {
             Model model
     ) {
         RoomDto currRoom = roomService.getRoomById(roomId);
-        combatService.swapActiveItem(characterId, itemId);
+        String combatLog = combatService.swapActiveItem(characterId, itemId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
+        model.addAttribute("combatLog", combatLog);
+        return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
+    }
+
+    @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/consumeitem/{itemId}")
+    public String consumeItem(
+        @PathVariable Integer characterId,
+        @PathVariable Integer roomId,
+        @PathVariable Integer itemId,
+        @PathVariable Integer npcId,
+        Model model
+    ) {
+        RoomDto currRoom = roomService.getRoomById(roomId);
+        String combatLog = combatService.consumeItem(characterId, itemId, npcId);
+        CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
+        NPCDto currNpc = npcService.getNPCDtoById(npcId);
+        model.addAttribute("npcDead", combatService.isNpcDead(npcId));
+        model.addAttribute("combatLog", combatLog);
         return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
     }
 
@@ -71,11 +89,12 @@ public class CombatController {
             Model model
     ) {
         RoomDto currRoom = roomService.getRoomById(roomId);
-        combatService.fightRound(characterId, npcId);
+        String combatLog = combatService.fightRound(characterId, npcId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
         model.addAttribute("npcDead", combatService.isNpcDead(npcId));
         model.addAttribute("playerDead", combatService.isPlayerDead(characterId));
+        model.addAttribute("combatLog", combatLog);
         return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
     }
 
@@ -104,6 +123,11 @@ public class CombatController {
         model.addAttribute("activeDefence", currCharacter.getActiveShield());
         model.addAttribute("activeAttack", currCharacter.getActiveWeapon());
         return "/adventuregame/combat";
+    }
+
+    @ModelAttribute("combatLog")
+    public String combatLog() {
+        return "";
     }
 
     @ModelAttribute("activeDefence")

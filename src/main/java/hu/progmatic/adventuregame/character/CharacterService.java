@@ -82,6 +82,7 @@ public class CharacterService implements InitializingBean {
     public void afterPropertiesSet() throws Exception {
         Inventory elf = Inventory.builder().build();
         Inventory orc = Inventory.builder().build();
+        Inventory orcPass = Inventory.builder().build();
         Inventory human = Inventory.builder().build();
         Inventory reptilian = Inventory.builder().build();
 
@@ -91,9 +92,14 @@ public class CharacterService implements InitializingBean {
         Item mace = Item.builder().itemName("Mace").typeOfItem(ItemEnum.ATTACK).description("So big.").inventory(orc).attack(2).damage(10).build();
         Item rock = Item.builder().itemName("Rock").typeOfItem(ItemEnum.ATTACK).description("Tasty").inventory(reptilian).build();
 
+        Item fireball = Item.builder().itemName("Fireball").typeOfItem(ItemEnum.CONSUMABLE).description("So hot.").inventory(orcPass).damage(40).mp(40).build();
+        Item freezeblast = Item.builder().itemName("Freezeblast").typeOfItem(ItemEnum.CONSUMABLE).description("So cold.").inventory(orcPass).damage(100).mp(100).build();
+
         elf.getItems().add(shield);
         orc.getItems().add(mace);
         orc.getItems().add(shieldOrc);
+        orcPass.getItems().add(fireball);
+        orcPass.getItems().add(freezeblast);
         human.getItems().add(sword);
         reptilian.getItems().add(rock);
 
@@ -112,7 +118,7 @@ public class CharacterService implements InitializingBean {
                             .currMp(50)
                             .imgRef("https://i.imgur.com/lXcw2hg.png")
                             .description(Race.ORC.description)
-                            .inventory(Inventory.builder().build())
+                            .inventory(orcPass)
                             .activeInventory(orc)
                             .build(),
                     CharacterEntity.builder().name("Lyah")

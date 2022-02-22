@@ -240,12 +240,12 @@
                 <button class="dropbtn">Consumable Items</button>
                 <div class="dropdown-content">
                     <div th:each="consumableItem : ${currPlayer.getConsumableItems()}">
-                        <!--                        <form th:action="@{'/adventuregame/characterpage/{characterId}/item/{itemId}'(characterId=${currPlayer.getId()},itemId=${characterItems.getId()})}"-->
-                        <!--                              method="get">-->
-                        <input data-bs-toggle="tooltip" data-bs-placement="right"
-                               th:title="${'Description: ' + consumableItem.getDescription()  +  ' (' + consumableItem.getTypeOfItem() + ')'}"
-                               type="submit" class="btn btn-dark" th:value="${consumableItem.getItemName()}"/>
-                        <!--                        </form>-->
+                        <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/consumeitem/{itemId}'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()},itemId=${consumableItem.getId()})}"
+                              method="get">
+                            <input data-bs-toggle="tooltip" data-bs-placement="right"
+                                   th:title="${'Description: ' + consumableItem.getDescription()  +  ' (' + consumableItem.getTypeOfItem() + ')'}"
+                                   type="submit" class="btn btn-dark" th:value="${consumableItem.getItemName()}"/>
+                        </form>
 
                     </div>
                 </div>
@@ -258,27 +258,32 @@
             <p th:text="${'Defence: ' + currPlayer.getDefence()}">Defence:</p>
         </div>
         <div class="INFOTEXT">
-            <p th:text="${'Weapon: ' + activeAttack.getItemName() + ' attack: +' + activeAttack.getAttack() + ' damage: ' + activeAttack.getDamage()}">Weapon:</p>
-            <p th:text="${'Shield: ' + activeDefence.getItemName() + ' shield: +' + activeDefence.getShield()}">Shield:</p>
+            <p th:text="${'Weapon: ' + activeAttack.getItemName() + ' attack: +' + activeAttack.getAttack() + ' damage: ' + activeAttack.getDamage()}">
+                Weapon:</p>
+            <p th:text="${'Shield: ' + activeDefence.getItemName() + ' shield: +' + activeDefence.getShield()}">
+                Shield:</p>
         </div>
     </div>
 
     <div class="COMBATLOG">
-        GRRRRR
+        <h2 th:text="${combatLog}">GRRRR</h2>
         <form th:unless="${npcDead or playerDead}" th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/combatround'
                         (characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()})}"
               method="get">
-            <input data-bs-toggle="tooltip" data-bs-placement="right" type="submit" class="btn btn-dark" value="Attack!"/>
+            <input data-bs-toggle="tooltip" data-bs-placement="right" type="submit" class="btn btn-dark"
+                   value="Attack!"/>
         </form>
         <form th:if="${playerDead}" th:action="@{'/adventuregame/playerdead/{characterId}'
                         (characterId=${currPlayer.getId()})}"
               method="get">
-            <input data-bs-toggle="tooltip" data-bs-placement="right" type="submit" class="btn btn-dark" value="Back to main menu"/>
+            <input data-bs-toggle="tooltip" data-bs-placement="right" type="submit" class="btn btn-dark"
+                   value="Back to main menu"/>
         </form>
         <form th:if="${npcDead}" th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/npcdead'
                         (characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${currNpc.getId()})}"
               method="get">
-            <input data-bs-toggle="tooltip" data-bs-placement="right" type="submit" class="btn btn-dark" value="Back to room"/>
+            <input data-bs-toggle="tooltip" data-bs-placement="right" type="submit" class="btn btn-dark"
+                   value="Back to room"/>
         </form>
     </div>
 
