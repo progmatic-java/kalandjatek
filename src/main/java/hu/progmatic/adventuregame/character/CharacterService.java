@@ -237,13 +237,17 @@ public class CharacterService implements InitializingBean {
         Item item = inventoryService.getItemEntityById(itemId);
         Inventory inventory = inventoryService.getInventoryEntityById(inventoryId);
         CharacterEntity character = characterRepository.getById(characterId);
-
-        if (item.getValue() > character.getGold()) {
+        if (item.getTypeOfItem().equals(ItemEnum.VALUABLE)){
+            character.setGold(character.getGold() + item.getValue());
+            inventory.getItems().remove(item);
+            item.setInventory(null);
             return;
         }
-        inventory.getItems().remove(item);
-        character.getInventory().getItems().add(item);
-        item.setInventory(character.getInventory());
-        character.setGold(character.getGold() - item.getValue());
+        if (item.getValue() <= character.getGold()) {
+            inventory.getItems().remove(item);
+            character.getInventory().getItems().add(item);
+            item.setInventory(character.getInventory());
+            character.setGold(character.getGold() - item.getValue());
+        }
     }
 }

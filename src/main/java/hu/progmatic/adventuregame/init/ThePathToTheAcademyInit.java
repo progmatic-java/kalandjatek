@@ -37,7 +37,7 @@ public class ThePathToTheAcademyInit extends InitRoom {
                         .itemName("Coins")
                         .description("Someone drop these, now they are mine!")
                         .typeOfItem(ItemEnum.VALUABLE)
-                        .value(0)
+                        .value(25)
                         .build()
         );
     }

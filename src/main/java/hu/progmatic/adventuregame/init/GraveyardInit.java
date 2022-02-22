@@ -228,6 +228,7 @@ public class GraveyardInit extends InitRoom {
                         .itemName("Pomegranates")
                         .description("Blood-red delicacy from the Underworld")
                         .typeOfItem(ItemEnum.CONSUMABLE)
+                        .hp(20)
                         .value(0)
                         .build(),
                 Item.builder()

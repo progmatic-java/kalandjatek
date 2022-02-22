@@ -136,7 +136,7 @@ public class CaveInit extends InitRoom {
                         .itemName("Jewels")
                         .description("The dragon seems to have a whole collection of jewels and gold.")
                         .typeOfItem(ItemEnum.VALUABLE)
-                        .value(0)
+                        .value(500)
                         .build()
         );
     }
