@@ -17,16 +17,6 @@ public class CaveInit extends InitRoom {
     @Override
     List<NPC> getInitNpcs() {
 
-        Inventory phoneix = new Inventory();
-        phoneix.setItems(List.of(
-                Item.builder()
-                        .itemName("The Golden Dragon Egg")
-                        .description("Wow! I can't believe it's mine!")
-                        .typeOfItem(ItemEnum.VALUABLE)
-                        .value(0)
-                        .inventory(phoneix)
-                        .build()));
-
         return List.of(
                 NPC.builder()
                         .name("The Chicken Dragon")
@@ -37,7 +27,8 @@ public class CaveInit extends InitRoom {
                         .gold(1000)
                         .attack(10)
                         .defence(10)
-                        .inventory(phoneix)
+                        .damage(9)
+                        .inventory(new Inventory())
                         .imgRef("https://i.imgur.com/ZZsNPwW.png")
                         .action(Action.builder()
                                 .conversationText("What are you doing here, in my lair?")
@@ -137,6 +128,12 @@ public class CaveInit extends InitRoom {
                         .description("The dragon seems to have a whole collection of jewels and gold.")
                         .typeOfItem(ItemEnum.VALUABLE)
                         .value(500)
+                        .build(),
+                Item.builder()
+                        .itemName("The Golden Dragon Egg")
+                        .description("Wow! I can't believe it's mine!")
+                        .typeOfItem(ItemEnum.VALUABLE)
+                        .value(10000)
                         .build()
         );
     }
