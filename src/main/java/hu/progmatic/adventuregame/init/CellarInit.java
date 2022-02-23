@@ -25,9 +25,9 @@ public class CellarInit extends InitRoom {
                         .inventory(new Inventory())
                         .hp(50)
                         .mp(5)
-                        .attack(10)
+                        .attack(15)
                         .defence(10)
-                        .damage(5)
+                        .damage(7)
                         .action(Action.builder()
                                 .conversationText("*Agressive growling")
                                 .childActions(List.of(
