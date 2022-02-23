@@ -261,8 +261,8 @@ public class InnInit extends InitRoom {
                         .build(),
                 Item.builder()
                         .itemName("Coins")
-                        .description("You should take it")
-                        .value(0)
+                        .description("You should take it.(+20 COINS)")
+                        .value(25)
                         .typeOfItem(ItemEnum.VALUABLE)
                         .build()
         );

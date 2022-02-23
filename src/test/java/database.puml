@@ -1,0 +1,71 @@
+@startuml
+package Database <<Database>> {
+class Room {
++ int id
++ text name
++ text description
++ text img_ref
++ int inventory_id
+}
+class Door {
++ int id
++ int room1_id
++ int room2_id
+}
+class Item {
++ int id
++ text name
++ text description
++ text type_of_item
+.
+.
+.
++ int value
++ int inventory_id
+}
+class Npc {
++ int id
++ text name
++ text description
++ bool friendly
+.
+.
+.
++ text img_ref
++ int action_id
++ int room_id
++ int inventory_id
+}
+class Inventory {
++ int id
+}
+class Action {
++ int id
++ text speech
++ int parent_action_id
+}
+class Character {
++ int id
++ text name
++ text description
+.
+.
+.
++ text img_ref
++ int inventory_id
++ int active_inventory_id
+}
+}
+
+Action -- Action
+Npc -- Action
+Inventory -left-- Room : inv_id
+Inventory -- Npc : inv_id
+Inventory -- Character : inv_id
+Inventory -- Character : active_inv_id
+Item -left-- Inventory : inv_id
+Room -- Npc : room_id
+Door -right-- Room : room1_id
+Door -right-- Room : room2_id
+
+@enduml
