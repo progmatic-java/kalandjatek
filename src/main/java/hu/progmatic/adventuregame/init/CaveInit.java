@@ -125,13 +125,13 @@ public class CaveInit extends InitRoom {
                         .build(),
                 Item.builder()
                         .itemName("Jewels")
-                        .description("The dragon seems to have a whole collection of jewels and gold.")
+                        .description("The dragon seems to have a whole collection of jewels and gold.(+500 COINS)")
                         .typeOfItem(ItemEnum.VALUABLE)
                         .value(500)
                         .build(),
                 Item.builder()
                         .itemName("The Golden Dragon Egg")
-                        .description("Wow! I can't believe it's mine!")
+                        .description("Wow! I can't believe it's mine!(+10000 COINS)")
                         .typeOfItem(ItemEnum.VALUABLE)
                         .value(10000)
                         .build()

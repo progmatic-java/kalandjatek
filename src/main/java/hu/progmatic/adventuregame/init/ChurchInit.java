@@ -25,13 +25,13 @@ public class ChurchInit extends InitRoom {
                         .value(30)
                         .mp(30)
                         .damage(35)
-                        .description("A book containing prayers used in worship of Holy Joe")
+                        .description("A book containing prayers used in worship of Holy Joe.(-30 MP, 35 DMG)")
                         .inventory(lombok)
                         .build(),
                 Item.builder()
                         .itemName("The Blessing of Holy Joe")
                         .typeOfItem(ItemEnum.CONSUMABLE)
-                        .description("Receiving this blessing will grant you the ability to see through deceptions")
+                        .description("Receiving this blessing will grant you the ability to see through deceptions.(-50 MP, 50 DMG)")
                         .inventory(lombok)
                         .mp(50)
                         .damage(50)
@@ -39,8 +39,8 @@ public class ChurchInit extends InitRoom {
                         .build(),
                 Item.builder()
                         .itemName("Relic")
-                        .typeOfItem(ItemEnum.VALUABLE)
-                        .description("It is said to be a handkerchief Holy Joe used to dry his tears with")
+                        .typeOfItem(ItemEnum.JUNK)
+                        .description("It is said to be a handkerchief Holy Joe used to dry his tears with.")
                         .inventory(lombok)
                         .value(150)
                         .build()));
@@ -50,7 +50,7 @@ public class ChurchInit extends InitRoom {
                 Item.builder()
                         .itemName("Map to the Academy of Magic and Programming")
                         .typeOfItem(ItemEnum.KEY)
-                        .description("With this map you won't lose your way")
+                        .description("With this map you won't lose your way.")
                         .inventory(thyme)
                         .value(20)
                         .build()));
