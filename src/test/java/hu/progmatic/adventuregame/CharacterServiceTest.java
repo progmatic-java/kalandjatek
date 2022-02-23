@@ -1,10 +1,8 @@
 package hu.progmatic.adventuregame;
 
+import hu.progmatic.adventuregame.character.*;
+import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.felhasznalo.UserType;
-import hu.progmatic.adventuregame.character.CharacterDto;
-import hu.progmatic.adventuregame.character.CharacterEntity;
-import hu.progmatic.adventuregame.character.CharacterService;
-import hu.progmatic.adventuregame.character.Race;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Nested;
@@ -41,7 +39,23 @@ class CharacterServiceTest {
 
         @BeforeEach
         void setUp() {
-            CharacterEntity newCharacter = CharacterEntity.builder().name("Name").race(Race.ELF).build();
+            CharacterEntity newCharacter = CharacterEntity.builder()
+                    .name("Name")
+                    .maxHp(10)
+                    .maxMp(10)
+                    .currMp(10)
+                    .currHp(10)
+                    .gold(10)
+                    .imgRef("")
+                    .indexImg("")
+                    .description("")
+                    .inventory(new Inventory())
+                    .activeInventory(new Inventory())
+                    .attack(7)
+                    .defence(8)
+                    .race(Race.ELF)
+                    .answer(new Answer())
+                    .build();
             character = characterService.save(newCharacter);
         }
 

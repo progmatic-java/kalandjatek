@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.npc;
 
+import hu.progmatic.adventuregame.inventory.Inventory;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -51,7 +52,12 @@ class NPCServiceTest {
 
     @BeforeEach
     void setUp() {
-      NPC newNpc = NPC.builder().name("Maya").description("The waitress of The Black Hole Inn").build();
+      NPC newNpc = NPC.builder()
+              .name("Maya")
+              .description("The waitress of The Black Hole Inn")
+              .inventory(new Inventory())
+              .action(Action.builder().build())
+              .friendly(true).build();
       npc = npcService.save(newNpc);
     }
 

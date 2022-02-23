@@ -30,6 +30,11 @@ public class RoomController {
         return "/adventuregame/room";
     }
 
+    @GetMapping("/adventuregame/theend")
+    public String theEnd() {
+        return "/adventuregame/theend";
+    }
+
     @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}")
     public String gameStarter(
             @PathVariable Integer characterId,
