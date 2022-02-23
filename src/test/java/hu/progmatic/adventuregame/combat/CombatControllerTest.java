@@ -28,7 +28,7 @@ class CombatControllerTest {
     private CharacterService characterService;
 
     @Test
-    @DisplayName("A  combat html megjelenik")
+    @DisplayName("A combat html megjelenik")
     void personalityTest() throws Exception {
         mockMvc.perform(get("/adventuregame/combat")).andDo(print()).andExpect(status().isOk())
                 .andExpect(content().string(containsString("Character Name")));

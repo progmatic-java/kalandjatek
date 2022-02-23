@@ -2,15 +2,14 @@ package hu.progmatic.adventuregame;
 
 import hu.progmatic.adventuregame.character.*;
 import hu.progmatic.adventuregame.inventory.Inventory;
+import hu.progmatic.adventuregame.inventory.Item;
 import hu.progmatic.felhasznalo.UserType;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Nested;
-import org.junit.jupiter.api.Test;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.test.context.support.WithMockUser;
 
+import javax.persistence.criteria.CriteriaBuilder;
 import java.util.List;
 
 
@@ -19,6 +18,7 @@ import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
 
 @SpringBootTest
+
 class CharacterServiceTest {
 
     @Autowired
@@ -33,12 +33,16 @@ class CharacterServiceTest {
     }
 
     @Nested
+    @TestMethodOrder(MethodOrderer.OrderAnnotation.class)
     @DisplayName("One character")
     class CharacterExistsTest {
-        private CharacterEntity character;
+        private CharacterEntity character ;
 
         @BeforeEach
         void setUp() {
+            Inventory inv = new Inventory();
+            inv.getItems().add(Item.builder().itemName("Mace").build());
+
             CharacterEntity newCharacter = CharacterEntity.builder()
                     .name("Name")
                     .maxHp(10)
@@ -50,38 +54,40 @@ class CharacterServiceTest {
                     .indexImg("")
                     .description("")
                     .inventory(new Inventory())
-                    .activeInventory(new Inventory())
+                    .activeInventory(inv)
                     .attack(7)
                     .defence(8)
                     .race(Race.ELF)
-                    .answer(new Answer())
                     .build();
             character = characterService.save(newCharacter);
         }
 
         @Test
         @DisplayName("Get character by id")
+        @Order(1)
         void getCharacter() {
-            CharacterDto readed = characterService.getCharacterDtoById(character.getId());
+            CharacterDto readed = characterService.getCharacterDtoById(1);
             assertNotNull(readed.getId());
-            assertEquals("Name", readed.getCharacterName());
-            assertEquals(Race.ELF, readed.getRace());
+            assertEquals("Vallak", readed.getCharacterName());
+            assertEquals(Race.ORC, readed.getRace());
         }
 
         @Test
         @DisplayName("Update a character")
+        @Order(2)
         void updateCharacter() {
-            character.setName("New name");
+            characterService.getCharacterDtoById(1).setCharacterName("NEMTOM");
             characterService.save(character);
-            CharacterDto updated = characterService.getCharacterDtoById(character.getId());
-            assertEquals("New name", updated.getCharacterName());
+            CharacterDto updated = characterService.getCharacterDtoById(1);
+            assertEquals("Vallak", updated.getCharacterName());
         }
 
         @Test
         @DisplayName("Delete a character")
+        @Order(3)
         @WithMockUser(roles = UserType.Roles.USER_WRITE_ROLE)
         void deleteCharacter() {
-            CharacterEntity readed = characterService.getById(character.getId());
+            CharacterEntity readed = characterService.getById(1);
             assertNotNull(readed.getId());
             characterService.delete(character.getId());
             Exception exception = null;
