@@ -52,9 +52,5 @@ public class ThePathToTheAcademyInit extends InitRoom {
         return "https://i.imgur.com/E7k4guh.jpg";
     }
 
-    @Override
-    public String getRoomAudio() {
-        return "music/Damp.mp3";
-    }
 }
 

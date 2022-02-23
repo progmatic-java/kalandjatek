@@ -26,7 +26,7 @@ public class AcademyInnit extends InitRoom {
                         .value(100)
                         .mp(50)
                         .damage(6)
-                        .description("The most valuable thing in all of Progmatique.")
+                        .description("The most valuable thing in all of Progmatique.(6 DMG , -50 MP)")
                         .inventory(robert)
                         .build(),
                 Item.builder()
@@ -35,7 +35,7 @@ public class AcademyInnit extends InitRoom {
                         .value(100)
                         .mp(50)
                         .damage(6)
-                        .description("The most valuable thing in all of Progmatique.")
+                        .description("The most valuable thing in all of Progmatique.(6 DMG , -50 MP)")
                         .inventory(robert)
                         .build(),
                 Item.builder()
@@ -44,7 +44,7 @@ public class AcademyInnit extends InitRoom {
                         .value(100)
                         .mp(50)
                         .damage(6)
-                        .description("The most valuable thing in all of Progmatique.")
+                        .description("The most valuable thing in all of Progmatique.(6 DMG , -50 MP)")
                         .inventory(robert)
                         .build()));
 
@@ -151,7 +151,7 @@ public class AcademyInnit extends InitRoom {
                         .build(),
                 Item.builder()
                         .itemName("The key to Holy Joe's Tomb")
-                        .description("What is this doing here? I better take it with me")
+                        .description("What is this doing here? I better take it with me.")
                         .typeOfItem(ItemEnum.KEY)
                         .value(0)
                         .build()
@@ -168,9 +168,5 @@ public class AcademyInnit extends InitRoom {
         return "https://i.pinimg.com/originals/68/d2/6c/68d26cfe85a1557d62cb69d4f090fb49.jpg";
     }
 
-    @Override
-    public String getRoomAudio() {
-        return "music/Damp.mp3";
-    }
 }
 

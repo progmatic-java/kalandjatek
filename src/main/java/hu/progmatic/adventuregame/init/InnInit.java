@@ -25,13 +25,13 @@ public class InnInit extends InitRoom {
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .value(10)
                         .hp(10)
-                        .description("A little lukewarm and tastes like horse piss but it's fine.")
+                        .description("A little lukewarm and tastes like horse piss but it's fine.(+10 HP)")
                         .inventory(burrows)
                         .build(),
                 Item.builder()
                         .itemName("Wine")
                         .typeOfItem(ItemEnum.CONSUMABLE)
-                        .description("Is this from a tablet?")
+                        .description("Is this from a tablet?(+15 HP)")
                         .inventory(burrows)
                         .value(15)
                         .hp(15)
@@ -39,7 +39,7 @@ public class InnInit extends InitRoom {
                 Item.builder()
                         .itemName("Cracker")
                         .typeOfItem(ItemEnum.CONSUMABLE)
-                        .description("Mmmm sooo tastyyy and crispyyy.")
+                        .description("Mmmm sooo tastyyy and crispyyy.(+5 HP)")
                         .inventory(burrows)
                         .value(5)
                         .hp(5)
@@ -246,14 +246,14 @@ public class InnInit extends InitRoom {
         return List.of(
                 Item.builder()
                         .itemName("Beer")
-                        .description("A cold drink from Go'odor")
+                        .description("A cold drink from Go'odor.(+10 HP)")
                         .hp(10)
                         .value(0)
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .build(),
                 Item.builder()
                         .itemName("Knife")
-                        .description("Good for slicing bread")
+                        .description("Good for slicing bread.(+3 ATK,2 DMG)")
                         .attack(3)
                         .damage(2)
                         .value(0)
@@ -278,8 +278,4 @@ public class InnInit extends InitRoom {
         return "https://wallpaperaccess.com/full/6079735.png";
     }
 
-    @Override
-    public String getRoomAudio() {
-        return "music/Tavern.mp3";
-    }
 }

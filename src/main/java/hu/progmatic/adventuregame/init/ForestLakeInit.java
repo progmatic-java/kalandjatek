@@ -69,16 +69,16 @@ public class ForestLakeInit extends InitRoom {
         return List.of(
                 Item.builder()
                         .itemName("Fairy Shield")
-                        .description("A magical shield that is useful against dark powers!")
+                        .description("A magical shield that is useful against dark powers!(+6 DEF)")
                         .typeOfItem(ItemEnum.SHIELD)
-                        .defence(10)
+                        .defence(6)
                         .value(0)
                         .build(),
                 Item.builder()
                         .itemName("Fairy Panties")
-                        .description("Hmmm... What's that doing floating in the water?")
+                        .description("Hmmm... What's that doing floating in the water?(+7 DEF)")
                         .typeOfItem(ItemEnum.SHIELD)
-                        .defence(40)
+                        .defence(7)
                         .value(0)
                         .build(),
                 Item.builder()

@@ -147,7 +147,7 @@ public class RoadToTheForestInit extends InitRoom {
         return List.of(
                 Item.builder()
                         .itemName("Pebble")
-                        .description("It's not much but at least it can do a bit of damage")
+                        .description("It's not much but at least it can do a bit of damage.(+1 ATK , 1 DMG)")
                         .typeOfItem(ItemEnum.ATTACK)
                         .attack(1)
                         .damage(1)
@@ -155,7 +155,7 @@ public class RoadToTheForestInit extends InitRoom {
                         .build(),
                 Item.builder()
                         .itemName("Magic Mushroom")
-                        .description("I feel funny when I eat this")
+                        .description("I feel funny when I eat this.(+10 HP)")
                         .typeOfItem(ItemEnum.CONSUMABLE)
                         .hp(10)
                         .value(0)

@@ -13,7 +13,6 @@ import java.util.List;
 public abstract class InitRoom {
   private String name;
   private String roomImgRef;
-  private String roomAudio;
   private String roomDescription;
   private final Inventory inventory;
   private final List<Item> items;
