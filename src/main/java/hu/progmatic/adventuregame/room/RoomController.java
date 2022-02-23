@@ -2,6 +2,9 @@ package hu.progmatic.adventuregame.room;
 
 import hu.progmatic.adventuregame.character.CharacterDto;
 import hu.progmatic.adventuregame.character.CharacterService;
+import hu.progmatic.adventuregame.inventory.Inventory;
+import hu.progmatic.adventuregame.inventory.InventoryService;
+import hu.progmatic.adventuregame.inventory.ItemDto;
 import hu.progmatic.adventuregame.npc.ActionCommand;
 import hu.progmatic.adventuregame.npc.NPCDto;
 import hu.progmatic.adventuregame.npc.NPCService;
@@ -23,6 +26,11 @@ public class RoomController {
 
     @Autowired
     private NPCService npcService;
+
+    @Autowired
+    private InventoryService inventoryService;
+
+
 
 
     @GetMapping("/adventuregame/room")
@@ -62,6 +70,11 @@ public class RoomController {
         characterService.moveItemToPlayer(characterId, currRoom.getInventoryId(), itemId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         currRoom = roomService.getRoomById(roomId);
+        ItemDto item = inventoryService.getItemDtoById(itemId);
+
+        if(item.getItemName().equals("The Golden Dragon Egg")){
+            return "redirect:/adventuregame/theend";
+        }
         setCurrRoom(model, currRoom);
         return getCurrRoomWithCharacter(model, currRoom, currCharacter);
     }
