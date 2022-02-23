@@ -11,12 +11,12 @@ public enum Race {
             "You are an Orc! You are a fierce fighter who is ready for any challenge!",
             200, 50, 200, 15, 10,
             List.of(
-                    Item.builder().itemName("Mace").typeOfItem(ItemEnum.ATTACK).description("So big.(+2 ATK, 10 DMG)").attack(2).damage(10).build(),
-                    Item.builder().itemName("Rock shield").typeOfItem(ItemEnum.SHIELD).description("So rock.(+2 DEF)").defence(2).build()
+                    Item.builder().itemName("Mace").typeOfItem(ItemEnum.ATTACK).description("So big.(+2 ATK, 10 DMG)").attack(2).damage(10).defence(0).build(),
+                    Item.builder().itemName("Rock shield").typeOfItem(ItemEnum.SHIELD).description("So rock.(+2 DEF)").defence(2).attack(0).damage(0).build()
             ),
             List.of(
-                    Item.builder().itemName("Battle Axe").typeOfItem(ItemEnum.ATTACK).description("So sharp.(+3 ATK, 10 DMG)").attack(3).damage(10).build(),
-                    Item.builder().itemName("Spoon").typeOfItem(ItemEnum.ATTACK).description("So handy!(+1 ATK, 1 DMG)").attack(1).damage(1).build(),
+                    Item.builder().itemName("Battle Axe").typeOfItem(ItemEnum.ATTACK).description("So sharp.(+3 ATK, 10 DMG)").attack(3).damage(10).defence(0).build(),
+                    Item.builder().itemName("Spoon").typeOfItem(ItemEnum.ATTACK).description("So handy!(+1 ATK, 1 DMG)").attack(1).damage(1).defence(0).build(),
                     Item.builder().itemName("Raw meat").typeOfItem(ItemEnum.CONSUMABLE).description("It's a bit chewy.(+10 HP)").hp(10).build()
             )
             , "https://i.imgur.com/jZpzqld.png"),
@@ -24,12 +24,12 @@ public enum Race {
             "You are a Human! You remind me of a piece of stale bread... kinda boring, but it's fine, I guess!",
             150, 100, 200, 10, 16,
             List.of(
-                    Item.builder().itemName("Long Sword").typeOfItem(ItemEnum.ATTACK).description("So long... And a bit rusty.(+2 ATK, 8 DMG)").attack(2).damage(8).build(),
-                    Item.builder().itemName("Steel shield").typeOfItem(ItemEnum.SHIELD).description("So hard..(+3 DEF)").defence(3).build()
+                    Item.builder().itemName("Long Sword").typeOfItem(ItemEnum.ATTACK).description("So long... And a bit rusty.(+2 ATK, 8 DMG)").attack(2).damage(8).defence(0).build(),
+                    Item.builder().itemName("Steel shield").typeOfItem(ItemEnum.SHIELD).description("So hard..(+3 DEF)").defence(3).attack(0).damage(0).build()
             ),
             List.of(
                     Item.builder().itemName("Fine wine").typeOfItem(ItemEnum.CONSUMABLE).description("So refreshing!(+10 HP)").hp(10).build(),
-                    Item.builder().itemName("Liver pâté").typeOfItem(ItemEnum.CONSUMABLE).description("So ... Disgusting!!!!(+10 HP)").hp(10).build(),
+                    Item.builder().itemName("Liver pâté").typeOfItem(ItemEnum.CONSUMABLE).description("So ... Disgusting!!!!(+20 HP)").hp(20).build(),
                     Item.builder().itemName("Scroll of Lightning").typeOfItem(ItemEnum.CONSUMABLE).description("Thunder and Lightning!(20 DMG, -10 MP)").mp(20).damage(20).build()
             )
             , "https://i.imgur.com/GeilnJE.png"),
@@ -37,8 +37,8 @@ public enum Race {
             "You are an Elf! You are a magical and mysterious being of human stature who are friendly with nature and animals... also you're pretty hot.",
             100, 200, 200, 8, 20,
             List.of(
-                    Item.builder().itemName("Bow and Arrow").typeOfItem(ItemEnum.ATTACK).description("Fast and accurate.(+3 ATK, 7 DMG)").attack(3).damage(7).build(),
-                    Item.builder().itemName("Mithril chain mail").typeOfItem(ItemEnum.SHIELD).description("So shiny and stylish.(+5 DEF)").defence(5).build()
+                    Item.builder().itemName("Bow and Arrow").typeOfItem(ItemEnum.ATTACK).description("Fast and accurate.(+3 ATK, 7 DMG)").attack(3).damage(7).defence(0).build(),
+                    Item.builder().itemName("Mithril chain mail").typeOfItem(ItemEnum.SHIELD).description("So shiny and stylish.(+5 DEF)").defence(5).attack(0).damage(0).build()
             ),
             List.of(
                     Item.builder().itemName("Nectar").typeOfItem(ItemEnum.CONSUMABLE).description("Juicy...!").hp(20).build(),
@@ -50,13 +50,13 @@ public enum Race {
             "You are a Reptilian Humanoid! You are a brave, yet ssssly fighter! If you were a Hogwarts House, you would be Slytherin.",
             150, 150, 200, 12, 13,
             List.of(
-                    Item.builder().itemName("Trident").typeOfItem(ItemEnum.ATTACK).description("So spiky.(+4 ATK, 8 DMG)").attack(4).damage(8).build(),
-                    Item.builder().itemName("Chitin shield").typeOfItem(ItemEnum.SHIELD).description("So stinky.(+3 DEF)").defence(3).build()
+                    Item.builder().itemName("Trident").typeOfItem(ItemEnum.ATTACK).description("So spiky.(+4 ATK, 8 DMG)").attack(4).damage(8).defence(0).build(),
+                    Item.builder().itemName("Chitin shield").typeOfItem(ItemEnum.SHIELD).description("So stinky.(+3 DEF)").defence(3).attack(0).damage(0).build()
             ),
             List.of(
                     Item.builder().itemName("Can of Flies").typeOfItem(ItemEnum.CONSUMABLE).description("So crunchy.(+20 HP)").hp(20).build(),
                     Item.builder().itemName("Acid Spit").typeOfItem(ItemEnum.CONSUMABLE).description("So dangerous.(20 DMG, -20 MP)").mp(20).damage(20).build(),
-                    Item.builder().itemName("Hardened Skin").typeOfItem(ItemEnum.SHIELD).description("I wonder whose this was?(+3 DEF)").defence(3).build()
+                    Item.builder().itemName("Hardened Skin").typeOfItem(ItemEnum.SHIELD).description("I wonder whose this was?(+3 DEF)").defence(3).attack(0).damage(0).build()
             )
             , "https://i.imgur.com/dDierSp.png");
 

@@ -78,6 +78,7 @@ public class CombatController {
         RoomDto currRoom = roomService.getRoomById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
+        model.addAttribute("combatLog", "Let's get ready to rumble!");
         return setCurrCombatRound(model, currRoom, currCharacter, currNpc);
     }
 

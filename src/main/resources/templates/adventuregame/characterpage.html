@@ -81,6 +81,32 @@
                     <li th:text="${'Gold = ' + chosenCharacter.getGold()}">
                         Gold = 50
                     </li>
+                    <li th:text="${'Attack = ' + chosenCharacter.getAttack()}">
+                        Gold = 50
+                    </li>
+                    <li th:text="${'Defence = ' + chosenCharacter.getDefence()}">
+                        Gold = 50
+                    </li>
+                </ul>
+            </div>
+            <div class="card mb-4 block">
+                <h4>Starting weapons:</h4>
+                <ul>
+                    <div th:each="item : ${chosenCharacter.getActiveInventory().getItems()}">
+                        <li th:text="${item.getItemName() + ':  +' + item.getAttack() + ' ATK, +' + item.getDefence() + ' DEF, ' + item.getDamage() + ' DMG'}">
+                            Attack Item
+                        </li>
+                    </div>
+                </ul>
+            </div>
+            <div class="card mb-4 block">
+                <h4>Starting items:</h4>
+                <ul>
+                    <div th:each="item : ${chosenCharacter.getInventory().getItems()}">
+                        <li th:text="${item.getItemName()}">
+                            Attack Item
+                        </li>
+                    </div>
                 </ul>
             </div>
         </div>

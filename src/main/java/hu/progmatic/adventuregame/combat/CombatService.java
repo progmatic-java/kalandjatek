@@ -40,7 +40,7 @@ public class CombatService {
     CharacterEntity character = characterRepository.getById(characterId);
     NPC npc = NPCRepository.getById(npcId);
     String combatLog = playerAttack(character, npc);
-    if (npc.getHp() > 0) {
+    if (npc.getHp() >= 0) {
       combatLog += npcAttack(character, npc);
       if (character.getCurrHp() < 1) {
         return combatLog + character.getName() + " suffered a fatal blow.";
@@ -59,8 +59,9 @@ public class CombatService {
         .findFirst()
         .orElseThrow();
     if ((npcAttack + attackRoll) > (character.getDefence() + shield.getDefence())) {
-      character.setCurrHp(character.getCurrHp() - npc.getDamage());
-      return npc.getName() + " attacked " + character.getName() + " and dealt " + npc.getDamage() + " damage.\n";
+      int damage = npc.getDamage() + random.nextInt(6);
+      character.setCurrHp(character.getCurrHp() - damage);
+      return npc.getName() + " attacked " + character.getName() + " and dealt " + damage + " damage.\n";
     }
     return npc.getName() + " missed.\n";
   }
@@ -75,8 +76,13 @@ public class CombatService {
     Random random = new Random();
     Integer attackRoll = random.nextInt(10) + 1;
     if ((playerAttack + attackRoll) > npc.getDefence()) {
-      npc.setHp(npc.getHp() - weapon.getDamage());
-      return character.getName() + " attacked " + npc.getName() + " and dealt " + weapon.getDamage() + " damage.\n";
+      int damage = weapon.getDamage() + random.nextInt(6);
+      if (npc.getHp() - damage < 0) {
+        npc.setHp(0);
+      } {
+        npc.setHp(npc.getHp() - damage);
+      }
+      return character.getName() + " attacked " + npc.getName() + " and dealt " + damage + " damage.\n";
     }
     return character.getName() + " missed.\n";
   }
