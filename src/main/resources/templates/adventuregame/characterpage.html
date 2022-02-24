@@ -39,7 +39,7 @@
         font-size: 25px;
     }
 
-    .buttons{
+    .buttons {
         color: darkred;
     }
 
@@ -56,8 +56,10 @@
 <h1 style="text-align: center" th:if="${newCharacter}"> Character result </h1>
 <h1 style="text-align: center" th:unless="${newCharacter}"> Character page </h1>
 
-<p th:if="${newCharacter}" style="text-align: center" th:text="${'Congratulations! ' + chosenCharacter.getDescription()}">Character description</p>
-<p th:unless="${newCharacter}" style="text-align: center" th:text="${chosenCharacter.getDescription()}">Character description</p>
+<p th:if="${newCharacter}" style="text-align: center"
+   th:text="${'Congratulations! ' + chosenCharacter.getDescription()}">Character description</p>
+<p th:unless="${newCharacter}" style="text-align: center" th:text="${chosenCharacter.getDescription()}">Character
+    description</p>
 
 <img th:src="@{${chosenCharacter.getImgRef()}}" style="float: right">
 
@@ -67,7 +69,7 @@
     <div class="row">
         <div class="col-lg-6">
             <div>
-                <h4 th:text="${'Name: ' + chosenCharacter.getName()}">Name: </h4>
+                <h4 th:text="${'Name: ' + chosenCharacter.getCharacterName()}">Name: </h4>
             </div>
             <div class="card mb-4 block">
                 <h4>Stats: </h4>
@@ -92,17 +94,18 @@
             <div class="card mb-4 block">
                 <h4>Starting weapons:</h4>
                 <ul>
-                    <div th:each="item : ${chosenCharacter.getActiveInventory().getItems()}">
-                        <li th:text="${item.getItemName() + ':  +' + item.getAttack() + ' ATK, +' + item.getDefence() + ' DEF, ' + item.getDamage() + ' DMG'}">
-                            Attack Item
-                        </li>
-                    </div>
+                    <li th:text="${chosenCharacter.getActiveWeapon().getItemName() + ':  +' + chosenCharacter.getActiveWeapon().getAttack() + ' ATK, +' + chosenCharacter.getActiveWeapon().getDamage() + ' DMG'}">
+                        Attack Item
+                    </li>
+                    <li th:text="${chosenCharacter.getActiveShield().getItemName() + ':  +' + chosenCharacter.getActiveShield().getShield() + ' DEF'}">
+                        Attack Item
+                    </li>
                 </ul>
             </div>
             <div class="card mb-4 block">
                 <h4>Starting items:</h4>
                 <ul>
-                    <div th:each="item : ${chosenCharacter.getInventory().getItems()}">
+                    <div th:each="item : ${chosenCharacter.getAllItems()}">
                         <li th:text="${item.getItemName()}">
                             Attack Item
                         </li>
@@ -117,11 +120,15 @@
 <br><br><br>
 
 <div class="buttons">
-    <form th:if="${newCharacter}" th:action="@{'/adventuregame/introduction/{id}'(id=${chosenCharacter.getId()})}" method="get">
-        <input type="submit" class="btn btn-dark" style="background-color: lightskyblue" value="I love my character, I want to continue"/>
+    <form th:if="${newCharacter}" th:action="@{'/adventuregame/introduction/{id}'(id=${chosenCharacter.getId()})}"
+          method="get">
+        <input type="submit" class="btn btn-dark" style="background-color: lightskyblue"
+               value="I love my character, I want to continue"/>
     </form>
 
-    <form th:unless="${newCharacter}" th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${chosenCharacter.getId()},roomId=${startingRoom.getId()})}" method="get">
+    <form th:unless="${newCharacter}"
+          th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${chosenCharacter.getId()},roomId=${startingRoom.getId()})}"
+          method="get">
         <input type="submit" class="btn btn-dark" style="background-color: lightskyblue" value="Start game"/>
     </form>
 
@@ -129,11 +136,13 @@
         <input type="submit" class="btn btn-dark" style="background-color: green" value="Get back to the main menu"/>
     </form>
 
-    <form th:if="${retakeTest}" th:action="@{'/adventuregame/unwantedcharacter/{id}'(id=${chosenCharacter.getId()})}" method="post">
+    <form th:if="${retakeTest}" th:action="@{'/adventuregame/unwantedcharacter/{id}'(id=${chosenCharacter.getId()})}"
+          method="post">
         <input type="submit" class="btn btn-dark" value="Aren't pleased with your character? Retake the test!"/>
     </form>
 
-    <form th:if="${hasUserWriteRole}" th:action="@{'/adventuregame/characterpage/delete/{id}'  (id=${chosenCharacter.getId()})}  " method="post">
+    <form th:if="${hasUserWriteRole}"
+          th:action="@{'/adventuregame/characterpage/delete/{id}'  (id=${chosenCharacter.getId()})}  " method="post">
         <input type="submit" class="btn btn-danger" style="background-color: red" value="Delete character"/>
     </form>
 </div>

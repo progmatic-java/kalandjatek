@@ -32,32 +32,36 @@ public class CharacterService implements InitializingBean {
 
     public CharacterDto getCharacterDtoById(Integer id) {
         CharacterEntity entity = characterRepository.getById(id);
+        return buildCharacterDto(entity);
+    }
+
+    private CharacterDto buildCharacterDto(CharacterEntity entity) {
         List<ItemDto> combatItems = entity.getInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK) || item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).toList();
         List<ItemDto> consumableItems = entity.getInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.CONSUMABLE)).map(item -> inventoryService.buildItemDto(item)).toList();
         List<ItemDto> allItems = entity.getInventory().getItems().stream().map(item -> inventoryService.buildItemDto(item)).toList();
         ItemDto activeWeapon = entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow();
         ItemDto activeShield = entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow();
         return CharacterDto.builder()
-                .indexImg(entity.getIndexImg())
-                .characterName(entity.getName())
-                .id(entity.getId())
-                .race(entity.getRace())
-                .description(entity.getDescription())
-                .maxHp(entity.getMaxHp())
-                .maxMp(entity.getMaxMp())
-                .currHp(entity.getCurrHp())
-                .currMp(entity.getCurrMp())
-                .attack(entity.getAttack())
-                .defence(entity.getDefence())
-                .gold(entity.getGold())
-                .imgRef(entity.getImgRef())
-                .answer(entity.getAnswer())
-                .allItems(allItems)
-                .combatItems(combatItems)
-                .consumableItems(consumableItems)
-                .activeWeapon(activeWeapon)
-                .activeShield(activeShield)
-                .build();
+            .indexImg(entity.getIndexImg())
+            .characterName(entity.getName())
+            .id(entity.getId())
+            .race(entity.getRace())
+            .description(entity.getDescription())
+            .maxHp(entity.getMaxHp())
+            .maxMp(entity.getMaxMp())
+            .currHp(entity.getCurrHp())
+            .currMp(entity.getCurrMp())
+            .attack(entity.getAttack())
+            .defence(entity.getDefence())
+            .gold(entity.getGold())
+            .imgRef(entity.getImgRef())
+            .answer(entity.getAnswer())
+            .allItems(allItems)
+            .combatItems(combatItems)
+            .consumableItems(consumableItems)
+            .activeWeapon(activeWeapon)
+            .activeShield(activeShield)
+            .build();
     }
 
 
@@ -205,29 +209,30 @@ public class CharacterService implements InitializingBean {
         return characterRepository.findAll();
     }
 
-    public CharacterEntity getResultCharacter(Answer answer) {
+    public CharacterDto getResultCharacter(Answer answer) {
         Race characterRace = getResults(answer);
         Inventory charInv = Inventory.builder().items(characterRace.invItems).build();
         Inventory activeInv = Inventory.builder().items(characterRace.activeItems).build();
         fillItemInv(charInv, characterRace.invItems);
         fillItemInv(activeInv, characterRace.activeItems);
-        return CharacterEntity.builder()
-                .name(answer.getName())
-                .maxHp(characterRace.hp)
-                .maxMp(characterRace.mp)
-                .currMp(characterRace.mp)
-                .currHp(characterRace.hp)
-                .gold(characterRace.gold)
-                .imgRef(characterRace.img)
-                .indexImg(characterRace.indexImg)
-                .description(characterRace.description)
-                .inventory(charInv)
-                .activeInventory(activeInv)
-                .attack(characterRace.attack)
-                .defence(characterRace.defence)
-                .race(characterRace)
-                .answer(answer)
-                .build();
+        CharacterEntity entity = CharacterEntity.builder()
+            .name(answer.getName())
+            .maxHp(characterRace.hp)
+            .maxMp(characterRace.mp)
+            .currMp(characterRace.mp)
+            .currHp(characterRace.hp)
+            .gold(characterRace.gold)
+            .imgRef(characterRace.img)
+            .indexImg(characterRace.indexImg)
+            .description(characterRace.description)
+            .inventory(charInv)
+            .activeInventory(activeInv)
+            .attack(characterRace.attack)
+            .defence(characterRace.defence)
+            .race(characterRace)
+            .answer(answer)
+            .build();
+        return buildCharacterDto(characterRepository.save(entity));
     }
 
     private void fillItemInv(Inventory inventory, List<Item> itemList) {
