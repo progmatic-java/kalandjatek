@@ -37,12 +37,23 @@ class CombatControllerTest {
 
 
   @Test
-  @DisplayName("A combat html megjelenik")
-  void personalityTest() throws Exception {
+  @DisplayName("A combat elkezdődik")
+  void combatStart() throws Exception {
     RoomDto room = roomService.getRoomDtoByName("Cellar of Black Hole Inn");
     NPCDto npc = NPCService.getNPCDtoByName("Mad dog");
     CharacterDto character = characterService.getCharacterDtoByName("Vallak");
     mockMvc.perform(get("/adventuregame/characterpage/" + character.getId() + "/room/" + room.getId() + "/npc/" + npc.getId() +"/combatstart"))
+        .andDo(print()).andExpect(status().isOk())
+        .andExpect(content().string(containsString(npc.getName() + " vs " + character.getCharacterName())));
+  }
+
+  @Test
+  @DisplayName("Lemegye egy combat kör")
+  void combatRound() throws Exception {
+    RoomDto room = roomService.getRoomDtoByName("Cellar of Black Hole Inn");
+    NPCDto npc = NPCService.getNPCDtoByName("Mad dog");
+    CharacterDto character = characterService.getCharacterDtoByName("Vallak");
+    mockMvc.perform(get("/adventuregame/characterpage/" + character.getId() + "/room/" + room.getId() + "/npc/" + npc.getId() +"/combatround"))
         .andDo(print()).andExpect(status().isOk())
         .andExpect(content().string(containsString(npc.getName() + " vs " + character.getCharacterName())));
   }

@@ -29,12 +29,6 @@ public class CombatController {
     @Autowired
     private CombatService combatService;
 
-
-    @GetMapping("/adventuregame/combat")
-    public String combat() {
-        return "/adventuregame/combat";
-    }
-
     @GetMapping("/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}/changecombatitem/{itemId}")
     public String characterItemToActionItem(
             @PathVariable Integer characterId,
