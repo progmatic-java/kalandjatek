@@ -262,4 +262,8 @@ public class CharacterService implements InitializingBean {
             character.setGold(character.getGold() - item.getValue());
         }
     }
+
+    public CharacterDto getCharacterDtoByName(String charName) {
+        return buildCharacterDto(characterRepository.getCharacterByName(charName).orElseThrow());
+    }
 }

@@ -79,7 +79,7 @@ public class NPCService {
     }
 
     public NPC findByName(String name) {
-        return npcRepository.findByName(name).orElseThrow();
+        return npcRepository.getNPCByName(name).orElseThrow();
     }
 
     public ActionCommand getNextAction(Integer actionId) {
@@ -90,5 +90,9 @@ public class NPCService {
     public ActionCommand getActionById(Integer actionId) {
         Action action = actionRepository.getById(actionId);
         return buildNpcAction(action);
+    }
+
+    public NPCDto getNPCDtoByName(String npcName) {
+        return buildNpcDto(npcRepository.getNPCByName(npcName).orElseThrow());
     }
 }

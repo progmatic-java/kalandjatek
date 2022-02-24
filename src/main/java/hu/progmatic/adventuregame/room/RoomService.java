@@ -97,10 +97,6 @@ public class RoomService {
     roomRepository.deleteAll();
   }
 
-  public Room getRoomEntityById(Integer id) {
-    return roomRepository.getById(id);
-  }
-
   public boolean roomHasEnemy(Integer roomId) {
     Room room = roomRepository.getById(roomId);
     return room.getNpcEntities().stream().anyMatch(npcDto -> !npcDto.getFriendly());
@@ -109,5 +105,9 @@ public class RoomService {
   public Integer getEnemyId(Integer roomId) {
     Room room = roomRepository.getById(roomId);
     return room.getNpcEntities().stream().filter(npc -> !npc.getFriendly()).findAny().orElseThrow().getId();
+  }
+
+  public RoomDto getRoomDtoByName(String roomName) {
+    return buildRoomDto(roomRepository.getRoomEntityByName(roomName).orElseThrow());
   }
 }
