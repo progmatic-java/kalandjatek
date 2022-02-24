@@ -211,10 +211,10 @@ public class CharacterService implements InitializingBean {
 
     public CharacterDto getResultCharacter(Answer answer) {
         Race characterRace = getResults(answer);
-        Inventory charInv = Inventory.builder().items(characterRace.invItems).build();
-        Inventory activeInv = Inventory.builder().items(characterRace.activeItems).build();
-        fillItemInv(charInv, characterRace.invItems);
-        fillItemInv(activeInv, characterRace.activeItems);
+        Inventory charInv = Inventory.builder().items(characterRace.invItems.stream().map(ItemDto::buildEntity).toList()).build();
+        Inventory activeInv = Inventory.builder().items(characterRace.activeItems.stream().map(ItemDto::buildEntity).toList()).build();
+        fillItemInv(charInv, characterRace.invItems.stream().map(ItemDto::buildEntity).toList());
+        fillItemInv(activeInv, characterRace.activeItems.stream().map(ItemDto::buildEntity).toList());
         CharacterEntity entity = CharacterEntity.builder()
             .name(answer.getName())
             .maxHp(characterRace.hp)

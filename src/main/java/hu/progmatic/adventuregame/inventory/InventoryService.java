@@ -52,7 +52,7 @@ public class InventoryService {
         .hp(item.getHp())
         .mp(item.getMp())
         .attack(item.getAttack())
-        .shield(item.getDefence())
+        .defence(item.getDefence())
         .damage(item.getDamage())
         .build();
   }

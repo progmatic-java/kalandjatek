@@ -19,6 +19,20 @@ public class ItemDto {
   private Integer hp;
   private Integer mp;
   private Integer attack;
-  private Integer shield;
+  private Integer defence;
   private Integer damage;
+
+  public Item buildEntity() {
+    return Item.builder()
+        .itemName(itemName)
+        .value(value)
+        .description(description)
+        .typeOfItem(typeOfItem)
+        .hp(hp)
+        .mp(mp)
+        .attack(attack)
+        .defence(defence)
+        .damage(damage)
+        .build();
+  }
 }
