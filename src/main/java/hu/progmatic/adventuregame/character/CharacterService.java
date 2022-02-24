@@ -85,93 +85,59 @@ public class CharacterService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
-        Inventory elf = Inventory.builder().build();
-        Inventory orc = Inventory.builder().build();
-        Inventory orcPass = Inventory.builder().build();
-        Inventory human = Inventory.builder().build();
-        Inventory reptilian = Inventory.builder().build();
-
-        Item shield = Item.builder().itemName("Shield").typeOfItem(ItemEnum.SHIELD).description("He protect.").inventory(elf).build();
-        Item shieldOrc = Item.builder().itemName("Shield").typeOfItem(ItemEnum.SHIELD).description("He protect.").inventory(orc).defence(5).build();
-        Item sword = Item.builder().itemName("Sword").typeOfItem(ItemEnum.ATTACK).description("He attack.").inventory(human).build();
-        Item mace = Item.builder().itemName("Mace").typeOfItem(ItemEnum.ATTACK).description("So big.").inventory(orc).attack(2).damage(10).build();
-        Item rock = Item.builder().itemName("Rock").typeOfItem(ItemEnum.ATTACK).description("Tasty").inventory(reptilian).build();
-
-        Item fireball = Item.builder().itemName("Fireball").typeOfItem(ItemEnum.CONSUMABLE).description("So hot.").inventory(orcPass).damage(40).mp(40).build();
-        Item freezeblast = Item.builder().itemName("Freezeblast").typeOfItem(ItemEnum.CONSUMABLE).description("So cold.").inventory(orcPass).damage(100).mp(100).build();
-
-        elf.getItems().add(shield);
-        orc.getItems().add(mace);
-        orc.getItems().add(shieldOrc);
-        orcPass.getItems().add(fireball);
-        orcPass.getItems().add(freezeblast);
-        human.getItems().add(sword);
-        reptilian.getItems().add(rock);
-
         if (findAll().isEmpty()) {
-            List<CharacterEntity> buildingCharacter = List.of(
-                    CharacterEntity
-                            .builder()
-                            .name("Vallak")
-                            .race(Race.ORC)
-                            .maxHp(200)
-                            .maxMp(50)
-                            .gold(100)
-                            .attack(15)
-                            .defence(10)
-                            .currHp(200)
-                            .currMp(50)
-                            .imgRef("https://i.imgur.com/lXcw2hg.png")
-                            .indexImg("https://i.imgur.com/jZpzqld.png")
-                            .description(Race.ORC.description)
-                            .inventory(orcPass)
-                            .activeInventory(orc)
-                            .build(),
-                    CharacterEntity.builder().name("Lyah")
-                            .race(Race.ELF)
-                            .maxHp(100)
-                            .maxMp(200)
-                            .gold(200)
-                            .attack(8)
-                            .defence(20)
-                            .currHp(100)
-                            .currMp(200)
-                            .imgRef("https://i.imgur.com/13NVorA.png")
-                            .description(Race.ELF.description)
-                            .inventory(elf)
-                            .build(),
-                    CharacterEntity
-                            .builder()
-                            .name("Bence")
-                            .race(Race.HUMAN)
-                            .maxHp(150)
-                            .maxMp(100)
-                            .gold(200)
-                            .attack(10)
-                            .defence(16)
-                            .currHp(150)
-                            .currMp(100)
-                            .imgRef("https://i.imgur.com/MQRZudq.png")
-                            .description(Race.HUMAN.description)
-                            .inventory(human)
-                            .build(),
-                    CharacterEntity
-                            .builder()
-                            .name("Mark Zuckerberg")
-                            .race(Race.REPTILIAN)
-                            .maxHp(150)
-                            .maxMp(150)
-                            .gold(200)
-                            .attack(12)
-                            .defence(13)
-                            .currHp(150)
-                            .currMp(150)
-                            .imgRef("https://i.imgur.com/0f45Fce.png")
-                            .description(Race.REPTILIAN.description)
-                            .inventory(reptilian)
-                            .build());
-            List<CharacterEntity> characters = saveAll(buildingCharacter);
-
+            getResultCharacter(
+                    Answer.builder()
+                            .name("Test elf")
+                            .race1(Race.ELF)
+                            .race2(Race.ELF)
+                            .race3(Race.ELF)
+                            .race4(Race.ELF)
+                            .race5(Race.ELF)
+                            .race6(Race.ELF)
+                            .race7(Race.ELF)
+                            .race8(Race.ELF)
+                            .build()
+            );
+            getResultCharacter(
+                    Answer.builder()
+                            .name("Test orc")
+                            .race1(Race.ORC)
+                            .race2(Race.ORC)
+                            .race3(Race.ORC)
+                            .race4(Race.ORC)
+                            .race5(Race.ORC)
+                            .race6(Race.ORC)
+                            .race7(Race.ORC)
+                            .race8(Race.ORC)
+                            .build()
+            );
+            getResultCharacter(
+                    Answer.builder()
+                            .name("Test human")
+                            .race1(Race.HUMAN)
+                            .race2(Race.HUMAN)
+                            .race3(Race.HUMAN)
+                            .race4(Race.HUMAN)
+                            .race5(Race.HUMAN)
+                            .race6(Race.HUMAN)
+                            .race7(Race.HUMAN)
+                            .race8(Race.HUMAN)
+                            .build()
+            );
+            getResultCharacter(
+                    Answer.builder()
+                            .name("Test reptilian")
+                            .race1(Race.REPTILIAN)
+                            .race2(Race.REPTILIAN)
+                            .race3(Race.REPTILIAN)
+                            .race4(Race.REPTILIAN)
+                            .race5(Race.REPTILIAN)
+                            .race6(Race.REPTILIAN)
+                            .race7(Race.REPTILIAN)
+                            .race8(Race.REPTILIAN)
+                            .build()
+            );
         }
     }
 

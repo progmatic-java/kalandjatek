@@ -68,8 +68,8 @@ class CharacterServiceTest {
         void getCharacter() {
             CharacterDto readed = characterService.getCharacterDtoById(1);
             assertNotNull(readed.getId());
-            assertEquals("Vallak", readed.getCharacterName());
-            assertEquals(Race.ORC, readed.getRace());
+            assertEquals("Test elf", readed.getCharacterName());
+            assertEquals(Race.ELF, readed.getRace());
         }
 
         @Test
@@ -79,7 +79,7 @@ class CharacterServiceTest {
             characterService.getCharacterDtoById(1).setCharacterName("NEMTOM");
             characterService.save(character);
             CharacterDto updated = characterService.getCharacterDtoById(1);
-            assertEquals("Vallak", updated.getCharacterName());
+            assertEquals("Test elf", updated.getCharacterName());
         }
 
         @Test
@@ -104,12 +104,12 @@ class CharacterServiceTest {
     @DisplayName("Multiple character")
     class MultipleCharacterExistsTest {
         @Test
-        @DisplayName("Find Mark Zuckerberg")
+        @DisplayName("Find Test orc")
         void findAllByName() {
-            List<CharacterEntity> multiple = characterService.findAllByName("Mark Zuckerberg");
+            List<CharacterEntity> multiple = characterService.findAllByName("Test orc");
             assertThat(multiple)
                     .extracting(CharacterEntity::getName)
-                    .contains("Mark Zuckerberg");
+                    .contains("Test orc");
         }
 
         @Test
@@ -118,7 +118,7 @@ class CharacterServiceTest {
             List<CharacterEntity> multiple = characterService.findAllByRace(Race.REPTILIAN);
             assertThat(multiple)
                     .extracting(CharacterEntity::getName)
-                    .containsExactlyInAnyOrder("Mark Zuckerberg");
+                    .containsExactlyInAnyOrder("Test reptilian");
         }
 
         @Test
@@ -127,7 +127,7 @@ class CharacterServiceTest {
             assertThat(allCharacters)
                     .hasSize(5)
                     .extracting(CharacterEntity::getName)
-                    .containsAnyOf("Mark Zuckerberg", "Malfoy", "Bence");
+                    .containsAnyOf("Test reptilian", "Test orc", "Test elf");
         }
     }
 

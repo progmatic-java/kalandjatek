@@ -41,7 +41,7 @@ class CombatControllerTest {
   void combatStart() throws Exception {
     RoomDto room = roomService.getRoomDtoByName("Cellar of Black Hole Inn");
     NPCDto npc = NPCService.getNPCDtoByName("Mad dog");
-    CharacterDto character = characterService.getCharacterDtoByName("Vallak");
+    CharacterDto character = characterService.getCharacterDtoByName("Test orc");
     mockMvc.perform(get("/adventuregame/characterpage/" + character.getId() + "/room/" + room.getId() + "/npc/" + npc.getId() +"/combatstart"))
         .andDo(print()).andExpect(status().isOk())
         .andExpect(content().string(containsString(npc.getName() + " vs " + character.getCharacterName())));
@@ -52,7 +52,7 @@ class CombatControllerTest {
   void combatRound() throws Exception {
     RoomDto room = roomService.getRoomDtoByName("Cellar of Black Hole Inn");
     NPCDto npc = NPCService.getNPCDtoByName("Mad dog");
-    CharacterDto character = characterService.getCharacterDtoByName("Vallak");
+    CharacterDto character = characterService.getCharacterDtoByName("Test orc");
     mockMvc.perform(get("/adventuregame/characterpage/" + character.getId() + "/room/" + room.getId() + "/npc/" + npc.getId() +"/combatround"))
         .andDo(print()).andExpect(status().isOk())
         .andExpect(content().string(containsString(npc.getName() + " vs " + character.getCharacterName())));

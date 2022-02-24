@@ -40,12 +40,12 @@ class CharacterControllerTest {
     @Test
     @DisplayName("Character page megjelenik")
     void characterPage() throws Exception {
-        Integer characterId = characterService.getIdByName("Vallak");
+        Integer characterId = characterService.getIdByName("Test human");
 
         mockMvc.perform(
                         get("/adventuregame/characterpage/" + characterId)
                 ).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Vallak")))
+                .andExpect(content().string(containsString("Test human")))
                 .andExpect(content().string(containsString("Character page")));
     }
 }
