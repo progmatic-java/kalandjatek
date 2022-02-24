@@ -211,10 +211,10 @@ public class CharacterService implements InitializingBean {
 
     public CharacterDto getResultCharacter(Answer answer) {
         Race characterRace = getResults(answer);
-        Inventory charInv = Inventory.builder().items(characterRace.invItems.stream().map(ItemDto::buildEntity).toList()).build();
-        Inventory activeInv = Inventory.builder().items(characterRace.activeItems.stream().map(ItemDto::buildEntity).toList()).build();
-        fillItemInv(charInv, characterRace.invItems.stream().map(ItemDto::buildEntity).toList());
-        fillItemInv(activeInv, characterRace.activeItems.stream().map(ItemDto::buildEntity).toList());
+        Inventory charInv = Inventory.builder().build();
+        characterRace.invItems.stream().map(ItemDto::buildEntity).forEach(charInv::addItem);
+        Inventory activeInv = Inventory.builder().build();
+        characterRace.activeItems.stream().map(ItemDto::buildEntity).forEach(activeInv::addItem);
         CharacterEntity entity = CharacterEntity.builder()
             .name(answer.getName())
             .maxHp(characterRace.hp)
@@ -233,12 +233,6 @@ public class CharacterService implements InitializingBean {
             .answer(answer)
             .build();
         return buildCharacterDto(characterRepository.save(entity));
-    }
-
-    private void fillItemInv(Inventory inventory, List<Item> itemList) {
-        for (Item item : itemList) {
-            item.setInventory(inventory);
-        }
     }
 
     public Integer getIdByName(String name) {

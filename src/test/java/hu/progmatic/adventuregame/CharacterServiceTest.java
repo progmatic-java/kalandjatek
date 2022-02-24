@@ -130,4 +130,25 @@ class CharacterServiceTest {
                     .containsAnyOf("Mark Zuckerberg", "Malfoy", "Bence");
         }
     }
+
+    @Test
+    void getResultCharacter() {
+        CharacterDto created = characterService.getResultCharacter(
+            Answer.builder()
+                .name("Test character")
+                .race1(Race.ELF)
+                .race2(Race.ELF)
+                .race3(Race.ELF)
+                .race4(Race.ELF)
+                .race5(Race.ELF)
+                .race6(Race.ELF)
+                .race7(Race.ELF)
+                .race8(Race.ELF)
+            .build()
+        );
+
+        CharacterDto readed = characterService.getCharacterDtoById(created.getId());
+        assertThat(readed.getActiveWeapon()).isNotNull();
+        characterService.delete(readed.getId());
+    }
 }

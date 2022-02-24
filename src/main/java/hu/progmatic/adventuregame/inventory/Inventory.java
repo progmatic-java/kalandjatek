@@ -19,4 +19,9 @@ public class Inventory {
     @Builder.Default
     @OneToMany(mappedBy = "inventory", cascade = CascadeType.ALL)
     private List<Item> items = new ArrayList<>();
+
+    public void addItem(Item item) {
+        getItems().add(item);
+        item.setInventory(this);
+    }
 }
