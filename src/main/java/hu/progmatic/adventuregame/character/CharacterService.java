@@ -85,6 +85,7 @@ public class CharacterService implements InitializingBean {
 
     @Override
     public void afterPropertiesSet() throws Exception {
+        characterRepository.deleteAll();
         if (findAll().isEmpty()) {
             getResultCharacter(
                     Answer.builder()
