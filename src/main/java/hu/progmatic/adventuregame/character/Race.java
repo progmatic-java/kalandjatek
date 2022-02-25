@@ -48,7 +48,7 @@ public enum Race {
             , "https://i.imgur.com/bB49TdZ.png"),
     REPTILIAN("https://i.imgur.com/0f45Fce.png",
             "You are a Reptilian Humanoid! You are a brave, yet ssssly fighter! If you were a Hogwarts House, you would be Slytherin.",
-            150, 150, 200, 12, 13,
+            150, 150, 200, 10, 13,
             List.of(
                 ItemDto.builder().itemName("Trident").typeOfItem(ItemEnum.ATTACK).description("So spiky.(+4 ATK, 8 DMG)").attack(4).damage(8).defence(0).build(),
                 ItemDto.builder().itemName("Chitin shield").typeOfItem(ItemEnum.SHIELD).description("So stinky.(+3 DEF)").defence(3).attack(0).damage(0).build()

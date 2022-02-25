@@ -35,7 +35,7 @@ public class ThePathToTheAcademyInit extends InitRoom {
                         .build(),
                 Item.builder()
                         .itemName("Coins")
-                        .description("Someone drop these, now they are mine!")
+                        .description("Someone drop these, now they are mine!(+25 COINS)")
                         .typeOfItem(ItemEnum.VALUABLE)
                         .value(25)
                         .build()

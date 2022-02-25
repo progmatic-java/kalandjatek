@@ -286,7 +286,7 @@
                         <form th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}/npc/{npcId}'(characterId=${currPlayer.getId()},roomId=${currRoom.getId()},npcId=${npcInRoom.getId()})}"
                               method="get">
                             <input data-bs-toggle="tooltip" data-bs-placement="right"
-                                   th:title="${'Description: ' + npcInRoom.getDescription()  +  ' (friendly: ' + npcInRoom.isFriendly() + ')'}"
+                                   th:title="${'Description: ' + npcInRoom.getDescription()  +  ' (friendly)'}"
                                    type="submit" class="btn btn-dark" th:value="${npcInRoom.getName()}"/>
                         </form>
 
