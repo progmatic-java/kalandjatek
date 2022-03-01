@@ -20,23 +20,12 @@ public class RoomController {
 
     @Autowired
     private RoomService roomService;
-
     @Autowired
     private CharacterService characterService;
-
     @Autowired
     private NPCService npcService;
-
     @Autowired
     private InventoryService inventoryService;
-
-
-
-
-    @GetMapping("/adventuregame/room")
-    public String roomPage() {
-        return "/adventuregame/room";
-    }
 
     @GetMapping("/adventuregame/theend")
     public String theEnd() {

@@ -1,4 +1,4 @@
-package hu.progmatic.room;
+package hu.progmatic.adventuregame.room;
 
 import hu.progmatic.adventuregame.npc.NPC;
 import hu.progmatic.adventuregame.npc.NPCDto;
