@@ -21,16 +21,16 @@ public class NPCService {
     private ActionRepository actionRepository;
 
 
-    public NPC save(NPC npc) {
+    public NPC saveNpc(NPC npc) {
         return npcRepository.save(npc);
     }
 
-    public NPC getById(Integer id) {
+    public NPC getNpcById(Integer id) {
         return npcRepository.getById(id);
     }
 
     public NPCDto getNPCDtoById(Integer id) {
-        NPC entity = getById(id);
+        NPC entity = getNpcById(id);
         return buildNpcDto(entity);
     }
 
@@ -82,8 +82,15 @@ public class NPCService {
         return npcRepository.getNPCByName(name).orElseThrow();
     }
 
+    public Action createAction(Action action) {
+        return actionRepository.save(action);
+    }
+
     public ActionCommand getNextAction(Integer actionId) {
-        Action action = actionRepository.getById(actionId).getChildActions().stream().findFirst().orElseGet(Action::new);
+        Action action = actionRepository.getById(actionId).getChildActions()
+            .stream()
+            .findFirst()
+            .orElseGet(Action::new);
         return buildNpcAction(action);
     }
 

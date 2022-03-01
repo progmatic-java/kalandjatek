@@ -64,8 +64,7 @@ public class InventoryService {
   public void addItemToInventory(Integer inventoryId, Integer itemId) {
     Item item = itemRepository.getById(itemId);
     Inventory inventory = inventoryRepository.getById(inventoryId);
-    item.setInventory(inventory);
-    inventory.getItems().add(item);
+    inventory.addItem(item);
   }
 
   public InvetoryDto getInventoryDtoById(Integer id) {
