@@ -1,5 +1,8 @@
 package hu.progmatic.room;
 
+import hu.progmatic.adventuregame.npc.NPC;
+import hu.progmatic.adventuregame.npc.NPCDto;
+import hu.progmatic.adventuregame.npc.NPCService;
 import hu.progmatic.adventuregame.room.Door;
 import hu.progmatic.adventuregame.room.Room;
 import hu.progmatic.adventuregame.room.RoomService;
@@ -17,6 +20,9 @@ class RoomServiceTest {
 
   @Autowired
   private RoomService roomService;
+
+  @Autowired
+  private NPCService NPCService;
 
   @Test
   @DisplayName("Save room test")
@@ -67,5 +73,48 @@ class RoomServiceTest {
       Room forest = roomService.getByName("Forest");
       assertEquals("Forest", forest.getName());
     }
+  }
+
+  @Test
+  @DisplayName("Check if room has an enemy")
+  void roomHasEnemyTest() {
+    Room testRoom = roomService.saveRoom(
+        Room.builder()
+            .name("roomHasEnemyTest")
+            .build()
+    );
+    NPC testNpc = NPCService.saveNpc(
+        NPC.builder()
+            .name("roomHasEnemyTest")
+            .friendly(false)
+            .npcRoom(testRoom)
+            .build()
+    );
+    testRoom.getNpcEntities().add(testNpc);
+
+    assertTrue(roomService.roomHasEnemy(testRoom.getId()));
+  }
+
+  @Test
+  @DisplayName("Get enemy id from room")
+  void getEnemyByIdTest() {
+    Room testRoom = roomService.saveRoom(
+        Room.builder()
+            .name("getEnemyByIdTest")
+            .build()
+    );
+    NPC testNpc = NPCService.saveNpc(
+        NPC.builder()
+            .name("getEnemyByIdTest")
+            .friendly(false)
+            .npcRoom(testRoom)
+            .build()
+    );
+    testRoom.getNpcEntities().add(testNpc);
+
+    Integer enemyId = roomService.getEnemyId(testRoom.getId());
+    NPCDto enemyDto = NPCService.getNPCDtoById(enemyId);
+    assertEquals("getEnemyByIdTest", enemyDto.getName());
+    assertFalse(enemyDto.isFriendly());
   }
 }

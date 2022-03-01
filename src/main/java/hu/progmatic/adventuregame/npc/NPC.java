@@ -29,10 +29,12 @@ public class NPC {
     private Integer defence;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
-    private Inventory inventory;
+    @Builder.Default
+    private Inventory inventory = new Inventory();
     @ManyToOne()
     Room npcRoom;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
-    private Action action;
+    @Builder.Default
+    private Action action = new Action();
 }
