@@ -1,8 +1,7 @@
 package hu.progmatic.adventuregame;
 
 import hu.progmatic.adventuregame.character.*;
-import hu.progmatic.adventuregame.inventory.Inventory;
-import hu.progmatic.adventuregame.inventory.Item;
+import hu.progmatic.adventuregame.inventory.*;
 import hu.progmatic.felhasznalo.UserType;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -24,6 +23,9 @@ class CharacterServiceTest {
 
     @Autowired
     private CharacterService characterService;
+
+    @Autowired
+    private InventoryService inventoryService;
 
     @Test
     @DisplayName("Create character")
@@ -106,20 +108,11 @@ class CharacterServiceTest {
     class MultipleCharacterExistsTest {
         @Test
         @DisplayName("Find Test orc")
-        void findAllByName() {
-            List<CharacterEntity> multiple = characterService.findAllByName("Test orc");
-            assertThat(multiple)
-                    .extracting(CharacterEntity::getName)
-                    .contains("Test orc");
-        }
-
-        @Test
-        @DisplayName("Find all reptilian")
-        void findAllByRace() {
-            List<CharacterEntity> multiple = characterService.findAllByRace(Race.REPTILIAN);
-            assertThat(multiple)
-                    .extracting(CharacterEntity::getName)
-                    .containsExactlyInAnyOrder("Test reptilian");
+        void findTestOrc() {
+            CharacterDto charDto = characterService.getCharacterDtoByName("Test orc");
+            assertEquals("Test orc", charDto.getCharacterName());
+            assertEquals(Race.ORC, charDto.getRace());
+            assertEquals("Mace", charDto.getActiveWeapon().getItemName());
         }
 
         @Test
@@ -148,8 +141,53 @@ class CharacterServiceTest {
             .build()
         );
 
-        CharacterDto readed = characterService.getCharacterDtoById(created.getId());
-        assertThat(readed.getActiveWeapon()).isNotNull();
-        characterService.delete(readed.getId());
+        CharacterDto checked = characterService.getCharacterDtoById(created.getId());
+        assertThat(checked.getActiveWeapon()).isNotNull();
+        characterService.delete(checked.getId());
+    }
+
+    @Test
+    @DisplayName("Moving item to player")
+    void moveItemToPlayerTest() {
+        Inventory testInv = inventoryService.createInventory(Inventory.builder().build());
+        Item testItem = inventoryService.createItem(Item.builder().itemName("Test item").typeOfItem(ItemEnum.JUNK).value(100).inventory(testInv).build());
+        testInv.getItems().add(testItem);
+        CharacterDto testCharacter = characterService.getResultCharacter(
+            Answer.builder()
+                .name("Test character")
+                .race1(Race.ELF)
+                .race2(Race.ELF)
+                .race3(Race.ELF)
+                .race4(Race.ELF)
+                .race5(Race.ELF)
+                .race6(Race.ELF)
+                .race7(Race.ELF)
+                .race8(Race.ELF)
+                .build()
+        );
+        assertThat(testCharacter.getAllItems()).hasSize(3);
+        assertEquals(200, testCharacter.getGold());
+
+        characterService.moveItemToPlayer(testCharacter.getId(), testInv.getId(), testItem.getId());
+        testCharacter = characterService.getCharacterDtoById(testCharacter.getId());
+        assertThat(testCharacter.getAllItems())
+            .hasSize(4)
+            .extracting(ItemDto::getItemName)
+            .contains("Test item");
+        assertEquals(100, testCharacter.getGold());
+
+        Inventory testInv2 = inventoryService.createInventory(Inventory.builder().build());
+        Item testVal = inventoryService.createItem(Item.builder().itemName("Test valuable").typeOfItem(ItemEnum.VALUABLE).value(50).inventory(testInv2).build());
+        testInv.getItems().add(testVal);
+
+        characterService.moveItemToPlayer(testCharacter.getId(), testInv2.getId(), testVal.getId());
+        testCharacter = characterService.getCharacterDtoById(testCharacter.getId());
+        assertThat(testCharacter.getAllItems())
+            .hasSize(4)
+            .extracting(ItemDto::getItemName)
+            .doesNotContain("Test valuable");
+        assertEquals(150, testCharacter.getGold());
+
+        characterService.delete(testCharacter.getId());
     }
 }

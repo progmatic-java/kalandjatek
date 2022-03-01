@@ -18,9 +18,9 @@ public class CharacterService implements InitializingBean {
 
     @Autowired
     private CharacterRepository characterRepository;
+
     @Autowired
     private InventoryService inventoryService;
-
 
     public CharacterEntity save(CharacterEntity character) {
         return characterRepository.save(character);
@@ -64,24 +64,10 @@ public class CharacterService implements InitializingBean {
             .build();
     }
 
-
     @RolesAllowed(UserType.Roles.USER_WRITE_ROLE)
     public void delete(Integer id) {
         characterRepository.deleteById(id);
     }
-
-    public List<CharacterEntity> saveAll(List<CharacterEntity> list) {
-        return characterRepository.saveAllAndFlush(list);
-    }
-
-    public List<CharacterEntity> findAllByName(String name) {
-        return characterRepository.findAllByNameContains(name);
-    }
-
-    public List<CharacterEntity> findAllByRace(Race race) {
-        return characterRepository.findAllByRace(race);
-    }
-
 
     @Override
     public void afterPropertiesSet() throws Exception {
@@ -210,6 +196,7 @@ public class CharacterService implements InitializingBean {
         Item item = inventoryService.getItemEntityById(itemId);
         Inventory inventory = inventoryService.getInventoryEntityById(inventoryId);
         CharacterEntity character = characterRepository.getById(characterId);
+
         if (item.getTypeOfItem().equals(ItemEnum.VALUABLE)){
             character.setGold(character.getGold() + item.getValue());
             inventory.getItems().remove(item);
