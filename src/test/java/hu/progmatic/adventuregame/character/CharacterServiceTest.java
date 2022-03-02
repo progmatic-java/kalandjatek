@@ -1,4 +1,4 @@
-package hu.progmatic.adventuregame;
+package hu.progmatic.adventuregame.character;
 
 import hu.progmatic.adventuregame.character.*;
 import hu.progmatic.adventuregame.inventory.*;

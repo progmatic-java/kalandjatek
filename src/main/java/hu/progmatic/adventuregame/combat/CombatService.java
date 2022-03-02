@@ -21,7 +21,6 @@ public class CombatService {
   @Autowired
   private NPCRepository NPCRepository;
 
-
   public String swapActiveItem(Integer characterId, Integer itemId) {
     CharacterEntity character = characterRepository.getById(characterId);
     Item item = character.getInventory().getItems().stream().filter(item1 -> item1.getId().equals(itemId)).findAny().orElseThrow();
