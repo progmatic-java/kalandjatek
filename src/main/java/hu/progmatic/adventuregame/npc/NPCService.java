@@ -13,6 +13,7 @@ import java.util.Map;
 @Transactional
 @Service
 public class NPCService {
+
     @Autowired
     private NPCRepository npcRepository;
     @Autowired
@@ -23,6 +24,10 @@ public class NPCService {
 
     public NPC saveNpc(NPC npc) {
         return npcRepository.save(npc);
+    }
+
+    public NPCDto saveNpcReturnDto(NPC npc) {
+        return buildNpcDto(saveNpc(npc));
     }
 
     public NPC getNpcById(Integer id) {
