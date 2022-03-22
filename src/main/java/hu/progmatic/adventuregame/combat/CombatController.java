@@ -37,7 +37,7 @@ public class CombatController {
             @PathVariable Integer npcId,
             Model model
     ) {
-        RoomDto currRoom = roomService.getRoomById(roomId);
+        RoomDto currRoom = roomService.getRoomDtoById(roomId);
         String combatLog = combatService.swapActiveItem(characterId, itemId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
@@ -53,7 +53,7 @@ public class CombatController {
         @PathVariable Integer npcId,
         Model model
     ) {
-        RoomDto currRoom = roomService.getRoomById(roomId);
+        RoomDto currRoom = roomService.getRoomDtoById(roomId);
         String combatLog = combatService.consumeItem(characterId, itemId, npcId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
@@ -69,7 +69,7 @@ public class CombatController {
             @PathVariable Integer npcId,
             Model model
     ) {
-        RoomDto currRoom = roomService.getRoomById(roomId);
+        RoomDto currRoom = roomService.getRoomDtoById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
         model.addAttribute("combatLog", "Let's get ready to rumble!");
@@ -83,7 +83,7 @@ public class CombatController {
             @PathVariable Integer npcId,
             Model model
     ) {
-        RoomDto currRoom = roomService.getRoomById(roomId);
+        RoomDto currRoom = roomService.getRoomDtoById(roomId);
         String combatLog = combatService.fightRound(characterId, npcId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);

@@ -2,7 +2,6 @@ package hu.progmatic.adventuregame.room;
 
 import hu.progmatic.adventuregame.character.CharacterDto;
 import hu.progmatic.adventuregame.character.CharacterService;
-import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.inventory.InventoryService;
 import hu.progmatic.adventuregame.inventory.ItemDto;
 import hu.progmatic.adventuregame.npc.ActionCommand;
@@ -38,7 +37,7 @@ public class RoomController {
             @PathVariable Integer roomId,
             Model model
     ) {
-        RoomDto currRoom = roomService.getRoomById(roomId);
+        RoomDto currRoom = roomService.getRoomDtoById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         if (roomService.roomHasEnemy(roomId)) {
             Integer enemyId = roomService.getEnemyId(roomId);
@@ -55,10 +54,10 @@ public class RoomController {
             @PathVariable Integer itemId,
             Model model
     ) {
-        RoomDto currRoom = roomService.getRoomById(roomId);
+        RoomDto currRoom = roomService.getRoomDtoById(roomId);
         characterService.moveItemToPlayer(characterId, currRoom.getInventoryId(), itemId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
-        currRoom = roomService.getRoomById(roomId);
+        currRoom = roomService.getRoomDtoById(roomId);
         ItemDto item = inventoryService.getItemDtoById(itemId);
 
         if(item.getItemName().equals("The Golden Dragon Egg")){
@@ -75,7 +74,7 @@ public class RoomController {
             @PathVariable Integer npcId,
             Model model
     ) {
-        RoomDto currRoom = roomService.getRoomById(roomId);
+        RoomDto currRoom = roomService.getRoomDtoById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         NPCDto currNpc = npcService.getNPCDtoById(npcId);
         ActionCommand currAction = currNpc.getFirstAction();
@@ -91,7 +90,7 @@ public class RoomController {
             @PathVariable Integer actionId,
             Model model
     ) {
-        RoomDto currRoom = roomService.getRoomById(roomId);
+        RoomDto currRoom = roomService.getRoomDtoById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         ActionCommand currAction = npcService.getNextAction(actionId);
         npcActionHandling(model, npcService.getNPCDtoById(npcId), currAction);
@@ -106,7 +105,7 @@ public class RoomController {
             @PathVariable Integer actionId,
             Model model
     ) {
-        RoomDto currRoom = roomService.getRoomById(roomId);
+        RoomDto currRoom = roomService.getRoomDtoById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
         ActionCommand currAction = npcService.getActionById(actionId);
         npcActionHandling(model, npcService.getNPCDtoById(npcId), currAction);

@@ -25,8 +25,12 @@ public class RoomService {
   @Autowired
   private NPCService NPCService;
 
-  public RoomDto getRoomById(Integer id) {
+  public RoomDto getRoomDtoById(Integer id) {
     return buildRoomDto(roomRepository.getById(id));
+  }
+
+  public Room getRoomById(Integer id) {
+    return roomRepository.getById(id);
   }
 
   private RoomDto buildRoomDto(Room room) {

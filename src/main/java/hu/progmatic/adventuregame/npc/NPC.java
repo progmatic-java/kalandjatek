@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.npc;
 
+import hu.progmatic.adventuregame.character.CharacterEntity;
 import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.room.Room;
 import lombok.*;
@@ -12,11 +13,12 @@ import javax.persistence.*;
 @AllArgsConstructor
 @NoArgsConstructor
 @Builder
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"id", "name"})})
+
 public class NPC {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private Integer id;
-    @Column(unique = true)
     private String name;
     private String description;
     private Boolean friendly;
@@ -27,14 +29,20 @@ public class NPC {
     private Integer attack;
     private Integer damage;
     private Integer defence;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     @Builder.Default
     private Inventory inventory = new Inventory();
+
     @ManyToOne()
-    Room npcRoom;
+    private Room npcRoom;
+
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
     @Builder.Default
     private Action action = new Action();
+
+    @ManyToOne()
+    private CharacterEntity player;
 }

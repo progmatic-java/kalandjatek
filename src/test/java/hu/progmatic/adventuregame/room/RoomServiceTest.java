@@ -3,9 +3,6 @@ package hu.progmatic.adventuregame.room;
 import hu.progmatic.adventuregame.npc.NPC;
 import hu.progmatic.adventuregame.npc.NPCDto;
 import hu.progmatic.adventuregame.npc.NPCService;
-import hu.progmatic.adventuregame.room.Door;
-import hu.progmatic.adventuregame.room.Room;
-import hu.progmatic.adventuregame.room.RoomService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -33,6 +30,11 @@ class RoomServiceTest {
     );
     assertThat(savedRoom.getId()).isNotNull();
     assertEquals("Dungeon", savedRoom.getName());
+    Room savedRoom2 = roomService.saveRoom(Room.builder()
+        .name("Dungeon")
+        .build()
+    );
+    assertNotSame(savedRoom.getId(), savedRoom2.getId());
   }
 
   @Nested

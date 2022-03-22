@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.room;
 
+import hu.progmatic.adventuregame.character.CharacterEntity;
 import hu.progmatic.adventuregame.inventory.Inventory;
 import hu.progmatic.adventuregame.npc.NPC;
 import lombok.*;
@@ -15,6 +16,7 @@ import java.util.List;
 @NoArgsConstructor
 @Setter
 @Getter
+@Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"id", "name"})})
 public class Room {
 
     @Id
@@ -22,7 +24,6 @@ public class Room {
     private Integer id;
 
     @NotEmpty
-    @Column(unique = true)
     private String name;
 
     private String roomImgRef;
@@ -31,6 +32,9 @@ public class Room {
 
     @Column(length = 1000)
     private String roomDescription;
+
+    @ManyToOne()
+    private CharacterEntity player;
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn
