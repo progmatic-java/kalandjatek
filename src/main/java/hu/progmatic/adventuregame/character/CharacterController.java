@@ -1,5 +1,6 @@
 package hu.progmatic.adventuregame.character;
 
+import hu.progmatic.adventuregame.room.RoomDto;
 import hu.progmatic.felhasznalo.FelhasznaloService;
 import hu.progmatic.felhasznalo.UserType;
 import hu.progmatic.adventuregame.room.Room;
@@ -14,6 +15,7 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 
 import javax.validation.Valid;
+import java.util.Optional;
 
 
 @Controller
@@ -43,8 +45,10 @@ public class CharacterController {
   public String characterId(
       @PathVariable Integer id, Model model) {
     CharacterDto chosenCharacter = characterService.getCharacterDtoById(id);
+    RoomDto startingRoom = chosenCharacter.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("The Black Hole Inn")).findFirst().orElseThrow();
     model.addAttribute("chosenCharacter", chosenCharacter);
     model.addAttribute("newCharacter", false);
+    model.addAttribute("startingRoom", startingRoom);
     return "/adventuregame/characterpage";
   }
 
@@ -64,9 +68,11 @@ public class CharacterController {
       return "/adventuregame/personalitytest";
     }
     CharacterDto resultCharacter = characterService.getResultCharacter(answer);
+    RoomDto startingRoom = resultCharacter.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("The Black Hole Inn")).findFirst().orElseThrow();
     model.addAttribute("chosenCharacter", resultCharacter);
     model.addAttribute("retakeTest", true);
     model.addAttribute("newCharacter", true);
+    model.addAttribute("startingRoom", startingRoom);
     return "/adventuregame/characterpage";
   }
 
@@ -96,8 +102,8 @@ public class CharacterController {
   }
 
   @ModelAttribute("startingRoom")
-  public Room startRoom() {
-    return roomService.getByName("The Black Hole Inn");
+  public RoomDto startRoom() {
+    return null;
   }
 
   @ModelAttribute("testAnswer")

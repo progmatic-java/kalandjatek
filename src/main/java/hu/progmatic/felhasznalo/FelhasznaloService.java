@@ -56,7 +56,7 @@ public class FelhasznaloService implements InitializingBean {
   public void afterPropertiesSet() {
     felhasznaloRepository.deleteAll();
     if (findAll().isEmpty()) {
-      add(new UjFelhasznaloCommand("admin", "fat3dPaths", UserType.ADMIN));
+      add(new UjFelhasznaloCommand("admin", "admin", UserType.ADMIN));
       add(new UjFelhasznaloCommand("user", "user759813641", UserType.USER));
       add(new UjFelhasznaloCommand("guest", "guest78516984", UserType.GUEST));
     }

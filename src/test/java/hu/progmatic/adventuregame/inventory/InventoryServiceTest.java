@@ -1,4 +1,4 @@
-package hu.progmatic.adventuregame;
+package hu.progmatic.adventuregame.inventory;
 
 import hu.progmatic.adventuregame.inventory.*;
 import org.junit.jupiter.api.*;

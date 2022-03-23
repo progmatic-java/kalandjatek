@@ -44,6 +44,8 @@ public class RoomController {
             return "redirect:/adventuregame/characterpage/" + characterId + "/room/" + roomId + "/npc/" + enemyId;
         }
         setCurrRoom(model, currRoom);
+        RoomDto startingRoom = currCharacter.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("The Black Hole Inn")).findFirst().orElseThrow();
+        model.addAttribute("startingRoom", startingRoom);
         return getCurrRoomWithCharacter(model, currRoom, currCharacter);
     }
 
@@ -147,8 +149,8 @@ public class RoomController {
     }
 
     @ModelAttribute("startingRoom")
-    public Room startRoom() {
-        return roomService.getByName("The Black Hole Inn");
+    public RoomDto startRoom() {
+        return new RoomDto();
     }
 
     @ModelAttribute("currRoom")

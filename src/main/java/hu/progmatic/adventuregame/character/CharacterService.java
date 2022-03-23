@@ -1,6 +1,11 @@
 package hu.progmatic.adventuregame.character;
 
+import hu.progmatic.adventuregame.init.InitService;
 import hu.progmatic.adventuregame.inventory.*;
+import hu.progmatic.adventuregame.npc.NPCDto;
+import hu.progmatic.adventuregame.npc.NPCService;
+import hu.progmatic.adventuregame.room.RoomDto;
+import hu.progmatic.adventuregame.room.RoomService;
 import hu.progmatic.felhasznalo.UserType;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -22,6 +27,16 @@ public class CharacterService implements InitializingBean {
     @Autowired
     private InventoryService inventoryService;
 
+    @Autowired
+    private InitService initService;
+
+    @Autowired
+    private RoomService roomService;
+
+    @Autowired
+    private NPCService npcService;
+
+
     public CharacterEntity save(CharacterEntity character) {
         return characterRepository.save(character);
     }
@@ -41,6 +56,7 @@ public class CharacterService implements InitializingBean {
         List<ItemDto> allItems = entity.getInventory().getItems().stream().map(item -> inventoryService.buildItemDto(item)).toList();
         ItemDto activeWeapon = entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.ATTACK)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow();
         ItemDto activeShield = entity.getActiveInventory().getItems().stream().filter(item -> item.getTypeOfItem().equals(ItemEnum.SHIELD)).map(item -> inventoryService.buildItemDto(item)).findFirst().orElseThrow();
+        List<RoomDto> playerRooms = entity.getPlayerRooms().stream().map(room -> roomService.buildRoomDto(room)).toList();
         return CharacterDto.builder()
             .indexImg(entity.getIndexImg())
             .characterName(entity.getName())
@@ -61,6 +77,7 @@ public class CharacterService implements InitializingBean {
             .consumableItems(consumableItems)
             .activeWeapon(activeWeapon)
             .activeShield(activeShield)
+            .playerRooms(playerRooms)
             .build();
     }
 
@@ -185,7 +202,10 @@ public class CharacterService implements InitializingBean {
             .race(characterRace)
             .answer(answer)
             .build();
-        return buildCharacterDto(characterRepository.save(entity));
+        CharacterEntity saved = characterRepository.save(entity);
+        saved = initService.generateNewWorld(saved);
+        characterRepository.save(saved);
+        return buildCharacterDto(saved);
     }
 
     public Integer getIdByName(String name) {

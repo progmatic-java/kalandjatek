@@ -6,6 +6,7 @@ class Room {
 + text description
 + text img_ref
 + int inventory_id
++ int character_id
 }
 class Door {
 + int id
@@ -61,11 +62,12 @@ Action -- Action
 Npc -- Action
 Inventory -left-- Room : inv_id
 Inventory -- Npc : inv_id
-Inventory -- Character : inv_id
-Inventory -- Character : active_inv_id
+Inventory -up-- Character : inv_id
+Inventory -up-- Character : active_inv_id
 Item -left-- Inventory : inv_id
-Room -- Npc : room_id
+Room -down-- Npc : room_id
 Door -right-- Room : room1_id
 Door -right-- Room : room2_id
+Character -down-- Room : character_id
 
 @enduml

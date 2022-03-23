@@ -1,6 +1,8 @@
 package hu.progmatic.adventuregame.character;
 
 import hu.progmatic.adventuregame.inventory.ItemDto;
+import hu.progmatic.adventuregame.npc.NPCDto;
+import hu.progmatic.adventuregame.room.RoomDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -33,4 +35,5 @@ public class CharacterDto implements Serializable {
     private List<ItemDto> combatItems;
     private ItemDto activeWeapon;
     private ItemDto activeShield;
+    private List<RoomDto> playerRooms;
 }

@@ -33,7 +33,7 @@ public class RoomService {
     return roomRepository.getById(id);
   }
 
-  private RoomDto buildRoomDto(Room room) {
+  public RoomDto buildRoomDto(Room room) {
     return RoomDto.builder()
         .id(room.getId())
         .roomName(room.getName())

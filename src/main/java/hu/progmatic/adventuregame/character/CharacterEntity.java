@@ -50,8 +50,4 @@ public class CharacterEntity {
   @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
   @Builder.Default
   private List<Room> playerRooms = new ArrayList<>();
-
-  @OneToMany(mappedBy = "player", cascade = CascadeType.ALL, orphanRemoval = true)
-  @Builder.Default
-  private List<NPC> playerNpcs = new ArrayList<>();
 }

@@ -1,9 +1,12 @@
 package hu.progmatic.adventuregame.init;
 
+import hu.progmatic.adventuregame.character.CharacterEntity;
+import hu.progmatic.adventuregame.character.CharacterService;
 import hu.progmatic.adventuregame.npc.NPC;
 import hu.progmatic.adventuregame.room.Door;
 import hu.progmatic.adventuregame.room.Room;
 import hu.progmatic.adventuregame.room.RoomRepository;
+import hu.progmatic.adventuregame.room.RoomService;
 import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -14,7 +17,7 @@ import java.util.List;
 @Service
 @Transactional
 public class
-InitService implements InitializingBean {
+InitService {
     private final InnInit innInit = new InnInit();
     private final CellarInit cellarInit = new CellarInit();
     private final ChurchInit churchInit = new ChurchInit();
@@ -34,26 +37,23 @@ InitService implements InitializingBean {
     @Autowired
     private RoomRepository roomRepository;
 
-    @Override
-    public void afterPropertiesSet() throws Exception {
-        if (!roomRepository.findAll().isEmpty()) {
-            roomRepository.deleteAll();
-        }
-        Room inn = createRoom(innInit);
-        Room cellar = createRoom(cellarInit);
-        Room church = createRoom(churchInit);
-        Room churchDungeons = createRoom(churchDungeonsInit);
-        Room mainSquare = createRoom(mainSquareInit);
-        Room shop = createRoom(shopInit);
-        Room roadToTheForest = createRoom(roadToTheForestInit);
-        Room forest = createRoom(forestInit);
-        Room forestLake = createRoom(forestLakeInit);
-        Room brothel = createRoom(brothelInit);
-        Room pathToAcademy = createRoom(pathToTheAcademyInit);
-        Room academy = createRoom(academyInnit);
-        Room graveyard = createRoom(graveyardInit);
-        Room mountain = createRoom(mountainInnit);
-        Room cave = createRoom(caveInit);
+
+    public CharacterEntity generateNewWorld(CharacterEntity newCharacter) {
+        Room inn = createRoom(innInit, newCharacter);
+        Room cellar = createRoom(cellarInit, newCharacter);
+        Room church = createRoom(churchInit, newCharacter);
+        Room churchDungeons = createRoom(churchDungeonsInit, newCharacter);
+        Room mainSquare = createRoom(mainSquareInit, newCharacter);
+        Room shop = createRoom(shopInit, newCharacter);
+        Room roadToTheForest = createRoom(roadToTheForestInit, newCharacter);
+        Room forest = createRoom(forestInit, newCharacter);
+        Room forestLake = createRoom(forestLakeInit, newCharacter);
+        Room brothel = createRoom(brothelInit, newCharacter);
+        Room pathToAcademy = createRoom(pathToTheAcademyInit, newCharacter);
+        Room academy = createRoom(academyInnit, newCharacter);
+        Room graveyard = createRoom(graveyardInit, newCharacter);
+        Room mountain = createRoom(mountainInnit, newCharacter);
+        Room cave = createRoom(caveInit, newCharacter);
 
         createDoorBetweenRooms(inn, cellar);
         createDoorBetweenRooms(church, churchDungeons);
@@ -71,7 +71,8 @@ InitService implements InitializingBean {
         createDoorBetweenRooms(forestLake, mountain);
         createDoorBetweenRooms(mountain, cave);
 
-        roomRepository.saveAll(List.of(inn, cellar, brothel, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake, pathToAcademy, academy, graveyard, mountain, cave));
+//        roomRepository.saveAll(List.of(inn, cellar, brothel, church, churchDungeons, mainSquare, shop, forest, roadToTheForest, forestLake, pathToAcademy, academy, graveyard, mountain, cave));
+        return newCharacter;
     }
 
     private void createDoorBetweenRooms(Room room1, Room room2) {
@@ -83,18 +84,20 @@ InitService implements InitializingBean {
         room2.getDoors2().add(innToCellar);
     }
 
-    private Room createRoom(InitRoom initRoom) {
+    private Room createRoom(InitRoom initRoom, CharacterEntity newCharacter) {
         Room room = Room.builder()
                 .name(initRoom.getName())
                 .roomImgRef(initRoom.getRoomImgRef())
                 .inventory(initRoom.getInventory())
                 .roomDescription(initRoom.getRoomDescription())
+                .player(newCharacter)
                 .build();
-        addNpcToRoom(initRoom.getNpcs(), room);
+        newCharacter.getPlayerRooms().add(room);
+        addNpcToRoom(initRoom.getNpcs(), room, newCharacter);
         return room;
     }
 
-    private void addNpcToRoom(List<NPC> npcList, Room room) {
+    private void addNpcToRoom(List<NPC> npcList, Room room, CharacterEntity newCharacter) {
         for (NPC npc : npcList) {
             npc.setNpcRoom(room);
         }
