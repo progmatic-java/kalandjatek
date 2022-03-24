@@ -20,17 +20,15 @@ public class RoomService {
 
   @Autowired
   private RoomRepository roomRepository;
+
   @Autowired
   private InventoryService inventoryService;
+
   @Autowired
   private NPCService NPCService;
 
   public RoomDto getRoomDtoById(Integer id) {
     return buildRoomDto(roomRepository.getById(id));
-  }
-
-  public Room getRoomById(Integer id) {
-    return roomRepository.getById(id);
   }
 
   public RoomDto buildRoomDto(Room room) {
@@ -108,9 +106,5 @@ public class RoomService {
   public Integer getEnemyId(Integer roomId) {
     Room room = roomRepository.getById(roomId);
     return room.getNpcEntities().stream().filter(npc -> !npc.getFriendly()).findAny().orElseThrow().getId();
-  }
-
-  public RoomDto getRoomDtoByName(String roomName) {
-    return buildRoomDto(roomRepository.getRoomEntityByName(roomName).orElseThrow());
   }
 }

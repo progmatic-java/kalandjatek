@@ -33,16 +33,8 @@ public class CharacterService implements InitializingBean {
     @Autowired
     private RoomService roomService;
 
-    @Autowired
-    private NPCService npcService;
-
-
     public CharacterEntity save(CharacterEntity character) {
         return characterRepository.save(character);
-    }
-
-    public CharacterEntity getById(Integer id) {
-        return characterRepository.getById(id);
     }
 
     public CharacterDto getCharacterDtoById(Integer id) {
@@ -81,7 +73,7 @@ public class CharacterService implements InitializingBean {
             .build();
     }
 
-    @RolesAllowed(UserType.Roles.USER_WRITE_ROLE)
+//    @RolesAllowed(UserType.Roles.USER_WRITE_ROLE)
     public void delete(Integer id) {
         characterRepository.deleteById(id);
     }
@@ -206,10 +198,6 @@ public class CharacterService implements InitializingBean {
         saved = initService.generateNewWorld(saved);
         characterRepository.save(saved);
         return buildCharacterDto(saved);
-    }
-
-    public Integer getIdByName(String name) {
-        return characterRepository.getCharacterByName(name).orElseThrow().getId();
     }
 
     public void moveItemToPlayer(Integer characterId, Integer inventoryId, Integer itemId) {

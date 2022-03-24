@@ -40,12 +40,25 @@ class CharacterControllerTest {
     @Test
     @DisplayName("Character page megjelenik")
     void characterPage() throws Exception {
-        Integer characterId = characterService.getIdByName("Test human");
+        CharacterDto character = characterService.getResultCharacter(
+            Answer.builder()
+                .name("Test character")
+                .race1(Race.HUMAN)
+                .race2(Race.HUMAN)
+                .race3(Race.HUMAN)
+                .race4(Race.HUMAN)
+                .race5(Race.HUMAN)
+                .race6(Race.HUMAN)
+                .race7(Race.HUMAN)
+                .race8(Race.HUMAN)
+                .build());
 
         mockMvc.perform(
-                        get("/adventuregame/characterpage/" + characterId)
+                        get("/adventuregame/characterpage/" + character.getId())
                 ).andDo(print()).andExpect(status().isOk())
-                .andExpect(content().string(containsString("Test human")))
+                .andExpect(content().string(containsString("Test character")))
                 .andExpect(content().string(containsString("Character page")));
+
+        characterService.delete(character.getId());
     }
 }

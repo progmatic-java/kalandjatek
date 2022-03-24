@@ -27,10 +27,6 @@ public class CharacterController {
   @Autowired
   private FelhasznaloService felhasznaloService;
 
-  @Autowired
-  private RoomService roomService;
-
-
   @GetMapping("/adventuregame/personalitytest")
   public String teszMix() {
     return "/adventuregame/personalitytest";
@@ -91,8 +87,10 @@ public class CharacterController {
 
   @GetMapping("/adventuregame/introduction/{id}")
   public String intro(@PathVariable Integer id, Model model) {
-    CharacterEntity chosenCharacter = characterService.getById(id);
+    CharacterDto chosenCharacter = characterService.getCharacterDtoById(id);
+    RoomDto startingRoom = chosenCharacter.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("The Black Hole Inn")).findFirst().orElseThrow();
     model.addAttribute("chosenCharacter", chosenCharacter);
+    model.addAttribute("startingRoom", startingRoom);
     return "/adventuregame/introduction";
   }
 

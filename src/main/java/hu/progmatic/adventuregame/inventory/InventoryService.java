@@ -12,6 +12,7 @@ public class InventoryService {
 
   @Autowired
   private InventoryRepository inventoryRepository; //parent
+
   @Autowired
   private ItemRepository itemRepository; // child
 

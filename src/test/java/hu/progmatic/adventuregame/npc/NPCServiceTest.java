@@ -86,14 +86,6 @@ class NPCServiceTest {
   }
 
   @Test
-  @DisplayName("Find Burrows")
-  void findAllByName() {
-    NPC burrow = npcService.findByName("Burrows");
-    assertNotNull(burrow.getId());
-    assertEquals("Burrows", burrow.getName());
-  }
-
-  @Test
   @DisplayName("Get action by Id")
   void getActionTest() {
     Action action = npcService.createAction(

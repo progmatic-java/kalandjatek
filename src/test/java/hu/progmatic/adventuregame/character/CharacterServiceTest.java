@@ -90,8 +90,7 @@ class CharacterServiceTest {
         @Order(3)
         @WithMockUser(roles = UserType.Roles.USER_WRITE_ROLE)
         void deleteCharacter() {
-            CharacterEntity readed = characterService.getById(1);
-            assertNotNull(readed.getId());
+            assertNotNull(character.getId());
             characterService.delete(character.getId());
             Exception exception = null;
             try {

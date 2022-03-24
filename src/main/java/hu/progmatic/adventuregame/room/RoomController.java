@@ -19,10 +19,13 @@ public class RoomController {
 
     @Autowired
     private RoomService roomService;
+
     @Autowired
     private CharacterService characterService;
+
     @Autowired
     private NPCService npcService;
+
     @Autowired
     private InventoryService inventoryService;
 

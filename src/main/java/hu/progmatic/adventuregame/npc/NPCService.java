@@ -16,8 +16,10 @@ public class NPCService {
 
     @Autowired
     private NPCRepository npcRepository;
+
     @Autowired
     private InventoryService inventoryService;
+
     @Autowired
     private ActionRepository actionRepository;
 
@@ -83,10 +85,6 @@ public class NPCService {
         npcRepository.deleteById(id);
     }
 
-    public NPC findByName(String name) {
-        return npcRepository.getNPCByName(name).orElseThrow();
-    }
-
     public Action createAction(Action action) {
         return actionRepository.save(action);
     }
@@ -102,9 +100,5 @@ public class NPCService {
     public ActionCommand getActionById(Integer actionId) {
         Action action = actionRepository.getById(actionId);
         return buildNpcAction(action);
-    }
-
-    public NPCDto getNPCDtoByName(String npcName) {
-        return buildNpcDto(npcRepository.getNPCByName(npcName).orElseThrow());
     }
 }

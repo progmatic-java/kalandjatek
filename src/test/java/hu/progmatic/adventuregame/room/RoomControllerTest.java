@@ -48,8 +48,8 @@ class RoomControllerTest {
   @Test
   @DisplayName("Black Hole Inn appearing")
   void innPageTest() throws Exception {
-    RoomDto roomDto = roomService.getRoomDtoByName("The Black Hole Inn");
     CharacterDto characterDto = characterService.getCharacterDtoByName("Test orc");
+    RoomDto roomDto = characterDto.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("The Black Hole Inn")).findFirst().orElseThrow();
 
     mockMvc.perform(get("/adventuregame/characterpage/" + characterDto.getId() + "/room/" + roomDto.getId()))
         .andDo(print())
@@ -65,8 +65,8 @@ class RoomControllerTest {
   @Test
   @DisplayName("Room loading with enemy")
   void enemyInRoomTest() throws Exception {
-    RoomDto roomDto = roomService.getRoomDtoByName("Cellar of Black Hole Inn");
     CharacterDto characterDto = characterService.getCharacterDtoByName("Test orc");
+    RoomDto roomDto = characterDto.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("Cellar of Black Hole Inn")).findFirst().orElseThrow();
 
     mockMvc.perform(get("/adventuregame/characterpage/" + characterDto.getId() + "/room/" + roomDto.getId()))
         .andDo(print())
@@ -76,8 +76,8 @@ class RoomControllerTest {
   @Test
   @DisplayName("Enemy interaction test")
   void enemyInteractionTest() throws Exception {
-    RoomDto roomDto = roomService.getRoomDtoByName("Cellar of Black Hole Inn");
     CharacterDto characterDto = characterService.getCharacterDtoByName("Test orc");
+    RoomDto roomDto = characterDto.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("Cellar of Black Hole Inn")).findFirst().orElseThrow();
 
     mockMvc.perform(get("/adventuregame/characterpage/" + characterDto.getId() + "/room/" + roomDto.getId() + "/npc/" + roomDto.getNpcDtoList().stream().findAny().orElseThrow().getId()))
         .andDo(print())
@@ -92,9 +92,9 @@ class RoomControllerTest {
   @Test
   @DisplayName("Npc next action test")
   void npcNextActionTest() throws Exception {
-    RoomDto roomDto = roomService.getRoomDtoByName("The Black Hole Inn");
     CharacterDto characterDto = characterService.getCharacterDtoByName("Test orc");
-    NPCDto npcDto = NPCService.getNPCDtoByName("Burrows");
+    RoomDto roomDto = characterDto.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("The Black Hole Inn")).findFirst().orElseThrow();
+    NPCDto npcDto = roomDto.getNpcDtoList().stream().filter(npc -> npc.getName().equals("Burrows")).findFirst().orElseThrow();
     int actionId = npcDto.getFirstAction().getPlayerAnswers().entrySet().stream()
         .filter(stringIntegerEntry -> stringIntegerEntry.getKey().equals("Hello, I just want a beer!"))
         .mapToInt(Map.Entry::getValue).findAny().orElseThrow();

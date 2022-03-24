@@ -18,6 +18,7 @@ public class CombatService {
 
   @Autowired
   private CharacterRepository characterRepository;
+
   @Autowired
   private NPCRepository NPCRepository;
 

@@ -28,33 +28,29 @@ class CombatControllerTest {
 
   @Autowired
   private MockMvc mockMvc;
+
   @Autowired
   private CharacterService characterService;
-  @Autowired
-  private RoomService roomService;
-  @Autowired
-  private NPCService NPCService;
-
 
   @Test
   @DisplayName("A combat elkezdődik")
   void combatStart() throws Exception {
-    RoomDto room = roomService.getRoomDtoByName("Cellar of Black Hole Inn");
-    NPCDto npc = NPCService.getNPCDtoByName("Mad dog");
     CharacterDto character = characterService.getCharacterDtoByName("Test orc");
-    mockMvc.perform(get("/adventuregame/characterpage/" + character.getId() + "/room/" + room.getId() + "/npc/" + npc.getId() +"/combatstart"))
+    RoomDto roomDto = character.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("Cellar of Black Hole Inn")).findFirst().orElseThrow();
+    NPCDto npcDto = roomDto.getNpcDtoList().stream().filter(npc -> npc.getName().equals("Mad dog")).findFirst().orElseThrow();
+    mockMvc.perform(get("/adventuregame/characterpage/" + character.getId() + "/room/" + roomDto.getId() + "/npc/" + npcDto.getId() +"/combatstart"))
         .andDo(print()).andExpect(status().isOk())
-        .andExpect(content().string(containsString(npc.getName() + " vs " + character.getCharacterName())));
+        .andExpect(content().string(containsString(npcDto.getName() + " vs " + character.getCharacterName())));
   }
 
   @Test
   @DisplayName("Lemegye egy combat kör")
   void combatRound() throws Exception {
-    RoomDto room = roomService.getRoomDtoByName("Cellar of Black Hole Inn");
-    NPCDto npc = NPCService.getNPCDtoByName("Mad dog");
     CharacterDto character = characterService.getCharacterDtoByName("Test orc");
-    mockMvc.perform(get("/adventuregame/characterpage/" + character.getId() + "/room/" + room.getId() + "/npc/" + npc.getId() +"/combatround"))
+    RoomDto roomDto = character.getPlayerRooms().stream().filter(room -> room.getRoomName().equals("Cellar of Black Hole Inn")).findFirst().orElseThrow();
+    NPCDto npcDto = roomDto.getNpcDtoList().stream().filter(npc -> npc.getName().equals("Mad dog")).findFirst().orElseThrow();
+    mockMvc.perform(get("/adventuregame/characterpage/" + character.getId() + "/room/" + roomDto.getId() + "/npc/" + npcDto.getId() +"/combatround"))
         .andDo(print()).andExpect(status().isOk())
-        .andExpect(content().string(containsString(npc.getName() + " vs " + character.getCharacterName())));
+        .andExpect(content().string(containsString(npcDto.getName() + " vs " + character.getCharacterName())));
   }
 }
