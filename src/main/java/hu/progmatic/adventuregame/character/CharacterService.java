@@ -70,6 +70,7 @@ public class CharacterService implements InitializingBean {
             .activeWeapon(activeWeapon)
             .activeShield(activeShield)
             .playerRooms(playerRooms)
+            .latestRoomId(entity.getLatestRoomId())
             .build();
     }
 
@@ -221,5 +222,11 @@ public class CharacterService implements InitializingBean {
 
     public CharacterDto getCharacterDtoByName(String charName) {
         return buildCharacterDto(characterRepository.getCharacterByName(charName).orElseThrow());
+    }
+
+    public void updateLatestRoom(Integer characterId, Integer roomId) {
+        CharacterEntity character = characterRepository.getById(characterId);
+        character.setLatestRoomId(roomId);
+        characterRepository.save(character);
     }
 }

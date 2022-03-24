@@ -32,6 +32,8 @@ public class CharacterEntity {
   private Integer defence;
   private String imgRef;
   private String indexImg;
+  @Builder.Default
+  private Integer latestRoomId = null;
 
   @OneToOne(cascade = CascadeType.ALL)
   @JoinColumn

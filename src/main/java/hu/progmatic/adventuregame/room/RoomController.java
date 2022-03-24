@@ -42,6 +42,7 @@ public class RoomController {
     ) {
         RoomDto currRoom = roomService.getRoomDtoById(roomId);
         CharacterDto currCharacter = characterService.getCharacterDtoById(characterId);
+        characterService.updateLatestRoom(characterId ,roomId);
         if (roomService.roomHasEnemy(roomId)) {
             Integer enemyId = roomService.getEnemyId(roomId);
             return "redirect:/adventuregame/characterpage/" + characterId + "/room/" + roomId + "/npc/" + enemyId;

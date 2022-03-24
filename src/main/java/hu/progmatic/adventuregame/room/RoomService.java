@@ -6,6 +6,7 @@ import hu.progmatic.adventuregame.inventory.ItemDto;
 import hu.progmatic.adventuregame.npc.NPC;
 import hu.progmatic.adventuregame.npc.NPCDto;
 import hu.progmatic.adventuregame.npc.NPCService;
+import org.springframework.beans.factory.InitializingBean;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

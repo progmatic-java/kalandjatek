@@ -127,7 +127,7 @@
     </form>
 
     <form th:unless="${newCharacter}"
-          th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${chosenCharacter.getId()},roomId=${startingRoom.getId()})}"
+          th:action="@{'/adventuregame/characterpage/{characterId}/room/{roomId}'(characterId=${chosenCharacter.getId()},roomId=${chosenCharacter.getLatestRoomId()})}"
           method="get">
         <input type="submit" class="btn btn-dark" style="background-color: lightskyblue" value="Start game"/>
     </form>

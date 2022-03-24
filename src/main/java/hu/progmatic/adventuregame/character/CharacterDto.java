@@ -36,4 +36,5 @@ public class CharacterDto implements Serializable {
     private ItemDto activeWeapon;
     private ItemDto activeShield;
     private List<RoomDto> playerRooms;
+    private Integer latestRoomId;
 }
