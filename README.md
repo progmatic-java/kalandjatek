@@ -20,19 +20,23 @@ Based on your answers, the game gives you one of the 4 playable character. If yo
 
 #### Rooms
 ![](doc/fated_room.png)
+Rooms are the main thing(?) of the game. Here you can go to adjacent rooms, pick up items found in the room or interact with npc-s located in the room. Every room has a different background, description, item(s) and npc(s).
 
 <br/>
 
 #### Npc interaction
 ![](doc/fated_npcint.png)
+You can interact with every npc in the game. Some have only 1 line of dialog, others have branching dialogs with different outcomes.
 
 <br/>
 
 #### Combat
 ![](doc/fated_combat.png)
+If you encounter a non-friendly enemy, you can fight with them. The combat is turn based, during your turn, you can switch weapon, shield and use consumables such as health potion to heal yourself or magic scrolls to deal some damage. 
 
 
 <br/>
 
 ### Database
 ![](doc/database.png)
+
