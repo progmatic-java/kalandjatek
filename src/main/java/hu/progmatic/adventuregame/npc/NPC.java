@@ -13,7 +13,6 @@ import javax.persistence.*;
 @NoArgsConstructor
 @Builder
 @Table(uniqueConstraints = {@UniqueConstraint(columnNames = {"name", "npc_room_id"})})
-
 public class NPC {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
