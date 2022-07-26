@@ -12,7 +12,7 @@ public class ChurchInit extends InitRoom {
 
     @Override
     public String getName() {
-        return "Church of Holy Joe";
+        return "Church of Holy Joe and Pete";
     }
 
     @Override
